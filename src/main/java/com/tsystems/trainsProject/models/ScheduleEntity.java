@@ -1,11 +1,15 @@
 package com.tsystems.trainsProject.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Basic;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "train_schedule", schema = "trains", catalog = "")
-public class TrainScheduleEntity {
+public class ScheduleEntity {
     private int idTrainSchedule;
     private Timestamp arrivalTime;
     private Timestamp departureTime;
@@ -45,7 +49,7 @@ public class TrainScheduleEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TrainScheduleEntity that = (TrainScheduleEntity) o;
+        ScheduleEntity that = (ScheduleEntity) o;
 
         if (idTrainSchedule != that.idTrainSchedule) return false;
         if (arrivalTime != null ? !arrivalTime.equals(that.arrivalTime) : that.arrivalTime != null) return false;

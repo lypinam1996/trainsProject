@@ -6,51 +6,54 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("com.tsystems.trainsProject.DAO"),
-        @ComponentScan("com.tsystems.trainsProject.services") })
+@ComponentScans(value = { @ComponentScan("com.tsystems.trainsProject")})
 public class AppConfig {
 
         @Value("${spring.datasource.driver-class-name}")
-        private String DB_DRIVER;
+        private String dbDriver;
 
         @Value("${spring.datasource.url}")
-        private String DB_URL;
+        private String dbUrl;
 
         @Value("${spring.datasource.data-username}")
-        private String DB_USERNAME;
+        private String dbUserName;
 
         @Value("${spring.datasource.data-password}")
-        private String DB_PASSWORD;
+        private String dbPassword;
 
         @Value("${spring.jpa.properties.dialect}")
-        private String HIBERNATE_DIALECT;
+        private String hibernateDialect;
 
         @Value("${spring.jpa.show-sql}")
-        private String HIBERNATE_SHOW_SQL;
+        private String hibernateShowDdl;
 
         @Value("${spring.jpa.hibernate.ddl-auto}")
-        private String HIBERNATE_DDL_AUTO;
+        private String hibernateDdlAuto;
         @Value("${spring.jpa.hibernate.use-new-id-generator-mappings}")
-        private String HIBERNATE_USER_NEW_ID_GENERATOR_MAPPINGS;
+        private String hibernateNewUserIdGenertorMapping;
 
         @Value("${entitymanager.packagesToScan}")
-        private String ENTITY_PACKEGES_TO_SCAN;
+        private String entityPackegesToScan;
 
         @Bean
         public DataSource dataSource() {
             DriverManagerDataSource dataSource = new DriverManagerDataSource();
-            dataSource.setDriverClassName(DB_DRIVER);
-            dataSource.setUrl(DB_URL);
-            dataSource.setUsername(DB_USERNAME);
-            dataSource.setPassword(DB_PASSWORD);
-            dataSource.setSchema("trains");
+            dataSource.setDriverClassName(dbDriver);
+            dataSource.setUrl(dbUrl);
+            dataSource.setUsername(dbUserName);
+            dataSource.setPassword(dbPassword);
+            try {
+                dataSource.getConnection().getCatalog();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             return dataSource;
         }
 
@@ -58,12 +61,12 @@ public class AppConfig {
         public LocalSessionFactoryBean localSessionFactory() {
             LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
             sessionFactoryBean.setDataSource(dataSource());
-            sessionFactoryBean.setPackagesToScan(ENTITY_PACKEGES_TO_SCAN);
+            sessionFactoryBean.setPackagesToScan(entityPackegesToScan);
             Properties hibernateProperties = new Properties();
-            hibernateProperties.put("spring.jpa.properties.dialect", HIBERNATE_DIALECT);
-            hibernateProperties.put("spring.jpa.show-sql", HIBERNATE_SHOW_SQL);
-            hibernateProperties.put("spring.jpa.hibernate.ddl-auto", HIBERNATE_DDL_AUTO);
-            hibernateProperties.put("spring.jpa.hibernate.use-new-id-generator-mappings", HIBERNATE_USER_NEW_ID_GENERATOR_MAPPINGS);
+            hibernateProperties.put("spring.jpa.properties.dialect", hibernateDialect);
+            hibernateProperties.put("spring.jpa.show-sql", hibernateShowDdl);
+            hibernateProperties.put("spring.jpa.hibernate.ddl-auto", hibernateDdlAuto);
+            hibernateProperties.put("spring.jpa.hibernate.use-new-id-generator-mappings", hibernateNewUserIdGenertorMapping);
             sessionFactoryBean.setHibernateProperties(hibernateProperties);
             return sessionFactoryBean;
         }

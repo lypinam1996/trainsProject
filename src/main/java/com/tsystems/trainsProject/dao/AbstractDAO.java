@@ -1,8 +1,7 @@
-package com.tsystems.trainsProject.DAO;
+package com.tsystems.trainsProject.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.lang.reflect.ParameterizedType;
 
 public class AbstractDAO<K,E> {
@@ -10,7 +9,7 @@ public class AbstractDAO<K,E> {
     private  final Class<K> persistanceClass;
 
     @Autowired
-    SessionFactory _sessionFactory;
+    SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
     public AbstractDAO(){
@@ -19,7 +18,7 @@ public class AbstractDAO<K,E> {
     }
 
     protected Session getSession(){
-        return _sessionFactory.getCurrentSession();
+        return sessionFactory.getCurrentSession();
     }
 
     public void persist (E entity){

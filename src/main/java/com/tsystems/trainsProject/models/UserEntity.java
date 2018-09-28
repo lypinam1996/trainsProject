@@ -1,10 +1,14 @@
 package com.tsystems.trainsProject.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Basic;
 
 @Entity
 @Table(name = "users", schema = "trains", catalog = "")
-public class UsersEntity {
+public class UserEntity {
     private int idUser;
     private String login;
     private String password;
@@ -44,7 +48,7 @@ public class UsersEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UsersEntity that = (UsersEntity) o;
+        UserEntity that = (UserEntity) o;
 
         if (idUser != that.idUser) return false;
         if (login != null ? !login.equals(that.login) : that.login != null) return false;
