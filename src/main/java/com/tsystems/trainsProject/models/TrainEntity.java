@@ -1,10 +1,6 @@
 package com.tsystems.trainsProject.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Basic;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "trains", schema = "trains", catalog = "")
@@ -14,6 +10,7 @@ public class TrainEntity {
     private Integer numberOfSeats;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_train", nullable = false)
     public int getIdTrain() {
         return idTrain;

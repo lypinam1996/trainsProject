@@ -1,12 +1,13 @@
-package com.tsystems.trainsProject.dao;
+package com.tsystems.trainsProject.dao.impl;
 
+import com.tsystems.trainsProject.dao.UserDAO;
 import com.tsystems.trainsProject.models.UserEntity;
 import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("UserDAO")
-public class UserDAOImpl extends AbstractDAO<Integer,UserEntity> implements UserDAO{
+public class UserDAOImpl extends AbstractDAO<Integer,UserEntity> implements UserDAO {
 
     @Override
     public List<UserEntity> findAllUsers() {

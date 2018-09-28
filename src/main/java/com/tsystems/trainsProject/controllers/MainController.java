@@ -14,18 +14,4 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @Autowired
-    UserService userService;
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView getAdd() {
-        ModelAndView model = new ModelAndView();
-        List<UserEntity> user = new ArrayList<>();
-        user=userService.findAllUsers();
-        model.addObject("user", user);
-        model.setViewName("home"        );
-        return model;
-    }
-
-
 }

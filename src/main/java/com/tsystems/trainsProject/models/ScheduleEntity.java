@@ -1,10 +1,6 @@
 package com.tsystems.trainsProject.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Basic;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -15,6 +11,7 @@ public class ScheduleEntity {
     private Timestamp departureTime;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_train_schedule", nullable = false)
     public int getIdTrainSchedule() {
         return idTrainSchedule;

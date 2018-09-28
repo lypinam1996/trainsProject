@@ -1,10 +1,6 @@
 package com.tsystems.trainsProject.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Basic;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -17,6 +13,7 @@ public class PassangerEntity {
     private Timestamp dateOfBirth;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_passanger", nullable = false)
     public int getIdPassanger() {
         return idPassanger;
