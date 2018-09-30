@@ -3,13 +3,12 @@ package com.tsystems.trainsProject.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles", schema = "trains", catalog = "")
+@Table(name = "role", schema = "trains", catalog = "")
 public class RoleEntity {
     private int idRole;
     private String title;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_role", nullable = false)
     public int getIdRole() {
         return idRole;

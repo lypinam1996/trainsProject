@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "passangers", schema = "trains")
+@Table(name = "passanger", schema = "trains", catalog = "")
 public class PassangerEntity {
     private int idPassanger;
     private String name;
@@ -13,7 +13,6 @@ public class PassangerEntity {
     private Timestamp dateOfBirth;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_passanger", nullable = false)
     public int getIdPassanger() {
         return idPassanger;

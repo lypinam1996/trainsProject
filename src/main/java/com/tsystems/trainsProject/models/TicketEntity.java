@@ -1,14 +1,16 @@
 package com.tsystems.trainsProject.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "tickets", schema = "trains", catalog = "")
+@Table(name = "ticket", schema = "trains", catalog = "")
 public class TicketEntity {
     private int idTicket;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ticket", nullable = false)
     public int getIdTicket() {
         return idTicket;

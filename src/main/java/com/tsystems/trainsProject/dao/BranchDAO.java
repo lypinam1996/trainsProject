@@ -1,0 +1,9 @@
+package com.tsystems.trainsProject.dao;
+
+import com.tsystems.trainsProject.models.BranchLineEntity;
+
+import java.util.List;
+
+public interface BranchDAO {
+    List<BranchLineEntity> findAllBranches();
+}

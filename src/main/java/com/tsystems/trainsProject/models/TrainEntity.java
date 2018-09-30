@@ -1,16 +1,26 @@
 package com.tsystems.trainsProject.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "trains", schema = "trains", catalog = "")
+@Table(name = "train", schema = "trains", catalog = "")
 public class TrainEntity {
     private int idTrain;
     private String number;
     private Integer numberOfSeats;
+    private List<ScheduleEntity> schedule;
+
+    @OneToMany(mappedBy = "train")
+    public List<ScheduleEntity> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(List<ScheduleEntity> schedule) {
+        this.schedule = schedule;
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_train", nullable = false)
     public int getIdTrain() {
         return idTrain;
