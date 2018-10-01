@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BranchService {
     List<BranchLineEntity> findAllBranches();
+    void saveOrUpdate(BranchLineEntity branch);
 }

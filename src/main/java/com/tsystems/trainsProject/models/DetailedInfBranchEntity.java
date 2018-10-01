@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.models;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.sql.Time;
 

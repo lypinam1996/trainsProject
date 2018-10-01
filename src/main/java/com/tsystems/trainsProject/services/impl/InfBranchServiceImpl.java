@@ -38,6 +38,11 @@ public class InfBranchServiceImpl implements InfBranchService {
     }
 
     @Override
+    public void saveOrUpdate(DetailedInfBranchEntity branch) {
+        infBranchDAO.saveOrUpdate(branch);
+    }
+
+    @Override
     public Map<BranchLineEntity,List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines) {
         Map<BranchLineEntity,List<DetailedInfBranchEntity>> result = new HashMap<>();
         for(int i =0; i<branchLines.size();i++){
@@ -47,6 +52,8 @@ public class InfBranchServiceImpl implements InfBranchService {
         }
         return result;
     }
+
+
 
 
 }

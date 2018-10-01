@@ -21,4 +21,11 @@ public class BranchServiceImpl implements BranchService {
         List<BranchLineEntity> res =branchDAO.findAllBranches();
         return res;
     }
+
+    @Override
+    public void saveOrUpdate(BranchLineEntity branch) {
+        branchDAO.saveOrUpdate(branch);
+    }
+
+
 }

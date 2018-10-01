@@ -28,10 +28,16 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
     }
 
     @Override
+    public void saveOrUpdate(DetailedInfBranchEntity branch) {
+        getSession().saveOrUpdate(branch);
+    }
+
+    @Override
     public List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity) {
         Criteria criteria = getSession().createCriteria(DetailedInfBranchEntity.class);
         criteria.add(Restrictions.eq("branch", branchLineEntity));
         return (List<DetailedInfBranchEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
+
 
 }

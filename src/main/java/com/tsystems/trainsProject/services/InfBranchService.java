@@ -12,5 +12,6 @@ public interface InfBranchService {
     List<DetailedInfBranchEntity> findAllInfBranch();
     List<DetailedInfBranchEntity> findBranchesByStation(StationEntity stationEntity);
     List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity);
+    void saveOrUpdate(DetailedInfBranchEntity branch);
     Map<BranchLineEntity,List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines);
 }

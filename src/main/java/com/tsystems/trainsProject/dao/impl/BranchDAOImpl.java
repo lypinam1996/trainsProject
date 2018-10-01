@@ -17,4 +17,12 @@ public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> impleme
         return res;
     }
 
+    @Override
+    public void saveOrUpdate(BranchLineEntity branch) {
+        getSession().saveOrUpdate(branch);
+    }
+
+
+
+
 }

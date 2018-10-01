@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BranchDAO {
     List<BranchLineEntity> findAllBranches();
+    void saveOrUpdate(BranchLineEntity branch);
 }
