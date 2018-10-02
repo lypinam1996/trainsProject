@@ -27,5 +27,15 @@ public class BranchServiceImpl implements BranchService {
         branchDAO.saveOrUpdate(branch);
     }
 
+    @Override
+    public BranchLineEntity findById(int id) {
+        return branchDAO.findById(id);
+    }
+
+    @Override
+    public void update(BranchLineEntity branch) {
+        branchDAO.update(branch);
+    }
+
 
 }

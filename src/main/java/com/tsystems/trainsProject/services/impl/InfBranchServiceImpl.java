@@ -38,8 +38,13 @@ public class InfBranchServiceImpl implements InfBranchService {
     }
 
     @Override
-    public void saveOrUpdate(DetailedInfBranchEntity branch) {
-        infBranchDAO.saveOrUpdate(branch);
+    public int saveOrUpdate(DetailedInfBranchEntity branch) {
+        return infBranchDAO.saveOrUpdate(branch);
+    }
+
+    @Override
+    public void delete(DetailedInfBranchEntity branch) {
+        infBranchDAO.delete(branch);
     }
 
     @Override

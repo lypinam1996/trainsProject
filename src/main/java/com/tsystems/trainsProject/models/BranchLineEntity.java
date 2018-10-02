@@ -1,5 +1,8 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class BranchLineEntity {
         this.schedule = schedule;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "branch")
     public List<DetailedInfBranchEntity> getDetailedInf() {
         return detailedInf;

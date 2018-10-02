@@ -3,6 +3,7 @@ package com.tsystems.trainsProject.dao.impl;
 import com.tsystems.trainsProject.dao.BranchDAO;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,7 +23,18 @@ public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> impleme
         getSession().saveOrUpdate(branch);
     }
 
+    @Override
+    public void update(BranchLineEntity branch) {
+        getSession().update(branch);
+    }
 
+
+    @Override
+    public BranchLineEntity findById(int id) {
+        Criteria criteria = getSession().createCriteria(BranchLineEntity.class);
+        criteria.add(Restrictions.eq("idBranchLine", id));
+        return (BranchLineEntity) criteria.uniqueResult();
+    }
 
 
 }

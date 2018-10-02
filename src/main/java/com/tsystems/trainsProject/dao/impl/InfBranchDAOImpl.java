@@ -5,6 +5,7 @@ import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -28,8 +29,16 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
     }
 
     @Override
-    public void saveOrUpdate(DetailedInfBranchEntity branch) {
-        getSession().saveOrUpdate(branch);
+    public int saveOrUpdate(DetailedInfBranchEntity branch) {
+        if(branch.getTimeFromPrevious()==null &&
+                branch.getStationSerialNumber()==null &&
+                branch.getStation()==null){
+            return 0;
+        }
+        else {
+            getSession().saveOrUpdate(branch);
+            return 1;
+        }
     }
 
     @Override
@@ -37,6 +46,15 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
         Criteria criteria = getSession().createCriteria(DetailedInfBranchEntity.class);
         criteria.add(Restrictions.eq("branch", branchLineEntity));
         return (List<DetailedInfBranchEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+    }
+
+
+    @Override
+    public void delete(DetailedInfBranchEntity branch) {
+        int id = branch.getIdDetailedInfBranch();
+        Query query = getSession().createSQLQuery("DELETE FROM detailed_inf_branch where id_detailed_inf_branch=:id");
+        query.setInteger("id", id);
+        query.executeUpdate();
     }
 
 

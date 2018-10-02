@@ -17,8 +17,7 @@
                     var html = '<div id="detailedInf' + index + '.wrapper" class="hidden">';
                     html += '<input type="text" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
                     html += '<button type="button" class="remove" id="'+index+'" ">remove</button>';
-                     html += '<input type="hidden" class="detailedInf' + index + '.check" name="detailedInf[' + index + '].check" value="1"/>';
-                    html += "</div>";
+                   html += "</div>";
                     return html;
                 });
                 $("#detailedInf" + index + "\\.wrapper").show();
@@ -31,7 +30,6 @@
         $(document).ready(function () {
             $('html').on('click','.remove', function () {
                  console.log(this.id);
-                // $("#detailedInf" + this.id + ".check").val(0);
                 $(this).parent().remove();
             });
         });
@@ -43,7 +41,7 @@
 
 <c:choose>
     <c:when test="${type eq 'create'}"><c:set var="actionUrl" value="create" /></c:when>
-    <c:otherwise><c:set var="actionUrl" value="update/${branch.idBranchLine}" /></c:otherwise>
+    <c:otherwise><c:set var="actionUrl" value="/updateBranch" /></c:otherwise>
 </c:choose>
 
 <form:form action="${actionUrl}" modelAttribute="branch" method="POST" name="branch">
@@ -58,7 +56,6 @@
                 <c:forEach items="${branch.detailedInf}" varStatus="loop">
                     <div id="detailedInf${loop.index}.wrapper">
                         <form:input path="detailedInf[${loop.index}].stationSerialNumber"  />
-                        <form:input path="detailedInf[${loop.index}].check " value="${hiddenValue}"/>
                         <button type="button" class="remove" id="${loop.index}">remove</button>
                     </div>
                 </c:forEach>

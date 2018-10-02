@@ -32,14 +32,15 @@ public class Controller2 {
     @Autowired
     StationService stationService;
 
+    //переписывает вместо добавления!!!
     private List<DetailedInfBranchEntity> manageInfBranches(BranchLineEntity branch) {
         List<DetailedInfBranchEntity> branchestoremove = new ArrayList<DetailedInfBranchEntity>();
         if (branch.getDetailedInf() != null) {
             for (Iterator<DetailedInfBranchEntity> i = branch.getDetailedInf().iterator(); i.hasNext();) {
                 DetailedInfBranchEntity information = i.next();
-                if (information.getCheck() !=null) {
-                    information.setBranch( branchService.findAllBranches().get(branchService.findAllBranches().size()-1));
-                    detailedInf.saveOrUpdate(information);
+                information.setBranch( branchService.findAllBranches().get(branchService.findAllBranches().size()-1));
+                if ( detailedInf.saveOrUpdate(information) ==0) {
+                    branchestoremove.add(information);
                 }
             }
         }
@@ -68,6 +69,36 @@ public class Controller2 {
         branchService.saveOrUpdate(branch);
         manageInfBranches(branch);
         return "redirect:/trains";
+    }
+
+    @RequestMapping(value = "/update/{pk}", method = RequestMethod.GET)
+    public String update(@PathVariable Integer pk, Model model) {
+        BranchLineEntity branch = branchService.findById(pk);
+        model.addAttribute("branch",branch);
+        model.addAttribute("type", "update");
+        return "edit";
+    }
+
+
+    @RequestMapping(value = "/updateBranch", method = RequestMethod.POST)
+    public String update( @ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return update(branch.getIdBranchLine(), model);
+        }
+        List<DetailedInfBranchEntity> employees2remove = manageInfBranches(branch);
+        for (DetailedInfBranchEntity detInf : employees2remove) {
+           // if (detInf.getIdDetailedInfBranch() != null) {
+                detailedInf.delete(detInf);
+           // }
+        }
+        return "redirect:/trains";
+    }
+
+
+    @RequestMapping(value = "/show/{pk}", method = RequestMethod.GET)
+    public String show(@PathVariable Integer pk, @ModelAttribute BranchLineEntity employer) {
+        // Add your own getEmployerById(pk)
+        return "show";
     }
 
 

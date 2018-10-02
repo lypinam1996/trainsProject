@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -13,8 +15,6 @@ public class DetailedInfBranchEntity {
     private Time timeFromPrevious;
     private BranchLineEntity branch;
     private StationEntity station;
-    @Transient
-    private Integer check;
 
     @ManyToOne
     @JoinColumn(name = "id_station", referencedColumnName = "id_station")
@@ -26,6 +26,7 @@ public class DetailedInfBranchEntity {
         this.station = station;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToOne
     @JoinColumn(name = "id_branch", referencedColumnName = "id_branch_line")//name=fk ref=first key
     public BranchLineEntity getBranch() {
@@ -90,12 +91,4 @@ public class DetailedInfBranchEntity {
         return result;
     }
 
-    @Transient
-    public Integer getCheck() {
-        return check;
-    }
-
-    public void setCheck(Integer check) {
-        this.check = check;
-    }
 }
