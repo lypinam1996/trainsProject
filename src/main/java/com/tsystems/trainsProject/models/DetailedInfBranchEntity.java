@@ -6,13 +6,15 @@ import javax.persistence.*;
 import java.sql.Time;
 
 @Entity
-@Table(name = "detailed_inf_branch", schema = "trains")
+@Table(name = "detailed_inf_branch", schema = "trains", catalog = "")
 public class DetailedInfBranchEntity {
     private int idDetailedInfBranch;
     private Integer stationSerialNumber;
     private Time timeFromPrevious;
     private BranchLineEntity branch;
     private StationEntity station;
+    @Transient
+    private Integer check;
 
     @ManyToOne
     @JoinColumn(name = "id_station", referencedColumnName = "id_station")
@@ -64,7 +66,6 @@ public class DetailedInfBranchEntity {
         this.timeFromPrevious = timeFromPrevious;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,5 +88,14 @@ public class DetailedInfBranchEntity {
         result = 31 * result + (stationSerialNumber != null ? stationSerialNumber.hashCode() : 0);
         result = 31 * result + (timeFromPrevious != null ? timeFromPrevious.hashCode() : 0);
         return result;
+    }
+
+    @Transient
+    public Integer getCheck() {
+        return check;
+    }
+
+    public void setCheck(Integer check) {
+        this.check = check;
     }
 }

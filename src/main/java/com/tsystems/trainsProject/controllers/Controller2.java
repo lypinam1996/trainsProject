@@ -37,13 +37,10 @@ public class Controller2 {
         if (branch.getDetailedInf() != null) {
             for (Iterator<DetailedInfBranchEntity> i = branch.getDetailedInf().iterator(); i.hasNext();) {
                 DetailedInfBranchEntity information = i.next();
-               // if (branch.getRemove() == 1) {
-                //    branchestoremove.add(information);
-                  //  i.remove();
-                //} else {
+                if (information.getCheck() !=null) {
                     information.setBranch( branchService.findAllBranches().get(branchService.findAllBranches().size()-1));
                     detailedInf.saveOrUpdate(information);
-               // }
+                }
             }
         }
         return branchestoremove;

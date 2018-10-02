@@ -16,7 +16,8 @@
                 $(this).before(function() {
                     var html = '<div id="detailedInf' + index + '.wrapper" class="hidden">';
                     html += '<input type="text" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
-                    html += '<button type="button" class="remove"">remove</button>';
+                    html += '<button type="button" class="remove" id="'+index+'" ">remove</button>';
+                     html += '<input type="hidden" class="detailedInf' + index + '.check" name="detailedInf[' + index + '].check" value="1"/>';
                     html += "</div>";
                     return html;
                 });
@@ -25,14 +26,16 @@
                 return false;
             });
 
-        });
-        $(function() {
 
-        $("#remove").click(function(){
-            console.log("!");
-            return false;
         });
+        $(document).ready(function () {
+            $('html').on('click','.remove', function () {
+                 console.log(this.id);
+                // $("#detailedInf" + this.id + ".check").val(0);
+                $(this).parent().remove();
+            });
         });
+
     </script>
 
 </head>
@@ -55,7 +58,8 @@
                 <c:forEach items="${branch.detailedInf}" varStatus="loop">
                     <div id="detailedInf${loop.index}.wrapper">
                         <form:input path="detailedInf[${loop.index}].stationSerialNumber"  />
-                        <button type="button" id="remove">remove</button>
+                        <form:input path="detailedInf[${loop.index}].check " value="${hiddenValue}"/>
+                        <button type="button" class="remove" id="${loop.index}">remove</button>
                     </div>
                 </c:forEach>
                 <button id="add" type="button">add</button>
