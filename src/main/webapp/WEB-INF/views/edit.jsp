@@ -1,7 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
-%><%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"
-%><%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"
-%><%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 %><!DOCTYPE HTML>
 <html>
 <head>
@@ -38,6 +38,7 @@
 
 </head>
 <body>
+<img src="<c:url value="/WEB-INF/img/background.jpg" />" alt="TestDisplay"/>
 
 <c:choose>
     <c:when test="${type eq 'create'}"><c:set var="actionUrl" value="create" /></c:when>
