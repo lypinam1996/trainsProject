@@ -1,3 +1,6 @@
+body{
+    font-family: Veranda;
+}
 .nav-item{
     height: 65px;
     background-color: #a4ad79;
@@ -34,5 +37,61 @@ div.dropdown-menu{
     padding: 1%;
     padding-left: 2%;
 
+}
+
+
+form{
+    align-items: center;
+}
+
+.marg{
+    margin-top: 10%;
+    font-size: 35pt;
+}
+
+.f{
+    margin-top: 5%;
+}
+
+.btn-primary{
+    margin-top: 5%;
+    background-color: #682439;
+}
+
+.b{
+    margin-top: 5%;
+    background-color: #682439;
+    color: white;
+    border-color:  #682439;
+    height: 47px;
+    width: 230px;
+    border-radius: 10px;
+}
+
+.container{
+    background-color: #a4ad79;
+    font-size: 15pt;
+}
+
+.bodystyle{
+    background-color: #a4ad79;
+    color: white;
+}
+
+.inp{
+    width: 23%;
+    height: 45px;
+    color: #682439;
+    padding:2%;
+}
+
+label{
+    width: 23%;
+    color: #682439;
+}
+
+.dropdown-item{
+    color: #682439;
+    font-size: 15pt;
 }
 
