@@ -22,7 +22,6 @@
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Something else here</a>
     </div>
-    <%--<img src="http://wallsdesk.com/wp-content/uploads/2016/10/Sri-Lanka-Wallpapers-HD.jpg" />--%>
 </div>
 <div class="container">
     <h1 class="text-center marg"><strong>Search for the cheapest train tickets</strong></h1>
