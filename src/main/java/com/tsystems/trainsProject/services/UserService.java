@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UserService {
     List<UserEntity> findAllUsers();
+    UserEntity findByLogin(String login);
+    void saveOrUpdate(UserEntity user);
 }

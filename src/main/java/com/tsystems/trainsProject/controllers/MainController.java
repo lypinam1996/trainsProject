@@ -10,11 +10,5 @@ import java.util.List;
 
 @Controller
 public class MainController {
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getAdd() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("login");
-        return model;
-    }
 
 }

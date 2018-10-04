@@ -8,6 +8,17 @@ public class UserEntity {
     private int idUser;
     private String login;
     private String password;
+    private RoleEntity role;
+
+    @ManyToOne
+    @JoinColumn(name = "id_role", referencedColumnName = "id_role")
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
+    }
 
     @Id
     @Column(name = "id_user", nullable = false)

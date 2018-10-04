@@ -18,6 +18,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <hibernate-version>5.0.1.Final</hibernate-version>
+    <spring.securiry>3.2.0.RELEASE</spring.securiry>
   </properties>
 
   <dependencies>
@@ -86,6 +87,29 @@
           <artifactId>validation-api</artifactId>
           <version>1.1.0.Final</version>
       </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring.securiry}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.securiry}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring.securiry}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>${spring.securiry}</version>
+    </dependency>
 
   </dependencies>
 

@@ -38,13 +38,13 @@
 
 </head>
 <body>
-<img src="<c:url value="/WEB-INF/img/background.jpg" />" alt="TestDisplay"/>
+<img src="<c:url value="/img/background.jpg" />" alt="TestDisplay"/>
 
 <c:choose>
     <c:when test="${type eq 'create'}"><c:set var="actionUrl" value="create" /></c:when>
     <c:otherwise><c:set var="actionUrl" value="/updateBranch" /></c:otherwise>
 </c:choose>
-
+<img src="<c:url value="/img/background.jpg"/> "/>
 <form:form action="${actionUrl}" modelAttribute="branch" method="POST" name="branch">
     <table>
         <tr>

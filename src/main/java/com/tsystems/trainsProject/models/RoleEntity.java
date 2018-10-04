@@ -1,12 +1,24 @@
 package com.tsystems.trainsProject.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "role", schema = "trains", catalog = "")
 public class RoleEntity {
     private int idRole;
     private String title;
+    private List<UserEntity> users;
+
+
+    @OneToMany(mappedBy = "role")
+    public List<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
+    }
 
     @Id
     @Column(name = "id_role", nullable = false)
