@@ -2,6 +2,7 @@ package com.tsystems.trainsProject.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "passanger", schema = "trains", catalog = "")
@@ -10,7 +11,7 @@ public class PassangerEntity {
     private String name;
     private String surname;
     private String patronymic;
-    private Timestamp dateOfBirth;
+    private Date dateOfBirth;
 
     @Id
     @Column(name = "id_passanger", nullable = false)
@@ -54,11 +55,11 @@ public class PassangerEntity {
 
     @Basic
     @Column(name = "date_of_birth", nullable = true)
-    public Timestamp getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Timestamp dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

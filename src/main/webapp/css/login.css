@@ -1,5 +1,5 @@
 .main{
-    background:  #a4ad79;
+    background:  #008ca5;
     float:left;
     width:100%;
     padding : 50px 0;
@@ -16,7 +16,7 @@
 .login-sec{
     padding: 50px 30px;
     position:relative;
-    color: #682439;
+    color: #bf4031;
 }
 
 .login-sec .copy-text{
@@ -38,7 +38,7 @@
     content:" ";
     width:100px;
     height:5px;
-    background: #a4ad79;
+    background: #008ca5;
     display:block;
     margin-top:20px;
     border-radius:3px;
@@ -47,18 +47,18 @@
 }
 
 .login-sec input{
-    color: #682439;
+    color: #bf4031;
 }
 
 .btn-login{
-    background:  #682439;
+    background:  #bf4031;
     color:#fff;
     font-weight:600;
     width: 100px;
 }
 
 .btn-login :active{
-    color: #a4ad79;
+    color: #008ca5;
 }
 
 .banner-text{

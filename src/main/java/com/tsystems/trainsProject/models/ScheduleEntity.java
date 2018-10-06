@@ -3,12 +3,13 @@ package com.tsystems.trainsProject.models;
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "schedule", schema = "trains")
 public class ScheduleEntity {
     private int idSchedule;
-    private Time departureTime;
+    private Date departureTime;
     private TrainEntity train;
     private BranchLineEntity branch;
     private StationEntity firstStation;
@@ -66,11 +67,11 @@ public class ScheduleEntity {
 
     @Basic
     @Column(name = "departure_time", nullable = true)
-    public Time getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Time departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 

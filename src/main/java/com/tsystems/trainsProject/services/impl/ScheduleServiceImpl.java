@@ -35,18 +35,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         return scheduleDAO.findSchedulesByBranch(branchLine);
     }
 
-//    @Override
-//    public List<ScheduleEntity> findSchedulesByBranch(List<BranchLineEntity> branchLines) {
-//        List<ScheduleEntity> result = new ArrayList<>();
-//        for(int i =0;i<branchLines.size();i++){
-//            if(findScheduleByBranch(branchLines.get(i))!=null){
-//                result.addAll(findScheduleByBranch(branchLines.get(i)));
-//            }
-//        }
-//        return result;
-//    }
 
-    public List<ScheduleEntity> findSchedulesByBranch(Map<BranchLineEntity,List<DetailedInfBranchEntity>> detailedInfBranchList,
+    public List<ScheduleEntity> findSchedulesByBranch(Map<BranchLineEntity,
+            List<DetailedInfBranchEntity>> detailedInfBranchList,
                                                       StationEntity firstStation,
                                                       StationEntity lastStation){
         List<ScheduleEntity> result = new ArrayList<>();

@@ -6,13 +6,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Date;
 
 @Entity
 @Table(name = "detailed_inf_branch", schema = "trains", catalog = "")
 public class DetailedInfBranchEntity {
     private int idDetailedInfBranch;
     private Integer stationSerialNumber;
-    private Time timeFromPrevious;
+    private Date timeFromPrevious;
     private BranchLineEntity branch;
     private StationEntity station;
 
@@ -59,11 +60,11 @@ public class DetailedInfBranchEntity {
 
     @Basic
     @Column(name = "time_from_previous", nullable = true)
-    public Time getTimeFromPrevious() {
+    public Date getTimeFromPrevious() {
         return timeFromPrevious;
     }
 
-    public void setTimeFromPrevious(Time timeFromPrevious) {
+    public void setTimeFromPrevious(Date timeFromPrevious) {
         this.timeFromPrevious = timeFromPrevious;
     }
 

@@ -1,9 +1,12 @@
 body{
     font-family: Veranda;
+    background-image: url("/img/mainPage.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: white;
 }
 .nav-item{
     height: 65px;
-    background-color: #a4ad79;
 }
 .login{
     margin-left: 85%;
@@ -12,7 +15,7 @@ body{
     width:130px;
     border-radius: 20px;
     color: white;
-    background-color: #a4ad79;
+    background-color: #bf4031;
     border-color: white;
     border-width: 1.5px;
     font-size: 12pt;
@@ -24,7 +27,7 @@ body{
     width:130px;
     border-radius: 20px;
     color: white;
-    background-color: #a4ad79;
+    background-color: #bf4031;
     border-color: white;
     border-width: 1.5px;
     font-size: 12pt;
@@ -38,7 +41,6 @@ div.dropdown-menu{
     padding-left: 2%;
 
 }
-
 
 form{
     align-items: center;
@@ -55,43 +57,41 @@ form{
 
 .btn-primary{
     margin-top: 5%;
-    background-color: #682439;
+    background-color: #bf4031;
 }
 
 .b{
     margin-top: 5%;
-    background-color: #682439;
+    background-color: #bf4031;
     color: white;
-    border-color:  #682439;
     height: 47px;
     width: 230px;
     border-radius: 10px;
 }
 
 .container{
-    background-color: #a4ad79;
     font-size: 15pt;
-}
-
-.bodystyle{
-    background-color: #a4ad79;
-    color: white;
 }
 
 .inp{
     width: 23%;
-    height: 45px;
-    color: #682439;
-    padding:2%;
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
 }
 
 label{
-    width: 23%;
-    color: #682439;
+    width: 24%;
+    color: #bf4031;
 }
 
 .dropdown-item{
-    color: #682439;
+    color: #bf4031;
     font-size: 15pt;
 }
 
+.leftAl{
+    text-align: left;
+    padding-left: 4%;
+}

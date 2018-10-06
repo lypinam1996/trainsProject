@@ -33,7 +33,7 @@ public class AuthenticationController {
         ModelAndView modelAndView = new ModelAndView();
         UserEntity user = new UserEntity();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("login");
+        modelAndView.setViewName("registration");
         return modelAndView;
     }
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -53,7 +53,7 @@ public class AuthenticationController {
             modelAndView.addObject("successMessage", "Регистрация прошла успешно");
             modelAndView.addObject("login", user.getLogin());
             modelAndView.addObject("password", user.getPassword());
-            modelAndView.setViewName("login");
+            modelAndView.setViewName("registration");
         }
         return modelAndView;
     }
