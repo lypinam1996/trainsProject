@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Variants</title>
+    <title>Schedule</title>
     <style>
         <%@include file="/css/list.css"%>
     </style>
@@ -24,15 +24,14 @@
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
     </div>
 </div>
 <div class="main">
     <div class="container">
         <div class="row">
-           <p>Trains</p>
+            <p>Trains</p>
             <c:choose>
-                <c:when test="${tickets.size()=='0'}">
+                <c:when test="${schedules.size()=='0'}">
                     <p>No trains registered</p>
                 </c:when>
                 <c:otherwise>
@@ -42,17 +41,13 @@
                             <td>Departure station</td>
                             <td>Arrival station</td>
                             <td>Departure time</td>
-                            <td>Arrival time</td>
-                            <td>Journey time</td>
                         </tr>
-                        <c:forEach items="${tickets}" var="ticket">
+                        <c:forEach items="${schedules}" var="schedule">
                             <tr>
-                                <td>${ticket.schedule.train.number}</td>
-                                <td>${ticket.firstStation.stationName}</td>
-                                <td>${ticket.lastStation.stationName}</td>
-                                <td>${ticket.departureTime.getHours()}:${ticket.departureTime.getMinutes()}</td>
-                                <td>${ticket.arrivalTime.getHours()}:${ticket.arrivalTime.getMinutes()}</td>
-                                <td>${ticket.journeyTime.getHours()}:${ticket.journeyTime.getMinutes()}</td>
+                                <td>${schedule.train.number}</td>
+                                <td>${schedule.firstStation.stationName}</td>
+                                <td>${schedule.lastStation.stationName}</td>
+                                <td>${schedule.departureTime.getHours()}:${schedule.departureTime.getMinutes()}</td>
                             </tr>
                         </c:forEach>
                     </table>

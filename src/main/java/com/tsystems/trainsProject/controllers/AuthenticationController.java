@@ -24,7 +24,6 @@ public class AuthenticationController {
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-        //Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return modelAndView;
     }
 

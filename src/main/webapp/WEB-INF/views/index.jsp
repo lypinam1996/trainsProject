@@ -16,9 +16,11 @@
     <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
-    <input type="button" class="login" value="Login"/>
+    <form action="/login" method="get">
+        <input type="submit" value="Login"class="login"/>
+    </form>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="<c:url value="/login"/>">Schedule</a>
+        <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
         <div class="dropdown-divider"></div>
     </div>
 </div>

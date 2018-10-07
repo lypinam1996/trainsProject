@@ -38,6 +38,8 @@ public class TrainController {
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView getAllTrains() {
         ModelAndView model = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth.getName());
         List<TrainEntity> trains = trainService.findAllTrains();
         int trainsCount = trains.size();
         model.addObject(trainsCount);

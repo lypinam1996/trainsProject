@@ -29,21 +29,19 @@
 
 
 .login-sec h2{
-    margin-bottom:30px;
     font-weight:800;
     font-size:30px;
 }
 
-.login-sec h2:after{
-    content:" ";
-    width:100px;
-    height:5px;
-    background: #008ca5;
-    display:block;
-    margin-top:20px;
-    border-radius:3px;
-    margin-left:auto;
-    margin-right:auto
+.h2A{
+    margin-bottom: 30px;
+}
+
+a{
+    color: #bf4031;
+}
+a:hover{
+    color: #bf4031;
 }
 
 .login-sec input{
@@ -91,6 +89,10 @@
     width: 100%;
 }
 
+.btnRegister{
+   margin-top: -10%;
+    margin-left: 10%;
+}
 
 
 

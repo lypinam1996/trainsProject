@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-    <title>Login</title>
+    <title>Registration</title>
     <style>
         <%@include file="/css/login.css"%>
     </style>
@@ -16,12 +16,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 login-sec">
-                <h2 class="text-center">Login Now</h2>
+                <h2 class="text-center">Register Now</h2>
+                <h2 class="text-center">or</h2>
+                <h2 class="text-center h2A"><a style="color: #bf4031" href="<c:url value="/login"/>">Login</a></h2>
+
                 <form:form action="${login}" modelAttribute="user" class="login-form" method="POST">
-                        <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                        <label class="text-uppercase">Username</label>
                         <form:input path="login" type="text" class="form-control"/>
                     <div class="form-group">
-                        <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                        <label  class="text-uppercase">Password</label>
                         <form:input path="password" type="password" class="form-control"/>
                     </div>
                     <div class="form-check">
