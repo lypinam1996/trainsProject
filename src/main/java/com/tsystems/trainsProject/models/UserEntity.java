@@ -9,6 +9,16 @@ public class UserEntity {
     private String login;
     private String password;
     private RoleEntity role;
+    private PassangerEntity passanger;
+
+    @OneToOne(mappedBy = "user")
+    public PassangerEntity getPassanger() {
+        return passanger;
+    }
+
+    public void setPassanger(PassangerEntity passanger) {
+        this.passanger = passanger;
+    }
 
     @ManyToOne
     @JoinColumn(name = "id_role", referencedColumnName = "id_role")

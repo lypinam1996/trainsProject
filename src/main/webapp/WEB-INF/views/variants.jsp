@@ -36,10 +36,20 @@
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Train number</td>
+                            <td>Departure station</td>
+                            <td>Arrival station</td>
+                            <td>Departure time</td>
+                            <td>Arrival time</td>
+                            <td>Journey time</td>
                         </tr>
-                        <c:forEach items="${variants}" var="variants">
+                        <c:forEach items="${tickets}" var="ticket">
                             <tr>
-                                <td>${variants.train.number}</td>
+                                <td>${ticket.schedule.train.number}</td>
+                                <td>${ticket.firstStation.stationName}</td>
+                                <td>${ticket.lastStation.stationName}</td>
+                                <td>${ticket.departureTime.getHours()}:${ticket.departureTime.getMinutes()}</td>
+                                <td>${ticket.arrivalTime.getHours()}:${ticket.arrivalTime.getMinutes()}</td>
+                                <td>${ticket.journeyTime.getHours()}:${ticket.journeyTime.getMinutes()}</td>
                             </tr>
                         </c:forEach>
                     </table>

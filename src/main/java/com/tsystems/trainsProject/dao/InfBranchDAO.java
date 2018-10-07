@@ -13,4 +13,6 @@ public interface InfBranchDAO {
     int saveOrUpdate(DetailedInfBranchEntity branch);
     List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity);
     void delete(DetailedInfBranchEntity branch);
+    DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber,
+                                                                 BranchLineEntity branch);
 }

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "schedule", schema = "trains")
@@ -14,6 +15,16 @@ public class ScheduleEntity {
     private BranchLineEntity branch;
     private StationEntity firstStation;
     private StationEntity lastStation;
+    private List<TicketEntity> ticket;
+
+    @OneToMany(mappedBy = "schedule")
+    public List<TicketEntity> getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(List<TicketEntity> ticket) {
+        this.ticket = ticket;
+    }
 
     @ManyToOne
     @JoinColumn(name = "id_first_station", referencedColumnName = "id_station")

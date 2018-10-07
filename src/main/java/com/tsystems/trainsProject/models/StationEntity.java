@@ -4,13 +4,33 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "station", schema = "trains", catalog = "")
+@Table(name = "station", schema = "trains")
 public class StationEntity {
     private int idStation;
     private String stationName;
     private List<DetailedInfBranchEntity> detailedInf;
     private List<ScheduleEntity> firstStation;
     private List<ScheduleEntity> lastStation;
+    private List<TicketEntity> ticketFistStation;
+    private List<TicketEntity> ticketLastStation;
+
+    @OneToMany(mappedBy = "firstStation")
+    public List<TicketEntity> getTicketFistStation() {
+        return ticketFistStation;
+    }
+
+    public void setTicketFistStation(List<TicketEntity> ticketFistStation) {
+        this.ticketFistStation = ticketFistStation;
+    }
+
+    @OneToMany(mappedBy = "lastStation")
+    public List<TicketEntity> getTicketLastStation() {
+        return ticketLastStation;
+    }
+
+    public void setTicketLastStation(List<TicketEntity> ticketLastStation) {
+        this.ticketLastStation = ticketLastStation;
+    }
 
     @OneToMany(mappedBy = "firstStation")
     public List<ScheduleEntity> getFirstStation() {

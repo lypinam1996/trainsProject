@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -26,8 +27,8 @@ public class SearchTrain {
     @Autowired
     ScheduleService scheduleService;
 
-    public List<ScheduleEntity> search(Search search, BindingResult bindingResult)  {
-        List<ScheduleEntity> result = new ArrayList<>();
+    public Map<ScheduleEntity,List<Date>> search(Search search, BindingResult bindingResult)  {
+        Map<ScheduleEntity,List<Date>> result = new HashMap<>();
         try {
             StationEntity departureStation = stationService.findByName(search.getFirstStation());
             StationEntity arrivalStation = stationService.findByName(search.getLastStation());
@@ -39,7 +40,7 @@ public class SearchTrain {
             SimpleDateFormat ft = new SimpleDateFormat("hh:mm");
             Date time1 = ft.parse(search.getDepartureTimeFrom());
             Date time2 = ft.parse(search.getDepartureTimeTo());
-            result = evaluateTime(schedule, time1, time2, departureStation);
+            result = evaluateTime(schedule, time1, time2, departureStation,arrivalStation);
         }
         catch (ParseException e){
             bindingResult.rejectValue("departureTimeFrom","The time was entered incorrectly");
@@ -60,36 +61,58 @@ public class SearchTrain {
         return result;
     }
 
-    private List<ScheduleEntity> evaluateTime(List<ScheduleEntity> schedule,
+    private Map<ScheduleEntity,List<Date>> evaluateTime(List<ScheduleEntity> schedule,
                                               Date time1, Date time2,
-                                              StationEntity firstStation){
+                                              StationEntity firstStation,
+                                              StationEntity lastStation) throws ParseException {
 
-        List<ScheduleEntity> result = new ArrayList<>();
+        Map<ScheduleEntity,List<Date>> result = new HashMap<>();
         for(int i=0;i<schedule.size();i++) {
-            Date depTime = schedule.get(i).getDepartureTime();
+            int depTime = schedule.get(i).getDepartureTime().getHours()*60+schedule.get(i).getDepartureTime().getMinutes();
             List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
             int numberFirstStation = 0;
+            int numberLastStation = 0;
             for (int j = 0; j < detailedInf.size(); j++) {
                 if (detailedInf.get(j).getStation().equals(firstStation)) {
                     numberFirstStation = detailedInf.get(j).getStationSerialNumber();
                 }
-            }
-            int count = 0;
-            boolean ok=true;
-            int j = numberFirstStation;
-            while (j < detailedInf.size() && ok) {
-                for (int x=0;x < detailedInf.size();x++){
-                    if(detailedInf.get(x).getStationSerialNumber()==numberFirstStation+count){
-                       if(depTime.after(time1) && depTime.before(time2)){
-                            result.add(schedule.get(i));
-                            ok=false;
-                         }
-                    }
+                if (detailedInf.get(j).getStation().equals(lastStation)) {
+                    numberLastStation = detailedInf.get(j).getStationSerialNumber();
                 }
-                count++;
-                j++;
             }
+            for(int x=1;x<numberFirstStation;x++){
+                DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(x,detailedInf.get(0).getBranch());
+               depTime=depTime+inf.getTimeFromPrevious().getMinutes()+inf.getTimeFromPrevious().getHours()*60;
+            }
+            Date departureTime = strToTime(intToTime(depTime));
+            int arrTime=depTime;
+            if(departureTime.before(time2) && departureTime.after(time1)){
+                for(int y=numberFirstStation;y<numberLastStation;y++){
+                    DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y,detailedInf.get(0).getBranch());
+                    arrTime=arrTime+inf.getTimeFromPrevious().getMinutes()+inf.getTimeFromPrevious().getHours()*60;
+                }
+                Date arrivalTime = strToTime(intToTime(arrTime));
+                List<Date> dateList = new ArrayList<>();
+                dateList.add(departureTime);
+                dateList.add(arrivalTime);
+                result.put(schedule.get(i),dateList);
+            }
+
         }
+        return result;
+    }
+
+    private String intToTime(int intTime){
+        String startTime = "00:00";
+        int h = intTime / 60 + Integer.parseInt(startTime.substring(0,1));
+        int m = intTime % 60 + Integer.parseInt(startTime.substring(3,4));
+        String newtime = h+":"+m;
+        return newtime;
+    }
+
+    private Date strToTime(String strTime) throws ParseException {
+        DateFormat df = new SimpleDateFormat("hh:mm");
+        Date result =  df.parse(strTime);
         return result;
     }
 }

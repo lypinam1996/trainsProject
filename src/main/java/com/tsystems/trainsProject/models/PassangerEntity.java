@@ -3,6 +3,7 @@ package com.tsystems.trainsProject.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "passanger", schema = "trains", catalog = "")
@@ -12,6 +13,28 @@ public class PassangerEntity {
     private String surname;
     private String patronymic;
     private Date dateOfBirth;
+    private UserEntity user;
+    private List<TicketEntity> tickets;
+
+    @OneToMany(mappedBy = "passanger")
+    public List<TicketEntity> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<TicketEntity> tickets) {
+        this.tickets = tickets;
+    }
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="id_user")
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 
     @Id
     @Column(name = "id_passanger", nullable = false)

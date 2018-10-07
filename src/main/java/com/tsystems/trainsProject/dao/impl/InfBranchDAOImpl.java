@@ -3,6 +3,7 @@ package com.tsystems.trainsProject.dao.impl;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
+import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -19,6 +20,15 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
         Criteria criteria = getSession().createCriteria(DetailedInfBranchEntity.class);
         List<DetailedInfBranchEntity> res=(List<DetailedInfBranchEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return res;
+    }
+
+    @Override
+    public DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber,
+                                                                        BranchLineEntity branch) {
+        Criteria criteria = getSession().createCriteria(DetailedInfBranchEntity.class);
+        criteria.add(Restrictions.eq("stationSerialNumber", serialNumber));
+        criteria.add(Restrictions.eq("branch", branch));
+        return (DetailedInfBranchEntity) criteria.uniqueResult();
     }
 
     @Override

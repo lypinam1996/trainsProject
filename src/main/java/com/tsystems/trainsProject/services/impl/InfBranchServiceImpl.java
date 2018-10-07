@@ -48,6 +48,11 @@ public class InfBranchServiceImpl implements InfBranchService {
     }
 
     @Override
+    public DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber, BranchLineEntity branch) {
+        return infBranchDAO.findBySerialNumberStationAndSchedule(serialNumber, branch);
+    }
+
+    @Override
     public Map<BranchLineEntity,List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines) {
         Map<BranchLineEntity,List<DetailedInfBranchEntity>> result = new HashMap<>();
         for(int i =0; i<branchLines.size();i++){

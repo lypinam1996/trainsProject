@@ -14,5 +14,7 @@ public interface InfBranchService {
     List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity);
     int saveOrUpdate(DetailedInfBranchEntity branch);
     void delete(DetailedInfBranchEntity branch);
+    DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber,
+                                                                 BranchLineEntity branch);
     Map<BranchLineEntity,List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines);
 }
