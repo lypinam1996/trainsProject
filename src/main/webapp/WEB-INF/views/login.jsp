@@ -28,7 +28,7 @@
                     <input type="password" class="form-control" name="password">
                 </div>
                 <div class="form-check">
-                    <button class="btn btn-login text-center" type="submit">Войти</button>
+                    <button class="btn btn-login text-center" type="submit">OK</button>
                 </div>
                 </form:form>
 

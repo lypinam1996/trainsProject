@@ -52,7 +52,7 @@ public class AuthenticationController {
             modelAndView.addObject("successMessage", "Регистрация прошла успешно");
             modelAndView.addObject("login", user.getLogin());
             modelAndView.addObject("password", user.getPassword());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("redirect:/");
         }
         return modelAndView;
     }

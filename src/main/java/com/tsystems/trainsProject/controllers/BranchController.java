@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Controller
-public class Controller2 {
+public class BranchController {
 
     @Autowired
     BranchService branchService;
@@ -31,6 +31,20 @@ public class Controller2 {
 
     @Autowired
     StationService stationService;
+
+    @RequestMapping(value = "/branches", method = RequestMethod.GET)
+    public String getAllBranches( Model model)
+    {
+        List<BranchLineEntity> branches = branchService.findAllBranches();
+        model.addAttribute("branches",branches);
+        return "branches";
+    }
+    @RequestMapping(value = "/detailedInf/{pk}", method = RequestMethod.GET)
+    public String getDetailedInf(@PathVariable Integer pk, Model model) {
+        List<DetailedInfBranchEntity> detailedInformation = detailedInf.findDetailedInformation(branchService.findById(pk));
+        model.addAttribute("detailedInf",detailedInformation);
+        return "detailedInf";
+    }
 
     //переписывает вместо добавления!!!
     private List<DetailedInfBranchEntity> manageInfBranches(BranchLineEntity branch) {
@@ -48,7 +62,9 @@ public class Controller2 {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String create(@ModelAttribute BranchLineEntity branch, Model model) {
+    public String create(@ModelAttribute BranchLineEntity branch, Model model)
+    {
+
         return create(branch, model, true);
     }
 
@@ -56,6 +72,7 @@ public class Controller2 {
         if (init) {
             branch.setDetailedInf(new AutoPopulatingList<DetailedInfBranchEntity>(DetailedInfBranchEntity.class));
         }
+
         model.addAttribute("branch",branch);
         model.addAttribute("type", "create");
         return "edit";
@@ -74,6 +91,8 @@ public class Controller2 {
     @RequestMapping(value = "/update/{pk}", method = RequestMethod.GET)
     public String update(@PathVariable Integer pk, Model model) {
         BranchLineEntity branch = branchService.findById(pk);
+        List<StationEntity> stations = stationService.findAllStations();
+        model.addAttribute("stations",stations);
         model.addAttribute("branch",branch);
         model.addAttribute("type", "update");
         return "edit";

@@ -28,7 +28,7 @@
                         <form:input path="password" type="password" class="form-control"/>
                     </div>
                     <div class="form-check">
-                        <button type="submit" class="btn btn-login text-center">Login</button>
+                        <button type="submit" class="btn btn-login text-center">OK</button>
                     </div>
                 </form:form>
             </div>

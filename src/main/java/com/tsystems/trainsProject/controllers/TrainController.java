@@ -48,18 +48,6 @@ public class TrainController {
         return model;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getFirstPage(@ModelAttribute Search search) {
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        modelAndView.addObject("search",search);
-        List<StationEntity> stations = stationService.findAllStations();
-        modelAndView.addObject("stations",stations);
-        modelAndView.setViewName("index");
-        modelAndView.addObject("auth",auth.getName());
-        return modelAndView;
-    }
-
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String findTrainsInSchedule(@ModelAttribute Search search,
