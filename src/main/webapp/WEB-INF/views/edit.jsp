@@ -22,10 +22,10 @@
             $("#add").off("click").on("click", function() {
                 $(this).before(function() {
                     var html = '<div id="detailedInf' + index + '.wrapper" class="hidden">';
-                    html += '<input type="text" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
-                    html += '<input type="text" id="detailedInf' + index + '.timeFromPrevious" name="detailedInf[' + index + '].timeFromPrevious" />';
-                    html += '<select type="text" id="detailedInf' + index + '.station.stationName" name="detailedInf[' + index + '].station.stationName"><c:forEach var="item" items="${stations}"><option value="${item.stationName}"}>${item.stationName}</option></c:forEach> </select>';
-                    html += '<button type="button" class="remove" id="'+index+'" ">remove</button>';
+                    html += '<input  class="inp" type="text" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
+                    html += '<input class="inp" type="time" id="detailedInf' + index + '.timeFromPrevious" name="detailedInf[' + index + '].timeFromPrevious" />';
+                    html += '<select class="inp" type="text" id="detailedInf' + index + '.station.stationName" name="detailedInf[' + index + '].station.stationName"><c:forEach var="item" items="${stations}"><option value="${item.stationName}"}>${item.stationName}</option></c:forEach> </select>';
+                    html += '<button type="button" class="remove b" id="'+index+'" ">remove</button>';
                     html += "</div>";
                     return html;
                 });
@@ -62,36 +62,47 @@
                    method="POST" name="branch">
             <table>
                 <tr>
-                    <td><form:label path="title">Title</form:label></td>
-                    <td><form:input path="title" /></td>
+                    <td ><form:label path="title"><p style="font-size: 15pt">Branch title</p></form:label></td>
+                    <td><form:input path="title" class="inp"/></td>
                 </tr>
                 <tr>
-                    <td>Detailed information</td>
+                    <td></td>
+                    <td style="font-size: 14pt">
+                        <div class="row"><div style="width: 23%; margin-left: 15px">Station serial number</div>
+                            <div style="width: 23%">Time from previous station</div>
+                            <div>Next station</div></div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><p style="font-size: 15pt">Detailed information</p></td>
                     <td>
                         <c:forEach items="${branch.detailedInf}" varStatus="loop" var="di">
                             <div id="detailedInf${loop.index}.wrapper">
-                                <form:input path="detailedInf[${loop.index}].stationSerialNumber"  />
-                                <form:input path="detailedInf[${loop.index}].timeFromPrevious"  />
-                                <form:select path="detailedInf[${loop.index}].station.stationName">
+                                <form:input type="hidden" path="detailedInf[${loop.index}].idDetailedInfBranch"  />
+                                <form:input class="inp" path="detailedInf[${loop.index}].stationSerialNumber"  />
+                                <form:input class="inp" type="time" path="detailedInf[${loop.index}].timeFromPrevious" value="${di.toTime()}"/>
+
+                                <form:select path="detailedInf[${loop.index}].station.stationName" class="inp">
                                     <c:forEach var="item" items="${stations}">
                                         <c:choose>
                                             <c:when test="${di.station.stationName == item.stationName}">
-                                                <option selected="selected" value="${di.station.stationName}">${di.station.stationName}</option>
+                                                <option class="inp" selected="selected" value="${di.station.stationName}">${di.station.stationName}</option>
                                             </c:when>
                                             <c:otherwise>
-                                                <option  value="${item.stationName}"}>${item.stationName}</option>
+                                                <option  class="inp" value="${item.stationName}"}>${item.stationName}</option>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
                                 </form:select>
-                                <button type="button" class="remove" id="${loop.index}">remove</button>
+                                <button type="button" class="remove b" id="${loop.index}">remove</button>
                             </div>
                         </c:forEach>
-                        <button id="add" type="button">add</button>
+                        <button id="add" type="button" class="b">add</button>
                     </td>
                 </tr>
             </table>
-            <button type="submit">OK</button>
+            <button type="submit" class="login">OK</button>
         </form:form>
     </div>
 </div>

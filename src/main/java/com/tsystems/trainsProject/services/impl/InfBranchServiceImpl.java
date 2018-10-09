@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.services.impl;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
+import com.tsystems.trainsProject.dao.StationDAO;
+import com.tsystems.trainsProject.dao.impl.BranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
@@ -21,6 +23,9 @@ public class InfBranchServiceImpl implements InfBranchService {
     @Autowired
     InfBranchDAOImpl infBranchDAO;
 
+    @Autowired
+    StationDAO stationDAO;
+
     @Override
     public List<DetailedInfBranchEntity> findAllInfBranch() {
         List<DetailedInfBranchEntity> res =infBranchDAO.findAllInfBranch();
@@ -39,6 +44,7 @@ public class InfBranchServiceImpl implements InfBranchService {
 
     @Override
     public int saveOrUpdate(DetailedInfBranchEntity branch) {
+
         return infBranchDAO.saveOrUpdate(branch);
     }
 

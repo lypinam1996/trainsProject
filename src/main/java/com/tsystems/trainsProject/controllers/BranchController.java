@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -52,7 +56,7 @@ public class BranchController {
         if (branch.getDetailedInf() != null) {
             for (Iterator<DetailedInfBranchEntity> i = branch.getDetailedInf().iterator(); i.hasNext();) {
                 DetailedInfBranchEntity information = i.next();
-                information.setBranch( branchService.findAllBranches().get(branchService.findAllBranches().size()-1));
+           //     information.setBranch( branchService.findAllBranches().get(branchService.findAllBranches().size()-1));
                 if ( detailedInf.saveOrUpdate(information) ==0) {
                     branchestoremove.add(information);
                 }
@@ -64,7 +68,6 @@ public class BranchController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(@ModelAttribute BranchLineEntity branch, Model model)
     {
-
         return create(branch, model, true);
     }
 
@@ -72,7 +75,8 @@ public class BranchController {
         if (init) {
             branch.setDetailedInf(new AutoPopulatingList<DetailedInfBranchEntity>(DetailedInfBranchEntity.class));
         }
-
+        List<StationEntity> stations = stationService.findAllStations();
+        model.addAttribute("stations",stations);
         model.addAttribute("branch",branch);
         model.addAttribute("type", "create");
         return "edit";
@@ -84,8 +88,8 @@ public class BranchController {
             return create(branch, model, false);
         }
         branchService.saveOrUpdate(branch);
-        manageInfBranches(branch);
-        return "redirect:/trains";
+       // manageInfBranches(branch);
+        return "redirect:/branches";
     }
 
     @RequestMapping(value = "/update/{pk}", method = RequestMethod.GET)
@@ -104,21 +108,15 @@ public class BranchController {
         if (bindingResult.hasErrors()) {
             return update(branch.getIdBranchLine(), model);
         }
+      //  branchService.saveOrUpdate(branch);
         List<DetailedInfBranchEntity> employees2remove = manageInfBranches(branch);
         for (DetailedInfBranchEntity detInf : employees2remove) {
-           // if (detInf.getIdDetailedInfBranch() != null) {
-                detailedInf.delete(detInf);
-           // }
+            detailedInf.delete(detInf);
         }
-        return "redirect:/trains";
+        return "redirect:/branches";
     }
 
 
-    @RequestMapping(value = "/show/{pk}", method = RequestMethod.GET)
-    public String show(@PathVariable Integer pk, @ModelAttribute BranchLineEntity employer) {
-        // Add your own getEmployerById(pk)
-        return "show";
-    }
 
 
 

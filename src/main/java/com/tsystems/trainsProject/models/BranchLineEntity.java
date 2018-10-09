@@ -1,9 +1,11 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +13,7 @@ import java.util.List;
 public class BranchLineEntity {
     private int idBranchLine;
     private String title;
-    private List<DetailedInfBranchEntity> detailedInf;
+    private List<DetailedInfBranchEntity> detailedInf = new ArrayList<>();
     private List<ScheduleEntity> schedule;
 
     @OneToMany(mappedBy = "branch")
@@ -24,7 +26,7 @@ public class BranchLineEntity {
     }
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "branch")
+    @OneToMany( mappedBy = "branch")
     public List<DetailedInfBranchEntity> getDetailedInf() {
         return detailedInf;
     }
@@ -34,6 +36,7 @@ public class BranchLineEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_branch_line", nullable = false)
     public int getIdBranchLine() {
         return idBranchLine;

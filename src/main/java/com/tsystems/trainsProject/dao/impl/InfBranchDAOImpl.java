@@ -46,6 +46,7 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
             return 0;
         }
         else {
+
             getSession().saveOrUpdate(branch);
             return 1;
         }

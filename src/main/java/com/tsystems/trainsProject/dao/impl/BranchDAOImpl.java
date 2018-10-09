@@ -20,7 +20,7 @@ public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> impleme
 
     @Override
     public void saveOrUpdate(BranchLineEntity branch) {
-        getSession().saveOrUpdate(branch);
+        getSession().save(branch);
     }
 
     @Override
@@ -35,6 +35,8 @@ public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> impleme
         criteria.add(Restrictions.eq("idBranchLine", id));
         return (BranchLineEntity) criteria.uniqueResult();
     }
+
+
 
 
 }

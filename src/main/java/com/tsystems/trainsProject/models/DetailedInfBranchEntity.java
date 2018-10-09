@@ -1,11 +1,16 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -13,6 +18,7 @@ import java.util.Date;
 public class DetailedInfBranchEntity {
     private int idDetailedInfBranch;
     private Integer stationSerialNumber;
+    @DateTimeFormat(pattern = "hh:mm")
     private Date timeFromPrevious;
     private BranchLineEntity branch;
     private StationEntity station;
@@ -28,7 +34,7 @@ public class DetailedInfBranchEntity {
     }
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "id_branch", referencedColumnName = "id_branch_line")//name=fk ref=first key
     public BranchLineEntity getBranch() {
         return branch;
@@ -39,6 +45,7 @@ public class DetailedInfBranchEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_detailed_inf_branch", nullable = false)
     public int getIdDetailedInfBranch() {
         return idDetailedInfBranch;
@@ -89,6 +96,30 @@ public class DetailedInfBranchEntity {
         int result = idDetailedInfBranch;
         result = 31 * result + (stationSerialNumber != null ? stationSerialNumber.hashCode() : 0);
         result = 31 * result + (timeFromPrevious != null ? timeFromPrevious.hashCode() : 0);
+        return result;
+    }
+
+    @Transient
+    public String toTime() throws ParseException {
+        String result ="";
+        int hours=timeFromPrevious.getHours();
+        int minutes=timeFromPrevious.getMinutes();
+        if(hours<10){
+            if (minutes<10){
+              result="0"+hours+":"+"0"+minutes;
+            }
+            else{
+                result="0"+hours+":"+minutes;
+            }
+        }
+        else{
+            if (minutes<10){
+                result=hours+":"+"0"+minutes;
+            }
+            else{
+                result=hours+":"+minutes;
+            }
+        }
         return result;
     }
 

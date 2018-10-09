@@ -67,6 +67,7 @@ public class AppConfig {
             hibernateProperties.put("spring.jpa.show-sql", hibernateShowDdl);
             hibernateProperties.put("spring.jpa.hibernate.ddl-auto", hibernateDdlAuto);
             hibernateProperties.put("spring.jpa.hibernate.use-new-id-generator-mappings", hibernateNewUserIdGenertorMapping);
+           hibernateProperties.put("spring.jpa.hbm2ddl.auto","update");
             sessionFactoryBean.setHibernateProperties(hibernateProperties);
             return sessionFactoryBean;
         }

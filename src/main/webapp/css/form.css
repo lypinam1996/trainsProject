@@ -6,6 +6,15 @@ main{
     height: 100%;
 }
 
+form{
+    width: 100%;
+    padding-left: 5%;
+}
+
+table{
+    width: 100%;
+}
+
 body{
     background-color: #008ca5;
 }
@@ -71,4 +80,30 @@ p{
     border-color: white;
     border-width: 1.5px;
     font-size: 12pt;
+}
+
+.b{
+    margin-top: 5%;
+    background-color: #bf4031;
+    color: white;
+    height: 47px;
+    width: 130px;
+    border-radius: 10px;
+}
+
+.inp{
+    width: 23%;
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
+}
+
+lbl{
+    font-size: 20pt;
+    color: #bf4031;
+}
+
+.row{
+    margin-left: 35px;
 }
