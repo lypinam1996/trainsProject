@@ -33,8 +33,10 @@ public class BranchServiceImpl implements BranchService {
         List<DetailedInfBranchEntity> detailedInfList =branch.getDetailedInf();
         for(int i=0;i<detailedInfList.size();i++){
             detailedInfList.get(i).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+            detailedInfList.get(i).setBranch(branch);
         }
         branch.setDetailedInf(detailedInfList);
+
         branchDAO.saveOrUpdate(branch);
     }
 
