@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.AutoPopulatingList;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,7 @@ public class BranchController {
         model.addAttribute("branches",branches);
         return "branches";
     }
+
     @RequestMapping(value = "/detailedInf/{pk}", method = RequestMethod.GET)
     public String getDetailedInf(@PathVariable Integer pk, Model model) {
         List<DetailedInfBranchEntity> detailedInformation = detailedInf.findDetailedInformation(branchService.findById(pk));
@@ -50,32 +53,19 @@ public class BranchController {
         return "detailedInf";
     }
 
-    //переписывает вместо добавления!!!
-    private List<DetailedInfBranchEntity> manageInfBranches(BranchLineEntity branch) {
-        List<DetailedInfBranchEntity> branchestoremove = new ArrayList<DetailedInfBranchEntity>();
-        if (branch.getDetailedInf() != null) {
-            for (Iterator<DetailedInfBranchEntity> i = branch.getDetailedInf().iterator(); i.hasNext();) {
-                DetailedInfBranchEntity information = i.next();
-           //     information.setBranch( branchService.findAllBranches().get(branchService.findAllBranches().size()-1));
-                if ( detailedInf.saveOrUpdate(information) ==0) {
-                    branchestoremove.add(information);
-                }
-            }
-        }
-        return branchestoremove;
-    }
-
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(@ModelAttribute BranchLineEntity branch, Model model)
     {
-        return create(branch, model, true);
+        List<String> errors = new ArrayList<>();
+        return create(branch, model, true,errors);
     }
 
-    private String create(BranchLineEntity branch, Model model, boolean init) {
+    private String create(BranchLineEntity branch, Model model, boolean init, List<String> errors) {
         if (init) {
             branch.setDetailedInf(new AutoPopulatingList<DetailedInfBranchEntity>(DetailedInfBranchEntity.class));
         }
         List<StationEntity> stations = stationService.findAllStations();
+        model.addAttribute("errors",errors);
         model.addAttribute("stations",stations);
         model.addAttribute("branch",branch);
         model.addAttribute("type", "create");
@@ -83,12 +73,16 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return create(branch, model, false);
+    public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return create(branch, model, false);
+//        }
+        List<String> errors=branchService.checkSerialNumbers(branch);
+        if (!errors.isEmpty()){
+            return create(branch, model, false,errors);
         }
+        branchService.checkTheNecessityOfSaving(branch);
         branchService.saveOrUpdate(branch);
-       // manageInfBranches(branch);
         return "redirect:/branches";
     }
 
@@ -108,16 +102,11 @@ public class BranchController {
         if (bindingResult.hasErrors()) {
             return update(branch.getIdBranchLine(), model);
         }
-      //  branchService.saveOrUpdate(branch);
-        List<DetailedInfBranchEntity> employees2remove = manageInfBranches(branch);
+        List<DetailedInfBranchEntity> employees2remove = branchService.checkTheNecessityOfSaving(branch);
+        branchService.saveOrUpdate(branch);
         for (DetailedInfBranchEntity detInf : employees2remove) {
             detailedInf.delete(detInf);
         }
         return "redirect:/branches";
     }
-
-
-
-
-
 }

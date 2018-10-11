@@ -18,7 +18,7 @@ import java.util.Date;
 public class DetailedInfBranchEntity {
     private int idDetailedInfBranch;
     private Integer stationSerialNumber;
-    @DateTimeFormat(pattern = "hh:mm")
+    @DateTimeFormat(pattern = "HH:mm")
     private Date timeFromPrevious;
     private BranchLineEntity branch;
     private StationEntity station;

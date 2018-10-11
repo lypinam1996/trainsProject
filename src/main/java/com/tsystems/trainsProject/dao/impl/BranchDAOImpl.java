@@ -20,7 +20,7 @@ public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> impleme
 
     @Override
     public void saveOrUpdate(BranchLineEntity branch) {
-        getSession().save(branch);
+        getSession().saveOrUpdate(branch);
     }
 
     @Override

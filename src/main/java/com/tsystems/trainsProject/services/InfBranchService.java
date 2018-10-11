@@ -12,7 +12,7 @@ public interface InfBranchService {
     List<DetailedInfBranchEntity> findAllInfBranch();
     List<DetailedInfBranchEntity> findBranchesByStation(StationEntity stationEntity);
     List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity);
-    int saveOrUpdate(DetailedInfBranchEntity branch);
+    void saveOrUpdate(DetailedInfBranchEntity branch);
     void delete(DetailedInfBranchEntity branch);
     DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber,
                                                                  BranchLineEntity branch);

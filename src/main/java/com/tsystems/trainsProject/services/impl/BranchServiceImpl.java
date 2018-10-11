@@ -9,7 +9,11 @@ import com.tsystems.trainsProject.services.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service("BranchService")
@@ -36,7 +40,6 @@ public class BranchServiceImpl implements BranchService {
             detailedInfList.get(i).setBranch(branch);
         }
         branch.setDetailedInf(detailedInfList);
-
         branchDAO.saveOrUpdate(branch);
     }
 
@@ -50,5 +53,45 @@ public class BranchServiceImpl implements BranchService {
         branchDAO.update(branch);
     }
 
+    @Override
+    public List<DetailedInfBranchEntity> checkTheNecessityOfSaving(BranchLineEntity branch){
+        List<DetailedInfBranchEntity> infBranchToRemove = new ArrayList<>();
+        if (branch.getDetailedInf() != null) {
+            for (Iterator<DetailedInfBranchEntity> i = branch.getDetailedInf().iterator(); i.hasNext();) {
+                DetailedInfBranchEntity information = i.next();
+                if(information.getTimeFromPrevious()==null &&
+                        information.getStationSerialNumber()==null &&
+                        information.getStation()==null) {
+                    infBranchToRemove.add(information);
+                }
+            }
+        }
+        for(int i=0;i<infBranchToRemove.size();i++){
+            branch.getDetailedInf().remove(infBranchToRemove.get(i));
+        }
+        return infBranchToRemove;
+    }
 
+    @Override
+    public  List<String> checkSerialNumbers(BranchLineEntity branch){
+        List<String> errors =  new ArrayList<>();
+        List<Integer> listSN = new ArrayList<>();
+        List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
+        detailedInfList.addAll(branch.getDetailedInf());
+        for(int i = 0;i<detailedInfList.size();i++){
+            listSN.add(detailedInfList.get(i).getStationSerialNumber());
+        }
+        int j=0;
+        boolean ok = true;
+        while (j<listSN.size() && ok) {
+          if(listSN.indexOf(listSN.get(j))!=listSN.lastIndexOf(listSN.get(j))){
+              errors.add("*Several equal serial numbers was entered");
+              ok=false;
+          }
+          else {
+              j++;
+          }
+        }
+        return errors;
+    }
 }

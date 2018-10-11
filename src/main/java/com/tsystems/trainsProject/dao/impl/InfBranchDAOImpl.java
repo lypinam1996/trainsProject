@@ -39,17 +39,8 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
     }
 
     @Override
-    public int saveOrUpdate(DetailedInfBranchEntity branch) {
-        if(branch.getTimeFromPrevious()==null &&
-                branch.getStationSerialNumber()==null &&
-                branch.getStation()==null){
-            return 0;
-        }
-        else {
-
+    public void saveOrUpdate(DetailedInfBranchEntity branch) {
             getSession().saveOrUpdate(branch);
-            return 1;
-        }
     }
 
     @Override

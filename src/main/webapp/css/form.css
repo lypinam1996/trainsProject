@@ -107,3 +107,8 @@ lbl{
 .row{
     margin-left: 35px;
 }
+
+.errors{
+    font-size: 14pt;
+    color: red;
+}

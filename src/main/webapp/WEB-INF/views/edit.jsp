@@ -68,10 +68,17 @@
                 <tr>
                     <td></td>
                     <td style="font-size: 14pt">
+                        <c:choose>
+                            <c:when test="${!errors.isEmpty()}">
+                                <div class="errors">
+                                    <c:forEach items="${errors}" var="error">
+                                        <div>${error}</div>
+                                    </c:forEach>
+                                </div></c:when>
+                        </c:choose>
                         <div class="row"><div style="width: 23%; margin-left: 15px">Station serial number</div>
                             <div style="width: 23%">Time from previous station</div>
                             <div>Next station</div></div>
-
                     </td>
                 </tr>
                 <tr>
@@ -82,7 +89,6 @@
                                 <form:input type="hidden" path="detailedInf[${loop.index}].idDetailedInfBranch"  />
                                 <form:input class="inp" path="detailedInf[${loop.index}].stationSerialNumber"  />
                                 <form:input class="inp" type="time" path="detailedInf[${loop.index}].timeFromPrevious" value="${di.toTime()}"/>
-
                                 <form:select path="detailedInf[${loop.index}].station.stationName" class="inp">
                                     <c:forEach var="item" items="${stations}">
                                         <c:choose>
