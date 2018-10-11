@@ -16,4 +16,5 @@ public interface BranchService {
     String checkEqualitySerialNumbers(BranchLineEntity branch);
     String  checkSerialNumbers(BranchLineEntity branch);
     String checkEqualityStations(BranchLineEntity branch);
+    String checkStations(BranchLineEntity branch);
 }

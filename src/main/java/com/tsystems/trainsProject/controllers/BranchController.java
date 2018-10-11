@@ -82,6 +82,7 @@ public class BranchController {
         String errorEqualSerialNumber = branchService.checkEqualitySerialNumbers(branch);
         String errorNotSerialNumber =branchService.checkSerialNumbers(branch);
         String errorEqualStations=branchService.checkEqualityStations(branch);
+        branchService.checkStations(branch);
         if(!errorEqualSerialNumber.equals("")){
             errors.add(errorEqualSerialNumber);
         }
