@@ -13,6 +13,7 @@ public interface BranchService {
     BranchLineEntity findById(int id);
     void update(BranchLineEntity branch);
     List<DetailedInfBranchEntity> checkTheNecessityOfSaving(BranchLineEntity branch);
-    String checkSerialNumbers(BranchLineEntity branch);
-    String  checkSerialNumbers2(BranchLineEntity branch);
+    String checkEqualitySerialNumbers(BranchLineEntity branch);
+    String  checkSerialNumbers(BranchLineEntity branch);
+    String checkEqualityStations(BranchLineEntity branch);
 }

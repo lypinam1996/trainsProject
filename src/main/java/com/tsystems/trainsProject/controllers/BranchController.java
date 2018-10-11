@@ -79,13 +79,14 @@ public class BranchController {
 //        }
         branchService.checkTheNecessityOfSaving(branch);
         List<String> errors=new ArrayList<>();
-        String error1 = branchService.checkSerialNumbers(branch);
-        String error2 =branchService.checkSerialNumbers2(branch);
-        if(!error1.equals("")){
-            errors.add(error1);
+        String errorEqualSerialNumber = branchService.checkEqualitySerialNumbers(branch);
+        String errorNotSerialNumber =branchService.checkSerialNumbers(branch);
+        String errorEqualStations=branchService.checkEqualityStations(branch);
+        if(!errorEqualSerialNumber.equals("")){
+            errors.add(errorEqualSerialNumber);
         }
-        if(!error2.equals("")){
-            errors.add(error2);
+        if(!errorNotSerialNumber.equals("")){
+            errors.add(errorNotSerialNumber);
         }
         if (!errors.isEmpty()){
             return create(branch, model, false,errors);

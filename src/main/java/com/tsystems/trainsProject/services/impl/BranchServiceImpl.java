@@ -6,6 +6,7 @@ import com.tsystems.trainsProject.dao.impl.UserDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.ScheduleEntity;
+import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,7 +73,7 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public  String checkSerialNumbers(BranchLineEntity branch){
+    public  String checkEqualitySerialNumbers(BranchLineEntity branch){
         String error =  "";
         List<Integer> listSN = new ArrayList<>();
         List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
@@ -95,7 +96,30 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public  String  checkSerialNumbers2(BranchLineEntity branch){
+    public  String checkEqualityStations(BranchLineEntity branch){
+        String error =  "";
+        List<StationEntity> listStation = new ArrayList<>();
+        List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
+        detailedInfList.addAll(branch.getDetailedInf());
+        for(int i = 0;i<detailedInfList.size();i++){
+            listStation.add(detailedInfList.get(i).getStation());
+        }
+        int j=0;
+        boolean ok = true;
+        while (j<listStation.size() && ok) {
+            if(listStation.indexOf(listStation.get(j))!=listStation.lastIndexOf(listStation.get(j))){
+                error="*Several equal stations was selected";
+                ok=false;
+            }
+            else {
+                j++;
+            }
+        }
+        return error;
+    }
+
+    @Override
+    public  String  checkSerialNumbers(BranchLineEntity branch){
         String error = "";
         List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
         detailedInfList.addAll(branch.getDetailedInf());
