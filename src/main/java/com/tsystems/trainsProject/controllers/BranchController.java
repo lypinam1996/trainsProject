@@ -77,11 +77,19 @@ public class BranchController {
 //        if (bindingResult.hasErrors()) {
 //            return create(branch, model, false);
 //        }
-        List<String> errors=branchService.checkSerialNumbers(branch);
+        branchService.checkTheNecessityOfSaving(branch);
+        List<String> errors=new ArrayList<>();
+        String error1 = branchService.checkSerialNumbers(branch);
+        String error2 =branchService.checkSerialNumbers2(branch);
+        if(!error1.equals("")){
+            errors.add(error1);
+        }
+        if(!error2.equals("")){
+            errors.add(error2);
+        }
         if (!errors.isEmpty()){
             return create(branch, model, false,errors);
         }
-        branchService.checkTheNecessityOfSaving(branch);
         branchService.saveOrUpdate(branch);
         return "redirect:/branches";
     }

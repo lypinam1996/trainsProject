@@ -22,7 +22,7 @@
             $("#add").off("click").on("click", function() {
                 $(this).before(function() {
                     var html = '<div id="detailedInf' + index + '.wrapper" class="hidden">';
-                    html += '<input  class="inp" type="text" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
+                    html += '<input  class="inp" type="number" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
                     html += '<input class="inp" type="time" id="detailedInf' + index + '.timeFromPrevious" name="detailedInf[' + index + '].timeFromPrevious" />';
                     html += '<select class="inp" type="text" id="detailedInf' + index + '.station.stationName" name="detailedInf[' + index + '].station.stationName"><c:forEach var="item" items="${stations}"><option value="${item.stationName}"}>${item.stationName}</option></c:forEach> </select>';
                     html += '<button type="button" class="remove b" id="'+index+'" ">remove</button>';
@@ -87,7 +87,7 @@
                         <c:forEach items="${branch.detailedInf}" varStatus="loop" var="di">
                             <div id="detailedInf${loop.index}.wrapper">
                                 <form:input type="hidden" path="detailedInf[${loop.index}].idDetailedInfBranch"  />
-                                <form:input class="inp" path="detailedInf[${loop.index}].stationSerialNumber"  />
+                                <form:input type="number" class="inp" path="detailedInf[${loop.index}].stationSerialNumber"  />
                                 <form:input class="inp" type="time" path="detailedInf[${loop.index}].timeFromPrevious" value="${di.toTime()}"/>
                                 <form:select path="detailedInf[${loop.index}].station.stationName" class="inp">
                                     <c:forEach var="item" items="${stations}">
