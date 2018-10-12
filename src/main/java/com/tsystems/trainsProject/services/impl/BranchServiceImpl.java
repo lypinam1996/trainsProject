@@ -148,10 +148,96 @@ public class BranchServiceImpl implements BranchService {
         for(int i = 0;i<detailedInfList.size();i++){
             for(int j = 0;j<detailedInfList.size();j++) {
                 if (detailedInfList.get(i).getStationSerialNumber() == detailedInfList.get(j).getStationSerialNumber() && i != j) {
-                    detailedInfList.get(j).setStationSerialNumber(detailedInfList.get(j).getStationSerialNumber() + 1);
+                    for(int l = 0;l<detailedInfList.size();l++) {
+                        if(detailedInfList.get(l).getStationSerialNumber()>=detailedInfList.get(j).getStationSerialNumber()) {
+                            detailedInfList.get(l).setStationSerialNumber(detailedInfList.get(l).getStationSerialNumber() + 1);
+                        }
+                    }
+                    detailedInfList.get(j).setStationSerialNumber(detailedInfList.get(j).getStationSerialNumber() - 1);
                 }
             }
         }
+        int minIndex=getMinSerialNumber(detailedInfList);
+        if(minIndex>1){
+            for(int i = 0;i<detailedInfList.size();i++){
+                detailedInfList.get(i).setStationSerialNumber(detailedInfList.get(i).getStationSerialNumber()-minIndex+1);
+            }
+        }
+        int index1=getMinIndexSerialNumber(detailedInfList);
+        int index2=getMin(detailedInfList,index1);
+        for(int i = 0;i<detailedInfList.size()-1;i++) {
+            int difference=detailedInfList.get(index2).getStationSerialNumber()-detailedInfList.get(index1).getStationSerialNumber();
+            if(difference>1){
+                for(int j =0;j<detailedInfList.size();j++){
+                    if(detailedInfList.get(j).getStationSerialNumber()>=detailedInfList.get(index2).getStationSerialNumber()) {
+                        detailedInfList.get(j).setStationSerialNumber(detailedInfList.get(j).getStationSerialNumber() - difference + 1);
+                    }
+                }
+            }
+            int x=index2;
+            index1=index2;
+            index2=getMin(detailedInfList,index2);
+        }
+    }
+
+    private int getMin(List<DetailedInfBranchEntity> detailedInfList, int minimum){
+        int result=0;
+        int min=detailedInfList.get(minimum).getStationSerialNumber();
+        List<DetailedInfBranchEntity> detailedInf=new ArrayList<>();
+        for(int i = 0;i<detailedInfList.size();i++){
+            if(detailedInfList.get(i).getStationSerialNumber()>min){
+                detailedInf.add(detailedInfList.get(i));
+            }
+            else{
+                DetailedInfBranchEntity d = new DetailedInfBranchEntity();
+                d.setIdDetailedInfBranch(-1);
+                detailedInf.add(d);
+            }
+        }
+        int serNum=0;
+        int i=0;
+        boolean ok=true;
+        while (i<detailedInf.size() && ok) {
+            if(detailedInf.get(i).getIdDetailedInfBranch()!=-1){
+                serNum=detailedInf.get(i).getStationSerialNumber();
+                result=i;
+                ok=false;
+            }
+            else {
+                i++;
+            }
+        }
+        for(int j = i;j<detailedInf.size();j++){
+            if(detailedInf.get(j).getIdDetailedInfBranch()!=-1) {
+                if (detailedInf.get(j).getStationSerialNumber() < serNum) {
+                    serNum = detailedInf.get(j).getStationSerialNumber();
+                    result = j;
+                }
+            }
+        }
+        return result;
+    }
+;
+    private int getMinSerialNumber(List<DetailedInfBranchEntity> detailedInfList){
+        int minIndex=detailedInfList.get(0).getStationSerialNumber();
+        for(int i = 1;i<detailedInfList.size();i++){
+            if(detailedInfList.get(i).getStationSerialNumber()<minIndex){
+                minIndex=detailedInfList.get(i).getStationSerialNumber();
+            }
+        }
+        return minIndex;
+    }
+
+    private int getMinIndexSerialNumber(List<DetailedInfBranchEntity> detailedInfList){
+        int min=detailedInfList.get(0).getStationSerialNumber();
+        int minIndex=0;
+        for(int i = 1;i<detailedInfList.size();i++){
+            if(detailedInfList.get(i).getStationSerialNumber()<min){
+                min=detailedInfList.get(i).getStationSerialNumber();
+                minIndex=i;
+            }
+        }
+        return minIndex;
     }
 
     @Override
@@ -168,44 +254,25 @@ public class BranchServiceImpl implements BranchService {
         for(int i = 0;i<idealInfList.size();i++){
             mapIdealSerialNumbers.put(idealInfList.get(i).getStationSerialNumber(),idealInfList.get(i).getStation());
         }
-        int min=0;
+        boolean ok = true;
         for (Map.Entry<Integer, StationEntity > entry : mapIdealSerialNumbers.entrySet()) {
             for (Map.Entry<Integer, StationEntity > entry2 : mapSerialNumbers.entrySet()) {
                 if (entry2.getValue().getStationName().equals(entry.getValue().getStationName())) {
                     for (int j = 0; j < detailedInfList.size(); j++) {
                         if (detailedInfList.get(j).getStation().getStationName().equals(entry.getValue().getStationName())) {
-                            min=getMin(mapSerialNumbers.keySet(),min);
-                            detailedInfList.get(j).setStationSerialNumber(min);
+                            detailedInfList.get(j).setStationSerialNumber(entry.getKey());
+                            ok=false;
                         }
                     }
                 }
-
             }
         }
         check(detailedInfList);
+//        if(ok==false){
+//
+//            error="*Ambiguous entered way";
+//        }
         return error;
-    }
-
-    private int getMin(Set<Integer> setNumbers,int minimum){
-        Integer[] numbers = setNumbers.toArray(new Integer[setNumbers.size()]);
-        int j=0;
-        boolean ok=true;
-        int min=0;
-        while (j<numbers.length && ok) {
-            if (numbers[j]>minimum){
-                min=numbers[j];
-                ok=false;
-            }
-            else{
-                j++;
-            }
-        }
-        for(int i=1;i<numbers.length;i++){
-            if(numbers[i]<min && numbers[i]>minimum){
-                min=numbers[i];
-            }
-        }
-        return min;
     }
 
     private BranchLineEntity findBranchWithMaxEqualStation(BranchLineEntity branch){
@@ -233,6 +300,42 @@ public class BranchServiceImpl implements BranchService {
            }
         }
         return result;
+    }
+
+    @Override
+    public String checkTime(BranchLineEntity branchLineEntity){
+        String error="";
+        BranchLineEntity idealBranch=findBranchWithMaxEqualStation(branchLineEntity);
+        List<DetailedInfBranchEntity> idealBranchDetInf = idealBranch.getDetailedInf();
+        List<DetailedInfBranchEntity> checkingBranch = branchLineEntity.getDetailedInf();
+        for(int i=0;i<idealBranchDetInf.size();i++) {
+            for (int j = 0; j < checkingBranch.size(); j++) {
+                if (idealBranchDetInf.get(i).getStation().getStationName().equals(checkingBranch.get(j).getStation().getStationName())) {
+                    for (int x = i; x < idealBranchDetInf.size(); x++) {
+                        for (int y = 0; y < checkingBranch.size(); y++) {
+                            if (idealBranchDetInf.get(x).getStation().getStationName().equals(checkingBranch.get(y).getStation().getStationName())) {
+                                int idealTimeBetweenStations=0;
+                                if(idealBranchDetInf.get(x).getStationSerialNumber()-idealBranchDetInf.get(i).getStationSerialNumber()>1){
+                                    for(int k=i;k<x;k++){
+                                        idealTimeBetweenStations=idealTimeBetweenStations+idealBranchDetInf.get(k).getTimeFromPrevious().getHours()*60+idealBranchDetInf.get(k).getTimeFromPrevious().getMinutes();
+                                    }
+                                }
+                                int timeBetweenStations=0;
+                                if(checkingBranch.get(x).getStationSerialNumber()-checkingBranch.get(i).getStationSerialNumber()>1){
+                                    for(int k=i;k<x;k++){
+                                        timeBetweenStations=timeBetweenStations+checkingBranch.get(k).getTimeFromPrevious().getHours()*60+checkingBranch.get(k).getTimeFromPrevious().getMinutes();
+                                    }
+                                }
+                                if(idealTimeBetweenStations!=timeBetweenStations){
+                                    System.out.println("!");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return error;
     }
 
 }

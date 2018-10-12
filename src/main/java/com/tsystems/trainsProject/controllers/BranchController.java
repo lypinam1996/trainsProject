@@ -82,12 +82,19 @@ public class BranchController {
         String errorEqualSerialNumber = branchService.checkEqualitySerialNumbers(branch);
         String errorNotSerialNumber =branchService.checkSerialNumbers(branch);
         String errorEqualStations=branchService.checkEqualityStations(branch);
-        branchService.checkStations(branch);
+        String contraryBranchError=branchService.checkStations(branch);
+       // branchService.checkTime(branch);
         if(!errorEqualSerialNumber.equals("")){
             errors.add(errorEqualSerialNumber);
         }
         if(!errorNotSerialNumber.equals("")){
             errors.add(errorNotSerialNumber);
+        }
+        if(!errorEqualStations.equals("")){
+            errors.add(errorEqualStations);
+        }
+        if(!contraryBranchError.equals("")){
+            errors.add(contraryBranchError);
         }
         if (!errors.isEmpty()){
             return create(branch, model, false,errors);
