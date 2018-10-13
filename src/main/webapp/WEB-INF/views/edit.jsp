@@ -64,6 +64,7 @@
                 <tr>
                     <td ><form:label path="title"><p style="font-size: 15pt">Branch title</p></form:label></td>
                     <td><form:input path="title" class="inp"/></td>
+                    <form:input path="idBranchLine" type="hidden"/>
                 </tr>
                 <tr>
                     <td></td>

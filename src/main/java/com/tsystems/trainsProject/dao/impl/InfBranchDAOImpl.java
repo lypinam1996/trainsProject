@@ -32,6 +32,13 @@ public class InfBranchDAOImpl extends AbstractDAO<Integer,DetailedInfBranchEntit
     }
 
     @Override
+    public DetailedInfBranchEntity findById(int id) {
+        Criteria criteria = getSession().createCriteria(DetailedInfBranchEntity.class);
+        criteria.add(Restrictions.eq("idDetailedInfBranch", id));
+        return (DetailedInfBranchEntity) criteria.uniqueResult();
+    }
+
+    @Override
     public List<DetailedInfBranchEntity> findBranchesByStation(StationEntity firstStation) {
         Criteria criteria = getSession().createCriteria(DetailedInfBranchEntity.class);
         criteria.add(Restrictions.eq("station", firstStation));

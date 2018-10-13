@@ -72,30 +72,11 @@ public class BranchController {
         return "edit";
     }
 
+    //error info business exception try catch
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return create(branch, model, false);
-//        }
         branchService.checkTheNecessityOfSaving(branch);
-        List<String> errors=new ArrayList<>();
-        String errorEqualSerialNumber = branchService.checkEqualitySerialNumbers(branch);
-        String errorNotSerialNumber =branchService.checkSerialNumbers(branch);
-        String errorEqualStations=branchService.checkEqualityStations(branch);
-        String contraryBranchError=branchService.checkStations(branch);
-       // branchService.checkTime(branch);
-        if(!errorEqualSerialNumber.equals("")){
-            errors.add(errorEqualSerialNumber);
-        }
-        if(!errorNotSerialNumber.equals("")){
-            errors.add(errorNotSerialNumber);
-        }
-        if(!errorEqualStations.equals("")){
-            errors.add(errorEqualStations);
-        }
-        if(!contraryBranchError.equals("")){
-            errors.add(contraryBranchError);
-        }
+        List<String> errors=branchService.validation(branch);
         if (!errors.isEmpty()){
             return create(branch, model, false,errors);
         }
@@ -105,25 +86,26 @@ public class BranchController {
 
     @RequestMapping(value = "/update/{pk}", method = RequestMethod.GET)
     public String update(@PathVariable Integer pk, Model model) {
+        List<String> errors = new ArrayList<>();
         BranchLineEntity branch = branchService.findById(pk);
         List<StationEntity> stations = stationService.findAllStations();
+        model.addAttribute("errors",errors);
         model.addAttribute("stations",stations);
         model.addAttribute("branch",branch);
         model.addAttribute("type", "update");
-        return "edit";
+        return "edit" ;
     }
 
 
     @RequestMapping(value = "/updateBranch", method = RequestMethod.POST)
     public String update( @ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return update(branch.getIdBranchLine(), model);
+        branchService.checkTheNecessityOfSaving(branch);
+        detailedInf.delete(branch,branch.getIdBranchLine());
+        List<String> errors=branchService.validation(branch);
+        if (!errors.isEmpty()){
+            return create(branch, model,false,errors);
         }
-        List<DetailedInfBranchEntity> employees2remove = branchService.checkTheNecessityOfSaving(branch);
         branchService.saveOrUpdate(branch);
-        for (DetailedInfBranchEntity detInf : employees2remove) {
-            detailedInf.delete(detInf);
-        }
         return "redirect:/branches";
     }
 }

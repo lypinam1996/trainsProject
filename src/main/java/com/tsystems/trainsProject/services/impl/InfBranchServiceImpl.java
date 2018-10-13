@@ -3,6 +3,7 @@ import com.tsystems.trainsProject.dao.InfBranchDAO;
 import com.tsystems.trainsProject.dao.StationDAO;
 import com.tsystems.trainsProject.dao.impl.BranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
+import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.StationEntity;
@@ -24,7 +25,10 @@ public class InfBranchServiceImpl implements InfBranchService {
     InfBranchDAOImpl infBranchDAO;
 
     @Autowired
-    StationDAO stationDAO;
+    StationDAOImpl stationDAO;
+
+    @Autowired
+    BranchDAOImpl branchDAO;
 
     @Override
     public List<DetailedInfBranchEntity> findAllInfBranch() {
@@ -48,8 +52,24 @@ public class InfBranchServiceImpl implements InfBranchService {
     }
 
     @Override
-    public void delete(DetailedInfBranchEntity branch) {
-        infBranchDAO.delete(branch);
+    public void delete(BranchLineEntity branch, int id) {
+        BranchLineEntity branchLineEntity = branchDAO.findById(id);
+        List<DetailedInfBranchEntity> idealDEtInf = branchLineEntity.getDetailedInf();
+        List<DetailedInfBranchEntity> detInf = branch.getDetailedInf();
+        List<Integer> listIdealId= new ArrayList<>();
+        for(int i =0; i<idealDEtInf.size();i++){
+            listIdealId.add(idealDEtInf.get(i).getIdDetailedInfBranch());
+        }
+        List<Integer> listId= new ArrayList<>();
+        for(int i =0; i<detInf.size();i++){
+            listId.add(detInf.get(i).getIdDetailedInfBranch());
+        }
+        for(int i =0; i<idealDEtInf.size();i++) {
+            if(!listId.contains(listIdealId.get(i))){
+                infBranchDAO.delete(infBranchDAO.findById(listIdealId.get(i)));
+            }
+        }
+
     }
 
     @Override

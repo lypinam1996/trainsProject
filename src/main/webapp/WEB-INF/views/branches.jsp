@@ -46,9 +46,9 @@
                                 </a></td>
                             </tr>
                         </c:forEach>
-                        <tr><td><form action="/create" method="get">
+                        <tr style="background-color: #CBEEF4"><td><form action="/create" method="get">
                             <input type="submit" value="Add new branch" style="margin-top: 1%; margin-left: 1%" class="login"/>
-                        </form></td></tr>
+                        </form></td><td></td><td></td></tr>
                     </table>
                 </c:otherwise>
             </c:choose>
