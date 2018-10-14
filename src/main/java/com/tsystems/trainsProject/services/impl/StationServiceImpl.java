@@ -26,6 +26,19 @@ public class StationServiceImpl implements StationService {
         return stationDAO.findByName(name);
     }
 
+    @Override
+    public void saveOrUpdate(StationEntity station) {
+        stationDAO.saveOrUpdate(station);
+    }
 
+    @Override
+    public StationEntity findById(int id) {
+        return stationDAO.findById(id);
+    }
+
+    @Override
+    public void delete(StationEntity stationEntity) {
+        stationDAO.delete(stationEntity);
+    }
 
 }

@@ -8,4 +8,7 @@ import java.util.List;
 public interface StationService {
     List<StationEntity> findAllStations();
     StationEntity findByName(String name);
+    void saveOrUpdate(StationEntity station);
+    StationEntity findById(int id);
+    void delete(StationEntity stationEntity);
 }

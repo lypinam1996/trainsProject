@@ -3,7 +3,7 @@ main{
     float:left;
     width:100%;
     padding : 50px 0;
-    height: 100%;
+    min-height: 100%;
 }
 
 form{
@@ -21,7 +21,7 @@ body{
     border-radius: 10px;
     box-shadow:15px 20px 0px
     rgba(0,0,0,0.1);
-    height: 100%;
+    min-height: 100%;
     padding: 2%;
 }
 

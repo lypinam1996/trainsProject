@@ -25,4 +25,16 @@ public class StationDAOImpl extends AbstractDAO<Integer,StationEntity> implement
         return (StationEntity) criteria.uniqueResult();
     }
 
+    @Override
+    public void saveOrUpdate(StationEntity station) {
+        getSession().saveOrUpdate(station);
+    }
+
+    @Override
+    public StationEntity findById(int id) {
+        Criteria criteria = getSession().createCriteria(StationEntity.class);
+        criteria.add(Restrictions.eq("idStation", id));
+        return (StationEntity) criteria.uniqueResult();
+    }
+
 }
