@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TrainDAO {
     List<TrainEntity> findAllTrains();
+    void saveOrUpdate(TrainEntity train);
+    TrainEntity findById(int id);
 }

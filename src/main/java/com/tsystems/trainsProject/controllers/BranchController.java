@@ -53,7 +53,7 @@ public class BranchController {
         return "detailedInf";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/createBranch", method = RequestMethod.GET)
     public String create(@ModelAttribute BranchLineEntity branch, Model model)
     {
         List<String> errors = new ArrayList<>();
@@ -68,12 +68,12 @@ public class BranchController {
         model.addAttribute("errors",errors);
         model.addAttribute("stations",stations);
         model.addAttribute("branch",branch);
-        model.addAttribute("type", "create");
-        return "edit";
+        model.addAttribute("type", "createBranch");
+        return "editBranch";
     }
 
     //error info business exception try catch
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/createBranch", method = RequestMethod.POST)
     public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) {
         branchService.checkTheNecessityOfSaving(branch);
         List<String> errors=branchService.validation(branch);
@@ -84,7 +84,7 @@ public class BranchController {
         return "redirect:/branches";
     }
 
-    @RequestMapping(value = "/update/{pk}", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateBranch/{pk}", method = RequestMethod.GET)
     public String update(@PathVariable Integer pk, Model model) {
         List<String> errors = new ArrayList<>();
         BranchLineEntity branch = branchService.findById(pk);
@@ -92,8 +92,8 @@ public class BranchController {
         model.addAttribute("errors",errors);
         model.addAttribute("stations",stations);
         model.addAttribute("branch",branch);
-        model.addAttribute("type", "update");
-        return "edit" ;
+        model.addAttribute("type", "updateBranch");
+        return "editBranch" ;
     }
 
 

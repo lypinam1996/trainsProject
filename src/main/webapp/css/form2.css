@@ -1,4 +1,4 @@
-.main{
+main{
     background:  #008ca5;
     float:left;
     width:100%;
@@ -6,31 +6,23 @@
     height: 100%;
 }
 
+form{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 14pt;
+}
+
+body{
+    background-color: #008ca5;
+}
 .container{
+    margin-top: 1%;
     background:#CBEEF4;
     border-radius: 10px;
     box-shadow:15px 20px 0px
     rgba(0,0,0,0.1);
-    width: 110%;
     height: 100%;
     padding: 2%;
-}
-
-tr:nth-child(even) {
-    background: #CBEEF4;
-    color: #008ca5;
-}
-tr:nth-child(odd) {
-    background: #008ca5;
-    color: #CBEEF4;
-}
-
-tr:nth-child(even) a{
-    color: #008ca5;
-}
-
-tr:nth-child(odd) a{
-    color: #CBEEF4;
 }
 
 .firstTR{
@@ -43,9 +35,10 @@ p{
 }
 
 .nav-item{
-    height: 3%;
+    height: 8%;
     background-color: #008ca5;
 }
+
 .login{
     margin-left: 85%;
     margin-top: -45px;
@@ -58,6 +51,7 @@ p{
     border-width: 1.5px;
     font-size: 12pt;
 }
+
 .nav-item button{
     margin-left: 70%;
     margin-top: 10px;
@@ -71,13 +65,49 @@ p{
     font-size: 12pt;
 }
 
-div.dropdown-menu{
-    margin-left: 65%;
-    width: 250px;
+.backBtn{
+    margin-left: 70%;
+    margin-top: 5px;
+    height: 45px;
+    width:130px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    border-color: white;
+    border-width: 1.5px;
     font-size: 12pt;
-    padding: 1%;
-    padding-left: 2%;
-    margin-top: 3%;
+}
 
+.b{
+    margin-top: 5%;
+    background-color: #bf4031;
+    color: white;
+    height: 47px;
+    width: 130px;
+    border-radius: 20px;
+    border-color: white;
+    border-width: 1.5px;
+}
+
+.form-control.inp{
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
+    font-size: 13pt;
+}
+
+lbl{
+    font-size: 20pt;
+    color: #bf4031;
+}
+
+.row{
+    margin-left: 35px;
+}
+
+.errors{
+    font-size: 14pt;
+    color: red;
 }
 

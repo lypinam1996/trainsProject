@@ -53,7 +53,7 @@
     </form>
 </div>
 <c:choose>
-    <c:when test="${type eq 'create'}"><c:set var="actionUrl" value="create" /></c:when>
+    <c:when test="${type eq 'createBranch'}"><c:set var="actionUrl" value="createBranch" /></c:when>
     <c:otherwise><c:set var="actionUrl" value="/updateBranch" /></c:otherwise>
 </c:choose>
 <div class="container">
