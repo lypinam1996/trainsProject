@@ -13,16 +13,16 @@
 </head>
 <body>
 <div class="header">
-    <form action="/" method="get">
-        <input type="submit" value="Back" class="login" style="margin-top: 10px"/>
+    <form action="/logout" method="get">
+        <input type="submit" value="Logout" class="login" style="margin-top: 10px"/>
     </form>
 </div>
-<div class="main" style="margin-top: -5%">
+<div class="main" style="margin-top: -4%">
     <div class="container">
         <div class="row">
             <div class="col-md-3" style="display: table">
                 <p style="font-size: 25pt; margin-top: 50%">Go to...</p>
-                <p><a class="aStyle" chref="<c:url value="/stations"/>">Stations</a></p>
+                <p><a class="aStyle" href="<c:url value="/stations"/>">Stations</a></p>
                 <p><a class="aStyle" href="<c:url value="/branches"/>">Branches</a></p>
                 <p><a class="aStyle" href="<c:url value="/trains"/>">Trains</a></p>
                 <p><a class="aStyle" href="<c:url value="/schedule"/>">Schedule</a></p>

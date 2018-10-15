@@ -19,4 +19,5 @@ public interface ScheduleService {
     void saveOrUpdate(ScheduleEntity schedule);
     String checkStationsSerialNumbers(ScheduleEntity schedule);
     ScheduleEntity findById(int id);
+    void delete(ScheduleEntity schedule);
 }

@@ -106,5 +106,10 @@ public class ScheduleServiceImpl implements ScheduleService {
         return scheduleDAO.findById(id);
     }
 
+    @Override
+    public void delete(ScheduleEntity schedule) {
+        scheduleDAO.delete(schedule);
+    }
+
 
 }

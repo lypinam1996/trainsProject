@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Edit chedule</title>
+    <title>Edit schedule</title>
     <style>
         <%@include file="/css/form2.css"%>
     </style>
@@ -37,7 +37,6 @@
             <form:form action="${actionUrl}" modelAttribute="schedule"
                        method="POST">
                 <form:input type="hidden" path="idSchedule"/>
-                <form:input type="hidden" path="branch"/>
                 <c:choose>
                     <c:when test="${!error.isEmpty()}">
                         <div class="errors">${error}</div>

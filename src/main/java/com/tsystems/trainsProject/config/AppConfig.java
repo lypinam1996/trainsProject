@@ -80,11 +80,4 @@ public class AppConfig {
             transactionManager.setSessionFactory(localSessionFactory().getObject());
             return transactionManager;
         }
-
-//        @Bean
-//        public MultipartResolver multipartResolver(){
-//            MultipartResolver multipartResolver = new CommonsMultipartResolver();
-//            //multipartResolver.
-//            return multipartResolver;
-//        }
     }

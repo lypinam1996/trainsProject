@@ -112,6 +112,8 @@ public class ScheduleController {
 
     @RequestMapping(value = "/updateSchedule", method = RequestMethod.POST)
     public String update(@ModelAttribute ScheduleEntity schedule, Model model) {
+        ScheduleEntity scheduleEntity = scheduleService.findById(schedule.getIdSchedule());
+        schedule.setBranch(scheduleEntity.getBranch());
         schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
         schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
         schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
@@ -120,13 +122,13 @@ public class ScheduleController {
               return create(schedule,model,error,"updateSchedule",schedule.getBranch());
         }
         scheduleService.saveOrUpdate(schedule);
-        return "redirect:/trains";
+        return "redirect:/schedule";
     }
 
-//    @RequestMapping(value = "/deleteTrain/{pk}", method = RequestMethod.GET)
-//    public String deleteTrain(@PathVariable Integer pk, Model model) {
-//        TrainEntity train = trainService.findById(pk);
-//        trainService.delete(train);
-//        return "redirect:/trains";
-//    }
+    @RequestMapping(value = "/deleteSchedule/{pk}", method = RequestMethod.GET)
+    public String deleteSchedule(@PathVariable Integer pk, Model model) {
+        ScheduleEntity schedule = scheduleService.findById(pk);
+        scheduleService.delete(schedule);
+        return "redirect:/schedule";
+    }
 }
