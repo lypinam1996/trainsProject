@@ -35,7 +35,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 new org.springframework.security.core.userdetails.User(user.getLogin(),
                         user.getPassword(),
                         roles);
-
         return userDetails;
     }
 

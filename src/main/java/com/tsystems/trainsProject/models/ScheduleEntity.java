@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -49,6 +51,7 @@ public class ScheduleEntity {
         this.lastStation = lastStation;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToOne
     @JoinColumn(name = "id_branch", referencedColumnName = "id_branch_line")
     public BranchLineEntity getBranch() {

@@ -16,6 +16,7 @@ public class BranchLineEntity {
     private List<DetailedInfBranchEntity> detailedInf = new ArrayList<>();
     private List<ScheduleEntity> schedule;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "branch")
     public List<ScheduleEntity> getSchedule() {
         return schedule;

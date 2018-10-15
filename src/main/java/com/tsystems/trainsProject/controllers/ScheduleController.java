@@ -61,6 +61,7 @@ public class ScheduleController {
     public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule, Model model) {
         String error = "";
         BranchLineEntity branchLineEntity = branchService.findById(pk);
+        schedule.setBranch(branchLineEntity);
         return create(schedule, model, error, "createSchedule", branchLineEntity);
     }
 
@@ -78,13 +79,14 @@ public class ScheduleController {
         return "editSchedule";
     }
 
-    @RequestMapping(value = "/createSchedule/{pk}", method = RequestMethod.POST)
-    public String postTrain(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule, Model model) {
-        schedule.setBranch(branchService.findById(pk));
+    @RequestMapping(value = "/createSchedule", method = RequestMethod.POST)
+    public String postTrain( @ModelAttribute ScheduleEntity schedule, Model model) {
+        schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
         schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
         schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
         schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
         String error = scheduleService.checkStationsSerialNumbers(schedule);
+        String er = scheduleService.checkTrainEmployment(schedule);
         if (!error.equals("")) {
             return create(schedule, model, error, "createTrain", schedule.getBranch());
         }

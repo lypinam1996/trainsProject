@@ -28,15 +28,16 @@
     </form>
 </div>
 <c:choose>
-<c:when test="${type eq 'createSchedule'}"><c:set var="actionUrl" value="createSchedule"/></c:when>
-<c:otherwise><c:set var="actionUrl" value="/updateSchedule"/></c:otherwise>
+    <c:when test="${type eq 'updateSchedule'}"><c:set var="actionUrl" value="/updateSchedule" /></c:when>
+    <c:otherwise><c:set var="actionUrl" value="/createSchedule" /></c:otherwise>
 </c:choose>
 <div class="container" style="  width: 50%">
     <div class="row">
         <div class="col-md-12">
             <form:form action="${actionUrl}" modelAttribute="schedule"
-                       method="POST">
+                       method="POST" name="branch">
                 <form:input type="hidden" path="idSchedule"/>
+                <form:input type="hidden" path="branch.idBranchLine"/>
                 <c:choose>
                     <c:when test="${!error.isEmpty()}">
                         <div class="errors">${error}</div>

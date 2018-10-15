@@ -15,8 +15,22 @@
 </head>
 <body>
 <div class="nav-item dropdown">
+    <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+        Menu
+    </button>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/stations"/>">Stations</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/trains"/>">Trains</a>
+        <div class="dropdown-divider"></div>
+    </div>
     <form action="/logout" method="get">
-        <input type="submit" value="Logout" class="login" role="button" style="margin-top: 1%"/>
+        <input type="submit" value="Logout" class="login" role="button" />
     </form>
 </div>
 <div class="main">

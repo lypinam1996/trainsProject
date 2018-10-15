@@ -72,22 +72,18 @@ public class SearchTrain {
             List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
             int numberFirstStation = 0;
             int numberLastStation = 0;
-            for (int j = 0; j < detailedInf.size(); j++) {
-                if (detailedInf.get(j).getStation().equals(firstStation)) {
-                    numberFirstStation = detailedInf.get(j).getStationSerialNumber();
-                }
-                if (detailedInf.get(j).getStation().equals(lastStation)) {
-                    numberLastStation = detailedInf.get(j).getStationSerialNumber();
-                }
-            }
-            for(int x=1;x<numberFirstStation;x++){
-                DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(x,detailedInf.get(0).getBranch());
-               depTime=depTime+inf.getTimeFromPrevious().getMinutes()+inf.getTimeFromPrevious().getHours()*60;
-            }
             Date departureTime = strToTime(intToTime(depTime));
             int arrTime=depTime;
             if(departureTime.before(time2) && departureTime.after(time1)){
-                for(int y=numberFirstStation;y<numberLastStation;y++){
+                for (int j = 0; j < detailedInf.size(); j++) {
+                    if (detailedInf.get(j).getStation().equals(firstStation)) {
+                        numberFirstStation = detailedInf.get(j).getStationSerialNumber();
+                    }
+                    if (detailedInf.get(j).getStation().equals(lastStation)) {
+                        numberLastStation = detailedInf.get(j).getStationSerialNumber();
+                    }
+                }
+                for(int y=numberFirstStation+1;y<=numberLastStation;y++){
                     DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y,detailedInf.get(0).getBranch());
                     arrTime=arrTime+inf.getTimeFromPrevious().getMinutes()+inf.getTimeFromPrevious().getHours()*60;
                 }

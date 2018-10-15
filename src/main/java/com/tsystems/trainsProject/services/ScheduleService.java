@@ -6,6 +6,7 @@ import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,4 +21,5 @@ public interface ScheduleService {
     String checkStationsSerialNumbers(ScheduleEntity schedule);
     ScheduleEntity findById(int id);
     void delete(ScheduleEntity schedule);
+    String checkTrainEmployment(ScheduleEntity schedule);
 }
