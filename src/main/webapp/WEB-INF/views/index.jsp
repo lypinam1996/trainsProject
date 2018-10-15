@@ -16,13 +16,22 @@
     <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
-    <form action="/login" method="get">
-        <input type="submit" value="Login"class="login"/>
-    </form>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
         <div class="dropdown-divider"></div>
     </div>
+    <c:choose>
+        <c:when test="${auth.equals('anonymousUser')}">
+            <form action="/login" method="get">
+                <input type="submit" value="Login"class="login"/>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <form action="/logout" method="get">
+                <input type="submit" value="Logout"class="login"/>
+            </form>
+        </c:otherwise>
+    </c:choose>
 </div>
 <div class="container">
     <h1 class="text-center marg"><strong>Search for the cheapest train tickets</strong></h1>

@@ -93,6 +93,33 @@ a:hover{
    margin-top: -10%;
     margin-left: 10%;
 }
+.aStyle{
+    color: #bf4031;
+    font-size: 20pt;
+
+}
+
+.aStyle:hover{
+    color: #bf4031;
+
+}
+
+.login{
+    margin-left: 85%;
+    margin-top: -45px;
+    height: 45px;
+    width:130px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    border-color: white;
+    border-width: 1.5px;
+    font-size: 12pt;
+}
+
+.header{
+    background-color: #008ca5;
+}
 
 
 

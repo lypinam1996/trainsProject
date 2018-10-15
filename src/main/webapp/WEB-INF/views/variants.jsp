@@ -15,17 +15,9 @@
 </head>
 <body>
 <div class="nav-item dropdown">
-    <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Menu
-    </button>
-    <form action="/login" method="get">
-        <input type="submit" value="Login"class="login"/>
+    <form action="/" method="get">
+        <input type="submit" value="Back" class="login" style="margin-top: 10px"/>
     </form>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-    </div>
 </div>
 <div class="main">
     <div class="container">

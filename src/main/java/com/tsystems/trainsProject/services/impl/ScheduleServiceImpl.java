@@ -74,7 +74,37 @@ public class ScheduleServiceImpl implements ScheduleService {
         return result;
     }
 
+    @Override
+    public void saveOrUpdate(ScheduleEntity schedule) {
+        scheduleDAO.saveOrUpdate(schedule);
+    }
 
+    @Override
+    public String checkStationsSerialNumbers(ScheduleEntity schedule){
+        String error = "";
+        BranchLineEntity branch = schedule.getBranch();
+        StationEntity firstStation = schedule.getFirstStation();
+        StationEntity lastStation = schedule.getLastStation();
+        int numberFistStation=0;
+        int numberLastStation=0;
+        for(int i=0;i<branch.getDetailedInf().size();i++){
+            if(branch.getDetailedInf().get(i).getStation().equals(firstStation)){
+                numberFistStation=branch.getDetailedInf().get(i).getStationSerialNumber();
+            }
+            if(branch.getDetailedInf().get(i).getStation().equals(lastStation)){
+                numberLastStation=branch.getDetailedInf().get(i).getStationSerialNumber();
+            }
+        }
+        if(numberFistStation>numberLastStation){
+            error="*Error in entering stations";
+        }
+        return error;
+    }
+
+    @Override
+    public ScheduleEntity findById(int id) {
+        return scheduleDAO.findById(id);
+    }
 
 
 }

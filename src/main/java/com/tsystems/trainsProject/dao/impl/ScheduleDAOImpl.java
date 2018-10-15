@@ -26,4 +26,15 @@ public class ScheduleDAOImpl extends AbstractDAO<Integer,ScheduleEntity> impleme
         return (List<ScheduleEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
 
+    @Override
+    public void saveOrUpdate(ScheduleEntity schedule) {
+        getSession().saveOrUpdate(schedule);
+    }
+
+    @Override
+    public ScheduleEntity findById(int id) {
+        Criteria criteria = getSession().createCriteria(ScheduleEntity.class);
+        criteria.add(Restrictions.eq("idSchedule", id));
+        return (ScheduleEntity) criteria.uniqueResult();
+    }
 }

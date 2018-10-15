@@ -6,6 +6,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -77,4 +80,11 @@ public class AppConfig {
             transactionManager.setSessionFactory(localSessionFactory().getObject());
             return transactionManager;
         }
+
+//        @Bean
+//        public MultipartResolver multipartResolver(){
+//            MultipartResolver multipartResolver = new CommonsMultipartResolver();
+//            //multipartResolver.
+//            return multipartResolver;
+//        }
     }

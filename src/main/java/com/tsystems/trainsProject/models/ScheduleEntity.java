@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -10,6 +12,7 @@ import java.util.List;
 @Table(name = "schedule", schema = "trains")
 public class ScheduleEntity {
     private int idSchedule;
+    @DateTimeFormat(pattern = "HH:mm")
     private Date departureTime;
     private TrainEntity train;
     private BranchLineEntity branch;

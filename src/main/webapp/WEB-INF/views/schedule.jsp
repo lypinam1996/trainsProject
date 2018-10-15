@@ -18,9 +18,18 @@
     <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
-    <form action="/login" method="get">
-        <input type="submit" value="Login"class="login"/>
-    </form>
+    <c:choose>
+        <c:when test="${auth.equals('anonymousUser')}">
+            <form action="/login" method="get">
+                <input type="submit" value="Login"class="login"/>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <form action="/logout" method="get">
+                <input type="submit" value="Logout"class="login"/>
+            </form>
+        </c:otherwise>
+    </c:choose>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
         <div class="dropdown-divider"></div>
@@ -48,8 +57,21 @@
                                 <td>${schedule.firstStation.stationName}</td>
                                 <td>${schedule.lastStation.stationName}</td>
                                 <td>${schedule.departureTime.getHours()}:${schedule.departureTime.getMinutes()}</td>
+                                <td><a href="/updateSchedule/${schedule.idSchedule}">
+                                    Edit
+                                </a></td>
+                                <td><a href="/deleteSchedule/${schedule.idSchedule}">
+                                    Delete
+                                </a></td>
                             </tr>
                         </c:forEach>
+                        <tr style="background-color: #CBEEF4">
+                            <td><form action="/createSchedule" method="get">
+                                <input type="submit" value="Add new train in schedule" style="margin-top: 1%; margin-left: 1%" class="login"/>
+                            </form></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     </table>
                 </c:otherwise>
             </c:choose>

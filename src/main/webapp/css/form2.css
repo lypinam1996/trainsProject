@@ -111,3 +111,10 @@ lbl{
     color: red;
 }
 
+.inp{
+    width: 23%;
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
+}

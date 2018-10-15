@@ -81,3 +81,21 @@ div.dropdown-menu{
 
 }
 
+.inp{
+    width: 23%;
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+}
+
+tr:nth-child(even) select{
+    background-color: #CBEEF4;
+    border-color: #CBEEF4;
+    color: #008ca5;
+}
+
+tr:nth-child(odd) select{
+    border-color: #008ca5;
+    background-color: #008ca5;
+    color: #CBEEF4;
+}

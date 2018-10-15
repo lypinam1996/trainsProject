@@ -36,8 +36,8 @@ public class MainController {
             result= userActions(model, auth, search);
         }
         else {
-            if (user.getRole().getTitle().equals("ADMIN")) {
-                result= "redirect:/branches";
+            if (user.getRole().getTitle().equals("WORKER")) {
+                result= "workerMainPage";
             }
         }
         return result;

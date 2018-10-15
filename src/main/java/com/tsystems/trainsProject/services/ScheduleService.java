@@ -16,4 +16,7 @@ public interface ScheduleService {
     List<ScheduleEntity> findSchedulesByBranch(Map<BranchLineEntity,List<DetailedInfBranchEntity>> detailedInfBranchList,
                                                       StationEntity firstStation,
                                                       StationEntity lastStation);
+    void saveOrUpdate(ScheduleEntity schedule);
+    String checkStationsSerialNumbers(ScheduleEntity schedule);
+    ScheduleEntity findById(int id);
 }
