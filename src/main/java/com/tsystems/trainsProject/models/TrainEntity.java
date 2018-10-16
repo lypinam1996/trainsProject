@@ -1,5 +1,8 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +14,7 @@ public class TrainEntity {
     private Integer numberOfSeats;
     private List<ScheduleEntity> schedule;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "train")
     public List<ScheduleEntity> getSchedule() {
         return schedule;

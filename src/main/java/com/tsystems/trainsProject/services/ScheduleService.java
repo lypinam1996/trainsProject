@@ -21,5 +21,5 @@ public interface ScheduleService {
     String checkStationsSerialNumbers(ScheduleEntity schedule);
     ScheduleEntity findById(int id);
     void delete(ScheduleEntity schedule);
-    String checkTrainEmployment(ScheduleEntity schedule);
+    List<String>  validation(ScheduleEntity schedule);
 }

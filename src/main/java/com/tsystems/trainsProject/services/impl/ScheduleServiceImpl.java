@@ -2,10 +2,7 @@ package com.tsystems.trainsProject.services.impl;
 
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.ScheduleDAOImpl;
-import com.tsystems.trainsProject.models.BranchLineEntity;
-import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
-import com.tsystems.trainsProject.models.ScheduleEntity;
-import com.tsystems.trainsProject.models.StationEntity;
+import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +82,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         scheduleDAO.saveOrUpdate(schedule);
     }
 
-    @Override
     public String checkStationsSerialNumbers(ScheduleEntity schedule) {
         String error = "";
         BranchLineEntity branch = schedule.getBranch();
@@ -101,18 +97,30 @@ public class ScheduleServiceImpl implements ScheduleService {
                 numberLastStation = branch.getDetailedInf().get(i).getStationSerialNumber();
             }
         }
-        if (numberFistStation > numberLastStation) {
+        if (numberFistStation >= numberLastStation) {
             error = "*Error in entering stations";
         }
         return error;
     }
 
-    @Override
-    public String checkTrainEmployment(ScheduleEntity schedule) {
+    public String checkBranchEmployment(ScheduleEntity schedule) {
         String error = "";
         BranchLineEntity branch = schedule.getBranch();
         List<ScheduleEntity> schedulesOnBranch = branch.getSchedule();
         List<Date> employmentTime = evaluateTime(schedulesOnBranch);
+        return compareTime(employmentTime,schedule);
+    }
+
+    public String checkTrainEmployment(ScheduleEntity schedule){
+        String error = "";
+        TrainEntity train = schedule.getTrain();
+        List<ScheduleEntity> schedulesWithTrain = train.getSchedule();
+        List<Date> employmentTime = evaluateTime(schedulesWithTrain);
+        return compareTime(employmentTime,schedule);
+    }
+
+    private String compareTime(List<Date> employmentTime,ScheduleEntity schedule ){
+        String error = "";
         List<ScheduleEntity> schedules = new ArrayList<>();
         schedules.add(schedule);
         List<Date> timeToSave=evaluateTime(schedules);
@@ -134,8 +142,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return error;
     }
 
-
-    public List<Date> evaluateTime(List<ScheduleEntity> schedule) {
+    private List<Date> evaluateTime(List<ScheduleEntity> schedule) {
         List<Date> result = new ArrayList<>();
         try {
 
@@ -193,6 +200,21 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public void delete(ScheduleEntity schedule) {
         scheduleDAO.delete(schedule);
+    }
+
+    @Override
+    public List<String> validation(ScheduleEntity schedule) {
+        List<String> errors = new ArrayList<>();
+        if(!checkBranchEmployment(schedule).equals("")){
+            errors.add(checkBranchEmployment(schedule));
+        }
+        if(!checkStationsSerialNumbers(schedule).equals("")){
+            errors.add(checkStationsSerialNumbers(schedule));
+        }
+        if(!checkTrainEmployment(schedule).equals("")){
+            errors.add(checkTrainEmployment(schedule));
+        }
+       return errors;
     }
 
 

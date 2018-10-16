@@ -39,9 +39,12 @@
                 <form:input type="hidden" path="idSchedule"/>
                 <form:input type="hidden" path="branch.idBranchLine"/>
                 <c:choose>
-                    <c:when test="${!error.isEmpty()}">
-                        <div class="errors">${error}</div>
-                    </c:when>
+                    <c:when test="${!errors.isEmpty()}">
+                        <div class="errors">
+                            <c:forEach items="${errors}" var="error">
+                                <div>${error}</div>
+                            </c:forEach>
+                        </div></c:when>
                 </c:choose>
                 <div class="form-group">
                     <label for="train">Train</label>

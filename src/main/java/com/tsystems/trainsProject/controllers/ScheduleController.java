@@ -59,19 +59,19 @@ public class ScheduleController {
 
     @RequestMapping(value = "/createSchedule/{pk}", method = RequestMethod.GET)
     public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule, Model model) {
-        String error = "";
+        List<String>  errors = new ArrayList<>();
         BranchLineEntity branchLineEntity = branchService.findById(pk);
         schedule.setBranch(branchLineEntity);
-        return create(schedule, model, error, "createSchedule", branchLineEntity);
+        return create(schedule, model, errors, "createSchedule", branchLineEntity);
     }
 
-    private String create(ScheduleEntity schedule, Model model, String error, String type, BranchLineEntity branchLineEntity) {
+    private String create(ScheduleEntity schedule, Model model, List<String>  errors, String type, BranchLineEntity branchLineEntity) {
         List<TrainEntity> trains = trainService.findAllTrains();
         List<StationEntity> stations = new ArrayList<>();
         for (int i = 0; i < branchLineEntity.getDetailedInf().size(); i++) {
             stations.add(branchLineEntity.getDetailedInf().get(i).getStation());
         }
-        model.addAttribute("error", error);
+        model.addAttribute("errors", errors);
         model.addAttribute("stations", stations);
         model.addAttribute("type", type);
         model.addAttribute("trains", trains);
@@ -85,10 +85,9 @@ public class ScheduleController {
         schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
         schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
         schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
-        String error = scheduleService.checkStationsSerialNumbers(schedule);
-        String er = scheduleService.checkTrainEmployment(schedule);
-        if (!error.equals("")) {
-            return create(schedule, model, error, "createTrain", schedule.getBranch());
+        List<String>  errors = scheduleService.validation(schedule);
+        if (!errors.isEmpty()) {
+            return create(schedule, model, errors, "createTrain", schedule.getBranch());
         }
         scheduleService.saveOrUpdate(schedule);
         return "redirect:/schedule";
@@ -96,14 +95,14 @@ public class ScheduleController {
 
     @RequestMapping(value = "/updateSchedule/{pk}", method = RequestMethod.GET)
     public String updateTrain(@PathVariable Integer pk, Model model) {
-        String error = "";
+        List<String>  errors = new ArrayList<>();
         ScheduleEntity schedule = scheduleService.findById(pk);
         List<TrainEntity> trains = trainService.findAllTrains();
         List<StationEntity> stations = new ArrayList<>();
         for (int i = 0; i < schedule.getBranch().getDetailedInf().size(); i++) {
             stations.add(schedule.getBranch().getDetailedInf().get(i).getStation());
         }
-        model.addAttribute("error", error);
+        model.addAttribute("errors", errors);
         model.addAttribute("stations", stations);
         model.addAttribute("type", "updateSchedule");
         model.addAttribute("trains", trains);
@@ -119,9 +118,9 @@ public class ScheduleController {
         schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
         schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
         schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
-        String error = scheduleService.checkStationsSerialNumbers(schedule);
-        if (!error.equals("")) {
-              return create(schedule,model,error,"updateSchedule",schedule.getBranch());
+        List<String>  errors = scheduleService.validation(schedule);
+        if (!errors.isEmpty()) {
+              return create(schedule,model,errors,"updateSchedule",schedule.getBranch());
         }
         scheduleService.saveOrUpdate(schedule);
         return "redirect:/schedule";

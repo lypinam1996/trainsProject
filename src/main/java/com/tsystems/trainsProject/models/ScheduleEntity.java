@@ -62,6 +62,7 @@ public class ScheduleEntity {
         this.branch = branch;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToOne
     @JoinColumn(name = "id_train", referencedColumnName = "id_train")
     public TrainEntity getTrain() {
