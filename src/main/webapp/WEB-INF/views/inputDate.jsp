@@ -30,6 +30,11 @@
         <div class="col-md-12">
             <form:form action="/chooseTicket" modelAttribute="ticket"
                        method="POST">
+                <c:choose>
+                    <c:when test="${!error.isEmpty()}">
+                        <div class="errors">${error}</div>
+                    </c:when>
+                </c:choose>
                 <div class="form-group">
                     <label  for="departureDate">Departure date</label>
                     <form:input class="form-control inp" type="date" path="departureDate"/>
@@ -52,6 +57,7 @@
                 </div>
                 <form:input  type="hidden" path="idTicket"/>
                 <form:input  type="hidden" path="schedule.idSchedule"/>
+                <form:input  type="hidden" path="seat"/>
                 <form:input  type="hidden" path="firstStation.idStation"/>
                 <form:input  type="hidden" path="lastStation.idStation"/>
                 <form:input  type="hidden" path="departureTime"/>

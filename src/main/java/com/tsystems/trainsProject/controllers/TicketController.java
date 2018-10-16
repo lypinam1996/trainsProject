@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -43,12 +44,31 @@ public class TicketController {
     @RequestMapping(value = "/chooseTicket", method = RequestMethod.POST)
     public String postTIcket( @ModelAttribute TicketEntity ticket, Model model) {
         PassangerEntity passanger = ticket.getPassanger();
-        UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        passanger.setUser(user);
-        int id=passangerService.saveOrUpdate(passanger);
-        PassangerEntity passangerEntity = passangerService.findById(id);
-        ticket.setPassanger(passangerEntity);
-        ticketService.saveOrUpdate(ticket);
-        return "redirect:/";
+        if(passangerService.checkTheEqualtyPassanger(passanger)) {
+            Date date = new Date();
+            if(ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes()-
+                    date.getHours()*60+date.getMinutes()>10) {
+                if(ticket.getSchedule().get)
+                UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+                passanger.setUser(user);
+                int id = passangerService.saveOrUpdate(passanger);
+                PassangerEntity passangerEntity = passangerService.findById(id);
+                ticket.setPassanger(passangerEntity);
+                ticketService.saveOrUpdate(ticket);
+                return "redirect:/";
+            }
+            else{
+                String error = "*You can't buy ticket after ////";
+                model.addAttribute("error",error);
+                model.addAttribute("ticket",ticket);
+                return "inputDate";
+            }
+        }
+        else {
+            String error = "*Passanger has already had a ticket at this train.";
+            model.addAttribute("error",error);
+            model.addAttribute("ticket",ticket);
+            return "inputDate";
+        }
     }
 }

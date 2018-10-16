@@ -35,6 +35,24 @@ public class PassangerServiceImpl implements PassangerService {
         passangerDAO.saveOrUpdate(passanger);
         return id+1;
     }
+    @Override
+    public boolean checkTheEqualtyPassanger(PassangerEntity passanger){
+        boolean ok = true;
+        int i=0;
+        List<PassangerEntity> allPassangers = passangerDAO.findAllPassangers();
+        while (i<allPassangers.size() && ok){
+            if(allPassangers.get(i).getDateOfBirth().compareTo(passanger.getDateOfBirth())==0 &&
+                    allPassangers.get(i).getName().equals(passanger.getName()) &&
+                    allPassangers.get(i).getSurname().equals(passanger.getSurname()) &&
+                    allPassangers.get(i).getPatronymic().equals(passanger.getPatronymic())){
+                ok=false;
+            }
+            else{
+                i++;
+            }
+        }
+        return ok;
+    }
 
     @Override
     public PassangerEntity findById(int id) {
