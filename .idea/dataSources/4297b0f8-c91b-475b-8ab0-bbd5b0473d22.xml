@@ -1011,12 +1011,16 @@
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>station</RefTableName>
       <RefColNames>id_station</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="255" parent="235" name="id_branch2">
       <ColNames>id_branch</ColNames>
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>branch_line</RefTableName>
       <RefColNames>id_branch_line</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="256" parent="236" name="id_passanger">
       <Position>1</Position>
@@ -1134,6 +1138,8 @@
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>train</RefTableName>
       <RefColNames>id_train</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="280" parent="238" name="fk_branch">
       <ColNames>id_branch</ColNames>
@@ -1217,108 +1223,113 @@
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="295" parent="240" name="fk_passanger2_idx">
+    <column id="295" parent="240" name="departure_date">
+      <Position>10</Position>
+      <DataType>date|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="296" parent="240" name="fk_passanger2_idx">
       <ColNames>id_passanger</ColNames>
     </index>
-    <index id="296" parent="240" name="fk_schedule_idx">
+    <index id="297" parent="240" name="fk_schedule_idx">
       <ColNames>id_schedule</ColNames>
     </index>
-    <index id="297" parent="240" name="fk_first_station_idx">
+    <index id="298" parent="240" name="fk_first_station_idx">
       <ColNames>id_first_station</ColNames>
     </index>
-    <index id="298" parent="240" name="fk_last_station_idx">
+    <index id="299" parent="240" name="fk_last_station_idx">
       <ColNames>id_last_station</ColNames>
     </index>
-    <key id="299" parent="240" name="PRIMARY">
+    <key id="300" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_ticket</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="300" parent="240" name="fk_passanger2">
+    <foreign-key id="301" parent="240" name="fk_passanger2">
       <ColNames>id_passanger</ColNames>
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>passanger</RefTableName>
       <RefColNames>id_passanger</RefColNames>
     </foreign-key>
-    <foreign-key id="301" parent="240" name="fk_schedule">
+    <foreign-key id="302" parent="240" name="fk_schedule">
       <ColNames>id_schedule</ColNames>
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>schedule</RefTableName>
       <RefColNames>id_schedule</RefColNames>
     </foreign-key>
-    <foreign-key id="302" parent="240" name="fk_first_station">
+    <foreign-key id="303" parent="240" name="fk_first_station">
       <ColNames>id_first_station</ColNames>
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>station</RefTableName>
       <RefColNames>id_station</RefColNames>
     </foreign-key>
-    <foreign-key id="303" parent="240" name="fk_last_station">
+    <foreign-key id="304" parent="240" name="fk_last_station">
       <ColNames>id_last_station</ColNames>
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>station</RefTableName>
       <RefColNames>id_station</RefColNames>
     </foreign-key>
-    <column id="304" parent="241" name="id_train">
+    <column id="305" parent="241" name="id_train">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="241" name="number">
+    <column id="306" parent="241" name="number">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="241" name="number_of_seats">
+    <column id="307" parent="241" name="number_of_seats">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="307" parent="241" name="number_UNIQUE">
+    <index id="308" parent="241" name="number_UNIQUE">
       <ColNames>number</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="308" parent="241" name="PRIMARY">
+    <key id="309" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_train</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="309" parent="241" name="number_UNIQUE">
+    <key id="310" parent="241" name="number_UNIQUE">
       <ColNames>number</ColNames>
       <UnderlyingIndexName>number_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="310" parent="242" name="id_user">
+    <column id="311" parent="242" name="id_user">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="242" name="login">
+    <column id="312" parent="242" name="login">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="242" name="password">
+    <column id="313" parent="242" name="password">
       <Position>3</Position>
       <DataType>varchar(200)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="242" name="id_role">
+    <column id="314" parent="242" name="id_role">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="314" parent="242" name="fk_role_idx">
+    <index id="315" parent="242" name="fk_role_idx">
       <ColNames>id_role</ColNames>
     </index>
-    <key id="315" parent="242" name="PRIMARY">
+    <key id="316" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_user</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="316" parent="242" name="fk_role">
+    <foreign-key id="317" parent="242" name="fk_role">
       <ColNames>id_role</ColNames>
       <RefSchemaName>trains</RefSchemaName>
       <RefTableName>role</RefTableName>

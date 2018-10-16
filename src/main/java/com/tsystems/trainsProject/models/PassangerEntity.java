@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -8,10 +10,12 @@ import java.util.List;
 @Entity
 @Table(name = "passanger", schema = "trains", catalog = "")
 public class PassangerEntity {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPassanger;
     private String name;
     private String surname;
     private String patronymic;
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date dateOfBirth;
     private UserEntity user;
     private List<TicketEntity> tickets;

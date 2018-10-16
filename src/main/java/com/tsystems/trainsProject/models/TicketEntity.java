@@ -1,20 +1,29 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.Cascade;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "ticket", schema = "trains", catalog = "")
 public class TicketEntity {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTicket;
+    @DateTimeFormat(pattern = "HH:mm")
     private Date departureTime;
+    @DateTimeFormat(pattern = "HH:mm")
     private Date arrivalTime;
-    private String seat;
+    private int seat;
     private PassangerEntity passanger;
     private ScheduleEntity schedule;
     private StationEntity firstStation;
     private StationEntity lastStation;
+    @DateTimeFormat(pattern = "HH:mm")
     private Date journeyTime;
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private Date departureDate;
 
     @ManyToOne
     @JoinColumn(name = "id_first_station", referencedColumnName = "id_station")
@@ -46,6 +55,7 @@ public class TicketEntity {
         this.schedule = schedule;
     }
 
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @ManyToOne
     @JoinColumn(name = "id_passanger", referencedColumnName = "id_passanger")
     public PassangerEntity getPassanger() {
@@ -105,11 +115,11 @@ public class TicketEntity {
 
     @Basic
     @Column(name = "seat", nullable = true, length = 45)
-    public String getSeat() {
+    public int getSeat() {
         return seat;
     }
 
-    public void setSeat(String seat) {
+    public void setSeat(int seat) {
         this.seat = seat;
     }
 
@@ -121,5 +131,15 @@ public class TicketEntity {
 
     public void setJourneyTime(Date journeyTime) {
         this.journeyTime = journeyTime;
+    }
+
+    @Basic
+    @Column(name = "departure_date", nullable = true)
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
     }
 }

@@ -2,8 +2,10 @@ package com.tsystems.trainsProject.controllers;
 
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.StationService;
+import com.tsystems.trainsProject.services.TicketService;
 import com.tsystems.trainsProject.services.TrainService;
 import com.tsystems.trainsProject.services.impl.SearchTrain;
+import com.tsystems.trainsProject.services.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,6 +39,9 @@ public class TrainController {
     @Autowired
     StationService stationService;
 
+    @Autowired
+    TicketService ticketService;
+
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView getAllTrains() {
         ModelAndView model = new ModelAndView();
@@ -66,6 +71,15 @@ public class TrainController {
             ticket.setLastStation(station2);
             int difference = (ticket.getArrivalTime().getHours()*60+ticket.getArrivalTime().getMinutes())-(ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes());
             ticket.setJourneyTime(strToTime(intToTime(difference)));
+            ticket.setSeat(-1);
+            if(ticketService.findAllTickets().size()!=0) {
+                int id = ticketService.findAllTickets().get(ticketService.findAllTickets().size() - 1).getIdTicket();
+                ticket.setIdTicket(id + 1);
+            }
+            else {
+                ticket.setIdTicket(1);
+            }
+            ticketService.saveOrUpdate(ticket);
             tickets.add(ticket);
         }
         model.addAttribute("tickets",tickets);

@@ -45,6 +45,9 @@
                                 <td>${ticket.departureTime.getHours()}:${ticket.departureTime.getMinutes()}</td>
                                 <td>${ticket.arrivalTime.getHours()}:${ticket.arrivalTime.getMinutes()}</td>
                                 <td>${ticket.journeyTime.getHours()}:${ticket.journeyTime.getMinutes()}</td>
+                                <td><a href="/chooseTicket/${ticket.idTicket}">
+                                    Choose
+                                </a></td>
                             </tr>
                         </c:forEach>
                     </table>
