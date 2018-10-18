@@ -40,6 +40,7 @@ public class TicketServiceImpl implements TicketService {
         return ticketDAO.findById(id);
     }
 
+    @Override
     public String checkNumberOfTicket(TicketEntity ticket){
         String error="";
         List<TicketEntity> ticketEntities = new ArrayList<>();

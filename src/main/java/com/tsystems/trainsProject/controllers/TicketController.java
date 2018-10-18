@@ -47,15 +47,22 @@ public class TicketController {
         if(passangerService.checkTheEqualtyPassanger(passanger)) {
             Date date = new Date();
             if(ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes()-
-                    date.getHours()*60+date.getMinutes()>10) {
-                if(ticket.getSchedule().get)
-                UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-                passanger.setUser(user);
-                int id = passangerService.saveOrUpdate(passanger);
-                PassangerEntity passangerEntity = passangerService.findById(id);
-                ticket.setPassanger(passangerEntity);
-                ticketService.saveOrUpdate(ticket);
-                return "redirect:/";
+                    date.getHours()*60+date.getMinutes()<10) {
+                if(ticketService.checkNumberOfTicket(ticket).equals("")) {
+                    UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+                    passanger.setUser(user);
+                    int id = passangerService.saveOrUpdate(passanger);
+                    PassangerEntity passangerEntity = passangerService.findById(id);
+                    ticket.setPassanger(passangerEntity);
+                    ticketService.saveOrUpdate(ticket);
+                    return "redirect:/";
+                }
+                else {
+                    String error = ticketService.checkNumberOfTicket(ticket);
+                    model.addAttribute("error",error);
+                    model.addAttribute("ticket",ticket);
+                    return "inputDate";
+                }
             }
             else{
                 String error = "*You can't buy ticket after ////";

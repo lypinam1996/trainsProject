@@ -9,4 +9,5 @@ public interface TicketService {
     TicketEntity findByName(String name);
     void saveOrUpdate(TicketEntity station);
     TicketEntity findById(int id);
+    String checkNumberOfTicket(TicketEntity ticket);
 }
