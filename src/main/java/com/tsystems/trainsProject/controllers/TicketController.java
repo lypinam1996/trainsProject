@@ -66,17 +66,17 @@ public class TicketController {
                 }
             }
             if (passangerService.checkTheEqualtyPassanger(passanger, allPassangersOnTRain)) {
-                if (ticketService.checkNumberOfTicket(ticket).equals("")) {
-                    UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-                    int id = passangerService.saveOrUpdate(passanger);
-                    PassangerEntity passangerEntity = passangerService.findById(id);
-                    passangerEntity.setUser(user);
-                    ticket.setPassanger(passangerEntity);
+                UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+                int id = passangerService.saveOrUpdate(passanger);
+                PassangerEntity passangerEntity = passangerService.findById(id);
+                passangerEntity.setUser(user);
+                ticket.setPassanger(passangerEntity);
+                if (ticketService.findSeatWithMaxNumber(ticket) != 0) {
                     ticket.setSeat(ticketService.findSeatWithMaxNumber(ticket));
                     ticketService.saveOrUpdate(ticket);
                     return "redirect:/";
                 } else {
-                    String error = ticketService.checkNumberOfTicket(ticket);
+                    String error = "*All seats are busy";
                     model.addAttribute("error", error);
                     model.addAttribute("ticket", ticket);
                     return "inputDate";
