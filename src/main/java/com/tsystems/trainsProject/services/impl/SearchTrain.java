@@ -65,7 +65,8 @@ public class SearchTrain {
                                               Date time1, Date time2,
                                               StationEntity firstStation,
                                               StationEntity lastStation) throws ParseException {
-
+        time1.setMinutes(time1.getMinutes()-1);
+        time2.setMinutes(time2.getMinutes()+1);
         Map<ScheduleEntity,List<Date>> result = new HashMap<>();
         for(int i=0;i<schedule.size();i++) {
             int depTime = schedule.get(i).getDepartureTime().getHours()*60+schedule.get(i).getDepartureTime().getMinutes();

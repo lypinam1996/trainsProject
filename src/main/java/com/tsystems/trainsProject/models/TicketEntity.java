@@ -1,6 +1,8 @@
 package com.tsystems.trainsProject.models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -22,7 +24,7 @@ public class TicketEntity {
     private StationEntity lastStation;
     @DateTimeFormat(pattern = "HH:mm")
     private Date journeyTime;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-M-dd")
     private Date departureDate;
 
     @ManyToOne
@@ -45,6 +47,7 @@ public class TicketEntity {
         this.lastStation = lastStation;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToOne
     @JoinColumn(name = "id_schedule", referencedColumnName = "id_schedule")
     public ScheduleEntity getSchedule() {

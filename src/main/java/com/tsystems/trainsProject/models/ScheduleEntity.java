@@ -22,6 +22,7 @@ public class ScheduleEntity {
     private StationEntity lastStation;
     private List<TicketEntity> ticket;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "schedule")
     public List<TicketEntity> getTicket() {
         return ticket;

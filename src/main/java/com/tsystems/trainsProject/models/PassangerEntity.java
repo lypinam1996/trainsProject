@@ -15,7 +15,7 @@ public class PassangerEntity {
     private String name;
     private String surname;
     private String patronymic;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-M-dd")
     private Date dateOfBirth;
     private UserEntity user;
     private List<TicketEntity> tickets;

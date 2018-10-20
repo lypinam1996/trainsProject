@@ -3,6 +3,7 @@ import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.impl.PassangerDAOImpl;
 import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
 import com.tsystems.trainsProject.models.PassangerEntity;
+import com.tsystems.trainsProject.models.TicketEntity;
 import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.services.PassangerService;
 import com.tsystems.trainsProject.services.TrainService;
@@ -36,19 +37,19 @@ public class PassangerServiceImpl implements PassangerService {
         return id+1;
     }
     @Override
-    public boolean checkTheEqualtyPassanger(PassangerEntity passanger){
+    public boolean checkTheEqualtyPassanger(PassangerEntity passanger, List<PassangerEntity> allPassangers){
         boolean ok = true;
-        int i=0;
-        List<PassangerEntity> allPassangers = passangerDAO.findAllPassangers();
-        while (i<allPassangers.size() && ok){
-            if(allPassangers.get(i).getDateOfBirth().compareTo(passanger.getDateOfBirth())==0 &&
-                    allPassangers.get(i).getName().equals(passanger.getName()) &&
-                    allPassangers.get(i).getSurname().equals(passanger.getSurname()) &&
-                    allPassangers.get(i).getPatronymic().equals(passanger.getPatronymic())){
-                ok=false;
-            }
-            else{
-                i++;
+        if(!allPassangers.isEmpty()) {
+            int i = 0;
+            while (i < allPassangers.size() && ok) {
+                if (allPassangers.get(i).getDateOfBirth().compareTo(passanger.getDateOfBirth()) == 0 &&
+                        allPassangers.get(i).getName().equals(passanger.getName()) &&
+                        allPassangers.get(i).getSurname().equals(passanger.getSurname()) &&
+                        allPassangers.get(i).getPatronymic().equals(passanger.getPatronymic())) {
+                    ok = false;
+                } else {
+                    i++;
+                }
             }
         }
         return ok;
