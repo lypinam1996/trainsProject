@@ -35,4 +35,6 @@ public class TicketDAOImpl extends AbstractDAO<Integer,TicketEntity> implements 
         criteria.add(Restrictions.eq("idTicket", id));
         return (TicketEntity) criteria.uniqueResult();
     }
+
+
 }

@@ -45,6 +45,16 @@ public class TicketController {
         return "inputDate";
     }
 
+    @RequestMapping(value = "/tickets", method = RequestMethod.GET)
+    public String getUserTicket(Model model) {
+        UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<TicketEntity> tickets = user.getPassanger().getTickets();
+        tickets.get(0).getDepartureTime().toString().split(" ")[1].substring(0,4);
+        model.addAttribute("tickets", tickets);
+        return "tickets";
+    }
+
+
     @RequestMapping(value = "/chooseTicket", method = RequestMethod.POST)
     public String postTIcket(@ModelAttribute TicketEntity ticket, Model model) {
         ticketService.delete1(ticket);

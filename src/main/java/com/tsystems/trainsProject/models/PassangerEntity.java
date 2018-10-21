@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -20,6 +22,7 @@ public class PassangerEntity {
     private UserEntity user;
     private List<TicketEntity> tickets;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "passanger")
     public List<TicketEntity> getTickets() {
         return tickets;
