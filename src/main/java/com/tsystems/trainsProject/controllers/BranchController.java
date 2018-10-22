@@ -72,7 +72,6 @@ public class BranchController {
         return "editBranch";
     }
 
-    //error info business exception try catch
     @RequestMapping(value = "/createBranch", method = RequestMethod.POST)
     public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) {
         branchService.checkTheNecessityOfSaving(branch);

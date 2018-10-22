@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AuthenticationController {
@@ -28,26 +30,31 @@ public class AuthenticationController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/registration", method = RequestMethod.GET)
-    public ModelAndView registration(){
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
-        UserEntity user = new UserEntity();
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
+        List<String> errors = new ArrayList<>();
+        modelAndView.setViewName(getUser(modelAndView,errors));
         return modelAndView;
     }
+
+    private String getUser(ModelAndView modelAndView, List<String> errors) {
+        UserEntity user = new UserEntity();
+        modelAndView.addObject("errors", errors);
+        modelAndView.addObject("user", user);
+        return "registration";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@ModelAttribute("user") @Valid UserEntity user, BindingResult bindingResult) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         UserEntity userExists = userService.findByLogin(user.getLogin());
+        List<String> errors = new ArrayList<>();
         if (userExists != null) {
-            bindingResult
-                    .rejectValue("login", "error.login",
-                            "*Данный логин занят");
-
+            errors.add("*This login has already been used");
         }
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
+        if (bindingResult.hasErrors() || !errors.isEmpty()) {
+            modelAndView.setViewName(getUser(modelAndView,errors));
         } else {
             userService.saveOrUpdate(user);
             modelAndView.addObject("successMessage", "Регистрация прошла успешно");

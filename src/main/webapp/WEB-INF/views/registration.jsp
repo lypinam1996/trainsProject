@@ -19,7 +19,14 @@
                 <h2 class="text-center">Register Now</h2>
                 <h2 class="text-center">or</h2>
                 <h2 class="text-center h2A"><a style="color: #bf4031" href="<c:url value="/login"/>">Login</a></h2>
-
+                <c:choose>
+                    <c:when test="${!errors.isEmpty()}">
+                        <div class="errors">
+                            <c:forEach items="${errors}" var="error">
+                                <div>${error}</div>
+                            </c:forEach>
+                        </div></c:when>
+                </c:choose>
                 <form:form action="${login}" modelAttribute="user" class="login-form" method="POST">
                         <label class="text-uppercase">Username</label>
                         <form:input path="login" type="text" class="form-control"/>

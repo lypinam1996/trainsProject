@@ -46,7 +46,7 @@
                                 <td>
                                 <select class="inp">
                                     <c:forEach var="item" items="${branch.detailedInf}">
-                                        <option>${item.station.stationName} ${item.timeFromPrevious.getHours()}: ${item.timeFromPrevious.getMinutes()}</option>
+                                        <option>${item.station.stationName} ${item.timeFromPrevious.toString().split(" ")[1].substring(0,5)}</option>
                                     </c:forEach>
                                 </select>
                                 </td>

@@ -50,9 +50,9 @@
                                 <td>${ticket.schedule.train.number}</td>
                                 <td>${ticket.firstStation.stationName}</td>
                                 <td>${ticket.lastStation.stationName}</td>
-                                <td>${ticket.departureTime.getHours()}:${ticket.departureTime.getMinutes()}</td>
-                                <td>${ticket.arrivalTime.getHours()}:${ticket.arrivalTime.getMinutes()}</td>
-                                <td>${ticket.journeyTime.getHours()}:${ticket.journeyTime.getMinutes()}</td>
+                                <td>${ticket.departureTime.toString().split(" ")[1].substring(0,5)}</td>
+                                <td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>
+                                <td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>
                                 <c:choose>
                                     <c:when test="${role.title.equals('USER')}">
                                         <td><a href="/chooseTicket/${ticket.idTicket}">

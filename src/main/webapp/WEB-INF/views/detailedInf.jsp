@@ -52,7 +52,7 @@
                             <tr>
                                 <td>${inf.stationSerialNumber}</td>
                                 <td>${inf.station.stationName}</td>
-                                <td>${inf.timeFromPrevious.getHours()}:${inf.timeFromPrevious.getMinutes()}</td>
+                                <td>${inf.timeFromPrevious.toString().split(" ")[1].substring(0,5)}</td>
                             </tr>
                         </c:forEach>
                     </table>
