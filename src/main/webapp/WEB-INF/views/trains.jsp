@@ -35,12 +35,12 @@
 <div class="main">
     <div class="container">
         <div class="row">
-            <p>Trains</p>
             <c:choose>
                 <c:when test="${trains.size()=='0'}">
                     <p>No trains registered</p>
                 </c:when>
                 <c:otherwise>
+                    <p>Trains</p>
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Train number</td>

@@ -1,5 +1,7 @@
 package com.tsystems.trainsProject.services.impl;
+import com.tsystems.trainsProject.dao.impl.RoleDAOImpl;
 import com.tsystems.trainsProject.dao.impl.UserDAOImpl;
+import com.tsystems.trainsProject.models.RoleEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class UserServiceImpl implements UserService {
     UserDAOImpl userDao;
 
     @Autowired
+    RoleDAOImpl roleDAO;
+
+    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
@@ -33,6 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveOrUpdate(UserEntity user) {
+        RoleEntity roleEntity = roleDAO.findByTitle("USER");
+        user.setRole(roleEntity);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.saveOrUpdate(user);
     }

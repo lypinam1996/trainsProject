@@ -35,12 +35,12 @@
 <div class="main">
     <div class="container">
         <div class="row">
-            <p>Tickets</p>
             <c:choose>
                 <c:when test="${tickets.size()=='0'}">
-                    <p>No tickets registered</p>
+                    <p>No passangers registered</p>
                 </c:when>
                 <c:otherwise>
+                    <p>Tickets</p>
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Name</td>

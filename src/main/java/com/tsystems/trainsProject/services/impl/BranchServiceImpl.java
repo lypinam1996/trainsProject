@@ -93,6 +93,11 @@ public class BranchServiceImpl implements BranchService {
         return errors;
     }
 
+    @Override
+    public void delete(BranchLineEntity branch) {
+        branchDAO.delete(branch);
+    }
+
     private   String checkEqualitySerialNumbers(BranchLineEntity branch){
         String error =  "";
         List<Integer> listSN = new ArrayList<>();

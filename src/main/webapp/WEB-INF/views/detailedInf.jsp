@@ -23,17 +23,25 @@
     </form>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/stations"/>">Stations</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/trains"/>">Trains</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/branches"/>">Back</a>
     </div>
 </div>
 <div class="main">
     <div class="container">
         <div class="row">
-            <p>Branches</p>
             <c:choose>
                 <c:when test="${detailedInf.size()=='0'}">
                     <p>No detailed information registered</p>
                 </c:when>
                 <c:otherwise>
+                    <p>Branches</p>
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Station serial number</td>

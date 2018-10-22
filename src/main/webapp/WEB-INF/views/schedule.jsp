@@ -19,19 +19,7 @@
 <body>
 <div class="nav-item dropdown">
     <c:choose>
-        <c:when test="${auth.equals('anonymousUser')}">
-            <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Menu
-            </button>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
-            </div>
-            <form action="/login" method="get">
-                <input type="submit" value="Login" class="login"/>
-            </form>
-        </c:when>
-        <c:otherwise>
+        <c:when test="${role.title.equals('WORKER')}">
             <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 Menu
@@ -49,39 +37,75 @@
             <form action="/logout" method="get">
                 <input type="submit" value="Logout" class="login"/>
             </form>
+        </c:when>
+        <c:when test="${role.title.equals('USER')}">
+            <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                Menu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+            </div>
+            <form action="/logout" method="get">
+                <input type="submit" value="Logout" class="login"/>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                Menu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+            </div>
+            <form action="/login" method="get">
+                <input type="submit" value="Login" class="login"/>
+            </form>
         </c:otherwise>
     </c:choose>
 </div>
 <div class="main">
     <div class="container">
         <div class="row">
-            <p>Schedule</p>
             <c:choose>
                 <c:when test="${schedules.size()=='0'}">
                     <p>No trains registered</p>
                 </c:when>
                 <c:otherwise>
+                    <p>Schedule</p>
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Train number</td>
                             <td>Departure station</td>
                             <td>Arrival station</td>
                             <td>Departure time</td>
-                            <td></td>
-                            <td></td>
+                            <c:choose>
+                                <c:when test="${role.title.equals('WORKER')}">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </c:when>
+                            </c:choose>
                         </tr>
                         <c:forEach items="${schedules}" var="schedule">
                             <tr>
                                 <td>${schedule.train.number}</td>
                                 <td>${schedule.firstStation.stationName}</td>
                                 <td>${schedule.lastStation.stationName}</td>
-                                <td>${schedule.departureTime.getHours()}:${schedule.departureTime.getMinutes()}</td>
-                                <td><a href="/updateSchedule/${schedule.idSchedule}">
-                                    Edit
-                                </a></td>
-                                <td><a href="/deleteSchedule/${schedule.idSchedule}">
-                                    Delete
-                                </a></td>
+                                <td>${schedule.departureTime.toString().split(" ")[1].substring(0,5)}</td>
+                                <c:choose>
+                                    <c:when test="${role.title.equals('WORKER')}">
+                                        <td><a href="/updateSchedule/${schedule.idSchedule}">
+                                            Edit
+                                        </a></td>
+                                        <td><a href="/deleteSchedule/${schedule.idSchedule}">
+                                            Delete
+                                        </a></td>
+                                        <td><a href="/seeTickets/${schedule.idSchedule}">
+                                            See passangers
+                                        </a></td>
+                                    </c:when>
+                                </c:choose>
                             </tr>
                         </c:forEach>
                         <tr style="background-color: #CBEEF4">
@@ -94,8 +118,13 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <c:choose>
+                                <c:when test="${role.title.equals('WORKER')}">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </c:when>
+                            </c:choose>
                         </tr>
                     </table>
                 </c:otherwise>

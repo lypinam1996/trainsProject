@@ -33,8 +33,9 @@ public class PassangerEntity {
     }
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_user")
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     public UserEntity getUser() {
         return user;
     }

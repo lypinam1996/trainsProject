@@ -1,7 +1,5 @@
 package com.tsystems.trainsProject.config;
 
-
-
 import com.tsystems.trainsProject.services.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,11 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
+import java.util.HashSet;
+import java.util.Set;
 
 @Configuration
 @EnableWebSecurity
@@ -25,8 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    // регистрируем нашу реализацию UserDetailsService
-    // а также PasswordEncoder для приведения пароля в формат SHA1
     @Autowired
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -36,43 +35,52 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // включаем защиту от CSRF атак
-        http.csrf()
-                .disable()
-                // указываем правила запросов
-                // по которым будет определятся доступ к ресурсам и остальным данным
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/**").permitAll()
-                .anyRequest().permitAll()
-                .and();
-
-        http.formLogin()
-                // указываем страницу с формой логина
+        http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/schedule").permitAll()
+                .antMatchers("/chooseTicket/{id}").hasAuthority("USER")
+                .antMatchers("/tickets").hasAuthority("USER")
+                .antMatchers("/updateSchedule/{id}").hasAuthority("WORKER")
+                .antMatchers("/deleteSchedule/{id}").hasAuthority("WORKER")
+                .antMatchers("/createSchedule").hasAuthority("WORKER")
+                .antMatchers("/seeTickets/{id}").hasAuthority("WORKER")
+                .antMatchers("/branches").hasAuthority("WORKER")
+                .antMatchers("/createBranch").hasAuthority("WORKER")
+                .antMatchers("/updateBranch/{id}").hasAuthority("WORKER")
+                .antMatchers("/deleteBranch/{id}").hasAuthority("WORKER")
+                .antMatchers("/detailedInf/{id}").hasAuthority("WORKER")
+                .antMatchers("/stations").hasAuthority("WORKER")
+                .antMatchers("/createStation").hasAuthority("WORKER")
+                .antMatchers("/updateStation/{id}").hasAuthority("WORKER")
+                .antMatchers("/deleteStation/{id}").hasAuthority("WORKER")
+                .antMatchers("/trains").hasAuthority("WORKER")
+                .antMatchers("/createTrain").hasAuthority("WORKER")
+                .antMatchers("/updateTrain/{id}").hasAuthority("WORKER")
+                .antMatchers("/deleteTrain/{id}").hasAuthority("WORKER")
+                .anyRequest()
+                .authenticated().and().csrf().disable()
+        .formLogin()
                 .loginPage("/login")
-                // указываем action с формы логина
                 .loginProcessingUrl("/j_spring_security_check")
-                // указываем URL при неудачном логине
                 .failureUrl("/login?error")
-                // Указываем параметры логина и пароля с формы логина
                 .usernameParameter("login")
                 .passwordParameter("password")
-                // даем доступ к форме логина всем
-                .permitAll();
-
-        http.logout()
-                // разрешаем делать логаут всем
                 .permitAll()
-                // указываем URL логаута
+                .and()
+       .logout()
+                .permitAll()
                 .logoutUrl("/logout")
-                // указываем URL при удачном логауте
                 .logoutSuccessUrl("/login?logout")
-                // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
-
     }
 
-    // Указываем Spring контейнеру, что надо инициализировать ShaPasswordEncoder
-    // Это можно вынести в WebAppConfig, но для понимаемости оставил тут
+
+    @Override
+    public void configure(WebSecurity web) throws Exception{
+        web.ignoring()
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**");
+    }
     @Bean
     public BCryptPasswordEncoder getShaPasswordEncoder(){
         return new BCryptPasswordEncoder();

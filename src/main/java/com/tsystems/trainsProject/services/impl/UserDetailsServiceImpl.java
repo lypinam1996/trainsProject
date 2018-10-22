@@ -1,7 +1,5 @@
 package com.tsystems.trainsProject.services.impl;
 
-
-import com.tsystems.trainsProject.enums.UserRoleEnum;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserService userService;
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // с помощью нашего сервиса UserService получаем User
         UserEntity user = userService.findByLogin(email);
-        // указываем роли для этого пользователя
         Set<GrantedAuthority> roles = new HashSet();
-        roles.add(new SimpleGrantedAuthority(UserRoleEnum.USER.name()));
-
-        // на основании полученных данных формируем объект UserDetails
-        // который позволит проверить введенный пользователем логин и пароль
-        // и уже потом аутентифицировать пользователя
+        roles.add(new SimpleGrantedAuthority(user.getRole().getTitle()));
         UserDetails userDetails =
                 new org.springframework.security.core.userdetails.User(user.getLogin(),
                         user.getPassword(),

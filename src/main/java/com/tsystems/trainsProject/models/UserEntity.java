@@ -1,6 +1,10 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "trains", catalog = "")
@@ -9,14 +13,15 @@ public class UserEntity {
     private String login;
     private String password;
     private RoleEntity role;
-    private PassangerEntity passanger;
+    private List<PassangerEntity> passanger;
 
-    @OneToOne(mappedBy = "user")
-    public PassangerEntity getPassanger() {
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "user")
+    public List<PassangerEntity> getPassanger() {
         return passanger;
     }
 
-    public void setPassanger(PassangerEntity passanger) {
+    public void setPassanger(List<PassangerEntity> passanger) {
         this.passanger = passanger;
     }
 

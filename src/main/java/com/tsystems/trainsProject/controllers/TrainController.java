@@ -4,6 +4,7 @@ import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.TicketService;
 import com.tsystems.trainsProject.services.TrainService;
+import com.tsystems.trainsProject.services.UserService;
 import com.tsystems.trainsProject.services.impl.SearchTrain;
 import com.tsystems.trainsProject.services.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,9 @@ public class TrainController {
     @Autowired
     TicketService ticketService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView getAllTrains() {
         ModelAndView model = new ModelAndView();
@@ -60,6 +64,8 @@ public class TrainController {
                                        Model model) throws ParseException {
         Map<ScheduleEntity,List<Date>> variants = searchService.search(search,bindingResult);
         List<TicketEntity> tickets = new ArrayList<>();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        RoleEntity role = new RoleEntity();
         for (Map.Entry<ScheduleEntity, List<Date>> entry : variants.entrySet()) {
             TicketEntity ticket = new TicketEntity();
             ticket.setSchedule(entry.getKey());
@@ -72,16 +78,20 @@ public class TrainController {
             int difference = (ticket.getArrivalTime().getHours()*60+ticket.getArrivalTime().getMinutes())-(ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes());
             ticket.setJourneyTime(strToTime(intToTime(difference)));
             ticket.setSeat(-1);
-            if(ticketService.findAllTickets().size()!=0) {
+            if (ticketService.findAllTickets().size() != 0) {
                 int id = ticketService.findAllTickets().get(ticketService.findAllTickets().size() - 1).getIdTicket();
                 ticket.setIdTicket(id + 1);
-            }
-            else {
+            } else {
                 ticket.setIdTicket(1);
             }
-            ticketService.saveOrUpdate(ticket);
             tickets.add(ticket);
+            if(!auth.getName().equals("anonymousUser")) {
+                UserEntity user = userService.findByLogin(auth.getName());
+                role = user.getRole();
+                ticketService.saveOrUpdate(ticket);
+            }
         }
+        model.addAttribute("role",role);
         model.addAttribute("tickets",tickets);
         return "variants";
     }

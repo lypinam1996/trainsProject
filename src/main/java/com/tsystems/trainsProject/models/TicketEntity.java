@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "ticket", schema = "trains", catalog = "")
-public class TicketEntity {
+public class TicketEntity implements Comparable<TicketEntity>{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTicket;
     @DateTimeFormat(pattern = "HH:mm")
@@ -144,5 +144,10 @@ public class TicketEntity {
 
     public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
+    }
+
+    @Override
+    public int compareTo(TicketEntity ticketEntity) {
+        return departureDate.compareTo(ticketEntity.getDepartureDate());
     }
 }

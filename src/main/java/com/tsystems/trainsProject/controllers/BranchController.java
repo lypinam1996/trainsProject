@@ -108,4 +108,11 @@ public class BranchController {
         branchService.saveOrUpdate(branch);
         return "redirect:/branches";
     }
+
+    @RequestMapping(value = "/deleteBranch/{pk}", method = RequestMethod.GET)
+    public String deleteBranch(@PathVariable Integer pk, Model model) {
+        BranchLineEntity branch = branchService.findById(pk);
+        branchService.delete(branch);
+        return "redirect:/branches";
+    }
 }

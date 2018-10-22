@@ -9,8 +9,11 @@
         <%@include file="/css/list.css"%>
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -22,12 +25,12 @@
 <div class="main">
     <div class="container">
         <div class="row">
-           <p>Trains</p>
             <c:choose>
                 <c:when test="${tickets.size()=='0'}">
                     <p>No trains registered</p>
                 </c:when>
                 <c:otherwise>
+                    <p>Trains</p>
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Train number</td>
@@ -36,6 +39,11 @@
                             <td>Departure time</td>
                             <td>Arrival time</td>
                             <td>Journey time</td>
+                            <c:choose>
+                                <c:when test="${role.title.equals('USER')}">
+                                    <td></td>
+                                </c:when>
+                            </c:choose>
                         </tr>
                         <c:forEach items="${tickets}" var="ticket">
                             <tr>
@@ -45,9 +53,13 @@
                                 <td>${ticket.departureTime.getHours()}:${ticket.departureTime.getMinutes()}</td>
                                 <td>${ticket.arrivalTime.getHours()}:${ticket.arrivalTime.getMinutes()}</td>
                                 <td>${ticket.journeyTime.getHours()}:${ticket.journeyTime.getMinutes()}</td>
-                                <td><a href="/chooseTicket/${ticket.idTicket}">
-                                    Choose
-                                </a></td>
+                                <c:choose>
+                                    <c:when test="${role.title.equals('USER')}">
+                                        <td><a href="/chooseTicket/${ticket.idTicket}">
+                                            Choose
+                                        </a></td>
+                                    </c:when>
+                                </c:choose>
                             </tr>
                         </c:forEach>
                     </table>

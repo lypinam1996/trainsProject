@@ -1,14 +1,8 @@
 package com.tsystems.trainsProject.controllers;
 
 
-import com.tsystems.trainsProject.models.BranchLineEntity;
-import com.tsystems.trainsProject.models.ScheduleEntity;
-import com.tsystems.trainsProject.models.StationEntity;
-import com.tsystems.trainsProject.models.TrainEntity;
-import com.tsystems.trainsProject.services.BranchService;
-import com.tsystems.trainsProject.services.ScheduleService;
-import com.tsystems.trainsProject.services.StationService;
-import com.tsystems.trainsProject.services.TrainService;
+import com.tsystems.trainsProject.models.*;
+import com.tsystems.trainsProject.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -39,12 +33,20 @@ public class ScheduleController {
     @Autowired
     StationService stationService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
     public ModelAndView getSchedule() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        RoleEntity role = new RoleEntity();
+        if(!auth.getName().equals("anonymousUser")) {
+            UserEntity user = userService.findByLogin(auth.getName());
+            role=user.getRole();
+        }
         ModelAndView modelAndView = new ModelAndView();
         List<ScheduleEntity> schedules = scheduleService.findAllSchedules();
-        modelAndView.addObject("auth", auth.getName());
+        modelAndView.addObject("role",role);
         modelAndView.addObject("schedules", schedules);
         modelAndView.setViewName("schedule");
         return modelAndView;

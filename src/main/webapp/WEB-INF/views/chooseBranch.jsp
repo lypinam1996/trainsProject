@@ -28,12 +28,12 @@
 <div class="main">
     <div class="container">
         <div class="row">
-            <p>Branches</p>
             <c:choose>
                 <c:when test="${detailedInf.size()=='0'}">
                     <p>No detailed information registered</p>
                 </c:when>
                 <c:otherwise>
+                    <p>Branches</p>
                     <table class="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Branch name</td>

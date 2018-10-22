@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.controllers;
 
+import com.mysql.cj.xdevapi.Collection;
 import com.tsystems.trainsProject.models.PassangerEntity;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -33,10 +35,19 @@ public class TicketController {
     UserService userService;
 
     @Autowired
-    ScheduleService schedule;
+    ScheduleService scheduleService;
 
     @Autowired
     StationService station;
+
+    @RequestMapping(value = "/seeTickets/{pk}", method = RequestMethod.GET)
+    public String getTickets(@PathVariable Integer pk, Model model) {
+        ScheduleEntity schedule = scheduleService.findById(pk);
+        List<TicketEntity> tickets = schedule.getTicket();
+        Collections.sort(tickets);
+        model.addAttribute("tickets", tickets);
+        return "tickets";
+    }
 
     @RequestMapping(value = "/chooseTicket/{pk}", method = RequestMethod.GET)
     public String getTicket(@PathVariable Integer pk, Model model) {
@@ -48,7 +59,11 @@ public class TicketController {
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
     public String getUserTicket(Model model) {
         UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        List<TicketEntity> tickets = user.getPassanger().getTickets();
+        List<PassangerEntity> passangers =user.getPassanger();
+        List<TicketEntity> tickets = new ArrayList<>();
+        for(int i=0;i<passangers.size();i++){
+            tickets.addAll(passangers.get(i).getTickets());
+        }
         tickets.get(0).getDepartureTime().toString().split(" ")[1].substring(0,4);
         model.addAttribute("tickets", tickets);
         return "tickets";
@@ -62,7 +77,7 @@ public class TicketController {
         boolean timeCheck = ticketService.checkTime(ticket);
         Date date = new Date();
         if (ticket.getDepartureDate().before(date) || timeCheck) {
-            ticket.setSchedule(schedule.findById(ticket.getSchedule().getIdSchedule()));
+            ticket.setSchedule(scheduleService.findById(ticket.getSchedule().getIdSchedule()));
             ticket.setLastStation(station.findById(ticket.getLastStation().getIdStation()));
             ticket.setFirstStation(station.findById(ticket.getFirstStation().getIdStation()));
             List<PassangerEntity> allPassangersOnTRain = new ArrayList<>();

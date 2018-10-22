@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.controllers;
 
+import com.tsystems.trainsProject.models.RoleEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

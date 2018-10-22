@@ -14,4 +14,5 @@ public interface BranchService {
     void update(BranchLineEntity branch);
     List<DetailedInfBranchEntity> checkTheNecessityOfSaving(BranchLineEntity branch);
     List<String> validation(BranchLineEntity branch);
+    void delete(BranchLineEntity branch);
 }
