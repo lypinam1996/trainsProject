@@ -5,6 +5,7 @@ import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface BranchService {
@@ -13,6 +14,6 @@ public interface BranchService {
     BranchLineEntity findById(int id);
     void update(BranchLineEntity branch);
     List<DetailedInfBranchEntity> checkTheNecessityOfSaving(BranchLineEntity branch);
-    List<String> validation(BranchLineEntity branch);
+    List<String> validation(BranchLineEntity branch) throws ParseException;
     void delete(BranchLineEntity branch);
 }

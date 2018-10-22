@@ -12,7 +12,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="main">
+<div class="header">
+    <form action="/" method="get">
+        <input type="submit" value="Main page" class="login" style="margin-top: 10px"/>
+    </form>
+</div>
+<div class="main" style="margin-top: -4%">
     <div class="container">
         <div class="row">
             <div class="col-md-3 login-sec">

@@ -109,12 +109,20 @@
                             </tr>
                         </c:forEach>
                         <tr style="background-color: #CBEEF4">
-                            <td>
-                                <form action="/createSchedule" method="get">
-                                    <input type="submit" value="Add train" style="margin-top: 1%; margin-left: 1%"
-                                           class="login"/>
-                                </form>
-                            </td>
+                            <c:choose>
+                                <c:when test="${role.title.equals('WORKER')}">
+                                    <td>
+                                        <form action="/createSchedule" method="get">
+                                            <input type="submit" value="Add train"
+                                                   style="margin-top: 1%; margin-left: 1%"
+                                                   class="login"/>
+                                        </form>
+                                    </td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td></td>
+                                </c:otherwise>
+                            </c:choose>
                             <td></td>
                             <td></td>
                             <td></td>

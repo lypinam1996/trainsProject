@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/schedule").permitAll()
                 .antMatchers("/chooseTicket/{id}").hasAuthority("USER")
+                .antMatchers("/seeTicket/{id}").hasAuthority("USER")
                 .antMatchers("/tickets").hasAuthority("USER")
                 .antMatchers("/updateSchedule/{id}").hasAuthority("WORKER")
                 .antMatchers("/deleteSchedule/{id}").hasAuthority("WORKER")

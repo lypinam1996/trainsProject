@@ -1,14 +1,12 @@
 package com.tsystems.trainsProject.controllers;
 
 import com.mysql.cj.xdevapi.Collection;
-import com.tsystems.trainsProject.models.PassangerEntity;
-import com.tsystems.trainsProject.models.ScheduleEntity;
-import com.tsystems.trainsProject.models.TicketEntity;
-import com.tsystems.trainsProject.models.UserEntity;
+import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.*;
 import com.tsystems.trainsProject.services.impl.PassangerServiceImpl;
 import com.tsystems.trainsProject.services.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +47,13 @@ public class TicketController {
         return "tickets";
     }
 
+    @RequestMapping(value = "/seeTicket/{pk}", method = RequestMethod.GET)
+    public String getTicketById(@PathVariable Integer pk, Model model) {
+        TicketEntity ticket = ticketService.findById(pk);
+        model.addAttribute("ticket", ticket);
+        return "ticket";
+    }
+
     @RequestMapping(value = "/chooseTicket/{pk}", method = RequestMethod.GET)
     public String getTicket(@PathVariable Integer pk, Model model) {
         TicketEntity ticket = ticketService.findById(pk);
@@ -59,12 +64,14 @@ public class TicketController {
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
     public String getUserTicket(Model model) {
         UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        List<PassangerEntity> passangers =user.getPassanger();
+        List<PassangerEntity> passangers = user.getPassanger();
         List<TicketEntity> tickets = new ArrayList<>();
-        for(int i=0;i<passangers.size();i++){
+        for (int i = 0; i < passangers.size(); i++) {
             tickets.addAll(passangers.get(i).getTickets());
         }
-        tickets.get(0).getDepartureTime().toString().split(" ")[1].substring(0,4);
+        RoleEntity role = new RoleEntity();
+        role = user.getRole();
+        model.addAttribute("role", role);
         model.addAttribute("tickets", tickets);
         return "tickets";
     }
@@ -76,7 +83,7 @@ public class TicketController {
         PassangerEntity passanger = ticket.getPassanger();
         boolean timeCheck = ticketService.checkTime(ticket);
         Date date = new Date();
-        if (ticket.getDepartureDate().before(date) || timeCheck) {
+        if (ticket.getDepartureDate().after(date) || timeCheck) {
             ticket.setSchedule(scheduleService.findById(ticket.getSchedule().getIdSchedule()));
             ticket.setLastStation(station.findById(ticket.getLastStation().getIdStation()));
             ticket.setFirstStation(station.findById(ticket.getFirstStation().getIdStation()));

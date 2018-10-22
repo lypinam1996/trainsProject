@@ -18,16 +18,27 @@
             aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
+    <c:choose>
+    <c:when test="${role.title.equals('USER')}">
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="<c:url value="/branches"/>">Branches</a>
-        <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="<c:url value="/stations"/>">Stations</a>
-        <div class="dropdown-divider"></div>
     </div>
+    </c:when>
+        <c:otherwise>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/branches"/>">Branches</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/stations"/>">Stations</a>
+                <div class="dropdown-divider"></div>
+            </div>
+        </c:otherwise>
+    </c:choose>
     <form action="/logout" method="get">
         <input type="submit" value="Logout" class="login" role="button"/>
     </form>
@@ -54,6 +65,11 @@
                             <td>Arrival time</td>
                             <td>Journey time</td>
                             <td>Seat</td>
+                            <c:choose>
+                                <c:when test="${role.title.equals('USER')}">
+                                    <td></td>
+                                </c:when>
+                            </c:choose>
                         </tr>
                         <c:forEach items="${tickets}" var="ticket">
                             <tr>
@@ -68,6 +84,13 @@
                                 <td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>
                                 <td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>
                                 <td>${ticket.seat}</td>
+                                <c:choose>
+                                    <c:when test="${role.title.equals('USER')}">
+                                        <td><a href="/seeTicket/${ticket.idTicket}">
+                                            Open
+                                        </a></td>
+                                    </c:when>
+                                </c:choose>
                             </tr>
                         </c:forEach>
                     </table>

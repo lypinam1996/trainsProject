@@ -1,4 +1,5 @@
 package com.tsystems.trainsProject.services.impl;
+import com.tsystems.trainsProject.dao.BranchDAO;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
 import com.tsystems.trainsProject.dao.StationDAO;
 import com.tsystems.trainsProject.dao.impl.BranchDAOImpl;
@@ -22,13 +23,13 @@ import java.util.Map;
 public class InfBranchServiceImpl implements InfBranchService {
 
     @Autowired
-    InfBranchDAOImpl infBranchDAO;
+    InfBranchDAO infBranchDAO;
 
     @Autowired
-    StationDAOImpl stationDAO;
+    StationDAO stationDAO;
 
     @Autowired
-    BranchDAOImpl branchDAO;
+    BranchDAO branchDAO;
 
     @Override
     public List<DetailedInfBranchEntity> findAllInfBranch() {

@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -50,9 +51,10 @@
                                 <td>${ticket.schedule.train.number}</td>
                                 <td>${ticket.firstStation.stationName}</td>
                                 <td>${ticket.lastStation.stationName}</td>
-                                <td>${ticket.departureTime.toString().split(" ")[1].substring(0,5)}</td>
-                                <td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>
-                                <td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>
+                                <%--<fmt:formatDate value="${ ticket.departureTime}" pattern=""/>--%>
+                                <%--<td>${ticket.departureTime.toString().split(" ")[1].substring(0,5)}</td>--%>
+                                <%--<td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>--%>
+                                <%--<td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>--%>
                                 <c:choose>
                                     <c:when test="${role.title.equals('USER')}">
                                         <td><a href="/chooseTicket/${ticket.idTicket}">

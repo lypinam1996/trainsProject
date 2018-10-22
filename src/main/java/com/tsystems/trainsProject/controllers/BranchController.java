@@ -6,6 +6,7 @@ import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.BranchService;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.StationService;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,8 +55,7 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/createBranch", method = RequestMethod.GET)
-    public String create(@ModelAttribute BranchLineEntity branch, Model model)
-    {
+    public String create(@ModelAttribute BranchLineEntity branch, Model model) throws ParseException {
         List<String> errors = new ArrayList<>();
         return create(branch, model, true,errors);
     }
@@ -73,7 +73,7 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/createBranch", method = RequestMethod.POST)
-    public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) {
+    public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) throws ParseException {
         branchService.checkTheNecessityOfSaving(branch);
         List<String> errors=branchService.validation(branch);
         if (!errors.isEmpty()){
@@ -97,7 +97,7 @@ public class BranchController {
 
 
     @RequestMapping(value = "/updateBranch", method = RequestMethod.POST)
-    public String update( @ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) {
+    public String update( @ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) throws ParseException {
         branchService.checkTheNecessityOfSaving(branch);
         detailedInf.delete(branch,branch.getIdBranchLine());
         List<String> errors=branchService.validation(branch);
