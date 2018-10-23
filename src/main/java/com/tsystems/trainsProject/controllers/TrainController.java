@@ -44,19 +44,7 @@ public class TrainController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/trains", method = RequestMethod.GET)
-    public ModelAndView getAllTrains() {
-        ModelAndView model = new ModelAndView();
-        List<TrainEntity> trains = trainService.findAllTrains();
-        int trainsCount = trains.size();
-        model.addObject(trainsCount);
-        model.addObject("trains", trains);
-        model.setViewName("trains");
-        return model;
-    }
-
-
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+        @RequestMapping(value = "/", method = RequestMethod.POST)
     public String findTrainsInSchedule(@ModelAttribute Search search,
                                        BindingResult bindingResult,
                                        Model model) {
@@ -143,10 +131,36 @@ public class TrainController {
     }
 
     @RequestMapping(value = "/deleteTrain/{pk}", method = RequestMethod.GET)
-    public String deleteTrain(@PathVariable Integer pk, Model model) {
+    public ModelAndView deleteTrain(@PathVariable Integer pk) {
         TrainEntity train = trainService.findById(pk);
-        trainService.delete(train);
-        return "redirect:/trains";
+        
+        ModelAndView model = new ModelAndView();
+        List<String> errors=new ArrayList<>();
+        if(train.getSchedule().isEmpty()){
+            trainService.delete(train);
+            model=getAllStationsHelp(errors);
+        }
+        else {
+            errors.add("*You can't delete this train. It is in the schedule");
+            model=getAllStationsHelp(errors);
+        }
+
+        return model;
+    }
+
+    @RequestMapping(value = "/trains", method = RequestMethod.GET)
+    public ModelAndView getAllTrains() {
+        List<String> errors=new ArrayList<>();
+        return getAllStationsHelp(errors);
+    }
+
+    private ModelAndView getAllStationsHelp(List<String> errors){
+        ModelAndView model = new ModelAndView();
+        List<TrainEntity> trains = trainService.findAllTrains();
+        model.addObject("trains", trains);
+        model.addObject("errors", errors);
+        model.setViewName("trains");
+        return model;
     }
 
 }

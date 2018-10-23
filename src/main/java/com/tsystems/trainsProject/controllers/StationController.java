@@ -4,6 +4,7 @@ import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.TrainService;
 import com.tsystems.trainsProject.services.impl.SearchTrain;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +29,9 @@ public class StationController {
     @Autowired
     StationService stationService;
 
-    @RequestMapping(value = "/stations", method = RequestMethod.GET)
-    public ModelAndView getAllStations() {
-        ModelAndView model = new ModelAndView();
-        List<StationEntity> stations = stationService.findAllStations();
-        model.addObject("stations", stations);
-        model.setViewName("stations");
-        return model;
-    }
+    private static final Logger logger = Logger.getLogger(StationController.class);
+
+
 
     @RequestMapping(value = "/createStation", method = RequestMethod.GET)
     public String getStation(@ModelAttribute StationEntity station, Model model)
@@ -64,17 +60,42 @@ public class StationController {
     }
 
 
-    @RequestMapping(value = "/updateStation", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateStation", method = RequestMethod.GET)
     public String update( @ModelAttribute StationEntity station, Model model) {
         stationService.saveOrUpdate(station);
         return "redirect:/stations";
     }
 
     @RequestMapping(value = "/deleteStation/{pk}", method = RequestMethod.GET)
-    public String deleteStation(@PathVariable Integer pk, Model model) {
+    public ModelAndView deleteStation(@PathVariable Integer pk) {
         StationEntity station = stationService.findById(pk);
-        stationService.delete(station);
-        return "redirect:/stations";
+        ModelAndView model = new ModelAndView();
+        List<String> errors = new ArrayList<>();
+        if(!station.getDetailedInf().isEmpty()) {
+            errors.add("*You can't delete station! Several branches go through it!");
+            model=getAllStationsHelp(errors);
+        }
+        else {
+            stationService.delete(station);
+            model=getAllStationsHelp(errors);
+        }
+        return model;
+    }
+
+    @RequestMapping(value = "/stations", method = RequestMethod.GET)
+    public ModelAndView getAllStations() {
+        List<String> errors=new ArrayList<>();
+        ModelAndView model=getAllStationsHelp(errors);
+        return model;
+    }
+
+    private ModelAndView getAllStationsHelp(List<String> errors){
+        ModelAndView model = new ModelAndView();
+        List<StationEntity> stations = stationService.findAllStations();
+        model.addObject("stations", stations);
+        model.addObject("errors", errors);
+        model.setViewName("stations");
+        return model;
     }
 
 }

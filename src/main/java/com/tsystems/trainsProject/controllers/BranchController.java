@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,13 +40,7 @@ public class BranchController {
     @Autowired
     StationService stationService;
 
-    @RequestMapping(value = "/branches", method = RequestMethod.GET)
-    public String getAllBranches( Model model)
-    {
-        List<BranchLineEntity> branches = branchService.findAllBranches();
-        model.addAttribute("branches",branches);
-        return "branches";
-    }
+
 
     @RequestMapping(value = "/detailedInf/{pk}", method = RequestMethod.GET)
     public String getDetailedInf(@PathVariable Integer pk, Model model) {
@@ -109,9 +104,34 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/deleteBranch/{pk}", method = RequestMethod.GET)
-    public String deleteBranch(@PathVariable Integer pk, Model model) {
+    public ModelAndView deleteBranch(@PathVariable Integer pk) {
+        ModelAndView model = new ModelAndView();
         BranchLineEntity branch = branchService.findById(pk);
-        branchService.delete(branch);
-        return "redirect:/branches";
+        List<String> errors = new ArrayList<>();
+        if(branch.getSchedule().isEmpty()){
+            branchService.delete(branch);
+            model=getAllBranchesHelp(errors);
+        }
+        else {
+            errors.add("*You can't delete this branch! Several trains go through it");
+            model=getAllBranchesHelp(errors);
+        }
+        return model;
+    }
+
+    @RequestMapping(value = "/branches", method = RequestMethod.GET)
+    public ModelAndView getAllBranches()
+    {
+        List<String> errors = new ArrayList<>();
+        return getAllBranchesHelp(errors);
+    }
+
+    private ModelAndView getAllBranchesHelp( List<String> errors){
+        ModelAndView model = new ModelAndView();
+        List<BranchLineEntity> branches = branchService.findAllBranches();
+        model.addObject("errors",errors);
+        model.addObject("branches",branches);
+        model.setViewName("branches");
+        return model;
     }
 }

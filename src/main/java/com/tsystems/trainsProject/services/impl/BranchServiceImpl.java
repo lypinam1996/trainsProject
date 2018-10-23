@@ -85,7 +85,7 @@ public class BranchServiceImpl implements BranchService {
         if(!DateUtils.isSameInstant(branch.getDetailedInf().get(0).getTimeFromPrevious(),timeZero)){
             errors.add("*Time at first station must be equal 00:00");
         }
-        int i=0;
+        int i=1;
         boolean ok = true;
         while (ok && i<branch.getDetailedInf().size()){
             if(DateUtils.isSameInstant(branch.getDetailedInf().get(i).getTimeFromPrevious(),timeZero)){

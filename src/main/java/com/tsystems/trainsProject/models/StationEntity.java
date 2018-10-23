@@ -1,6 +1,8 @@
 package com.tsystems.trainsProject.models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -52,6 +54,7 @@ public class StationEntity {
         this.lastStation = lastStation;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "station")
     public List<DetailedInfBranchEntity> getDetailedInf() {
         return detailedInf;

@@ -6,6 +6,7 @@ import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,8 @@ import java.util.List;
 @Controller
 public class MainController {
 
+
+    private static final Logger logger = Logger.getLogger(MainController.class);
     @Autowired
     StationService stationService;
 
@@ -31,6 +34,7 @@ public class MainController {
     public String getFirstPage(@ModelAttribute Search search, Model model) {
         String result ="";
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        logger.info(auth.getName());
         UserEntity user = userService.findByLogin(auth.getName());
         if(user==null || user.getRole().getTitle().equals("USER")) {
             result= userActions(model, auth, search);
@@ -50,7 +54,4 @@ public class MainController {
         modelAndView.addAttribute("auth", auth.getName());
         return "index";
     }
-
-
-
 }

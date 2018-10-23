@@ -99,3 +99,8 @@ tr:nth-child(odd) select{
     background-color: #008ca5;
     color: #CBEEF4;
 }
+
+.errors{
+    font-size: 14pt;
+    color: red;
+}

@@ -36,6 +36,15 @@
     <div class="container">
         <div class="row">
             <c:choose>
+                <c:when test="${errors.size()!=0}">
+                    <div class="errors">
+                        <c:forEach items="${errors}" var="error">
+                            <div>${error}</div>
+                        </c:forEach>
+                    </div>
+                </c:when>
+            </c:choose>
+            <c:choose>
                 <c:when test="${trains.size()=='0'}">
                     <p>No trains registered</p>
                 </c:when>
