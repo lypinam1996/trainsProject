@@ -5,6 +5,7 @@ import com.tsystems.trainsProject.dao.impl.ScheduleDAOImpl;
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -108,35 +109,32 @@ public class ScheduleServiceImpl implements ScheduleService {
         BranchLineEntity branch = schedule.getBranch();
         List<ScheduleEntity> schedulesOnBranch = branch.getSchedule();
         List<Date> employmentTime = evaluateTime(schedulesOnBranch);
-        return compareTime(employmentTime,schedule);
+        return compareTime(employmentTime, schedule);
     }
 
-    public String checkTrainEmployment(ScheduleEntity schedule){
+    public String checkTrainEmployment(ScheduleEntity schedule) {
         String error = "";
         TrainEntity train = schedule.getTrain();
         List<ScheduleEntity> schedulesWithTrain = train.getSchedule();
         List<Date> employmentTime = evaluateTime(schedulesWithTrain);
-        return compareTime(employmentTime,schedule);
+        return compareTime(employmentTime, schedule);
     }
 
-    private String compareTime(List<Date> employmentTime,ScheduleEntity schedule ){
+    private String compareTime(List<Date> employmentTime, ScheduleEntity schedule) {
         String error = "";
         List<ScheduleEntity> schedules = new ArrayList<>();
         schedules.add(schedule);
-        List<Date> timeToSave=evaluateTime(schedules);
-        int timeToSave1=timeToSave.get(0).getHours()*60+timeToSave.get(0).getMinutes();
-        int timeToSave2=timeToSave.get(1).getHours()*60+timeToSave.get(1).getMinutes();
-        boolean ok=true;
-        int i=0;
-        while (i<employmentTime.size() && ok){
-            int time1=employmentTime.get(i).getHours()*60+employmentTime.get(i).getMinutes();
-            int time2=employmentTime.get(i+1).getHours()*60+employmentTime.get(i+1).getMinutes();
-            if(time2<timeToSave1 || time1>timeToSave2){
-                i=i+2;
-            }
-            else{
-                error="*Time is busy";
-                ok=false;
+        List<Date> timeToSave = evaluateTime(schedules);
+        Date timeToSave1 = timeToSave.get(0);
+        Date timeToSave2 = timeToSave.get(1);
+        boolean ok = true;
+        int i = 0;
+        while (i < employmentTime.size() && ok) {
+            if (employmentTime.get(i + 1).before(timeToSave1) || employmentTime.get(i).after(timeToSave2)) {
+                i = i + 2;
+            } else {
+                error = "*Time is busy";
+                ok = false;
             }
         }
         return error;
@@ -144,52 +142,32 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     private List<Date> evaluateTime(List<ScheduleEntity> schedule) {
         List<Date> result = new ArrayList<>();
-        try {
 
-            for (int i = 0; i < schedule.size(); i++) {
-                int depTime = schedule.get(i).getDepartureTime().getHours() * 60 + schedule.get(i).getDepartureTime().getMinutes();
-                List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
-                int numberFirstStation = 0;
-                int numberLastStation = 0;
-                for (int j = 0; j < detailedInf.size(); j++) {
-                    if (detailedInf.get(j).getStation().equals(schedule.get(i).getFirstStation())) {
-                        numberFirstStation = detailedInf.get(j).getStationSerialNumber();
-                    }
-                    if (detailedInf.get(j).getStation().equals(schedule.get(i).getLastStation())) {
-                        numberLastStation = detailedInf.get(j).getStationSerialNumber();
-                    }
+        for (int i = 0; i < schedule.size(); i++) {
+            List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
+            int numberFirstStation = 0;
+            int numberLastStation = 0;
+            for (int j = 0; j < detailedInf.size(); j++) {
+                if (detailedInf.get(j).getStation().equals(schedule.get(i).getFirstStation())) {
+                    numberFirstStation = detailedInf.get(j).getStationSerialNumber();
                 }
-                Date departureTime = strToTime(intToTime(depTime));
-                int arrTime = depTime;
-                for (int y = numberFirstStation+1; y <=numberLastStation; y++) {
-                    DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y, detailedInf.get(0).getBranch());
-                    arrTime = arrTime + inf.getTimeFromPrevious().getMinutes() + inf.getTimeFromPrevious().getHours() * 60;
+                if (detailedInf.get(j).getStation().equals(schedule.get(i).getLastStation())) {
+                    numberLastStation = detailedInf.get(j).getStationSerialNumber();
                 }
-                Date arrivalTime = strToTime(intToTime(arrTime));
-                result.add(departureTime);
-                result.add(arrivalTime);
             }
+            Date departureTime = schedule.get(i).getDepartureTime();
+            Date arrivalTime = departureTime;
+            for (int y = numberFirstStation + 1; y <= numberLastStation; y++) {
+                DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y, detailedInf.get(0).getBranch());
+                arrivalTime = DateUtils.addHours(arrivalTime, inf.getTimeFromPrevious().getHours());
+                arrivalTime = DateUtils.addMinutes(arrivalTime, inf.getTimeFromPrevious().getMinutes());
+            }
+            result.add(departureTime);
+            result.add(arrivalTime);
         }
-        catch (ParseException e){
 
-        }
-        finally {
-            return result;
-        }
-    }
-
-    private Date strToTime(String strTime) throws ParseException {
-        DateFormat df = new SimpleDateFormat("hh:mm");
-        Date result = df.parse(strTime);
         return result;
-    }
 
-    private String intToTime(int intTime) {
-        String startTime = "00:00";
-        int h = intTime / 60 + Integer.parseInt(startTime.substring(0, 1));
-        int m = intTime % 60 + Integer.parseInt(startTime.substring(3, 4));
-        String newtime = h + ":" + m;
-        return newtime;
     }
 
     @Override
@@ -205,16 +183,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public List<String> validation(ScheduleEntity schedule) {
         List<String> errors = new ArrayList<>();
-        if(!checkBranchEmployment(schedule).equals("")){
+        if (!checkBranchEmployment(schedule).equals("")) {
             errors.add(checkBranchEmployment(schedule));
         }
-        if(!checkStationsSerialNumbers(schedule).equals("")){
+        if (!checkStationsSerialNumbers(schedule).equals("")) {
             errors.add(checkStationsSerialNumbers(schedule));
         }
-        if(!checkTrainEmployment(schedule).equals("")){
+        if (!checkTrainEmployment(schedule).equals("")) {
             errors.add(checkTrainEmployment(schedule));
         }
-       return errors;
+        return errors;
     }
 
 

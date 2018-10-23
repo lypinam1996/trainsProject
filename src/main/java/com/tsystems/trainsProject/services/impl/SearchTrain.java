@@ -4,6 +4,7 @@ import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
 import com.tsystems.trainsProject.services.StationService;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
@@ -66,17 +67,22 @@ public class SearchTrain {
                                               Date time1, Date time2,
                                               StationEntity firstStation,
                                               StationEntity lastStation) throws ParseException {
-        time1.setMinutes(time1.getMinutes()-1);
-        time2.setMinutes(time2.getMinutes()+1);
+        DateUtils.addMinutes(time2,1);
+        if(time1.getMinutes()==0){
+            time1.setHours(time1.getHours()-1);
+            time1.setMinutes(59);
+        }
+        else {
+            time1.setMinutes(time1.getMinutes()-1);
+        }
         Map<ScheduleEntity,List<Date>> result = new HashMap<>();
         for(int i=0;i<schedule.size();i++) {
-            int depTime = schedule.get(i).getDepartureTime().getHours()*60+schedule.get(i).getDepartureTime().getMinutes();
             List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
             int numberFirstStation = 0;
             int numberLastStation = 0;
-            Date departureTime = strToTime(intToTime(depTime));
-            int arrTime=depTime;
-            if(departureTime.before(time2) && departureTime.after(time1)){
+            Date departureTime =schedule.get(i).getDepartureTime();
+            Date arrivalTime=departureTime;
+            if(departureTime.after(time1) && departureTime.before(time2)){
                 for (int j = 0; j < detailedInf.size(); j++) {
                     if (detailedInf.get(j).getStation().equals(firstStation)) {
                         numberFirstStation = detailedInf.get(j).getStationSerialNumber();
@@ -87,9 +93,9 @@ public class SearchTrain {
                 }
                 for(int y=numberFirstStation+1;y<=numberLastStation;y++){
                     DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y,detailedInf.get(0).getBranch());
-                    arrTime=arrTime+inf.getTimeFromPrevious().getMinutes()+inf.getTimeFromPrevious().getHours()*60;
+                    arrivalTime=DateUtils.addHours(arrivalTime,inf.getTimeFromPrevious().getHours());
+                    arrivalTime=DateUtils.addMinutes(arrivalTime,inf.getTimeFromPrevious().getMinutes());
                 }
-                Date arrivalTime = strToTime(intToTime(arrTime));
                 List<Date> dateList = new ArrayList<>();
                 dateList.add(departureTime);
                 dateList.add(arrivalTime);
@@ -97,20 +103,6 @@ public class SearchTrain {
             }
 
         }
-        return result;
-    }
-
-    private String intToTime(int intTime){
-        String startTime = "00:00";
-        int h = intTime / 60 + Integer.parseInt(startTime.substring(0,1));
-        int m = intTime % 60 + Integer.parseInt(startTime.substring(3,4));
-        String newtime = h+":"+m;
-        return newtime;
-    }
-
-    private Date strToTime(String strTime) throws ParseException {
-        DateFormat df = new SimpleDateFormat("hh:mm");
-        Date result =  df.parse(strTime);
         return result;
     }
 }

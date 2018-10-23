@@ -5,11 +5,15 @@ import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
 import com.tsystems.trainsProject.services.TicketService;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -79,14 +83,14 @@ public class TicketServiceImpl implements TicketService {
         for (int j = 0; j < ticket.getSchedule().getTicket().size(); j++) {
             if (ticket.getSchedule().getTicket().get(j).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
                 List<Integer> flstation = getFirstLastStationNumber(ticket.getSchedule().getTicket().get(j));
-                if(!(flstation.get(1)<firstLastStation.get(0) || flstation.get(0)>firstLastStation.get(1))) {
+                if (!(flstation.get(1) <= firstLastStation.get(0) || flstation.get(0) >= firstLastStation.get(1))) {
                     tickets.add(ticket.getSchedule().getTicket().get(j));
                 }
             }
         }
         List<TicketEntity> ticketEntityList = tickets;
-        for (int j = 0; j < tickets.size()-1; j++) {
-            if(tickets.get(j).getSeat()==tickets.get(j+1).getSeat()){
+        for (int j = 0; j < tickets.size() - 1; j++) {
+            if (tickets.get(j).getSeat() == tickets.get(j + 1).getSeat()) {
                 ticketEntityList.remove(tickets.get(j));
             }
         }
@@ -106,7 +110,7 @@ public class TicketServiceImpl implements TicketService {
         return numberOfSeat;
     }
 
-    private List<Integer> getFirstLastStationNumber(TicketEntity ticket){
+    private List<Integer> getFirstLastStationNumber(TicketEntity ticket) {
         List<Integer> numbers = new ArrayList<>();
         BranchLineEntity branch = ticket.getSchedule().getBranch();
         int numberFirstStation = 0;
@@ -123,21 +127,18 @@ public class TicketServiceImpl implements TicketService {
         numbers.add(numberLastStation);
         return numbers;
     }
+
     @Override
-    public boolean checkTime(TicketEntity ticket) {
+    public boolean checkTime(TicketEntity ticket){
         Date date = new Date();
-        boolean equality = ticket.getDepartureDate().getYear() == date.getYear() &&
-                ticket.getDepartureDate().getMonth() == date.getMonth() &&
-                ticket.getDepartureDate().getDay() == date.getDay();
+        int minutesNow = date.getHours()*60+date.getMinutes()+10;
+        int minutesDep=ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes();
         boolean ok2 = true;
-        if (equality) {
-            int diff = ticket.getDepartureTime().getHours() * 60 + ticket.getDepartureTime().getMinutes() -
-                    date.getHours() * 60 + date.getMinutes();
-            if (diff > 10) {
-                ok2 = true;
-            } else {
-                ok2 = false;
-            }
+        if ((DateUtils.isSameDay(ticket.getDepartureDate(), date) && minutesNow<minutesDep)
+                || ticket.getDepartureDate().after(date)) {
+            ok2 = true;
+        } else {
+            ok2 = false;
         }
         return ok2;
     }

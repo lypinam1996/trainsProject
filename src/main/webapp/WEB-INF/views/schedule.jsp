@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -92,7 +93,7 @@
                                 <td>${schedule.train.number}</td>
                                 <td>${schedule.firstStation.stationName}</td>
                                 <td>${schedule.lastStation.stationName}</td>
-                                <td>${schedule.departureTime.toString().split(" ")[1].substring(0,5)}</td>
+                                <td><fmt:formatDate value="${schedule.departureTime}" pattern="HH:mm"/></td>
                                 <c:choose>
                                     <c:when test="${role.title.equals('WORKER')}">
                                         <td><a href="/updateSchedule/${schedule.idSchedule}">

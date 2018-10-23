@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -52,7 +53,7 @@
                             <tr>
                                 <td>${inf.stationSerialNumber}</td>
                                 <td>${inf.station.stationName}</td>
-                                <td>${inf.timeFromPrevious.toString().split(" ")[1].substring(0,5)}</td>
+                                <td><fmt:formatDate value="${inf.timeFromPrevious}" pattern="HH:mm"/></td>
                             </tr>
                         </c:forEach>
                     </table>

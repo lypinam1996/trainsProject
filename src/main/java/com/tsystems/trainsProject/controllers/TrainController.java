@@ -7,6 +7,7 @@ import com.tsystems.trainsProject.services.TrainService;
 import com.tsystems.trainsProject.services.UserService;
 import com.tsystems.trainsProject.services.impl.SearchTrain;
 import com.tsystems.trainsProject.services.impl.TicketServiceImpl;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,10 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class TrainController {
@@ -61,7 +59,7 @@ public class TrainController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String findTrainsInSchedule(@ModelAttribute Search search,
                                        BindingResult bindingResult,
-                                       Model model) throws ParseException {
+                                       Model model) {
         Map<ScheduleEntity,List<Date>> variants = searchService.search(search,bindingResult);
         List<TicketEntity> tickets = new ArrayList<>();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -75,8 +73,11 @@ public class TrainController {
             ticket.setFirstStation(station1);
             StationEntity station2 = stationService.findByName(search.getLastStation());
             ticket.setLastStation(station2);
-            int difference = (ticket.getArrivalTime().getHours()*60+ticket.getArrivalTime().getMinutes())-(ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes());
-            ticket.setJourneyTime(strToTime(intToTime(difference)));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(ticket.getArrivalTime());
+            calendar.add(Calendar.HOUR, -ticket.getDepartureTime().getHours());
+            calendar.add(Calendar.MINUTE, -ticket.getDepartureTime().getMinutes());
+            ticket.setJourneyTime(calendar.getTime());
             ticket.setSeat(-1);
             if (ticketService.findAllTickets().size() != 0) {
                 int id = ticketService.findAllTickets().get(ticketService.findAllTickets().size() - 1).getIdTicket();
@@ -94,20 +95,6 @@ public class TrainController {
         model.addAttribute("role",role);
         model.addAttribute("tickets",tickets);
         return "variants";
-    }
-
-    private String intToTime(int intTime){
-        String startTime = "00:00";
-        int h = intTime / 60 + Integer.parseInt(startTime.substring(0,1));
-        int m = intTime % 60 + Integer.parseInt(startTime.substring(3,4));
-        String newtime = h+":"+m;
-        return newtime;
-    }
-
-    private Date strToTime(String strTime) throws ParseException {
-        DateFormat df = new SimpleDateFormat("hh:mm");
-        Date result =  df.parse(strTime);
-        return result;
     }
 
     @RequestMapping(value = "/createTrain", method = RequestMethod.GET)

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -78,7 +79,7 @@ public class TicketController {
 
 
     @RequestMapping(value = "/chooseTicket", method = RequestMethod.POST)
-    public String postTIcket(@ModelAttribute TicketEntity ticket, Model model) {
+    public String postTIcket(@ModelAttribute TicketEntity ticket, Model model)  {
         ticketService.delete1(ticket);
         PassangerEntity passanger = ticket.getPassanger();
         boolean timeCheck = ticketService.checkTime(ticket);

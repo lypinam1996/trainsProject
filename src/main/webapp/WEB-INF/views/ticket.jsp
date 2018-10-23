@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -51,7 +52,11 @@
                 </tr>
                 <tr>
                     <td>Date of birth</td>
-                    <td>${ticket.passanger.dateOfBirth.toString().split(" ")[0]}</td>
+                    <td><fmt:formatDate value="${ ticket.passanger.dateOfBirth}" pattern="dd.MM.yyyy"/></td>
+                </tr>
+                <tr>
+                    <td>Train number</td>
+                    <td>${ticket.schedule.train.number}</td>
                 </tr>
                 <tr>
                     <td>Departure station</td>
@@ -63,19 +68,19 @@
                 </tr>
                 <tr>
                     <td>Departure date</td>
-                    <td>${ticket.departureDate.toString().split(" ")[0]}</td>
+                    <td><fmt:formatDate value="${ ticket.departureDate}" pattern="dd.MM.yyyy"/></td>
                 </tr>
                 <tr>
                     <td>Departure time</td>
-                    <td>${ticket.departureTime.toString().split(" ")[1].substring(0,5)}</td>
+                    <td><fmt:formatDate value="${ ticket.departureTime}" pattern="HH:mm"/></td>
                 </tr>
                 <tr>
                     <td>Arrival time</td>
-                    <td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>
+                    <td><fmt:formatDate value="${ ticket.arrivalTime}" pattern="HH:mm"/></td>
                 </tr>
                 <tr>
                     <td>Journey time</td>
-                    <td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>
+                    <td><fmt:formatDate value="${ ticket.journeyTime}" pattern="HH:mm"/></td>
                 </tr>
                 <tr>
                     <td>Seat</td>

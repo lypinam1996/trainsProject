@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -58,6 +59,7 @@
                             <td>Surname</td>
                             <td>Patronymic</td>
                             <td>Date of birth</td>
+                            <td>Train number</td>
                             <td>Departure station</td>
                             <td>Arrival station</td>
                             <td>Departure date</td>
@@ -76,13 +78,14 @@
                                 <td>${ticket.passanger.name}</td>
                                 <td>${ticket.passanger.surname}</td>
                                 <td>${ticket.passanger.patronymic}</td>
-                                <td>${ticket.passanger.dateOfBirth.toString().split(" ")[0]}</td>
+                                <td><fmt:formatDate value="${ ticket.passanger.dateOfBirth}" pattern="dd.MM.yyyy"/></td>
+                                <td>${ticket.schedule.train.number}</td>
                                 <td>${ticket.firstStation.stationName}</td>
                                 <td>${ticket.lastStation.stationName}</td>
-                                <td>${ticket.departureDate.toString().split(" ")[0]}</td>
-                                <td>${ticket.departureTime.toString().split(" ")[1].substring(0,5)}</td>
-                                <td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>
-                                <td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>
+                                <td><fmt:formatDate value="${ ticket.departureDate}" pattern="dd.MM.yyyy"/></td>
+                                <td><fmt:formatDate value="${ ticket.departureTime}" pattern="HH:mm"/></td>
+                                <td><fmt:formatDate value="${ ticket.arrivalTime}" pattern="HH:mm"/></td>
+                                <td><fmt:formatDate value="${ ticket.journeyTime}" pattern="HH:mm"/></td>
                                 <td>${ticket.seat}</td>
                                 <c:choose>
                                     <c:when test="${role.title.equals('USER')}">

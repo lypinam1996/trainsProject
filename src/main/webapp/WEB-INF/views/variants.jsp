@@ -51,10 +51,9 @@
                                 <td>${ticket.schedule.train.number}</td>
                                 <td>${ticket.firstStation.stationName}</td>
                                 <td>${ticket.lastStation.stationName}</td>
-                                <%--<fmt:formatDate value="${ ticket.departureTime}" pattern=""/>--%>
-                                <%--<td>${ticket.departureTime.toString().split(" ")[1].substring(0,5)}</td>--%>
-                                <%--<td>${ticket.arrivalTime.toString().split(" ")[1].substring(0,5)}</td>--%>
-                                <%--<td>${ticket.journeyTime.toString().split(" ")[1].substring(0,5)}</td>--%>
+                                <td><fmt:formatDate value="${ ticket.departureTime}" pattern="HH:mm"/></td>
+                                <td><fmt:formatDate value="${ ticket.arrivalTime}" pattern="HH:mm"/></td>
+                                <td><fmt:formatDate value="${ ticket.journeyTime}" pattern="HH:mm"/></td>
                                 <c:choose>
                                     <c:when test="${role.title.equals('USER')}">
                                         <td><a href="/chooseTicket/${ticket.idTicket}">

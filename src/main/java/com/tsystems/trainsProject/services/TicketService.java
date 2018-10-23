@@ -3,6 +3,7 @@ package com.tsystems.trainsProject.services;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
