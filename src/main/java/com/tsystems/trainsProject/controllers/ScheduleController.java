@@ -46,11 +46,39 @@ public class ScheduleController {
         }
         ModelAndView modelAndView = new ModelAndView();
         List<ScheduleEntity> schedules = scheduleService.findAllSchedules();
+        List<StationEntity> stations = stationService.findAllStations();
+        modelAndView.addObject("stations",stations);
+        StationEntity station = new StationEntity();
+        modelAndView.addObject("station",station);
         modelAndView.addObject("role",role);
         modelAndView.addObject("schedules", schedules);
         modelAndView.setViewName("schedule");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/findStation", method = RequestMethod.POST)
+    public ModelAndView getScheduleByStation(@ModelAttribute StationEntity stationGet) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        RoleEntity role = new RoleEntity();
+        if(!auth.getName().equals("anonymousUser")) {
+            UserEntity user = userService.findByLogin(auth.getName());
+            role=user.getRole();
+        }
+        ModelAndView modelAndView = new ModelAndView();
+        StationEntity stationEntity = stationService.findById(stationGet.getIdStation());
+        List<ScheduleEntity> schedules = stationEntity.getFirstStation();
+        schedules.addAll(stationEntity.getLastStation());
+        StationEntity station = new StationEntity();
+        modelAndView.addObject("station",station);
+        modelAndView.addObject("role",role);
+        modelAndView.addObject("schedules", schedules);
+        List<StationEntity> stations = stationService.findAllStations();
+        modelAndView.addObject("stations",stations);
+        modelAndView.setViewName("schedule");
+        return modelAndView;
+    }
+
+
 
     @RequestMapping(value = "/createSchedule", method = RequestMethod.GET)
     public String getBranhes(Model model) {

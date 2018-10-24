@@ -133,7 +133,7 @@ public class TrainController {
     @RequestMapping(value = "/deleteTrain/{pk}", method = RequestMethod.GET)
     public ModelAndView deleteTrain(@PathVariable Integer pk) {
         TrainEntity train = trainService.findById(pk);
-        
+
         ModelAndView model = new ModelAndView();
         List<String> errors=new ArrayList<>();
         if(train.getSchedule().isEmpty()){

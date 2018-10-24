@@ -36,6 +36,7 @@ public class StationEntity {
         this.ticketLastStation = ticketLastStation;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "firstStation")
     public List<ScheduleEntity> getFirstStation() {
         return firstStation;
@@ -45,6 +46,7 @@ public class StationEntity {
         this.firstStation = firstStation;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "lastStation")
     public List<ScheduleEntity> getLastStation() {
         return lastStation;

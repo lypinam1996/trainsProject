@@ -104,3 +104,23 @@ tr:nth-child(odd) select{
     font-size: 14pt;
     color: red;
 }
+
+.input{
+    width: 200px;
+    height: 40px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
+    font-size: 14pt;
+    background-color: #CBEEF4;
+}
+
+.formSearch{
+    margin-top: -5%;
+    margin-left: 27%;
+}
+
+label{
+    color: #bf4031;
+    font-size: 14pt;
+}
