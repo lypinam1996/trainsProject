@@ -99,7 +99,7 @@ public class BranchController {
         if (!errors.isEmpty()){
             return create(branch, model,false,errors);
         }
-        branchService.saveOrUpdate(branch);
+        branchService.update(branch);
         return "redirect:/branches";
     }
 

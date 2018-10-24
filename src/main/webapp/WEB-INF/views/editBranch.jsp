@@ -2,7 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-%><!DOCTYPE HTML>
+%>
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,18 +18,13 @@
     <script type="text/javascript">
         $(function() {
 
-            var index = ${fn:length(employer.detailedInf)};
+            var index = ${fn:length(branch.detailedInf)};
 
             $("#add").off("click").on("click", function() {
                 $(this).before(function() {
                     var html = '<div id="detailedInf' + index + '.wrapper" class="hidden">';
                     html += '<input  class="inp" type="number" id="detailedInf' + index + '.stationSerialNumber" name="detailedInf[' + index + '].stationSerialNumber" />';
-                    if(index==0) {
-                        html += '<input class="inp a" readonly type="time" value="00:00" id="detailedInf' + index + '.timeFromPrevious" name="detailedInf[' + index + '].timeFromPrevious" />';
-                    }
-                    else {
-                        html += '<input class="inp a" type="time" value="00:00" id="detailedInf' + index + '.timeFromPrevious" name="detailedInf[' + index + '].timeFromPrevious" />';
-                    }
+                    html += '<input class="inp a" type="time" value="00:00" id="detailedInf' + index + '.timeFromPrevious" name="detailedInf[' + index + '].timeFromPrevious" />';
                     html += '<select class="inp" type="text" id="detailedInf' + index + '.station.stationName" name="detailedInf[' + index + '].station.stationName"><c:forEach var="item" items="${stations}"><option value="${item.stationName}"}>${item.stationName}</option></c:forEach> </select>';
                     html += '<button type="button" class="remove b" id="'+index+'" ">remove</button>';
                     html += "</div>";
@@ -36,10 +32,9 @@
                 });
                 $("#detailedInf" + index + "\\.wrapper").show();
                 index++;
+                console.log(index);
                 return false;
             });
-
-
         });
 
         $(document).ready(function () {

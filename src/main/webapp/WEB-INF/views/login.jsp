@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Login</title>
@@ -27,7 +28,7 @@
                 <c:url value="/j_spring_security_check" var="loginUrl" />
                 <form:form action="${loginUrl}" method="post">
                     <label  class="text-uppercase">Username</label>
-                    <input type="text" class="form-control" name="login">
+                    <input type="e-mail" class="form-control" name="login">
                 <div class="form-group">
                     <label  class="text-uppercase">Password</label>
                     <input type="password" class="form-control" name="password">

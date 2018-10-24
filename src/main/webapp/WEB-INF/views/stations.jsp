@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@page pageEncoding="UTF-8" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,41 +49,42 @@
                 </c:when>
             </c:choose>
             <c:choose>
-                <c:when test="${stations.size()=='0'}">
-                    <p>No trains registered</p>
-                </c:when>
-                <c:otherwise>
-                    <p>Stations</p>
-                    <table class="table">
-                        <tr class="firstTR" style="background-color: #bf4031;">
-                            <td>Station name</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <c:forEach items="${stations}" var="station">
-                            <tr>
-                                <td>${station.stationName}</td>
-                                <td><a href="/updateStation/${station.idStation}">
-                                    Edit
-                                </a></td>
-                                <td><a href="/deleteStation/${station.idStation}">
-                                    Delete
-                                </a></td>
-                            </tr>
-                        </c:forEach>
-                        <tr style="background-color: #CBEEF4">
-                            <td>
-                                <form action="/createStation" method="get">
-                                    <input type="submit" value="Add new station" style="margin-top: 1%; margin-left: 1%"
-                                           class="login"/>
-                                </form>
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </table>
+            <c:when test="${stations.size()=='0'}">
+                <p>No trains registered</p>
+            </c:when>
+            <c:otherwise>
+            <p>Stations</p>
+            <table class="table">
+                <tr class="firstTR" style="background-color: #bf4031;">
+                    <td>Station name</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <c:forEach items="${stations}" var="station">
+                    <tr>
+                        <td>${station.stationName}</td>
+                        <td><a href="/updateStation/${station.idStation}">
+                            Edit
+                        </a></td>
+                        <td><a href="/deleteStation/${station.idStation}">
+                            Delete
+                        </a></td>
+                    </tr>
+                </c:forEach>
                 </c:otherwise>
-            </c:choose>
+                </c:choose>
+                <tr style="background-color: #CBEEF4">
+                    <td>
+                        <form action="/createStation" method="get">
+                            <input type="submit" value="Add new station" style="margin-top: 1%; margin-left: 1%"
+                                   class="login"/>
+                        </form>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+
         </div>
     </div>
 </div>

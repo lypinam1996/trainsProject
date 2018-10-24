@@ -60,7 +60,7 @@ public class StationController {
     }
 
 
-    @RequestMapping(value = "/updateStation", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateStation", method = RequestMethod.POST)
     public String update( @ModelAttribute StationEntity station, Model model) {
         stationService.saveOrUpdate(station);
         return "redirect:/stations";

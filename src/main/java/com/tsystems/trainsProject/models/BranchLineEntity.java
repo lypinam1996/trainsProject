@@ -28,7 +28,7 @@ public class BranchLineEntity {
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany( mappedBy = "branch")
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     public List<DetailedInfBranchEntity> getDetailedInf() {
         return detailedInf;
     }

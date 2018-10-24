@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page pageEncoding="UTF-8" %>
+
 <html>
 <head>
     <title>Registration</title>
@@ -34,7 +36,7 @@
                 </c:choose>
                 <form:form action="${login}" modelAttribute="user" class="login-form" method="POST">
                         <label class="text-uppercase">Username</label>
-                        <form:input path="login" type="text" class="form-control"/>
+                        <form:input path="login" type="e-mail" class="form-control"/>
                     <div class="form-group">
                         <label  class="text-uppercase">Password</label>
                         <form:input path="password" type="password" class="form-control"/>

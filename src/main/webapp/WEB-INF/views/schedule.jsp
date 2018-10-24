@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page pageEncoding="UTF-8" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -84,75 +85,76 @@
     <div class="container">
         <div class="row">
             <c:choose>
-                <c:when test="${schedules.size()=='0'}">
-                    <p>No trains registered</p>
-                </c:when>
-                <c:otherwise>
-                    <p>Schedule</p>
-                    <table class="table">
-                        <tr class="firstTR" style="background-color: #bf4031;">
-                            <td>Train number</td>
-                            <td>Departure station</td>
-                            <td>Arrival station</td>
-                            <td>Departure time</td>
-                            <c:choose>
-                                <c:when test="${role.title.equals('WORKER')}">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </c:when>
-                            </c:choose>
-                        </tr>
-                        <c:forEach items="${schedules}" var="schedule">
-                            <tr>
-                                <td>${schedule.train.number}</td>
-                                <td>${schedule.firstStation.stationName}</td>
-                                <td>${schedule.lastStation.stationName}</td>
-                                <td><fmt:formatDate value="${schedule.departureTime}" pattern="HH:mm"/></td>
-                                <c:choose>
-                                    <c:when test="${role.title.equals('WORKER')}">
-                                        <td><a href="/updateSchedule/${schedule.idSchedule}">
-                                            Edit
-                                        </a></td>
-                                        <td><a href="/deleteSchedule/${schedule.idSchedule}">
-                                            Delete
-                                        </a></td>
-                                        <td><a href="/seeTickets/${schedule.idSchedule}">
-                                            See passangers
-                                        </a></td>
-                                    </c:when>
-                                </c:choose>
-                            </tr>
-                        </c:forEach>
-                        <tr style="background-color: #CBEEF4">
-                            <c:choose>
-                                <c:when test="${role.title.equals('WORKER')}">
-                                    <td>
-                                        <form action="/createSchedule" method="get">
-                                            <input type="submit" value="Add train"
-                                                   style="margin-top: 1%; margin-left: 1%"
-                                                   class="login"/>
-                                        </form>
-                                    </td>
-                                </c:when>
-                                <c:otherwise>
-                                    <td></td>
-                                </c:otherwise>
-                            </c:choose>
+            <c:when test="${schedules.size()=='0'}">
+                <p>No trains registered</p>
+            </c:when>
+            <c:otherwise>
+            <p>Schedule</p>
+            <table class="table">
+                <tr class="firstTR" style="background-color: #bf4031;">
+                    <td>Train number</td>
+                    <td>Departure station</td>
+                    <td>Arrival station</td>
+                    <td>Departure time</td>
+                    <c:choose>
+                        <c:when test="${role.title.equals('WORKER')}">
                             <td></td>
                             <td></td>
                             <td></td>
-                            <c:choose>
-                                <c:when test="${role.title.equals('WORKER')}">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </c:when>
-                            </c:choose>
-                        </tr>
-                    </table>
+                        </c:when>
+                    </c:choose>
+                </tr>
+                <c:forEach items="${schedules}" var="schedule">
+                    <tr>
+                        <td>${schedule.train.number}</td>
+                        <td>${schedule.firstStation.stationName}</td>
+                        <td>${schedule.lastStation.stationName}</td>
+                        <td><fmt:formatDate value="${schedule.departureTime}" pattern="HH:mm"/></td>
+                        <c:choose>
+                            <c:when test="${role.title.equals('WORKER')}">
+                                <td><a href="/updateSchedule/${schedule.idSchedule}">
+                                    Edit
+                                </a></td>
+                                <td><a href="/deleteSchedule/${schedule.idSchedule}">
+                                    Delete
+                                </a></td>
+                                <td><a href="/seeTickets/${schedule.idSchedule}">
+                                    See passangers
+                                </a></td>
+                            </c:when>
+                        </c:choose>
+                    </tr>
+                </c:forEach>
                 </c:otherwise>
-            </c:choose>
+                </c:choose>
+                <tr style="background-color: #CBEEF4">
+                    <c:choose>
+                        <c:when test="${role.title.equals('WORKER')}">
+                            <td>
+                                <form action="/createSchedule" method="get">
+                                    <input type="submit" value="Add train"
+                                           style="margin-top: 1%; margin-left: 1%"
+                                           class="login"/>
+                                </form>
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <c:choose>
+                        <c:when test="${role.title.equals('WORKER')}">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </c:when>
+                    </c:choose>
+                </tr>
+            </table>
+
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -50,47 +51,47 @@
                 </c:when>
             </c:choose>
             <c:choose>
-                <c:when test="${branches.size()=='0'}">
-                    <p>No branches registered</p>
-                </c:when>
-                <c:otherwise>
-                    <p>Branches</p>
-                    <table class="table">
-                        <tr class="firstTR" style="background-color: #bf4031;">
-                            <td>Branch title</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <c:forEach items="${branches}" var="branch">
-                            <tr>
-                                <td>${branch.title}</td>
-                                <td><a href="/detailedInf/${branch.idBranchLine}">
-                                    Detailed information
-                                </a>
-                                </td>
-                                <td><a href="/updateBranch/${branch.idBranchLine}">
-                                    Edit
-                                </a></td>
-                                <td><a href="/deleteBranch/${branch.idBranchLine}">
-                                    Delete
-                                </a></td>
-                            </tr>
-                        </c:forEach>
-                        <tr style="background-color: #CBEEF4">
-                            <td>
-                                <form action="/createBranch" method="get">
-                                    <input type="submit" value="Add new branch" style="margin-top: 1%; margin-left: 1%"
-                                           class="login"/>
-                                </form>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </table>
+            <c:when test="${branches.size()=='0'}">
+                <p>No branches registered</p>
+            </c:when>
+            <c:otherwise>
+            <p>Branches</p>
+            <table class="table">
+                <tr class="firstTR" style="background-color: #bf4031;">
+                    <td>Branch title</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <c:forEach items="${branches}" var="branch">
+                    <tr>
+                        <td>${branch.title}</td>
+                        <td><a href="/detailedInf/${branch.idBranchLine}">
+                            Detailed information
+                        </a>
+                        </td>
+                        <td><a href="/updateBranch/${branch.idBranchLine}">
+                            Edit
+                        </a></td>
+                        <td><a href="/deleteBranch/${branch.idBranchLine}">
+                            Delete
+                        </a></td>
+                    </tr>
+                </c:forEach>
                 </c:otherwise>
-            </c:choose>
+                </c:choose>
+                <tr style="background-color: #CBEEF4">
+                    <td>
+                        <form action="/createBranch" method="get">
+                            <input type="submit" value="Add new branch" style="margin-top: 1%; margin-left: 1%"
+                                   class="login"/>
+                        </form>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
