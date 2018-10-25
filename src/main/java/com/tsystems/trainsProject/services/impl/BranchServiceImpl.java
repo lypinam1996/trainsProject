@@ -47,7 +47,9 @@ public class BranchServiceImpl implements BranchService {
     public void saveOrUpdate(BranchLineEntity branch) {
         List<DetailedInfBranchEntity> detailedInfList = branch.getDetailedInf();
         for (int i = 0; i < detailedInfList.size(); i++) {
-            branch.getDetailedInf().get(i).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+            if (detailedInfList.get(i).getStation().getStationName() != null) {
+                branch.getDetailedInf().get(i).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+            }
             branch.getDetailedInf().get(i).setBranch(branch);
         }
         branchDAO.saveOrUpdate(branch);
@@ -65,20 +67,32 @@ public class BranchServiceImpl implements BranchService {
         for (int i = 0; i < detailedInfList.size(); i++) {
             for (int j = 0; j < branchLineEntity.getDetailedInf().size(); j++) {
                 if (branchLineEntity.getDetailedInf().get(j).getIdDetailedInfBranch() == detailedInfList.get(i).getIdDetailedInfBranch()) {
-                    branchLineEntity.getDetailedInf().get(j).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+                    if (detailedInfList.get(i).getStation().getStationName() != null) {
+                        branchLineEntity.getDetailedInf().get(j).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+                    }
                     branchLineEntity.getDetailedInf().get(j).setBranch(branch);
-                    branchLineEntity.getDetailedInf().get(j).setStationSerialNumber(branch.getDetailedInf().get(i).getStationSerialNumber());
-                    branchLineEntity.getDetailedInf().get(j).setTimeFromPrevious(branch.getDetailedInf().get(i).getTimeFromPrevious());
+                    if (branch.getDetailedInf().get(i).getStationSerialNumber() != null) {
+                        branchLineEntity.getDetailedInf().get(j).setStationSerialNumber(branch.getDetailedInf().get(i).getStationSerialNumber());
+                    }
+                    if (branch.getDetailedInf().get(i).getTimeFromPrevious() != null) {
+                        branchLineEntity.getDetailedInf().get(j).setTimeFromPrevious(branch.getDetailedInf().get(i).getTimeFromPrevious());
+                    }
                 }
             }
         }
         for (int i = 0; i < detailedInfList.size(); i++) {
-            if (infBranchDAO.findById(detailedInfList.get(i).getIdDetailedInfBranch())==null) {
-                detailedInfList.get(i).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+            if (infBranchDAO.findById(detailedInfList.get(i).getIdDetailedInfBranch()) == null) {
+                if (detailedInfList.get(i).getStation().getStationName() != null) {
+                    detailedInfList.get(i).setStation(stationDAO.findByName(detailedInfList.get(i).getStation().getStationName()));
+                }
                 detailedInfList.get(i).setBranch(branch);
-                detailedInfList.get(i).setStationSerialNumber(branch.getDetailedInf().get(i).getStationSerialNumber());
-                detailedInfList.get(i).setTimeFromPrevious(branch.getDetailedInf().get(i).getTimeFromPrevious());
-                infBranchDAO.saveOrUpdate( detailedInfList.get(i));
+                if (branch.getDetailedInf().get(i).getStationSerialNumber() != null) {
+                    detailedInfList.get(i).setStationSerialNumber(branch.getDetailedInf().get(i).getStationSerialNumber());
+                }
+                if (branch.getDetailedInf().get(i).getTimeFromPrevious() != null) {
+                    detailedInfList.get(i).setTimeFromPrevious(branch.getDetailedInf().get(i).getTimeFromPrevious());
+                }
+                infBranchDAO.saveOrUpdate(detailedInfList.get(i));
             }
         }
 
@@ -105,26 +119,12 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public List<String> validation(BranchLineEntity branch) throws ParseException {
+    public List<String> validation(BranchLineEntity branch) {
         List<String> errors = new ArrayList<>();
         String errorEqualSerialNumber = checkEqualitySerialNumbers(branch);
         String errorNotSerialNumber = checkSerialNumbers(branch);
         String errorEqualStations = checkEqualityStations(branch);
         String errorTime = checkTime(branch);
-        Date timeZero = new SimpleDateFormat("HH:mm").parse("00:00");
-        if (!DateUtils.isSameInstant(branch.getDetailedInf().get(0).getTimeFromPrevious(), timeZero)) {
-            errors.add("*Time at first station must be equal 00:00");
-        }
-        int i = 1;
-        boolean ok = true;
-        while (ok && i < branch.getDetailedInf().size()) {
-            if (DateUtils.isSameInstant(branch.getDetailedInf().get(i).getTimeFromPrevious(), timeZero)) {
-                errors.add("*Time can not be equal 00:00");
-                ok = false;
-            } else {
-                i++;
-            }
-        }
         if (!errorEqualSerialNumber.equals("")) {
             errors.add(errorEqualSerialNumber);
         }
@@ -192,21 +192,32 @@ public class BranchServiceImpl implements BranchService {
         List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
         detailedInfList.addAll(branch.getDetailedInf());
         Map<Integer, DetailedInfBranchEntity> mapSerialNumbers = new TreeMap();
-        for (int i = 0; i < detailedInfList.size(); i++) {
-            mapSerialNumbers.put(detailedInfList.get(i).getStationSerialNumber(), detailedInfList.get(i));
-        }
-        DetailedInfBranchEntity pred = null;
-        int diff = 0;
-        for (Map.Entry<Integer, DetailedInfBranchEntity> entry : mapSerialNumbers.entrySet()) {
-            if (pred != null) {
-                diff = entry.getKey() - pred.getStationSerialNumber();
-                if (diff > 1) {
-                    entry.getValue().setStationSerialNumber(entry.getKey() - diff + 1);
-                }
+        boolean ok = true;
+        int i = 0;
+        while (i < detailedInfList.size() && ok) {
+            if (detailedInfList.get(i).getStationSerialNumber() != null) {
+                mapSerialNumbers.put(detailedInfList.get(i).getStationSerialNumber(), detailedInfList.get(i));
+                i++;
+            } else {
+                ok = false;
             }
-            pred = entry.getValue();
         }
-        if (diff > 1) {
+        if (ok) {
+            DetailedInfBranchEntity pred = null;
+            int diff = 0;
+            for (Map.Entry<Integer, DetailedInfBranchEntity> entry : mapSerialNumbers.entrySet()) {
+                if (pred != null) {
+                    diff = entry.getKey() - pred.getStationSerialNumber();
+                    if (diff > 1) {
+                        entry.getValue().setStationSerialNumber(entry.getKey() - diff + 1);
+                    }
+                }
+                pred = entry.getValue();
+            }
+            if (diff > 1) {
+                error = "*Some serial numbers was missed";
+            }
+        } else {
             error = "*Some serial numbers was missed";
         }
         return error;
@@ -214,12 +225,31 @@ public class BranchServiceImpl implements BranchService {
 
     private String checkTime(BranchLineEntity branch) {
         String error = "";
-        List<DetailedInfBranchEntity> listDetInf = new ArrayList<>();
-        for (int i = 1; i < listDetInf.size(); i++) {
-            if (listDetInf.get(i).getTimeFromPrevious().getHours() * 60 + listDetInf.get(i).getTimeFromPrevious().getMinutes() == 0) {
-                error = "*Time can not be zero";
+        try {
+            if (branch.getDetailedInf().get(0).getTimeFromPrevious() != null) {
+                Date timeZero = new SimpleDateFormat("HH:mm").parse("00:00");
+                if (!DateUtils.isSameInstant(branch.getDetailedInf().get(0).getTimeFromPrevious(), timeZero)) {
+                    error = "*Time at first station must be equal 00:00";
+                }
+                int i = 1;
+                boolean ok = true;
+                while (ok && i < branch.getDetailedInf().size()) {
+                    if (DateUtils.isSameInstant(branch.getDetailedInf().get(i).getTimeFromPrevious(), timeZero)) {
+                        error = "*Time can not be equal 00:00";
+                        ok = false;
+                    } else {
+                        i++;
+                    }
+                }
+            } else {
+                error = "*PLease input time";
             }
         }
-        return error;
+        catch (ParseException exc){
+            error = "*Please verify your input data";
+        }
+        finally {
+            return error;
+        }
     }
 }

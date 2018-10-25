@@ -41,4 +41,16 @@ public class StationServiceImpl implements StationService {
         stationDAO.delete(stationEntity);
     }
 
+    @Override
+    public  String checkUniqueStationName(StationEntity station){
+        List<StationEntity> stations = stationDAO.findAllStations();
+        stations.remove(stationDAO.findById(station.getIdStation()));
+        for (StationEntity stationEntity:stations){
+            if(station.getStationName().equals(stationEntity.getStationName())){
+                return "*Station name is not unique";
+            }
+        }
+        return "";
+    }
+
 }

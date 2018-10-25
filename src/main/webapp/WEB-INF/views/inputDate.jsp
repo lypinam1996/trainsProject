@@ -18,14 +18,14 @@
             crossorigin="anonymous"></script>
 </head>
 <body style="background-color: #008ca5">
-<%--<div class="nav-item dropdown">--%>
-    <%--<form action="/" method="get">--%>
-        <%--<input type="submit" value="Back" class="backBtn"/>--%>
-    <%--</form>--%>
-    <%--<form action="/logout" method="get" style="margin-top: -35px">--%>
-        <%--<input type="submit" value="Logout" class="login"/>--%>
-    <%--</form>--%>
-<%--</div>--%>
+<div class="nav-item dropdown">
+    <form action="/" method="get">
+        <input type="submit" value="Main page" class="backBtn"/>
+    </form>
+    <form action="/logout" method="get" style="margin-top: -35px">
+        <input type="submit" value="Logout" class="login"/>
+    </form>
+</div>
 <div class="container" style="  width: 50%">
     <div class="row">
         <div class="col-md-12">
@@ -41,19 +41,19 @@
                     <form:input class="form-control inp" type="date" path="departureDate"/>
                 </div>
                 <div class="form-group">
-                    <label  for="passanger.name">Departure date</label>
+                    <label  for="passanger.name">Name</label>
                     <form:input class="form-control inp"  path="passanger.name"/>
                 </div>
                 <div class="form-group">
-                    <label  for="passanger.surname">Departure date</label>
+                    <label  for="passanger.surname">Surname</label>
                     <form:input class="form-control inp"  path="passanger.surname"/>
                 </div>
                 <div class="form-group">
-                    <label  for="passanger.patronymic">Departure date</label>
+                    <label  for="passanger.patronymic">Patronymic</label>
                     <form:input class="form-control inp"  path="passanger.patronymic"/>
                 </div>
                 <div class="form-group">
-                    <label  for="passanger.dateOfBirth">Departure date</label>
+                    <label  for="passanger.dateOfBirth">Date of birth</label>
                     <form:input class="form-control inp" type="date" path="passanger.dateOfBirth"/>
                 </div>
                 <form:input  type="hidden" path="idTicket"/>

@@ -36,32 +36,53 @@ public class StationController {
     @RequestMapping(value = "/createStation", method = RequestMethod.GET)
     public String getStation(@ModelAttribute StationEntity station, Model model)
     {
-        return create(station, model, "createStation");
+        String error="";
+        return create(station, model, error,"createStation");
     }
 
-    private String create(StationEntity station, Model model, String type) {
+    private String create(StationEntity station, Model model,  String error,String type) {
         model.addAttribute("station",station);
         model.addAttribute("type", type);
+        model.addAttribute("error", error);
         return "editStation";
     }
 
     @RequestMapping(value = "/createStation", method = RequestMethod.POST)
     public String postStation(@ModelAttribute StationEntity station, Model model) {
+        String error=stationService.checkUniqueStationName(station);
+        if (!error.equals("")){
+            return create(station, model,error,"createStation");
+        }
         stationService.saveOrUpdate(station);
         return "redirect:/stations";
     }
 
     @RequestMapping(value = "/updateStation/{pk}", method = RequestMethod.GET)
-    public String updateStation(@PathVariable Integer pk, Model model) {
+    public ModelAndView updateStation(@PathVariable Integer pk) {
+        ModelAndView model = new ModelAndView();
+        List<String> errors = new ArrayList<>();
         StationEntity station = stationService.findById(pk);
-        model.addAttribute("station",station);
-        model.addAttribute("type", "updateStation");
-        return "editStation" ;
+        if(!station.getDetailedInf().isEmpty()) {
+            errors.add("*You can't delete station! Several branches go through it!");
+            return getAllStationsHelp(errors);
+        }
+        else {
+            String error = "";
+            model.addObject("station", station);
+            model.addObject("error", error);
+            model.addObject("type", "updateStation");
+            model.setViewName("editStation");
+            return model;
+        }
     }
 
 
     @RequestMapping(value = "/updateStation", method = RequestMethod.POST)
     public String update( @ModelAttribute StationEntity station, Model model) {
+        String error=stationService.checkUniqueStationName(station);
+        if (!error.equals("")){
+            return create(station, model,error,"createStation");
+        }
         stationService.saveOrUpdate(station);
         return "redirect:/stations";
     }

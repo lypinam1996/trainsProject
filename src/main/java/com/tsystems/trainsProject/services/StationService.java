@@ -11,4 +11,5 @@ public interface StationService {
     void saveOrUpdate(StationEntity station);
     StationEntity findById(int id);
     void delete(StationEntity stationEntity);
+    String checkUniqueStationName(StationEntity station);
 }

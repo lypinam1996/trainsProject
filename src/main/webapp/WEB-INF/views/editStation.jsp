@@ -37,6 +37,11 @@
             <form:form action="${actionUrl}" modelAttribute="station"
                        method="POST">
                 <form:input type="hidden" path="idStation"/>
+                <c:choose>
+                    <c:when test="${!error.isEmpty()}">
+                        <div class="errors">${error}</div>
+                    </c:when>
+                </c:choose>
                 <div class="form-group">
                     <label  for="number">Station name</label>
                     <form:input class="form-control inp" path="stationName"/>

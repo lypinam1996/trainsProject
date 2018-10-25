@@ -43,7 +43,6 @@ public class TicketController {
     public String getTickets(@PathVariable Integer pk, Model model) {
         ScheduleEntity schedule = scheduleService.findById(pk);
         List<TicketEntity> tickets = schedule.getTicket();
-        Collections.sort(tickets);
         model.addAttribute("tickets", tickets);
         return "tickets";
     }

@@ -111,10 +111,18 @@ public class ScheduleController {
 
     @RequestMapping(value = "/createSchedule", method = RequestMethod.POST)
     public String postTrain( @ModelAttribute ScheduleEntity schedule, Model model) {
-        schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
-        schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
-        schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
-        schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
+        if(schedule.getBranch().getIdBranchLine()!=0) {
+            schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
+        }
+        if(schedule.getFirstStation().getIdStation()!=0) {
+            schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
+        }
+        if(schedule.getLastStation().getIdStation()!=0) {
+            schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
+        }
+        if(schedule.getTrain().getIdTrain()!=0) {
+            schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
+        }
         List<String>  errors = scheduleService.validation(schedule);
         if (!errors.isEmpty()) {
             return create(schedule, model, errors, "createTrain", schedule.getBranch());
@@ -144,10 +152,18 @@ public class ScheduleController {
     @RequestMapping(value = "/updateSchedule", method = RequestMethod.POST)
     public String update(@ModelAttribute ScheduleEntity schedule, Model model) {
         ScheduleEntity scheduleEntity = scheduleService.findById(schedule.getIdSchedule());
-        schedule.setBranch(scheduleEntity.getBranch());
-        schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
-        schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
-        schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
+        if(schedule.getBranch().getIdBranchLine()!=0) {
+            schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
+        }
+        if(schedule.getFirstStation().getIdStation()!=0) {
+            schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
+        }
+        if(schedule.getLastStation().getIdStation()!=0) {
+            schedule.setLastStation(stationService.findById(schedule.getLastStation().getIdStation()));
+        }
+        if(schedule.getTrain().getIdTrain()!=0) {
+            schedule.setTrain(trainService.findById(schedule.getTrain().getIdTrain()));
+        }
         List<String>  errors = scheduleService.validation(schedule);
         if (!errors.isEmpty()) {
               return create(schedule,model,errors,"updateSchedule",schedule.getBranch());

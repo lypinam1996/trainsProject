@@ -79,17 +79,25 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/updateBranch/{pk}", method = RequestMethod.GET)
-    public String update(@PathVariable Integer pk, Model model) {
+    public  ModelAndView update(@PathVariable Integer pk) {
         List<String> errors = new ArrayList<>();
+        ModelAndView model = new ModelAndView();
         BranchLineEntity branch = branchService.findById(pk);
-        List<StationEntity> stations = stationService.findAllStations();
-        model.addAttribute("errors",errors);
-        model.addAttribute("stations",stations);
-        model.addAttribute("branch",branch);
-        model.addAttribute("type", "updateBranch");
-        return "editBranch" ;
-    }
+        if(branch.getSchedule().isEmpty()) {
+            List<StationEntity> stations = stationService.findAllStations();
+            model.addObject("errors", errors);
+            model.addObject("stations", stations);
+            model.addObject("branch", branch);
+            model.addObject("type", "updateBranch");
+            model.setViewName("editBranch");
+            return model;
+        }
+        else {
+            errors.add("*You can't edit this branch! Several trains go through it");
+            return getAllBranchesHelp(errors);
+        }
 
+    }
 
     @RequestMapping(value = "/updateBranch", method = RequestMethod.POST)
     public String update( @ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) throws ParseException {

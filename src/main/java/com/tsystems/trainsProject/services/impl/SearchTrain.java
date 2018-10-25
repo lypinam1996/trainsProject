@@ -39,7 +39,7 @@ public class SearchTrain {
             List<BranchLineEntity> branches = findCoincidingBranches(listDepStations, listArrStations);
             Map<BranchLineEntity, List<DetailedInfBranchEntity>> detailedInfBranchList = infBranchService.findBranchesByBranches(branches);
             List<ScheduleEntity> schedule = scheduleService.findSchedulesByBranch(detailedInfBranchList, departureStation, arrivalStation);
-            SimpleDateFormat ft = new SimpleDateFormat("hh:mm");
+            SimpleDateFormat ft = new SimpleDateFormat("HH:mm");
             Date time1 = ft.parse(search.getDepartureTimeFrom());
             Date time2 = ft.parse(search.getDepartureTimeTo());
             result = evaluateTime(schedule, time1, time2, departureStation,arrivalStation);

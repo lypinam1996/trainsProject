@@ -109,7 +109,8 @@ public class ScheduleServiceImpl implements ScheduleService {
         BranchLineEntity branch = schedule.getBranch();
         List<ScheduleEntity> schedulesOnBranch = branch.getSchedule();
         List<Date> employmentTime = evaluateTime(schedulesOnBranch);
-        return compareTime(employmentTime, schedule);
+        error=compareTime(employmentTime, schedule);
+        return error;
     }
 
     public String checkTrainEmployment(ScheduleEntity schedule) {
@@ -117,7 +118,8 @@ public class ScheduleServiceImpl implements ScheduleService {
         TrainEntity train = schedule.getTrain();
         List<ScheduleEntity> schedulesWithTrain = train.getSchedule();
         List<Date> employmentTime = evaluateTime(schedulesWithTrain);
-        return compareTime(employmentTime, schedule);
+        error=compareTime(employmentTime, schedule);
+        return error;
     }
 
     private String compareTime(List<Date> employmentTime, ScheduleEntity schedule) {
@@ -184,13 +186,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     public List<String> validation(ScheduleEntity schedule) {
         List<String> errors = new ArrayList<>();
         if (!checkBranchEmployment(schedule).equals("")) {
-            errors.add(checkBranchEmployment(schedule));
+            errors.add(checkBranchEmployment(schedule)+" for branch");
         }
         if (!checkStationsSerialNumbers(schedule).equals("")) {
             errors.add(checkStationsSerialNumbers(schedule));
         }
         if (!checkTrainEmployment(schedule).equals("")) {
-            errors.add(checkTrainEmployment(schedule));
+            errors.add(checkTrainEmployment(schedule)+" for train");
+        }
+        if(schedule.getDepartureTime()==null){
+            errors.add("*Please input time.");
         }
         return errors;
     }
