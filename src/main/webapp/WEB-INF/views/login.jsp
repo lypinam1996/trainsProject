@@ -26,6 +26,7 @@
                 <h2 class="text-center">or</h2>
                 <h2 class="text-center h2A"><a style="color: #bf4031" href="<c:url value="/registration"/>">Register</a></h2>
                 <c:url value="/j_spring_security_check" var="loginUrl" />
+                <form:errors path="/login?error"/>
                 <form:form action="${loginUrl}" method="post">
                     <label  class="text-uppercase">Username</label>
                     <input type="e-mail" class="form-control" name="login">
