@@ -1,7 +1,6 @@
 package com.tsystems.trainsProject.dao;
 
 import com.tsystems.trainsProject.models.PassangerEntity;
-import com.tsystems.trainsProject.models.UserEntity;
 
 import java.util.List;
 

@@ -2,7 +2,6 @@ package com.tsystems.trainsProject.controllers;
 
 import com.tsystems.trainsProject.models.Search;
 import com.tsystems.trainsProject.models.StationEntity;
-import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
@@ -15,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 

@@ -2,8 +2,6 @@ package com.tsystems.trainsProject.services;
 
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 
 import java.text.ParseException;
 import java.util.List;

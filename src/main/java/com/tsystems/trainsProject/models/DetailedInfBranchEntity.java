@@ -33,7 +33,6 @@ public class DetailedInfBranchEntity {
         this.station = station;
     }
 
-//    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToOne()
     @JoinColumn(name = "id_branch", referencedColumnName = "id_branch_line")//name=fk ref=first key
     public BranchLineEntity getBranch() {

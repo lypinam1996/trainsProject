@@ -1,12 +1,8 @@
 package com.tsystems.trainsProject.controllers;
 
-import com.mysql.cj.xdevapi.Collection;
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.*;
-import com.tsystems.trainsProject.services.impl.PassangerServiceImpl;
-import com.tsystems.trainsProject.services.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -43,6 +37,7 @@ public class TicketController {
     public String getTickets(@PathVariable Integer pk, Model model) {
         ScheduleEntity schedule = scheduleService.findById(pk);
         List<TicketEntity> tickets = schedule.getTicket();
+        ticketService.delete1(new TicketEntity());
         model.addAttribute("tickets", tickets);
         return "tickets";
     }
@@ -63,6 +58,7 @@ public class TicketController {
 
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
     public String getUserTicket(Model model) {
+        ticketService.delete1(new TicketEntity());
         UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         List<PassangerEntity> passangers = user.getPassanger();
         List<TicketEntity> tickets = new ArrayList<>();

@@ -1,12 +1,7 @@
 package com.tsystems.trainsProject.services.impl;
-import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.impl.PassangerDAOImpl;
-import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
 import com.tsystems.trainsProject.models.PassangerEntity;
-import com.tsystems.trainsProject.models.TicketEntity;
-import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.services.PassangerService;
-import com.tsystems.trainsProject.services.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

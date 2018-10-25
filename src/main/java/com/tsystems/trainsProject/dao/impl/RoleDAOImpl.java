@@ -6,7 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository("RoleDAO")
 public class RoleDAOImpl extends AbstractDAO<Integer,RoleEntity> implements RoleDAO {

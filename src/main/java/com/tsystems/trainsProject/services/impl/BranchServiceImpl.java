@@ -1,24 +1,16 @@
 package com.tsystems.trainsProject.services.impl;
 
-import com.tsystems.trainsProject.dao.BranchDAO;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
-import com.tsystems.trainsProject.dao.StationDAO;
 import com.tsystems.trainsProject.dao.impl.BranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
-import com.tsystems.trainsProject.dao.impl.UserDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
-import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.BranchService;
 import org.apache.commons.lang.time.DateUtils;
-import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;

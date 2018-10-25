@@ -1,6 +1,5 @@
 package com.tsystems.trainsProject.models;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
