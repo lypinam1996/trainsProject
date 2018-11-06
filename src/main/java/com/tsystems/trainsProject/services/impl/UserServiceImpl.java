@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     public void saveOrUpdate(UserEntity user) {
         RoleEntity roleEntity = roleDAO.findByTitle("USER");
         user.setRole(roleEntity);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+       // user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.saveOrUpdate(user);
     }
 

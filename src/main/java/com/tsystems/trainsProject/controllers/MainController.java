@@ -7,6 +7,9 @@ import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,12 @@ public class MainController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
+    public String getStation()
+    {
+        return "index2";
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getFirstPage(@ModelAttribute Search search, Model model) {
@@ -52,4 +61,6 @@ public class MainController {
         modelAndView.addAttribute("auth", auth.getName());
         return "index";
     }
+
+
 }
