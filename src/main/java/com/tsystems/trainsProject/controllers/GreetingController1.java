@@ -1,4 +1,4 @@
-/*package com.tsystems.trainsProject.controllers;
+package com.tsystems.trainsProject.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -18,4 +18,4 @@ public class GreetingController1 {
     public Car greeting(@RequestParam(value="housePower", defaultValue="World") String name) {
         return new Car(String.format(template, name),1, 2);
     }
-}*/
+}

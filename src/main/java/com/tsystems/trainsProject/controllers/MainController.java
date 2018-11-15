@@ -56,5 +56,10 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
+    public String getTrain( Model model) {
+
+        return "a";
+    }
 
 }
