@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -151,6 +152,16 @@ public class TicketServiceImpl implements TicketService {
         }
         for (int i = 0; i < ticketsToDelete.size(); i++) {
             ticketDAO.delete(ticketsToDelete.get(i));
+        }
+    }
+
+    @Override
+    public List<TicketEntity> findByDate(Date today) {
+        try {
+            return ticketDAO.findByDate(today);
+        }
+        catch (ParseException pe){
+            return null;
         }
     }
 }

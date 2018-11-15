@@ -2,6 +2,7 @@ package com.tsystems.trainsProject.services;
 
 import com.tsystems.trainsProject.models.TicketEntity;
 
+import java.util.Date;
 import java.util.List;
 
 public interface TicketService {
@@ -13,4 +14,5 @@ public interface TicketService {
     int findSeatWithMaxNumber(TicketEntity ticket);
     boolean checkTime(TicketEntity ticket);
     void delete1(TicketEntity ticketEntity);
+    List<TicketEntity> findByDate(Date today);
 }

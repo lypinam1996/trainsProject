@@ -31,18 +31,6 @@ public class MainController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
-    public String getStation()
-    {
-        return "index2";
-    }
-
-    @RequestMapping(value = "/bbb", method = RequestMethod.GET)
-    public String getStations()
-    {
-        return "newStations";
-    }
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getFirstPage(@ModelAttribute Search search, Model model) {
         String result ="";

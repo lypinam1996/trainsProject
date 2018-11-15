@@ -1,4 +1,4 @@
-package com.tsystems.trainsProject.models;
+/*package com.tsystems.trainsProject.models;
 
 public class Car {
 
@@ -23,4 +23,4 @@ public class Car {
     public int getHousePower() {
         return housePower;
     }
-}
+}*/

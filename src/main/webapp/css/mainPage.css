@@ -96,3 +96,7 @@ label{
     padding-left: 4%;
 }
 
+.alert{
+    position: fixed;
+    margin-left: 79%;
+}

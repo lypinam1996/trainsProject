@@ -2,6 +2,8 @@ package com.tsystems.trainsProject.dao;
 
 import com.tsystems.trainsProject.models.TicketEntity;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public interface TicketDAO {
@@ -9,4 +11,5 @@ public interface TicketDAO {
     TicketEntity findByName(String name);
     void saveOrUpdate(TicketEntity station);
     TicketEntity findById(int id);
+    List<TicketEntity> findByDate(Date today) throws ParseException;
 }
