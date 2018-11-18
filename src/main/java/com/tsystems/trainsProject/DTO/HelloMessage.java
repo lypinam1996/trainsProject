@@ -1,4 +1,4 @@
-package com.tsystems.trainsProject.models;
+package com.tsystems.trainsProject.DTO;
 
 public class HelloMessage {
 

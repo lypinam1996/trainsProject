@@ -4,54 +4,21 @@
 <%@page pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>Main page</title>
     <style>
         <%@include file="/css/mainPage.css"%>
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
-    <script type="text/javascript">
-        var stompClient = null;
+    <title>Main page</title>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="/css/mainPage.css">--%>
 
-        $(document).ready(function () {
-            var socket = new SockJS('/websocket');
-            stompClient = Stomp.over(socket);
-            stompClient.connect({}, function (frame) {
-                stompClient.subscribe('/topic/greetings', function (greeting) {
-                    showGreeting(greeting.body);
-                });
-            });
-        });
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap/bootstrap.js"></script>
 
-        function sendName() {
-            stompClient.send("/app/hello", {}, JSON.stringify({'name': ""}));
-        }
-
-        function showGreeting(message) {
-            if(message!="") {
-                $(".alert").toggleClass('in out');
-            }
-        }
-
-        setInterval(function () {
-            sendName();
-        }, 3600000);
-
-        setTimeout(function () {
-            sendName();
-        }, 1000);
-
-
-
-    </script>
+    <script src="/js/websocket.js"></script>
+    <script src="/js/sockjs.js"></script>
+    <script src="/js/stomp.js"></script>
 </head>
-<body class="bodystyle">
+<body>
 <div class="nav-item dropdown">
     <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -64,13 +31,13 @@
             </form>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-                <div class="dropdown-divider">  </div>
+                <div class="dropdown-divider"></div>
             </div>
         </c:when>
         <c:otherwise>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-                <div class="dropdown-divider">  </div>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<c:url value="/tickets"/>">Tickets</a>
             </div>
             <form action="/logout" method="get">
@@ -79,13 +46,17 @@
         </c:otherwise>
     </c:choose>
 </div>
-<div class="alert alert-info fade out" >
+<div class="alert alert-info fade out">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Info!</strong> You have some tickets for today!
 </div>
 <div class="container">
-    <h1 class="text-center marg"><strong>Search for the cheapest train tickets</strong></h1>
-    <h2 class="text-center">The best way to buy train tickets cheaper</h2>
+    <h1 class="text-center marg">
+        <strong>Search for the cheapest train tickets</strong>
+    </h1>
+    <h2 class="text-center">
+        The best way to buy train tickets cheaper
+    </h2>
     <form:form action="/" modelAttribute="search" method="POST" class="text-center f">
         <div class="leftAl">
             <label>Departure point</label>

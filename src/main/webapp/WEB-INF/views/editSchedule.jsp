@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -11,12 +10,9 @@
     <style>
         <%@include file="/css/form2.css"%>
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap/bootstrap.js"></script>
 </head>
 <body style="background-color: #008ca5">
 <div class="nav-item dropdown">
@@ -28,8 +24,8 @@
     </form>
 </div>
 <c:choose>
-    <c:when test="${type eq 'updateSchedule'}"><c:set var="actionUrl" value="/updateSchedule" /></c:when>
-    <c:otherwise><c:set var="actionUrl" value="/createSchedule" /></c:otherwise>
+    <c:when test="${type eq 'updateSchedule'}"><c:set var="actionUrl" value="/updateSchedule"/></c:when>
+    <c:otherwise><c:set var="actionUrl" value="/createSchedule"/></c:otherwise>
 </c:choose>
 <div class="container" style="  width: 50%">
     <div class="row">
@@ -44,7 +40,8 @@
                             <c:forEach items="${errors}" var="error">
                                 <div>${error}</div>
                             </c:forEach>
-                        </div></c:when>
+                        </div>
+                    </c:when>
                 </c:choose>
                 <div class="form-group">
                     <label for="train">Train</label>
@@ -52,10 +49,11 @@
                         <c:forEach var="item" items="${trains}">
                             <c:choose>
                                 <c:when test="${schedule.train.idTrain == item.idTrain}">
-                                    <option class="inp" selected="selected" value="${schedule.train.idTrain}">${schedule.train.number}</option>
+                                    <option class="inp" selected="selected"
+                                            value="${schedule.train.idTrain}">${schedule.train.number}</option>
                                 </c:when>
                                 <c:otherwise>
-                                    <option  class="inp" value="${item.idTrain}"}>${item.number}</option>
+                                    <option class="inp" value="${item.idTrain}" }>${item.number}</option>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
@@ -67,7 +65,8 @@
                         <c:forEach var="item" items="${stations}">
                             <c:choose>
                                 <c:when test="${schedule.firstStation.idStation == item.idStation}">
-                                    <option class="inp" selected="selected" value="${schedule.firstStation.idStation}">${schedule.firstStation.stationName}</option>
+                                    <option class="inp" selected="selected"
+                                            value="${schedule.firstStation.idStation}">${schedule.firstStation.stationName}</option>
                                 </c:when>
                                 <c:otherwise>
                                     <option class="inp" value="${item.idStation}">${item.stationName}</option>
@@ -82,7 +81,8 @@
                         <c:forEach var="item" items="${stations}">
                             <c:choose>
                                 <c:when test="${schedule.lastStation.idStation == item.idStation}">
-                                    <option class="inp" selected="selected" value="${schedule.lastStation.idStation}">${schedule.lastStation.stationName}</option>
+                                    <option class="inp" selected="selected"
+                                            value="${schedule.lastStation.idStation}">${schedule.lastStation.stationName}</option>
                                 </c:when>
                                 <c:otherwise>
                                     <option class="inp" value="${item.idStation}">${item.stationName}</option>

@@ -1,4 +1,4 @@
-package com.tsystems.trainsProject.models;
+package com.tsystems.trainsProject.DTO;
 
 import javax.persistence.Entity;
 import java.util.Date;

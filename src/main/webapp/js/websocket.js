@@ -1,26 +1,29 @@
 var stompClient = null;
 
 $(document).ready(function () {
-    var socket = new SockJS('/gs-guide-websocket');
+    var socket = new SockJS('/websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+            showGreeting(greeting.body);
         });
     });
 });
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': "111"}));
+    stompClient.send("/app/hello", {}, JSON.stringify({'name': ""}));
 }
 
 function showGreeting(message) {
-    $("#greetings").html("");
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    if(message!="") {
+        $(".alert").toggleClass('in out');
+    }
 }
 
 setInterval(function () {
     sendName();
-}, 5000);
+}, 3600000);
 
+setTimeout(function () {
+    sendName();
+}, 1000);

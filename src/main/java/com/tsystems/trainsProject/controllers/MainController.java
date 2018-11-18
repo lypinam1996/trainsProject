@@ -1,13 +1,12 @@
 package com.tsystems.trainsProject.controllers;
 
-import com.tsystems.trainsProject.models.Search;
+import com.tsystems.trainsProject.DTO.Search;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 //import org.springframework.security.core.Authentication;
 //import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.Authentication;
@@ -55,11 +54,4 @@ public class MainController {
         modelAndView.addAttribute("auth", auth.getName());
         return "index";
     }
-
-    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
-    public String getTrain( Model model) {
-
-        return "a";
-    }
-
 }

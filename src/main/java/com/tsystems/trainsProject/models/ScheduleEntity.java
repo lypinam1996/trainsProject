@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,13 +12,20 @@ import java.util.List;
 @Entity
 @Table(name = "schedule", schema = "trains")
 public class ScheduleEntity {
+    @JsonProperty("idSchedule")
     private int idSchedule;
+    @JsonProperty("departureTime")
     @DateTimeFormat(pattern = "HH:mm")
     private Date departureTime;
+    @JsonProperty("train")
     private TrainEntity train;
+    @JsonProperty("branch")
     private BranchLineEntity branch;
+    @JsonProperty("firstStation")
     private StationEntity firstStation;
+    @JsonProperty("lastStation")
     private StationEntity lastStation;
+    @JsonProperty("ticket")
     private List<TicketEntity> ticket;
 
     @LazyCollection(LazyCollectionOption.FALSE)
