@@ -43,7 +43,7 @@ public class RestScheduleController {
 
     private List<ScheduleDTO>  helper() throws ParseException {
         List<ScheduleDTO> scheduleDTO = new ArrayList<ScheduleDTO>();
-        List<ScheduleEntity> scheduleEntities = scheduleService.findAllSchedules();
+        List<ScheduleEntity> scheduleEntities = scheduleService.findAllSchedulesAfterTime();
         Converter converter = new Converter();
         for (int i = 0; i < scheduleEntities.size(); i++) {
             scheduleDTO.add(converter.convertSchedule(scheduleEntities.get(i)));

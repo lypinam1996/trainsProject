@@ -6,6 +6,7 @@ import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -22,4 +23,5 @@ public interface ScheduleService {
     ScheduleEntity findById(int id);
     void delete(ScheduleEntity schedule);
     List<String>  validation(ScheduleEntity schedule);
+    List<ScheduleEntity> findAllSchedulesAfterTime() throws ParseException;
 }

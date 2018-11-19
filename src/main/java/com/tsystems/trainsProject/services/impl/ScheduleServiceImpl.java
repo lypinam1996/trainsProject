@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service("ScheduleService")
@@ -28,6 +31,22 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public List<ScheduleEntity> findAllSchedules() {
         List<ScheduleEntity> res = scheduleDAO.findAllSchedules();
+        return res;
+    }
+
+    @Override
+    public List<ScheduleEntity> findAllSchedulesAfterTime() throws ParseException {
+        List<ScheduleEntity> schedules = scheduleDAO.findAllSchedules();
+        List<ScheduleEntity> res = new ArrayList<>();
+        String pattern = "HH:mm";
+        DateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String stringTime = simpleDateFormat.format(new Date());
+        Date now = simpleDateFormat.parse(stringTime);
+        for(int i=0;i<schedules.size();i++){
+            if(schedules.get(i).getDepartureTime().after(now)){
+                res.add(schedules.get(i));
+            }
+        }
         return res;
     }
 

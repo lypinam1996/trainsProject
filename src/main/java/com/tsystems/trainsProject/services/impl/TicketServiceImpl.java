@@ -164,4 +164,16 @@ public class TicketServiceImpl implements TicketService {
             return null;
         }
     }
+
+//    @Override
+//    public List<TicketEntity> findByDate(Date today, List<TicketEntity> tickets) {
+//        Date now = new Date();
+//        List<TicketEntity> result = new ArrayList<>();
+//        for (int i = 0; i < tickets.size(); i++) {
+//            if (tickets.get(i).getDepartureDate().compareTo(now) == 0) {
+//                result.add(tickets.get(i));
+//            }
+//        }
+//        return result;
+//    }
 }
