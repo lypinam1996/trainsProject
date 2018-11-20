@@ -1,6 +1,10 @@
 package com.tsystems.trainsProject.DTO;
 
+import com.tsystems.trainsProject.dao.StationDAO;
 import com.tsystems.trainsProject.models.ScheduleEntity;
+import com.tsystems.trainsProject.models.StationEntity;
+import com.tsystems.trainsProject.models.UserEntity;
+import com.tsystems.trainsProject.services.UserService;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,5 +25,17 @@ public class Converter {
                 scheduleEntity.getLastStation().getStationName()
                );
         return scheduleDTO;
+    }
+
+    public StationDTO convertStation(StationEntity stationEntity) {
+        StationDTO stationDTO = new StationDTO(stationEntity.getIdStation(),
+                stationEntity.getStationName()
+        );
+        return stationDTO;
+    }
+
+    public UserDTO convertUser(UserEntity user) {
+        UserDTO userDTO = new UserDTO(user.getLogin(),user.getRole().getTitle());
+        return userDTO;
     }
 }

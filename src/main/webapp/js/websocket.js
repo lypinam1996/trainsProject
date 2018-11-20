@@ -8,6 +8,7 @@ $(document).ready(function () {
             showGreeting(greeting.body);
         });
     });
+
 });
 
 function sendName() {
@@ -15,7 +16,7 @@ function sendName() {
 }
 
 function showGreeting(message) {
-    if(message!="") {
+    if (message != "") {
         $(".alert").toggleClass('in out');
     }
 }

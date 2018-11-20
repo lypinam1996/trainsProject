@@ -6,7 +6,6 @@ var RestGet = function () {
         async: true,
         success: function (result) {
             if (result.length!=0) {
-                console.log(result);
                 $("#table")
                     .find('.change')
                     .remove()

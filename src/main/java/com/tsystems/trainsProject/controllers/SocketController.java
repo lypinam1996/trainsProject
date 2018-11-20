@@ -7,13 +7,17 @@ import com.tsystems.trainsProject.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class SocketController {
@@ -32,6 +36,23 @@ public class SocketController {
         else {
             return "";
         }
+    }
+
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+    @MessageMapping("/color")
+    public void receiveColor(ColorMessage message){
+        System.out.println("message.getColorString() = " + message.getColorString());
+    }
+
+
+    @Scheduled(fixedDelay = 1000)
+    private void bgColor(){
+        Random r = new Random();
+        String m = String.valueOf(r.nextInt());
+        String color = m.replace("0x", "#");
+        simpMessagingTemplate.convertAndSend("/topic/color", new ColorMessage(color));
     }
 
 //    @MessageMapping("/hello")

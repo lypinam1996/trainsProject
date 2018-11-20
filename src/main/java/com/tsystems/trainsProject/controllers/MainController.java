@@ -47,6 +47,11 @@ public class MainController {
         return result;
     }
 
+    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
+    public String getFirstPage() {
+        return "a";
+    }
+
     private String userActions(Model modelAndView, Authentication auth, Search search){
         modelAndView.addAttribute("search", search);
         List<StationEntity> stations = stationService.findAllStations();

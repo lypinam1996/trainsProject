@@ -6,9 +6,13 @@ import java.util.List;
 
 import com.tsystems.trainsProject.DTO.Converter;
 import com.tsystems.trainsProject.DTO.ScheduleDTO;
+import com.tsystems.trainsProject.DTO.StationDTO;
+import com.tsystems.trainsProject.DTO.UserDTO;
 import com.tsystems.trainsProject.models.ScheduleEntity;
+import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.ScheduleService;
+import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,13 +22,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RestScheduleController {
+public class MainRestController {
 
     @Autowired
     ScheduleService scheduleService;
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    StationService stationService;
 
     @RequestMapping(value = "/greeting", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ScheduleDTO> greeting() throws ParseException {
@@ -39,6 +46,29 @@ public class RestScheduleController {
             scheduleDTO=helper();
         }
         return scheduleDTO;
+    }
+
+    @RequestMapping(value = "/restStations", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<StationDTO> restGettingStations()  {
+        List<StationDTO> stationsDTO = new ArrayList<StationDTO>();
+        List<StationEntity> stations = stationService.findAllStations();
+        Converter converter = new Converter();
+        for (int i = 0; i < stations.size(); i++) {
+            stationsDTO.add(converter.convertStation(stations.get(i)));
+        }
+        return stationsDTO;
+    }
+
+    @RequestMapping(value = "/getRestUser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserDTO> restGettingUser()  {
+        Converter converter = new Converter();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity user = userService.findByLogin(auth.getName());
+        List<UserDTO> userDTO = new ArrayList<>();
+        if (user != null) {
+            userDTO.add(converter.convertUser(user));
+        }
+        return userDTO;
     }
 
     private List<ScheduleDTO>  helper() throws ParseException {

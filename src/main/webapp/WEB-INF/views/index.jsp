@@ -9,8 +9,6 @@
     </style>
     <title>Main page</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <%--<link rel="stylesheet" href="/css/mainPage.css">--%>
-
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
 
@@ -19,6 +17,7 @@
     <script src="/js/stomp.js"></script>
 </head>
 <body>
+<h1><c:out value="${ pageContext.request.remoteUser}"/> </h1>
 <div class="nav-item dropdown">
     <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
