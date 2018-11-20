@@ -59,14 +59,14 @@ public class MainRestController {
         return stationsDTO;
     }
 
-    @RequestMapping(value = "/getRestUser", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<UserDTO> restGettingUser()  {
+    @RequestMapping(value = "/session/current", produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserDTO restGettingUser()  {
         Converter converter = new Converter();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity user = userService.findByLogin(auth.getName());
-        List<UserDTO> userDTO = new ArrayList<>();
+        UserDTO userDTO = new UserDTO();
         if (user != null) {
-            userDTO.add(converter.convertUser(user));
+            userDTO=converter.convertUser(user);
         }
         return userDTO;
     }

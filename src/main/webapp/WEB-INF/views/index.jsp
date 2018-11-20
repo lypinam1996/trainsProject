@@ -17,7 +17,6 @@
     <script src="/js/stomp.js"></script>
 </head>
 <body>
-<h1><c:out value="${ pageContext.request.remoteUser}"/> </h1>
 <div class="nav-item dropdown">
     <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">

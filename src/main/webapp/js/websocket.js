@@ -1,6 +1,6 @@
 var stompClient = null;
 
-$(document).ready(function () {
+function getConnection() {
     var socket = new SockJS('/websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
@@ -8,11 +8,6 @@ $(document).ready(function () {
             showGreeting(greeting.body);
         });
     });
-
-});
-
-function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': ""}));
 }
 
 function showGreeting(message) {
@@ -21,10 +16,10 @@ function showGreeting(message) {
     }
 }
 
-setInterval(function () {
-    sendName();
-}, 3600000);
-
-setTimeout(function () {
-    sendName();
-}, 1000);
+$(document).ready(function() {
+    $.ajax("/session/current").then(function (json) {
+        if(json.role=='USER'){
+            getConnection();
+        }
+    })
+});

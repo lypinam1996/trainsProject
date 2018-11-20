@@ -20,16 +20,16 @@
         <location>/400.jsp</location>
     </error-page>
 
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <async-supported>true</async-supported>
-    </filter>
+    <!--<filter>-->
+        <!--<filter-name>springSecurityFilterChain</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+        <!--<async-supported>true</async-supported>-->
+    <!--</filter>-->
 
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter-mapping>-->
+        <!--<filter-name>springSecurityFilterChain</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <filter>
         <filter-name>encodingFilter</filter-name>
