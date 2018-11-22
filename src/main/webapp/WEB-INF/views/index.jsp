@@ -18,30 +18,7 @@
     <script src="/js/websocket.js"></script>
     <script src="/js/sockjs.js"></script>
     <script src="/js/stomp.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                type: 'GET',
-                url: '/restStations',
-                dataType: 'json',
-                async: true,
-                success: function (result) {
-                    if (result.length != 0) {
-                        $('#lastStation').autocomplete({
-                            source: result
-                        })
-                        $('#firstStation').autocomplete({
-                            source: result
-                        })
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(jqXHR.status + ' ' + jqXHR.responseText);
-                }
-            });
-        });
-    </script>
+    <script src="/js/stations.js"></script>
 </head>
 <body>
 <div class="nav-item dropdown">

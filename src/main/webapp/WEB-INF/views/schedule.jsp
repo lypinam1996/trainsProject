@@ -11,9 +11,13 @@
         <%@include file="/css/list.css"%>
     </style>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
     <script src="/js/rest.js"></script>
+    <script src="/js/station.js"></script>
 </head>
 <body>
 <div class="nav-item dropdown">
@@ -64,15 +68,8 @@
     </c:choose>
     <form:form action="/findStation" modelAttribute="station"
                method="POST" class="form-inline formSearch">
-        <div class="form-group">
-            <label for="idStation">Station name</label>
-            <form:select path="idStation" class="input">
-                <c:forEach var="item" items="${stations}">
-                    <option class="inp" selected="selected"
-                            value="${item.idStation}">${item.stationName}</option>
-                </c:forEach>
-            </form:select>
-        </div>
+        <label for="stationName">Station name</label>
+        <form:input type="text" class="inp" path="stationName" placeholder="station"/>
         <div class="form-group">
             <button type="submit" class="b">Search</button>
         </div>

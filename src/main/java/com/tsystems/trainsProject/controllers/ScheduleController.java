@@ -64,7 +64,7 @@ public class ScheduleController {
             role=user.getRole();
         }
         ModelAndView modelAndView = new ModelAndView();
-        StationEntity stationEntity = stationService.findById(stationGet.getIdStation());
+        StationEntity stationEntity = stationService.findByName(stationGet.getStationName());
         List<ScheduleEntity> schedules = stationEntity.getFirstStation();
         schedules.addAll(stationEntity.getLastStation());
         StationEntity station = new StationEntity();
