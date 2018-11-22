@@ -1,8 +1,10 @@
 package com.tsystems.trainsProject.services.impl;
+import com.tsystems.trainsProject.Events.CustomSpringEvent;
 import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +17,13 @@ public class StationServiceImpl implements StationService {
     @Autowired
     StationDAOImpl stationDAO;
 
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
+
     @Override
     public List<StationEntity> findAllStations() {
+        CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, "qwe");
+        applicationEventPublisher.publishEvent(customSpringEvent);
         List<StationEntity> res =stationDAO.findAllStations();
         return res;
     }

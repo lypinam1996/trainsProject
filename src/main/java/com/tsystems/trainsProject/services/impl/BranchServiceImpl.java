@@ -9,6 +9,7 @@ import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.BranchService;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.text.ParseException;
@@ -24,7 +25,6 @@ public class BranchServiceImpl implements BranchService {
 
     @Autowired
     InfBranchDAO infBranchDAO;
-
 
     @Autowired
     StationDAOImpl stationDAO;

@@ -7,10 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomSpringEventPublisher {
     @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
+    private ApplicationEventPublisher applicationEventPublisher;//в сервис
 
     public void doStuffAndPublishAnEvent(String message) {
-        System.out.println("Publishing custom event. ");
         CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, message);
         applicationEventPublisher.publishEvent(customSpringEvent);
     }

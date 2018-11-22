@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/restStations").permitAll()
                 .antMatchers("/websocket").permitAll()
                 .antMatchers("/topic/greetings").permitAll()
@@ -77,8 +78,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        .logout()
                 .permitAll()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true);
+                .logoutSuccessUrl("/login")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");;
     }
 
 
@@ -91,5 +93,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder getShaPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 
 }
