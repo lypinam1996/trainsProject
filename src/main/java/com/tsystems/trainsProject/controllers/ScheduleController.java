@@ -77,8 +77,6 @@ public class ScheduleController {
         return modelAndView;
     }
 
-
-
     @RequestMapping(value = "/createSchedule", method = RequestMethod.GET)
     public String getBranhes(Model model) {
         List<BranchLineEntity> branches = branchService.findAllBranches();
@@ -113,7 +111,7 @@ public class ScheduleController {
         if(schedule.getBranch().getIdBranchLine()!=0) {
             schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
         }
-        if(schedule.getFirstStation().getIdStation()!=0) {
+        if(stationService.findById(schedule.getFirstStation().getIdStation())!=null) {
             schedule.setFirstStation(stationService.findById(schedule.getFirstStation().getIdStation()));
         }
         if(schedule.getLastStation().getIdStation()!=0) {

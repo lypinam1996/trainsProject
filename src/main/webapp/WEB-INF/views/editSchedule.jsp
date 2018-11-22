@@ -10,33 +10,9 @@
     <style>
         <%@include file="/css/form2.css"%>
     </style>
-    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
-
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
-    <script type="text/javascript">
-        $( function () {
-            $.ajax({
-                type: 'GET',
-                url: '/restStations',
-                dataType: 'json',
-                async: true,
-                success: function (result) {
-                    if (result.length != 0) {
-                        console.log(result);
-                        $('#lastStation').autocomplete({
-                            source: result
-                        })
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(jqXHR.status + ' ' + jqXHR.responseText);
-                }
-            });
-        });
-    </script>
 </head>
 <body style="background-color: #008ca5">
 <div class="nav-item dropdown">
@@ -98,26 +74,22 @@
                         </c:choose>
                     </c:forEach>
                 </form:select>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                    <%--<label for="lastStation">First station</label>--%>
-                    <%--<form:select path="lastStation.idStation" class="form-control inp">--%>
-                    <%--<c:forEach var="item" items="${stations}">--%>
-                    <%--<c:choose>--%>
-                    <%--<c:when test="${schedule.lastStation.idStation == item.idStation}">--%>
-                    <%--<option class="inp" selected="selected"--%>
-                    <%--value="${schedule.lastStation.idStation}">${schedule.lastStation.stationName}</option>--%>
-                    <%--</c:when>--%>
-                    <%--<c:otherwise>--%>
-                    <%--<option class="inp" value="${item.idStation}">${item.stationName}</option>--%>
-                    <%--</c:otherwise>--%>
-                    <%--</c:choose>--%>
-                    <%--</c:forEach>--%>
-                    <%--</form:select>--%>
-                    <%--</div>--%>
+            </div>
                 <div class="form-group">
-                    <label for="lastStation">lastStation</label>
-                    <form:input type="text" class="form-control inp" path="lastStation"/>
+                    <label for="lastStation">First station</label>
+                    <form:select path="lastStation.idStation" class="form-control inp">
+                        <c:forEach var="item" items="${stations}">
+                            <c:choose>
+                                <c:when test="${schedule.lastStation.idStation == item.idStation}">
+                                    <option class="inp" selected="selected"
+                                            value="${schedule.lastStation.idStation}">${schedule.lastStation.stationName}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option class="inp" value="${item.idStation}">${item.stationName}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </form:select>
                 </div>
                 <div class="form-group">
                     <label for="departureTime">Departure time</label>

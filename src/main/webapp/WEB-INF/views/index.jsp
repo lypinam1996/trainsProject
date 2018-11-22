@@ -9,12 +9,39 @@
     </style>
     <title>Main page</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
 
     <script src="/js/websocket.js"></script>
     <script src="/js/sockjs.js"></script>
     <script src="/js/stomp.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/restStations',
+                dataType: 'json',
+                async: true,
+                success: function (result) {
+                    if (result.length != 0) {
+                        $('#lastStation').autocomplete({
+                            source: result
+                        })
+                        $('#firstStation').autocomplete({
+                            source: result
+                        })
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.status + ' ' + jqXHR.responseText);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="nav-item dropdown">
@@ -61,16 +88,8 @@
             <label>Arrival point</label>
             <label>Departure time</label>
         </div>
-        <form:select path="firstStation" class="inp">
-            <c:forEach var="item" items="${stations}">
-                <option value="${item.stationName}" }>${item.stationName}</option>
-            </c:forEach>
-        </form:select>
-        <form:select path="lastStation" class="inp">
-            <c:forEach var="item" items="${stations}">
-                <option value="${item.stationName}" }>${item.stationName}</option>
-            </c:forEach>
-        </form:select>
+        <form:input type="text" class="inp" path="firstStation" placeholder="from"/>
+        <form:input type="text" class="inp" path="lastStation" placeholder="to"/>
         <form:input type="time" class="inp" placeholder="from" path="departureTimeFrom"/>
         <form:errors path="departureTimeFrom"/>
         <form:input type="time" class="inp" placeholder="to" path="departureTimeTo"/><br>

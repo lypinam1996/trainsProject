@@ -119,3 +119,20 @@ lbl{
     padding:1%;
     background-color: white;
 }
+
+.ui-widget-content{
+    background: white !important;
+    color: #bf4031;
+}
+
+
+.ui-corner-all a{
+    background: white !important;
+    font-size: 14pt;
+}
+
+.ui-corner-all a:hover{
+    background:#CBEEF4 !important;
+    color: #bf4031;
+    font-size: 14pt;
+}
