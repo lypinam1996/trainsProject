@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
+import com.tsystems.trainsProject.Events.CustomSpringEvent;
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.ScheduleDAOImpl;
 import com.tsystems.trainsProject.models.*;
@@ -7,6 +8,7 @@ import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +29,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Autowired
     InfBranchService infBranchService;
+
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
     @Override
     public List<ScheduleEntity> findAllSchedules() {
@@ -96,6 +101,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public void saveOrUpdate(ScheduleEntity schedule) {
+        CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, "qwe");
+        applicationEventPublisher.publishEvent(customSpringEvent);
         scheduleDAO.saveOrUpdate(schedule);
     }
 

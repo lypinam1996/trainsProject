@@ -17,13 +17,8 @@ public class StationServiceImpl implements StationService {
     @Autowired
     StationDAOImpl stationDAO;
 
-    @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
-
     @Override
     public List<StationEntity> findAllStations() {
-        CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, "qwe");
-        applicationEventPublisher.publishEvent(customSpringEvent);
         List<StationEntity> res =stationDAO.findAllStations();
         return res;
     }

@@ -1,7 +1,9 @@
 package com.tsystems.trainsProject.DTO;
 
-public class HelloMessage {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class HelloMessage {
+    @JsonProperty("name")
     private String name;
 
     public HelloMessage() {

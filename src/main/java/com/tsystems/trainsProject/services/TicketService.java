@@ -15,4 +15,5 @@ public interface TicketService {
     boolean checkTime(TicketEntity ticket);
     void delete1(TicketEntity ticketEntity);
     List<TicketEntity> findByDate(Date today);
+    List<TicketEntity> findByDate(Date today, List<TicketEntity> tickets);
 }

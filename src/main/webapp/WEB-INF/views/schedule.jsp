@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
+    <script src="/js/sockjs.js"></script>
+    <script src="/js/stomp.js"></script>
     <script src="/js/rest.js"></script>
-    <script src="/js/station.js"></script>
+    <script src="/js/scheduleSocket.js"></script>
 </head>
 <body>
 <div class="nav-item dropdown">
@@ -66,14 +67,6 @@
             </form>
         </c:otherwise>
     </c:choose>
-    <form:form action="/findStation" modelAttribute="station"
-               method="POST" class="form-inline formSearch">
-        <label for="stationName">Station name</label>
-        <form:input type="text" class="inp" path="stationName" placeholder="station"/>
-        <div class="form-group">
-            <button type="submit" class="b">Search</button>
-        </div>
-    </form:form>
 </div>
 <div class="main">
     <div class="container">

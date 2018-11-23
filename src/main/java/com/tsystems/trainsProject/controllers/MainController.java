@@ -1,8 +1,6 @@
 package com.tsystems.trainsProject.controllers;
 
 import com.tsystems.trainsProject.DTO.Search;
-import com.tsystems.trainsProject.Events.CustomSpringEventListener;
-import com.tsystems.trainsProject.Events.CustomSpringEventPublisher;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.StationService;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.Authentication;
 //import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -51,20 +48,8 @@ public class MainController {
                 result= "workerMainPage";
             }
         }
-//        CustomSpringEventListener listener = new CustomSpringEventListener();
-//        listener.onApplicationEvent();
         return result;
     }
-
-    @RequestMapping(value = "/aaa", method = RequestMethod.GET)
-    public String getFirstPage() {
-        CustomSpringEventPublisher publisher = new CustomSpringEventPublisher();
-        publisher.doStuffAndPublishAnEvent("123");
-        return "a";
-    }
-
-
-
     private String userActions(Model modelAndView, Authentication auth, Search search){
         modelAndView.addAttribute("search", search);
         List<StationEntity> stations = stationService.findAllStations();

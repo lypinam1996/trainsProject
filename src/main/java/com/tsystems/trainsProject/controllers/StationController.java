@@ -23,8 +23,6 @@ public class StationController {
 
     private static final Logger logger = Logger.getLogger(StationController.class);
 
-
-
     @RequestMapping(value = "/createStation", method = RequestMethod.GET)
     public String getStation(@ModelAttribute StationEntity station, Model model)
     {
