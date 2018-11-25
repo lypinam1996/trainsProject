@@ -1,13 +1,14 @@
 package com.tsystems.trainsProject.services.impl;
-import com.tsystems.trainsProject.Events.CustomSpringEvent;
+import com.tsystems.trainsProject.dto.Converter;
+import com.tsystems.trainsProject.dto.StationDTO;
 import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("StationService")
@@ -55,4 +56,27 @@ public class StationServiceImpl implements StationService {
         return "";
     }
 
+
+    public  List<StationDTO> getStationsByLetters(String letters) {
+        List<StationDTO> stationsDTO = new ArrayList<StationDTO>();
+        List<StationEntity> stations = findAllStations();
+        letters=letters.substring(0,1).toUpperCase()+letters.substring(1,letters.length());
+        Converter converter = new Converter();
+        for (int i = 0; i < stations.size(); i++) {
+            int j=0;
+            boolean ok=true;
+            while (j<letters.length() && ok) {
+                if (stations.get(i).getStationName().substring(j, j + 1).equals(letters.substring(j, j + 1))) {
+                    j++;
+                }
+                else {
+                    ok=false;
+                }
+            }
+            if( ok){
+                stationsDTO.add(converter.convertStation(stations.get(i)));
+            }
+        }
+        return stationsDTO;
+    }
 }

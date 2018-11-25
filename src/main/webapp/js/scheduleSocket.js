@@ -10,7 +10,8 @@ function getConnection() {
     });
 }
 
-function showGreeting(message) {
+
+$(function () {
     if (message.size != 0) {
         var result = JSON.parse(message);
         $("#table")

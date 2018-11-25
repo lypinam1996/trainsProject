@@ -1,21 +1,39 @@
 $(function () {
-    $.ajax({
-        type: 'GET',
-        url: '/restStations',
-        dataType: 'json',
-        async: true,
-        success: function (result) {
-            if (result.length != 0) {
-                $('#lastStation').autocomplete({
-                    source: result
-                })
-                $('#firstStation').autocomplete({
-                    source: result
-                })
-            }
+    $("#lastStation").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/restStations",
+                dataType: "json",
+                data: {
+                    term: request.term
+                },
+                success: function (data) {
+                    response(data);
+                }
+            });
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.status + ' ' + jqXHR.responseText);
+        minLength: 2,
+        select: function (event, ui) {
+        }
+    });
+});
+
+$(function () {
+    $("#firstStation").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/restStations",
+                dataType: "json",
+                data: {
+                    term: request.term
+                },
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
+        minLength: 2,
+        select: function (event, ui) {
         }
     });
 });

@@ -1,15 +1,9 @@
-package com.tsystems.trainsProject.DTO;
+package com.tsystems.trainsProject.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tsystems.trainsProject.models.BranchLineEntity;
-import com.tsystems.trainsProject.models.StationEntity;
-import com.tsystems.trainsProject.models.TicketEntity;
-import com.tsystems.trainsProject.models.TrainEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
-import java.util.Date;
-import java.util.List;
 
 public class ScheduleDTO {
     @JsonProperty("idSchedule")

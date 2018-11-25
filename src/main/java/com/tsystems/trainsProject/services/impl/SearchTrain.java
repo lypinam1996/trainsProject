@@ -1,6 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
-import com.tsystems.trainsProject.DTO.Search;
+import com.tsystems.trainsProject.dto.Search;
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;

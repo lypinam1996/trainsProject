@@ -1,6 +1,7 @@
 package com.tsystems.trainsProject.services;
 
 
+import com.tsystems.trainsProject.dto.StationDTO;
 import com.tsystems.trainsProject.models.StationEntity;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface StationService {
     StationEntity findById(int id);
     void delete(StationEntity stationEntity);
     String checkUniqueStationName(StationEntity station);
+    public  List<StationDTO> getStationsByLetters(String letters);
 }

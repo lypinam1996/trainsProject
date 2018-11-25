@@ -1,7 +1,4 @@
-package com.tsystems.trainsProject.DTO;
-
-import javax.persistence.Entity;
-import java.util.Date;
+package com.tsystems.trainsProject.dto;
 
 public class Search {
     private String firstStation;

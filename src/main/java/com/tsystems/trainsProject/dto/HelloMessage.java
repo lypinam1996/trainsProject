@@ -1,4 +1,4 @@
-package com.tsystems.trainsProject.DTO;
+package com.tsystems.trainsProject.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

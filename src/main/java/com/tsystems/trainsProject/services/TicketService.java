@@ -16,4 +16,5 @@ public interface TicketService {
     void delete1(TicketEntity ticketEntity);
     List<TicketEntity> findByDate(Date today);
     List<TicketEntity> findByDate(Date today, List<TicketEntity> tickets);
+    void deleteOldTickets();
 }

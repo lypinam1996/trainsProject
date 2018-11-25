@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -162,6 +163,19 @@ public class TicketServiceImpl implements TicketService {
         }
         catch (ParseException pe){
             return null;
+        }
+    }
+
+    @Override
+    public void deleteOldTickets() {
+        List<TicketEntity> tickets = findAllTickets();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        Date yesterday = cal.getTime();
+        for (int i = 0; i < tickets.size(); i++) {
+            if(tickets.get(i).getDepartureDate().before(yesterday)){
+                ticketDAO.delete(tickets.get(i));
+            }
         }
     }
 

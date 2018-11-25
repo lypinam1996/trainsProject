@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
+
+    <script src="/js/socketTicket.js"></script>
+    <script src="/js/sockjs.js"></script>
+    <script src="/js/stomp.js"></script>
 </head>
 <body>
 <div class="nav-item dropdown">
@@ -53,7 +57,7 @@
                 </c:when>
                 <c:otherwise>
                     <p>Tickets</p>
-                    <table class="table">
+                    <table class="table" id="table">
                         <tr class="firstTR" style="background-color: #bf4031;">
                             <td>Name</td>
                             <td>Surname</td>
@@ -74,7 +78,7 @@
                             </c:choose>
                         </tr>
                         <c:forEach items="${tickets}" var="ticket">
-                            <tr>
+                            <tr class="change">
                                 <td>${ticket.passanger.name}</td>
                                 <td>${ticket.passanger.surname}</td>
                                 <td>${ticket.passanger.patronymic}</td>

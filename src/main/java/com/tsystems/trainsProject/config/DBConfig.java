@@ -16,8 +16,8 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
 @ComponentScans(value = { @ComponentScan("com.tsystems.trainsProject")})
-@EnableScheduling
-public class AppConfig {
+//@EnableScheduling
+public class DBConfig {
 
         @Value("${spring.datasource.driver-class-name}")
         private String dbDriver;

@@ -1,5 +1,8 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +13,7 @@ public class RoleEntity {
     private String title;
     private List<UserEntity> users;
 
-
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "role")
     public List<UserEntity> getUsers() {
         return users;

@@ -1,6 +1,6 @@
 package com.tsystems.trainsProject.controllers;
 
-import com.tsystems.trainsProject.DTO.Search;
+import com.tsystems.trainsProject.dto.Search;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.StationService;
