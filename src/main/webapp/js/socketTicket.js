@@ -12,11 +12,12 @@ function getConnection() {
 }
 
 function showGreeting(message, username) {
+    var count = 0;
     if (message.size != 0) {
         var myArr = JSON.parse(message);
-        console.log(myArr);
         $(myArr).each(function (i, row) {
             if (row.login == username) {
+                count++;
                 $("#table")
                     .find('.change')
                     .remove()
@@ -42,6 +43,12 @@ function showGreeting(message, username) {
                 });
             }
         });
+    }
+    if (count == 0) {
+        $("#table")
+            .find('.change')
+            .remove()
+            .end();
     }
 }
 
