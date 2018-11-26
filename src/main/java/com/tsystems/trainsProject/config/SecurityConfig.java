@@ -38,12 +38,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/aaa").permitAll()
-                .antMatchers("/bbb").permitAll()
+                .antMatchers("/topic").permitAll()
                 .antMatchers("/ticket/delete").permitAll()
-                .antMatchers("/socket/schedule").permitAll()
+                .antMatchers("/topic/schedule").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/restStations").permitAll()
-                .antMatchers("/websocket").permitAll()
+                .antMatchers("/websocket/*").permitAll()
                 .antMatchers("/topic/greetings").permitAll()
                 .antMatchers("/greeting").permitAll()
                 .antMatchers("/findStation").permitAll()
@@ -91,7 +91,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception{
         web.ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**","/websocket/**");
     }
     @Bean
     public BCryptPasswordEncoder getShaPasswordEncoder(){

@@ -3,15 +3,16 @@ var stompClient = null;
 function getConnection() {
     var socket = new SockJS('/websocket');
     stompClient = Stomp.over(socket);
+    stompClient.autoD
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/socket/schedule', function (greeting) {
+        stompClient.subscribe('/topic/schedule', function (greeting) {
             showGreeting(greeting.body);
         });
     });
 }
 
 
-$(function () {
+function showGreeting(message) {
     if (message.size != 0) {
         var result = JSON.parse(message);
         $("#table")
@@ -28,7 +29,7 @@ $(function () {
             });
         });
     }
-}
+};
 
 $(document).ready(function () {
     getConnection();

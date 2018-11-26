@@ -45,7 +45,7 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
         }
         simpMessagingTemplate.convertAndSend("/topic/greetings", result);
     }
-
+//data atribut посылать только id и проходиться по строчкам и удалять id
     @Scheduled(fixedDelay = 10000)
     private void deleteTickets() {
         ticketService.deleteOldTickets();
@@ -57,7 +57,9 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
         }
         simpMessagingTemplate.convertAndSend("/topic/delete", ticketDtos);
     }
-
+//добавить в таблицу только строчку
+    //по ивенту сделать удаление
+    //сделать одну страницу на rest и оставить статическую 
     @Override
     public void onApplicationEvent(CustomSpringEvent customSpringEvent) {
         List<ScheduleDTO> schedule = new ArrayList<>();
@@ -66,7 +68,7 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
         } catch (ParseException e) {
             e.printStackTrace();
         } finally {
-            simpMessagingTemplate.convertAndSend("/socket/schedule", schedule);
+            simpMessagingTemplate.convertAndSend("/topic/schedule", schedule);
         }
     }
 
