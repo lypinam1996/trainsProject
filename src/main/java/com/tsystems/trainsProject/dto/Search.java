@@ -6,6 +6,7 @@ public class Search {
     private String departureTimeFrom;
     private String departureTimeTo;
 
+
     public String getFirstStation() {
         return firstStation;
     }

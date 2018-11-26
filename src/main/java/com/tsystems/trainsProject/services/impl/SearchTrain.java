@@ -1,6 +1,7 @@
 package com.tsystems.trainsProject.services.impl;
 
 import com.tsystems.trainsProject.dto.Search;
+import com.tsystems.trainsProject.dto.VariantDto;
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
@@ -102,5 +103,15 @@ public class SearchTrain {
 
         }
         return result;
+    }
+
+    public VariantDto getVariant(int id, List<VariantDto> variants){
+        VariantDto variant = new VariantDto();
+        for(int i =0;i<variants.size();i++){
+            if(variants.get(i).getIdVariant()==id){
+                variant= variants.get(i);
+            }
+        }
+        return variant;
     }
 }

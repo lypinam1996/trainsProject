@@ -13,7 +13,7 @@ public interface TicketService {
     String checkNumberOfTicket(TicketEntity ticket);
     int findSeatWithMaxNumber(TicketEntity ticket);
     boolean checkTime(TicketEntity ticket);
-    void delete1(TicketEntity ticketEntity);
+    //void delete1(TicketEntity ticketEntity);
     List<TicketEntity> findByDate(Date today);
     List<TicketEntity> findByDate(Date today, List<TicketEntity> tickets);
     void deleteOldTickets();

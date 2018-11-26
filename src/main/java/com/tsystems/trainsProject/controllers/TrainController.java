@@ -28,9 +28,6 @@ public class TrainController {
     TrainService trainService;
 
     @Autowired
-    SearchTrain searchService;
-
-    @Autowired
     StationService stationService;
 
     @Autowired
@@ -39,63 +36,10 @@ public class TrainController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String findTrainsInSchedule(@ModelAttribute Search search,
-                                       BindingResult bindingResult,
-                                       Model model) {
-        Map<ScheduleEntity, List<Date>> variants = searchService.search(search, bindingResult);
-        List<TicketEntity> tickets = new ArrayList<>();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        RoleEntity role = new RoleEntity();
-        for (Map.Entry<ScheduleEntity, List<Date>> entry : variants.entrySet()) {
-            TicketEntity ticket = new TicketEntity();
-            ticket.setSchedule(entry.getKey());
-            ticket.setDepartureTime(entry.getValue().get(0));
-            ticket.setArrivalTime(entry.getValue().get(1));
-            StationEntity station1 = stationService.findByName(search.getFirstStation());
-            ticket.setFirstStation(station1);
-            StationEntity station2 = stationService.findByName(search.getLastStation());
-            ticket.setLastStation(station2);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(ticket.getArrivalTime());
-            calendar.add(Calendar.HOUR, -ticket.getDepartureTime().getHours());
-            calendar.add(Calendar.MINUTE, -ticket.getDepartureTime().getMinutes());
-            ticket.setJourneyTime(calendar.getTime());
-            ticket.setSeat(-1);
-            if (ticketService.findAllTickets().size() != 0) {
-                int id = findMaxId();
-                ticket.setIdTicket(id);
-            } else {
-                ticket.setIdTicket(1);
-            }
-            tickets.add(ticket);
-            if (!auth.getName().equals("anonymousUser")) {
-                UserEntity user = userService.findByLogin(auth.getName());
-                role = user.getRole();
-                ticketService.saveOrUpdate(ticket);
-            }
-        }
-        model.addAttribute("role", role);
-        model.addAttribute("tickets", tickets);
-        return "variants";
-    }
-
     @RequestMapping(value = "/createTrain", method = RequestMethod.GET)
     public String getTrain(@ModelAttribute TrainEntity train, Model model) {
         String error = "";
         return create(train, model, error, "createTrain");
-    }
-
-    private int findMaxId() {
-        int result = 0;
-        List<TicketEntity> tickets = ticketService.findAllTickets();
-        for (int i = 0; i < tickets.size(); i++) {
-            if (tickets.get(i).getIdTicket() > result) {
-                result = tickets.get(i).getIdTicket();
-            }
-        }
-        result++;
-        return result;
     }
 
     private String create(TrainEntity train, Model model, String error, String type) {

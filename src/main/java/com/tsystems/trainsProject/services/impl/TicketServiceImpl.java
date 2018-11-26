@@ -142,19 +142,19 @@ public class TicketServiceImpl implements TicketService {
         return ok2;
     }
 
-    @Override
-    public void delete1(TicketEntity ticketEntity) {
-        List<TicketEntity> tickets = ticketDAO.findAllTickets();
-        List<TicketEntity> ticketsToDelete = new ArrayList<>();
-        for (int i = 0; i < tickets.size(); i++) {
-            if (tickets.get(i).getSeat() == -1 && tickets.get(i).getIdTicket() != ticketEntity.getIdTicket()) {
-                ticketsToDelete.add(tickets.get(i));
-            }
-        }
-        for (int i = 0; i < ticketsToDelete.size(); i++) {
-            ticketDAO.delete(ticketsToDelete.get(i));
-        }
-    }
+//    @Override
+//    public void delete1(TicketEntity ticketEntity) {
+//        List<TicketEntity> tickets = ticketDAO.findAllTickets();
+//        List<TicketEntity> ticketsToDelete = new ArrayList<>();
+//        for (int i = 0; i < tickets.size(); i++) {
+//            if (tickets.get(i).getSeat() == -1 && tickets.get(i).getIdTicket() != ticketEntity.getIdTicket()) {
+//                ticketsToDelete.add(tickets.get(i));
+//            }
+//        }
+//        for (int i = 0; i < ticketsToDelete.size(); i++) {
+//            ticketDAO.delete(ticketsToDelete.get(i));
+//        }
+//    }
 
     @Override
     public List<TicketEntity> findByDate(Date today) {
@@ -169,12 +169,14 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public void deleteOldTickets() {
         List<TicketEntity> tickets = findAllTickets();
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
-        Date yesterday = cal.getTime();
-        for (int i = 0; i < tickets.size(); i++) {
-            if(tickets.get(i).getDepartureDate().before(yesterday)){
-                ticketDAO.delete(tickets.get(i));
+        if(tickets.size()!=0) {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -1);
+            Date yesterday = cal.getTime();
+            for (int i = 0; i < tickets.size(); i++) {
+                if (tickets.get(i).getDepartureDate().before(yesterday)) {
+                    ticketDAO.delete(tickets.get(i));
+                }
             }
         }
     }
@@ -190,4 +192,5 @@ public class TicketServiceImpl implements TicketService {
         }
         return result;
     }
+
 }

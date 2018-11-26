@@ -4,12 +4,18 @@ import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
 import com.tsystems.trainsProject.models.UserEntity;
+import com.tsystems.trainsProject.services.TicketService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class Converter {
+
+    TicketService ticketService;
+
     public ScheduleDTO convertSchedule(ScheduleEntity scheduleEntity) throws ParseException {
         String pattern = "HH:mm";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -103,6 +109,46 @@ public class Converter {
                 patronymic, dateOfBirth,train, firstStation,
                 lastStation, journeyTime, departureDate, login);
         return ticketDto;
+    }
+
+    public TicketEntity convertVariantToTicket(VariantDto variant,List<TicketEntity> tickets) {
+        TicketEntity result = new TicketEntity();
+        if(variant.getDepartureTime()!=null){
+            result.setDepartureTime(variant.getDepartureTime());
+        }
+        if(variant.getArrivalTime()!=null){
+            result.setArrivalTime(variant.getArrivalTime());
+        }
+        if(variant.getSchedule()!=null){
+            result.setSchedule(variant.getSchedule());
+        }
+        if(variant.getFirstStation()!=null){
+           result.setFirstStation(variant.getFirstStation());
+        }
+        if(variant.getLastStation()!=null){
+            result.setLastStation(variant.getLastStation());
+        }
+        if(variant.getJourneyTime()!=null){
+           result.setJourneyTime(variant.getJourneyTime());
+        }
+        result.setIdTicket(findMaxId(tickets));
+        return result;
+    }
+
+    private int findMaxId(List<TicketEntity> tickets) {
+        int result = 0;
+        if(tickets.size()!=0) {
+            for (int i = 0; i < tickets.size(); i++) {
+                if (tickets.get(i).getIdTicket() > result) {
+                    result = tickets.get(i).getIdTicket();
+                }
+            }
+            result++;
+        }
+        else {
+            result=1;
+        }
+        return result;
     }
 
 

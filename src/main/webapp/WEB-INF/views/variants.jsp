@@ -52,7 +52,7 @@
                                 <td><fmt:formatDate value="${ ticket.journeyTime}" pattern="HH:mm"/></td>
                                 <c:choose>
                                     <c:when test="${role.title.equals('USER')}">
-                                        <td><a href="/chooseTicket/${ticket.idTicket}">
+                                        <td><a href="/chooseTicket/${ticket.idVariant}">
                                             Choose
                                         </a></td>
                                     </c:when>
