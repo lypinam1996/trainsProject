@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
+import java.time.LocalTime;
+import java.util.Date;
 
 public class ScheduleDTO {
     @JsonProperty("idSchedule")
     private int idSchedule;
-    @DateTimeFormat(pattern = "HH:mm")
     @JsonProperty("departureTime")
-    private Time departureTime;
+    private Date departureTime;
     @JsonProperty("train")
     private String train;
     @JsonProperty("branch")
@@ -20,13 +21,16 @@ public class ScheduleDTO {
     @JsonProperty("lastStation")
     private String lastStation;
 
-    public ScheduleDTO(int idSchedule, Time departureTime, String train, String branch, String firstStation, String lastStation) {
+    public ScheduleDTO(int idSchedule, Date departureTime, String train, String branch, String firstStation, String lastStation) {
         this.idSchedule = idSchedule;
         this.departureTime = departureTime;
         this.train = train;
         this.branch = branch;
         this.firstStation = firstStation;
         this.lastStation = lastStation;
+    }
+
+    public ScheduleDTO() {
     }
 
     public int getIdSchedule() {
@@ -37,11 +41,11 @@ public class ScheduleDTO {
         this.idSchedule = idSchedule;
     }
 
-    public Time getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Time departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 

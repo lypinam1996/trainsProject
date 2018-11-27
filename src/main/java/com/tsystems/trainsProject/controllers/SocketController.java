@@ -45,7 +45,7 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
         }
         simpMessagingTemplate.convertAndSend("/topic/greetings", result);
     }
-//data atribut посылать только id и проходиться по строчкам и удалять id
+//нет смысла посылать id, т.к. удаляется не 1 билет, а много
     @Scheduled(fixedDelay = 10000)
     private void deleteTickets() {
         ticketService.deleteOldTickets();
@@ -57,28 +57,24 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
         }
         simpMessagingTemplate.convertAndSend("/topic/delete", ticketDtos);
     }
-//добавить в таблицу только строчку
+
     //по ивенту сделать удаление
     //сделать одну страницу на rest и оставить статическую 
     @Override
     public void onApplicationEvent(CustomSpringEvent customSpringEvent) {
-        List<ScheduleDTO> schedule = new ArrayList<>();
         try {
-            schedule.addAll(helper());
-        } catch (ParseException e) {
+            int id = Integer.parseInt(customSpringEvent.getMessage());
+            System.out.println(customSpringEvent.getMessage());
+            ScheduleEntity schedule = scheduleService.findById(id);
+            System.out.println(schedule.getDepartureTime());
+            Converter converter = new Converter();
+            ScheduleDTO scheduleDto = converter.convertSchedule(schedule);
+            System.out.println(scheduleDto.getDepartureTime());
+            simpMessagingTemplate.convertAndSend("/topic/schedule", scheduleDto);
+        }
+        catch (Exception e){
             e.printStackTrace();
-        } finally {
-            simpMessagingTemplate.convertAndSend("/topic/schedule", schedule);
         }
-    }
 
-    private List<ScheduleDTO> helper() throws ParseException {
-        List<ScheduleDTO> scheduleDTO = new ArrayList<ScheduleDTO>();
-        List<ScheduleEntity> scheduleEntities = scheduleService.findAllSchedulesAfterTime();
-        Converter converter = new Converter();
-        for (int i = 0; i < scheduleEntities.size(); i++) {
-            scheduleDTO.add(converter.convertSchedule(scheduleEntities.get(i)));
-        }
-        return scheduleDTO;
     }
 }

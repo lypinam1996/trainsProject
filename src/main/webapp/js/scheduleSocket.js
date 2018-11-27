@@ -1,9 +1,8 @@
 var stompClient = null;
 
 function getConnection() {
-    var socket = new SockJS('/websocket');
+    var socket = new SockJS('websocket');
     stompClient = Stomp.over(socket);
-    stompClient.autoD
     stompClient.connect({}, function (frame) {
         stompClient.subscribe('/topic/schedule', function (greeting) {
             showGreeting(greeting.body);
@@ -11,25 +10,22 @@ function getConnection() {
     });
 }
 
-
 function showGreeting(message) {
     if (message.size != 0) {
         var result = JSON.parse(message);
-        $("#table")
-            .find('.change')
-            .remove()
-            .end();
-        $(result).each(function (i, row) {
-            $('#table').append('<tr class="change"/>');
-            $(row).each(function (j, col) {
-                $('#table').find('tr:last').append('<td>' + col.train + '</td>' +
-                    '<td>' + col.firstStation + '</td>' +
-                    '<td>' + col.lastStation + '</td>' +
-                    '<td>' + col.departureTime + '</td>');
-            });
-        });
+        var id = $(this).attr("id");
+        if (result.idSchedule == id) {
+            $("#id")
+                .remove()
+                .end();
+        }
+        $('#table').append('<tr class="change"/>');
+        $('#table').find('tr:last').append('<td>' + result.train + '</td>' +
+            '<td>' + result.firstStation + '</td>' +
+            '<td>' + result.lastStation + '</td>' +
+            '<td>' + result.departureTime + '</td>');
     }
-};
+}
 
 $(document).ready(function () {
     getConnection();

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/createSchedule", method = RequestMethod.POST)
-    public String postTrain( @ModelAttribute ScheduleEntity schedule, Model model) {
+    public String postTrain( @ModelAttribute ScheduleEntity schedule, Model model) throws ParseException {
         if(schedule.getBranch().getIdBranchLine()!=0) {
             schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
         }
@@ -125,7 +126,7 @@ public class ScheduleController {
 
 
     @RequestMapping(value = "/updateSchedule", method = RequestMethod.POST)
-    public String update(@ModelAttribute ScheduleEntity schedule, Model model) {
+    public String update(@ModelAttribute ScheduleEntity schedule, Model model) throws ParseException {
         ScheduleEntity scheduleEntity = scheduleService.findById(schedule.getIdSchedule());
         if(schedule.getBranch().getIdBranchLine()!=0) {
             schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));

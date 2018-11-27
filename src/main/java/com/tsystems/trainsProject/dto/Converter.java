@@ -10,26 +10,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.List;
 
 public class Converter {
 
     TicketService ticketService;
 
-    public ScheduleDTO convertSchedule(ScheduleEntity scheduleEntity) throws ParseException {
-        String pattern = "HH:mm";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String time = simpleDateFormat.format(scheduleEntity.getDepartureTime());
-        DateFormat formatter = new SimpleDateFormat(pattern);
-        java.sql.Time time1 = new java.sql.Time(formatter.parse(time).getTime());
-        ScheduleDTO scheduleDTO = new ScheduleDTO(scheduleEntity.getIdSchedule(),
-                time1,
-                scheduleEntity.getTrain().getNumber(),
-                scheduleEntity.getBranch().getTitle(),
-                scheduleEntity.getFirstStation().getStationName(),
-                scheduleEntity.getLastStation().getStationName()
-               );
-        return scheduleDTO;
+    public ScheduleDTO convertSchedule(ScheduleEntity scheduleEntity) {
+        ScheduleDTO scheduleDTO = new ScheduleDTO();
+        try {
+            String pattern = "HH:mm";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String time = simpleDateFormat.format(scheduleEntity.getDepartureTime());
+            DateFormat formatter = new SimpleDateFormat(pattern);
+            java.sql.Time time1 = new java.sql.Time(formatter.parse(time).getTime());
+            scheduleDTO.setBranch(scheduleEntity.getBranch().getTitle());
+            scheduleDTO.setDepartureTime(time1);
+            scheduleDTO.setFirstStation( scheduleEntity.getFirstStation().getStationName());
+            scheduleDTO.setLastStation(scheduleEntity.getLastStation().getStationName());
+            scheduleDTO.setIdSchedule(scheduleEntity.getIdSchedule());
+            scheduleDTO.setTrain( scheduleEntity.getTrain().getNumber());
+            return scheduleDTO;
+        }
+        catch (ParseException pe){
+            pe.printStackTrace();
+        }
+        finally {
+            return scheduleDTO;
+        }
     }
 
     public StationDTO convertStation(StationEntity stationEntity) {

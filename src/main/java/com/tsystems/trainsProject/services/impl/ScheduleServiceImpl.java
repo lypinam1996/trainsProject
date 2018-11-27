@@ -100,10 +100,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public void saveOrUpdate(ScheduleEntity schedule) {
-        CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, "qwe");
-        applicationEventPublisher.publishEvent(customSpringEvent);
-        scheduleDAO.saveOrUpdate(schedule);
+    public void saveOrUpdate(ScheduleEntity schedule) throws ParseException {
+        int id= scheduleDAO.saveOrUpdate(schedule);
+        String pattern = "HH:mm";
+        DateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String stringTime = simpleDateFormat.format(new Date());
+        Date now = simpleDateFormat.parse(stringTime);
+        if(now.before(schedule.getDepartureTime())) {
+            CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, String.valueOf(id));
+            applicationEventPublisher.publishEvent(customSpringEvent);
+        }
     }
 
     public String checkStationsSerialNumbers(ScheduleEntity schedule) {

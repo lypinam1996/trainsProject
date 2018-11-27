@@ -1,7 +1,7 @@
 var stompClient = null;
 
 function getConnection() {
-    var socket = new SockJS('/websocket');
+    var socket = new SockJS('/websocket3');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe('/topic/greetings', function (greeting) {

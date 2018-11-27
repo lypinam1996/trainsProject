@@ -18,7 +18,7 @@ public interface ScheduleService {
     List<ScheduleEntity> findSchedulesByBranch(Map<BranchLineEntity,List<DetailedInfBranchEntity>> detailedInfBranchList,
                                                       StationEntity firstStation,
                                                       StationEntity lastStation);
-    void saveOrUpdate(ScheduleEntity schedule);
+    void saveOrUpdate(ScheduleEntity schedule) throws ParseException;
     String checkStationsSerialNumbers(ScheduleEntity schedule);
     ScheduleEntity findById(int id);
     void delete(ScheduleEntity schedule);

@@ -43,7 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/topic/schedule").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/restStations").permitAll()
-                .antMatchers("/websocket/*").permitAll()
                 .antMatchers("/topic/greetings").permitAll()
                 .antMatchers("/greeting").permitAll()
                 .antMatchers("/findStation").permitAll()

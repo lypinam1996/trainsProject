@@ -27,8 +27,21 @@ public class ScheduleDAOImpl extends AbstractDAO<Integer,ScheduleEntity> impleme
     }
 
     @Override
-    public void saveOrUpdate(ScheduleEntity schedule) {
-        getSession().saveOrUpdate(schedule);
+    public int saveOrUpdate(ScheduleEntity schedule) {
+        return (Integer) getSession().save(schedule);
+    }
+
+
+    @Override
+    public ScheduleEntity findId(ScheduleEntity scheduleEntity) {
+        Criteria criteria = getSession().createCriteria(ScheduleEntity.class);
+        criteria.add(Restrictions.eq("branch", scheduleEntity.getBranch()));
+        criteria.add(Restrictions.eq("train", scheduleEntity.getTrain()));
+        criteria.add(Restrictions.eq("lastStation", scheduleEntity.getLastStation()));
+        criteria.add(Restrictions.eq("firstStation", scheduleEntity.getFirstStation()));
+        criteria.add(Restrictions.eq("lastStation", scheduleEntity.getLastStation()));
+        criteria.add(Restrictions.eq("departureTime", scheduleEntity.getDepartureTime()));
+        return (ScheduleEntity) criteria.uniqueResult();
     }
 
     @Override

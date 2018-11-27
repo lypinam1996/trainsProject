@@ -93,7 +93,7 @@
                 </tr>
                 <c:forEach items="${schedules}" var="schedule">
                     <tr class="change">
-                        <td>${schedule.train.number}</td>
+                        <td id="${schedule.idSchedule}">${schedule.train.number}</td>
                         <td>${schedule.firstStation.stationName}</td>
                         <td>${schedule.lastStation.stationName}</td>
                         <td><fmt:formatDate value="${schedule.departureTime}" pattern="HH:mm"/></td>
