@@ -28,41 +28,32 @@ public class MainRestController {
     @Autowired
     StationService stationService;
 
-    @RequestMapping(value = "/greeting", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/getTrackIndicator", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ScheduleDTO> greeting() throws ParseException {
-        List<ScheduleDTO> scheduleDTO = new ArrayList<ScheduleDTO>();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserEntity user = userService.findByLogin(auth.getName());
-        if (user != null) {
-            if (!user.getRole().getTitle().equals("WORKER")) {
-                scheduleDTO=helper();
-            }
-        } else {
-            scheduleDTO=helper();
-        }
+        List<ScheduleDTO> scheduleDTO= helper();
         return scheduleDTO;
     }
 
-    @RequestMapping(value = "/restStations", produces = MediaType.APPLICATION_JSON_VALUE, method =RequestMethod.GET)
+    @RequestMapping(value = "/restStations", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseBody
-    public List<StationDTO> restGettingStations(@RequestParam String term)  {
+    public List<StationDTO> restGettingStations(@RequestParam String term) {
         List<StationDTO> stationsDTO = stationService.getStationsByLetters(term);
         return stationsDTO;
     }
 
     @RequestMapping(value = "/session/current", produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserDTO restGettingUser()  {
+    public UserDTO restGettingUser() {
         Converter converter = new Converter();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity user = userService.findByLogin(auth.getName());
         UserDTO userDTO = new UserDTO();
         if (user != null) {
-            userDTO=converter.convertUser(user);
+            userDTO = converter.convertUser(user);
         }
         return userDTO;
     }
 
-    private List<ScheduleDTO>  helper() throws ParseException {
+    private List<ScheduleDTO> helper() throws ParseException {
         List<ScheduleDTO> scheduleDTO = new ArrayList<ScheduleDTO>();
         List<ScheduleEntity> scheduleEntities = scheduleService.findAllSchedulesAfterTime();
         Converter converter = new Converter();

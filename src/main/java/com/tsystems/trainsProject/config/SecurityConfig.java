@@ -36,15 +36,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+//                .antMatchers("/topic").permitAll()
+//                .antMatchers("/ticket/delete").permitAll()
+//                .antMatchers("/topic/schedule").permitAll()
+//                .antMatchers("/topic/greetings").permitAll()
+
                 .antMatchers("/").permitAll()
-                .antMatchers("/aaa").permitAll()
-                .antMatchers("/topic").permitAll()
-                .antMatchers("/ticket/delete").permitAll()
-                .antMatchers("/topic/schedule").permitAll()
-                .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/restStations").permitAll()
-                .antMatchers("/topic/greetings").permitAll()
-                .antMatchers("/greeting").permitAll()
+                .antMatchers("/favicon.ico").permitAll()
+                .antMatchers("/trackIndicator").permitAll()
+                .antMatchers("/getTrackIndicator").permitAll()
                 .antMatchers("/findStation").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/schedule").permitAll()

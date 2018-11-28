@@ -4,7 +4,7 @@ function getConnection() {
     var socket = new SockJS('/websocket2');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/topic/delete', function (greeting) {
+        stompClient.subscribe('/topic/ticketDelete', function (greeting) {
             var username = frame.headers['user-name'];
             showGreeting(greeting.body, username);
         });
@@ -17,7 +17,6 @@ function showGreeting(message, username) {
         var myArr = JSON.parse(message);
         $(myArr).each(function (i, row) {
             if (row.login == username) {
-                console.log(22222222);
                 count++;
                 $("#table")
                     .find('.change')

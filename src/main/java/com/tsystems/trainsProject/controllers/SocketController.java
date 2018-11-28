@@ -31,7 +31,7 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
     @Autowired
     ScheduleService scheduleService;
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 5000)
     private void todayTickets() {
         List<HelloMessage> result = new ArrayList<HelloMessage>();
         Date today = new Date();
@@ -43,7 +43,7 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
                 result.add(message);
             }
         }
-        simpMessagingTemplate.convertAndSend("/topic/greetings", result);
+        simpMessagingTemplate.convertAndSend("/topic/ticketDelete", result);
     }
 //нет смысла посылать id, т.к. удаляется не 1 билет, а много
     @Scheduled(fixedDelay = 10000)
@@ -59,17 +59,13 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
     }
 
     //по ивенту сделать удаление
-    //сделать одну страницу на rest и оставить статическую 
     @Override
     public void onApplicationEvent(CustomSpringEvent customSpringEvent) {
         try {
             int id = Integer.parseInt(customSpringEvent.getMessage());
-            System.out.println(customSpringEvent.getMessage());
             ScheduleEntity schedule = scheduleService.findById(id);
-            System.out.println(schedule.getDepartureTime());
             Converter converter = new Converter();
             ScheduleDTO scheduleDto = converter.convertSchedule(schedule);
-            System.out.println(scheduleDto.getDepartureTime());
             simpMessagingTemplate.convertAndSend("/topic/schedule", scheduleDto);
         }
         catch (Exception e){

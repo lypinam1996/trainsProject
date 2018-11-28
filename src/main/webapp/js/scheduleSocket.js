@@ -14,13 +14,14 @@ function showGreeting(message) {
     if (message.size != 0) {
         var result = JSON.parse(message);
         var id = $(this).attr("id");
+        console.log(id);
         if (result.idSchedule == id) {
             $("#id")
                 .remove()
                 .end();
         }
         $('#table').append('<tr class="change"/>');
-        $('#table').find('tr:last').append('<td>' + result.train + '</td>' +
+        $('#table').find('tr:last').append('<td id="'+col.idSchedule+'">' + result.train + '</td>' +
             '<td>' + result.firstStation + '</td>' +
             '<td>' + result.lastStation + '</td>' +
             '<td>' + result.departureTime + '</td>');

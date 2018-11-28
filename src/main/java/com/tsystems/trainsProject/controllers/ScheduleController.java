@@ -36,6 +36,11 @@ public class ScheduleController {
     @Autowired
     UserService userService;
 
+    @RequestMapping(value = "/trackIndicator", method = RequestMethod.GET)
+    public String getTrackIndicator(Model model) {
+        return "trackIndicator";
+    }
+
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
     public ModelAndView getSchedule() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

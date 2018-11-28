@@ -15,10 +15,6 @@
 
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
-    <script src="/js/sockjs.js"></script>
-    <script src="/js/stomp.js"></script>
-    <script src="/js/rest.js"></script>
-    <script src="/js/scheduleSocket.js"></script>
 </head>
 <body>
 <div class="nav-item dropdown">

@@ -101,7 +101,14 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public void saveOrUpdate(ScheduleEntity schedule) throws ParseException {
-        int id= scheduleDAO.saveOrUpdate(schedule);
+        int id=0;
+        if(schedule.getIdSchedule()==0) {
+             id = scheduleDAO.save(schedule);
+        }
+        else {
+            id=schedule.getIdSchedule();
+            scheduleDAO.update(schedule);
+        }
         String pattern = "HH:mm";
         DateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String stringTime = simpleDateFormat.format(new Date());

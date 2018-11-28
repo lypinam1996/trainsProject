@@ -1,7 +1,7 @@
 var RestGet = function () {
     $.ajax({
         type: 'GET',
-        url: '/greeting',
+        url: '/getTrackIndicator',
         dataType: 'json',
         async: true,
         success: function (result) {
@@ -13,7 +13,8 @@ var RestGet = function () {
                 $(result).each(function (i, row) {
                     $('#table').append('<tr class="change"/>');
                     $(row).each(function (j, col) {
-                        $('#table').find('tr:last').append('<td>' + col.train + '</td>' +
+                        $('#table').find('tr:last').append(
+                            '<td id="'+col.idSchedule+'">' + col.train + '</td>' +
                             '<td>' + col.firstStation + '</td>' +
                             '<td>' + col.lastStation + '</td>' +
                             '<td>' + col.departureTime + '</td>');
@@ -29,3 +30,7 @@ var RestGet = function () {
 setInterval(function () {
     RestGet();
 }, 3000);
+
+$( document ).ready(function() {
+    RestGet();
+});
