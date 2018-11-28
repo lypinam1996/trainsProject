@@ -28,4 +28,9 @@ public class PassangerDAOImpl extends AbstractDAO<Integer,PassangerEntity> imple
         criteria.add(Restrictions.eq("idPassanger", id));
         return (PassangerEntity) criteria.uniqueResult();
     }
+
+    @Override
+    public void delete(PassangerEntity passanger){
+        getSession().delete(passanger);
+    }
 }

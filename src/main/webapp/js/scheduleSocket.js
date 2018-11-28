@@ -28,11 +28,13 @@ function showGreeting(message) {
                     $(this).remove().end();
                 }
             });
+            var time = col.departureTime;
+            time = time.substring(0,5);
             $('#table').append('<tr class="change"/>');
             $('#table').find('tr:last').append('<td id="' + result.idSchedule + '">' + result.train + '</td>' +
                 '<td>' + result.firstStation + '</td>' +
                 '<td>' + result.lastStation + '</td>' +
-                '<td>' + result.departureTime + '</td>');
+                '<td>' + time + '</td>');
         }
 
     }

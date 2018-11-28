@@ -4,7 +4,7 @@ function getConnection() {
     var socket = new SockJS('/websocket3');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/topic/greetings', function (greeting) {
+        stompClient.subscribe('/topic/today', function (greeting) {
             var username = frame.headers['user-name'];
             showGreeting(greeting.body, username);
         });

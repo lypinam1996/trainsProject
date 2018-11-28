@@ -8,4 +8,5 @@ public interface PassangerDAO {
     List<PassangerEntity> findAllPassangers();
     void saveOrUpdate(PassangerEntity passanger);
     PassangerEntity findById(int id);
+    void delete(PassangerEntity passanger);
 }

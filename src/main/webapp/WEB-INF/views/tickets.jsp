@@ -30,6 +30,8 @@
                 <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
             </div>
         </c:when>
         <c:otherwise>

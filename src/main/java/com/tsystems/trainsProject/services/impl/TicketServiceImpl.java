@@ -1,9 +1,11 @@
 package com.tsystems.trainsProject.services.impl;
 
+import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.impl.TicketDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
+import com.tsystems.trainsProject.services.PassangerService;
 import com.tsystems.trainsProject.services.TicketService;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class TicketServiceImpl implements TicketService {
 
     @Autowired
     TicketDAOImpl ticketDAO;
+
+    @Autowired
+    PassangerDAO passangerDAO;
 
     @Override
     public List<TicketEntity> findAllTickets() {
@@ -141,20 +146,6 @@ public class TicketServiceImpl implements TicketService {
         }
         return ok2;
     }
-
-//    @Override
-//    public void delete1(TicketEntity ticketEntity) {
-//        List<TicketEntity> tickets = ticketDAO.findAllTickets();
-//        List<TicketEntity> ticketsToDelete = new ArrayList<>();
-//        for (int i = 0; i < tickets.size(); i++) {
-//            if (tickets.get(i).getSeat() == -1 && tickets.get(i).getIdTicket() != ticketEntity.getIdTicket()) {
-//                ticketsToDelete.add(tickets.get(i));
-//            }
-//        }
-//        for (int i = 0; i < ticketsToDelete.size(); i++) {
-//            ticketDAO.delete(ticketsToDelete.get(i));
-//        }
-//    }
 
     @Override
     public List<TicketEntity> findByDate(Date today) {

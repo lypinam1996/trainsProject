@@ -27,6 +27,8 @@
         <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<c:url value="/tickets"/>">Tickets</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
     </div>
     <form action="/logout" method="get">
         <input type="submit" value="Logout" class="login" role="button"/>

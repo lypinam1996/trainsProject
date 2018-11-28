@@ -18,12 +18,12 @@
 </head>
 <body>
 <div class="nav-item dropdown">
+    <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+        Menu
+    </button>
     <c:choose>
         <c:when test="${role.title.equals('WORKER')}">
-            <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Menu
-            </button>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
                 <div class="dropdown-divider"></div>
@@ -39,24 +39,23 @@
             </form>
         </c:when>
         <c:when test="${role.title.equals('USER')}">
-            <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Menu
-            </button>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/tickets"/>">Tickets</a>
             </div>
             <form action="/logout" method="get">
                 <input type="submit" value="Logout" class="login"/>
             </form>
         </c:when>
         <c:otherwise>
-            <button class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Menu
             </button>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
             </div>
             <form action="/login" method="get">
                 <input type="submit" value="Login" class="login"/>

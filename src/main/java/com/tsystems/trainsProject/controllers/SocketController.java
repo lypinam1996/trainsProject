@@ -42,7 +42,7 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
                 result.add(message);
             }
         }
-        simpMessagingTemplate.convertAndSend("/topic/ticketDelete", result);
+        simpMessagingTemplate.convertAndSend("/topic/today", result);
     }
 //нет смысла посылать id, т.к. удаляется не 1 билет, а много
     @Scheduled(fixedDelay = 10000)
@@ -54,7 +54,7 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
         for (int i = 0; i < tickets.size(); i++) {
             ticketDtos.add(converter.convertTicket(tickets.get(i)));
         }
-        simpMessagingTemplate.convertAndSend("/topic/delete", ticketDtos);
+        simpMessagingTemplate.convertAndSend("/topic/ticketDelete", ticketDtos);
     }
 
     //по ивенту сделать удаление

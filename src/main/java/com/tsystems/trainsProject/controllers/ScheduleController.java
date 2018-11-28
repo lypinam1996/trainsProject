@@ -38,6 +38,8 @@ public class ScheduleController {
 
     @RequestMapping(value = "/trackIndicator", method = RequestMethod.GET)
     public String getTrackIndicator(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("auth", auth.getName());
         return "trackIndicator";
     }
 

@@ -60,7 +60,7 @@
                 </form:select>
             </div>
             <div class="form-group">
-                <label for="firstStation">First station</label>
+                <label for="firstStation">Departure station</label>
                 <form:select path="firstStation.idStation" class="form-control inp">
                     <c:forEach var="item" items="${stations}">
                         <c:choose>
@@ -76,7 +76,7 @@
                 </form:select>
             </div>
                 <div class="form-group">
-                    <label for="lastStation">First station</label>
+                    <label for="lastStation">Arrival station</label>
                     <form:select path="lastStation.idStation" class="form-control inp">
                         <c:forEach var="item" items="${stations}">
                             <c:choose>

@@ -26,32 +26,41 @@
             aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
-    </div>
-    <c:choose>
-        <c:when test="${role.title.equals('USER')}">
-            <form action="/logout" method="get">
-                <input type="submit" value="Logout" class="login"/>
-            </form>
-        </c:when>
-        <c:otherwise>
-            <form action="/login" method="get">
-                <input type="submit" value="Login" class="login"/>
-            </form>
-        </c:otherwise>
-    </c:choose>
+<c:choose>
+    <c:when test="${auth.equals('anonymousUser')}">
+        <form action="/login" method="get">
+            <input type="submit" value="Login" class="login"/>
+        </form>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="<c:url value="/tickets"/>">Tickets</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+        </div>
+        <form action="/logout" method="get">
+            <input type="submit" value="Logout" class="login"/>
+        </form>
+    </c:otherwise>
+</c:choose>
 </div>
 <div class="main">
     <div class="container">
         <div class="row">
-            <p>Schedule</p>
+            <p>Track indicator</p>
             <table class="table" id="table">
                 <tr class="firstTR" style="background-color: #bf4031;">
-                    <td id="0">Train number</td>
-                    <td id="1">Departure station</td>
-                    <td id="2">Arrival station</td>
-                    <td id="3">Departure time</td>
+                    <td>Train number</td>
+                    <td>Departure station</td>
+                    <td>Arrival station</td>
+                    <td>Departure time</td>
                 </tr>
             </table>
         </div>
