@@ -1,6 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
-import com.tsystems.trainsProject.Events.CustomSpringEvent;
+import com.tsystems.trainsProject.Events.EditingEvent;
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.ScheduleDAOImpl;
 import com.tsystems.trainsProject.models.*;
@@ -114,7 +114,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         String stringTime = simpleDateFormat.format(new Date());
         Date now = simpleDateFormat.parse(stringTime);
         if(now.before(schedule.getDepartureTime())) {
-            CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, String.valueOf(id));
+            EditingEvent customSpringEvent = new EditingEvent(this, String.valueOf(id), 0);
             applicationEventPublisher.publishEvent(customSpringEvent);
         }
     }
@@ -215,7 +215,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public void delete(ScheduleEntity schedule) {
-        scheduleDAO.delete(schedule);
+        int id =scheduleDAO.deleteId(schedule);
+        EditingEvent customSpringEvent = new EditingEvent(this, String.valueOf(id), 1);
+        applicationEventPublisher.publishEvent(customSpringEvent);
+
     }
 
     @Override

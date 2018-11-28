@@ -12,18 +12,29 @@ function getConnection() {
 
 function showGreeting(message) {
     if (message.size != 0) {
-        var result = JSON.parse(message);
-        $('.change').each(function () {
-            var id = $(this).find('td').attr('id');
-            if (id == result.idSchedule) {
-                $(this).remove().end();
-            }
-        });
-        $('#table').append('<tr class="change"/>');
-        $('#table').find('tr:last').append('<td id="' + result.idSchedule + '">' + result.train + '</td>' +
-            '<td>' + result.firstStation + '</td>' +
-            '<td>' + result.lastStation + '</td>' +
-            '<td>' + result.departureTime + '</td>');
+        if($.isNumeric(message)){
+            $('.change').each(function () {
+                var id = $(this).find('td').attr('id');
+                if (id == message) {
+                    $(this).remove().end();
+                }
+            });
+        }
+        else {
+            var result = JSON.parse(message);
+            $('.change').each(function () {
+                var id = $(this).find('td').attr('id');
+                if (id == result.idSchedule) {
+                    $(this).remove().end();
+                }
+            });
+            $('#table').append('<tr class="change"/>');
+            $('#table').find('tr:last').append('<td id="' + result.idSchedule + '">' + result.train + '</td>' +
+                '<td>' + result.firstStation + '</td>' +
+                '<td>' + result.lastStation + '</td>' +
+                '<td>' + result.departureTime + '</td>');
+        }
+
     }
 }
 

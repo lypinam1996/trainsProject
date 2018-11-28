@@ -11,4 +11,5 @@ public interface ScheduleDAO {
     int save(ScheduleEntity schedule);
     ScheduleEntity findById(int id);
     void update(ScheduleEntity schedule);
+    int deleteId(ScheduleEntity schedule);
 }

@@ -37,6 +37,12 @@ public class ScheduleDAOImpl extends AbstractDAO<Integer,ScheduleEntity> impleme
     }
 
     @Override
+    public int deleteId(ScheduleEntity schedule) {
+        getSession().delete(schedule);
+        return schedule.getIdSchedule();
+    }
+
+    @Override
     public ScheduleEntity findById(int id) {
         Criteria criteria = getSession().createCriteria(ScheduleEntity.class);
         criteria.add(Restrictions.eq("idSchedule", id));

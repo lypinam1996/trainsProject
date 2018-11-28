@@ -1,9 +1,9 @@
 package com.tsystems.trainsProject.controllers;
 
+import com.tsystems.trainsProject.Events.EditingEvent;
 import com.tsystems.trainsProject.dto.Converter;
 import com.tsystems.trainsProject.dto.HelloMessage;
 import com.tsystems.trainsProject.dto.ScheduleDTO;
-import com.tsystems.trainsProject.Events.CustomSpringEvent;
 import com.tsystems.trainsProject.dto.TicketDto;
 import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
@@ -15,13 +15,12 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Controller
-public class SocketController implements ApplicationListener<CustomSpringEvent> {
+public class SocketController implements ApplicationListener<EditingEvent>  {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
@@ -60,13 +59,19 @@ public class SocketController implements ApplicationListener<CustomSpringEvent> 
 
     //по ивенту сделать удаление
     @Override
-    public void onApplicationEvent(CustomSpringEvent customSpringEvent) {
+    public void onApplicationEvent(EditingEvent customSpringEvent) {
         try {
             int id = Integer.parseInt(customSpringEvent.getMessage());
-            ScheduleEntity schedule = scheduleService.findById(id);
-            Converter converter = new Converter();
-            ScheduleDTO scheduleDto = converter.convertSchedule(schedule);
-            simpMessagingTemplate.convertAndSend("/topic/schedule", scheduleDto);
+            int type = customSpringEvent.getType();
+            if(type==0) {
+                ScheduleEntity schedule = scheduleService.findById(id);
+                Converter converter = new Converter();
+                ScheduleDTO scheduleDto = converter.convertSchedule(schedule);
+                simpMessagingTemplate.convertAndSend("/topic/schedule", scheduleDto);
+            }
+            else {
+                simpMessagingTemplate.convertAndSend("/topic/schedule", id);
+            }
         }
         catch (Exception e){
             e.printStackTrace();

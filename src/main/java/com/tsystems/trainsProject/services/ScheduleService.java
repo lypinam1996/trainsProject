@@ -14,7 +14,6 @@ import java.util.Map;
 public interface ScheduleService {
     List<ScheduleEntity> findAllSchedules();
     List<ScheduleEntity> findScheduleByBranch(BranchLineEntity branchLine);
-   // List<ScheduleEntity> findSchedulesByBranch(List<BranchLineEntity> branchLines);
     List<ScheduleEntity> findSchedulesByBranch(Map<BranchLineEntity,List<DetailedInfBranchEntity>> detailedInfBranchList,
                                                       StationEntity firstStation,
                                                       StationEntity lastStation);
