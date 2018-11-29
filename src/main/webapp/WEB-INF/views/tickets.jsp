@@ -16,7 +16,6 @@
     <script src="/js/socketTicket.js"></script>
     <script src="/js/sockjs.js"></script>
     <script src="/js/stomp.js"></script>
-
 </head>
 <body>
 <div class="nav-item dropdown">

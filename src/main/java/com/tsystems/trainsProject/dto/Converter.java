@@ -10,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.List;
 
 public class Converter {
@@ -84,7 +81,7 @@ public class Converter {
                 patronymic= ticket.getPassanger().getPatronymic();
             }
             if( ticket.getPassanger().getDateOfBirth()!=null){
-                dateOfBirth= ticket.getPassanger().getDateOfBirth().toString();
+                dateOfBirth= dateFormat.format(ticket.getPassanger().getDateOfBirth());
             }
         }
         String train ="";
