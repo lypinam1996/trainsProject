@@ -44,12 +44,12 @@ function showGreeting(message, username) {
             }
         });
     }
-    // if (count == 0) {
-    //     $("#table")
-    //         .find('.change')
-    //         .remove()
-    //         .end();
-    // }
+    if (count == 0) {
+        $("#table")
+            .find('.change')
+            .remove()
+            .end();
+    }
 }
 
 $(document).ready(function () {

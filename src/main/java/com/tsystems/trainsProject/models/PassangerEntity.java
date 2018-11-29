@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.models;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,9 +32,8 @@ public class PassangerEntity {
         this.tickets = tickets;
     }
 
-
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     public UserEntity getUser() {
         return user;

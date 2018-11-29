@@ -28,7 +28,7 @@ function showGreeting(message) {
                     $(this).remove().end();
                 }
             });
-            var time = col.departureTime;
+            var time = result.departureTime;
             time = time.substring(0,5);
             $('#table').append('<tr class="change"/>');
             $('#table').find('tr:last').append('<td id="' + result.idSchedule + '">' + result.train + '</td>' +

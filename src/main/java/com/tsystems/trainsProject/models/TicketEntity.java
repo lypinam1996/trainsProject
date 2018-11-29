@@ -58,7 +58,7 @@ public class TicketEntity implements Comparable<TicketEntity>{
         this.schedule = schedule;
     }
 
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     @ManyToOne
     @JoinColumn(name = "id_passanger", referencedColumnName = "id_passanger")
     public PassangerEntity getPassanger() {
