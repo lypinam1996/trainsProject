@@ -9,17 +9,18 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("TrainDAO")
-public class TrainDAOImpl extends AbstractDAO<Integer,TrainEntity> implements TrainDAO {
+public class TrainDAOImpl extends AbstractDAO<Integer, TrainEntity> implements TrainDAO {
 
     @Override
     public List<TrainEntity> findAllTrains() {
         Criteria criteria = getSession().createCriteria(TrainEntity.class);
-        List<TrainEntity> res=(List<TrainEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+        List<TrainEntity> res = (List<TrainEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return res;
     }
+
     @Override
     public void saveOrUpdate(TrainEntity train) {
-            getSession().saveOrUpdate(train);
+        getSession().saveOrUpdate(train);
     }
 
     @Override

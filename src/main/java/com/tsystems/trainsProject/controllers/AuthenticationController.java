@@ -5,6 +5,7 @@ import com.tsystems.trainsProject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,7 @@ public class AuthenticationController {
     public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         List<String> errors = new ArrayList<>();
-        modelAndView.setViewName(getUser(modelAndView,errors));
+        modelAndView.setViewName(getUser(modelAndView, errors));
         return modelAndView;
     }
 
@@ -43,18 +44,19 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@ModelAttribute("user") @Valid UserEntity user, BindingResult bindingResult) throws Exception {
+    public ModelAndView createNewUser(@ModelAttribute("user") @Valid UserEntity user,
+                                      BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         UserEntity userExists = userService.findByLogin(user.getLogin());
-        List<String> errors = new ArrayList<>();
         if (userExists != null) {
-            errors.add("*This login has already been used");
+            ObjectError objectError = new ObjectError("login",
+                    "This login has already been used");
+            bindingResult.addError(objectError);
         }
-        if (bindingResult.hasErrors() || !errors.isEmpty()) {
-            modelAndView.setViewName(getUser(modelAndView,errors));
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("registration");
         } else {
             userService.saveOrUpdate(user);
-            modelAndView.addObject("successMessage", "Регистрация прошла успешно");
             modelAndView.addObject("login", user.getLogin());
             modelAndView.addObject("password", user.getPassword());
             modelAndView.setViewName("redirect:/");

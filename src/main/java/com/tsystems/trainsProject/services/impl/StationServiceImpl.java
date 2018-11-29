@@ -7,6 +7,8 @@ import com.tsystems.trainsProject.services.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +22,7 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public List<StationEntity> findAllStations() {
-        List<StationEntity> res =stationDAO.findAllStations();
-        return res;
+        return stationDAO.findAllStations();
     }
 
     @Override
@@ -45,17 +46,18 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public  String checkUniqueStationName(StationEntity station){
+    public  BindingResult checkUniqueStationName(StationEntity station, BindingResult bindingResult){
         List<StationEntity> stations = stationDAO.findAllStations();
         stations.remove(stationDAO.findById(station.getIdStation()));
         for (StationEntity stationEntity:stations){
             if(station.getStationName().equals(stationEntity.getStationName())){
-                return "*Station name is not unique";
+                ObjectError objectError = new ObjectError("stationName",
+                        "Station name is not unique");
+                bindingResult.addError(objectError);
             }
         }
-        return "";
+        return bindingResult;
     }
-
 
     public  List<StationDTO> getStationsByLetters(String letters) {
         List<StationDTO> stationsDTO = new ArrayList<StationDTO>();

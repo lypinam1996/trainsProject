@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,22 +28,21 @@ public class StationController {
     @RequestMapping(value = "/createStation", method = RequestMethod.GET)
     public String getStation(@ModelAttribute StationEntity station, Model model)
     {
-        String error="";
-        return create(station, model, error,"createStation");
+        return create(station, model,"createStation");
     }
 
-    private String create(StationEntity station, Model model,  String error,String type) {
+    private String create(StationEntity station, Model model, String type) {
         model.addAttribute("station",station);
         model.addAttribute("type", type);
-        model.addAttribute("error", error);
         return "editStation";
     }
 
     @RequestMapping(value = "/createStation", method = RequestMethod.POST)
-    public String postStation(@ModelAttribute StationEntity station, Model model) {
-        String error=stationService.checkUniqueStationName(station);
-        if (!error.equals("")){
-            return create(station, model,error,"createStation");
+    public String postStation(@ModelAttribute("station") @Validated StationEntity station,
+                              BindingResult bindingResult,Model model) { ;
+        bindingResult=stationService.checkUniqueStationName(station, bindingResult);
+        if (bindingResult.hasErrors()){
+            return create(station, model,"createStation");
         }
         stationService.saveOrUpdate(station);
         return "redirect:/stations";
@@ -53,7 +54,7 @@ public class StationController {
         List<String> errors = new ArrayList<>();
         StationEntity station = stationService.findById(pk);
         if(!station.getDetailedInf().isEmpty()) {
-            errors.add("*You can't delete station! Several branches go through it!");
+            errors.add("*You can't update station! Several branches go through it!");
             return getAllStationsHelp(errors);
         }
         else {
@@ -68,10 +69,11 @@ public class StationController {
 
 
     @RequestMapping(value = "/updateStation", method = RequestMethod.POST)
-    public String update( @ModelAttribute StationEntity station, Model model) {
-        String error=stationService.checkUniqueStationName(station);
-        if (!error.equals("")){
-            return create(station, model,error,"createStation");
+    public String update( @ModelAttribute("station") @Validated StationEntity station,
+                          BindingResult bindingResult,Model model) {
+        bindingResult=stationService.checkUniqueStationName(station, bindingResult);
+        if (bindingResult.hasErrors()){
+            return create(station, model,"updateStation");
         }
         stationService.saveOrUpdate(station);
         return "redirect:/stations";

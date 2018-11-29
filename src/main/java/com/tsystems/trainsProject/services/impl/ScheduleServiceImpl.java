@@ -1,6 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
-import com.tsystems.trainsProject.Events.EditingEvent;
+import com.tsystems.trainsProject.events.EditingEvent;
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.ScheduleDAOImpl;
 import com.tsystems.trainsProject.models.*;

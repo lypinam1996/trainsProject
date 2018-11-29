@@ -9,12 +9,17 @@ import java.util.List;
 import java.util.Map;
 
 public interface InfBranchService {
-    List<DetailedInfBranchEntity> findAllInfBranch();
+
     List<DetailedInfBranchEntity> findBranchesByStation(StationEntity stationEntity);
+
     List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity);
+
     void saveOrUpdate(DetailedInfBranchEntity branch);
+
     void delete(BranchLineEntity branch, int id);
+
     DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber,
                                                                  BranchLineEntity branch);
-    Map<BranchLineEntity,List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines);
+
+    Map<BranchLineEntity, List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines);
 }

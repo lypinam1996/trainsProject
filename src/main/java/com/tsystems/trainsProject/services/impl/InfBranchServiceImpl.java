@@ -1,4 +1,5 @@
 package com.tsystems.trainsProject.services.impl;
+
 import com.tsystems.trainsProject.dao.BranchDAO;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
 import com.tsystems.trainsProject.dao.StationDAO;
@@ -29,12 +30,6 @@ public class InfBranchServiceImpl implements InfBranchService {
     BranchDAO branchDAO;
 
     @Override
-    public List<DetailedInfBranchEntity> findAllInfBranch() {
-        List<DetailedInfBranchEntity> res =infBranchDAO.findAllInfBranch();
-        return res;
-    }
-
-    @Override
     public List<DetailedInfBranchEntity> findBranchesByStation(StationEntity stationEntity) {
         return infBranchDAO.findBranchesByStation(stationEntity);
     }
@@ -54,16 +49,16 @@ public class InfBranchServiceImpl implements InfBranchService {
         BranchLineEntity branchLineEntity = branchDAO.findById(id);
         List<DetailedInfBranchEntity> idealDEtInf = branchLineEntity.getDetailedInf();
         List<DetailedInfBranchEntity> detInf = branch.getDetailedInf();
-        List<Integer> listIdealId= new ArrayList<>();
-        for(int i =0; i<idealDEtInf.size();i++){
+        List<Integer> listIdealId = new ArrayList<>();
+        for (int i = 0; i < idealDEtInf.size(); i++) {
             listIdealId.add(idealDEtInf.get(i).getIdDetailedInfBranch());
         }
-        List<Integer> listId= new ArrayList<>();
-        for(int i =0; i<detInf.size();i++){
+        List<Integer> listId = new ArrayList<>();
+        for (int i = 0; i < detInf.size(); i++) {
             listId.add(detInf.get(i).getIdDetailedInfBranch());
         }
-        for(int i =0; i<idealDEtInf.size();i++) {
-            if(!listId.contains(listIdealId.get(i))){
+        for (int i = 0; i < idealDEtInf.size(); i++) {
+            if (!listId.contains(listIdealId.get(i))) {
                 infBranchDAO.delete(infBranchDAO.findById(listIdealId.get(i)));
             }
         }
@@ -76,17 +71,15 @@ public class InfBranchServiceImpl implements InfBranchService {
     }
 
     @Override
-    public Map<BranchLineEntity,List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines) {
-        Map<BranchLineEntity,List<DetailedInfBranchEntity>> result = new HashMap<>();
-        for(int i =0; i<branchLines.size();i++){
-            if(findDetailedInformation(branchLines.get(i))!=null){
-                result.put(branchLines.get(i),findDetailedInformation(branchLines.get(i)) );
+    public Map<BranchLineEntity, List<DetailedInfBranchEntity>> findBranchesByBranches(List<BranchLineEntity> branchLines) {
+        Map<BranchLineEntity, List<DetailedInfBranchEntity>> result = new HashMap<>();
+        for (int i = 0; i < branchLines.size(); i++) {
+            if (findDetailedInformation(branchLines.get(i)) != null) {
+                result.put(branchLines.get(i), findDetailedInformation(branchLines.get(i)));
             }
         }
         return result;
     }
-
-
 
 
 }

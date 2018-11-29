@@ -9,11 +9,17 @@ import java.util.List;
 
 public interface InfBranchDAO {
     List<DetailedInfBranchEntity> findAllInfBranch();
+
     List<DetailedInfBranchEntity> findBranchesByStation(StationEntity stationEntity);
+
     void saveOrUpdate(DetailedInfBranchEntity branch);
+
     List<DetailedInfBranchEntity> findDetailedInformation(BranchLineEntity branchLineEntity);
+
     void delete(DetailedInfBranchEntity branch);
+
     DetailedInfBranchEntity findBySerialNumberStationAndSchedule(int serialNumber,
                                                                  BranchLineEntity branch);
+
     DetailedInfBranchEntity findById(int id);
 }

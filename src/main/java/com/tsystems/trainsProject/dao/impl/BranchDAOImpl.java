@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("BranchDAO")
-public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> implements BranchDAO {
+public class BranchDAOImpl extends AbstractDAO<Integer, BranchLineEntity> implements BranchDAO {
 
     @Override
     public List<BranchLineEntity> findAllBranches() {
         Criteria criteria = getSession().createCriteria(BranchLineEntity.class);
-        List<BranchLineEntity> res=(List<BranchLineEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+        List<BranchLineEntity> res = (List<BranchLineEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return res;
     }
 
@@ -35,8 +35,6 @@ public class BranchDAOImpl extends AbstractDAO<Integer,BranchLineEntity> impleme
         criteria.add(Restrictions.eq("idBranchLine", id));
         return (BranchLineEntity) criteria.uniqueResult();
     }
-
-
 
 
 }

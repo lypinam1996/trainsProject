@@ -1,20 +1,13 @@
 package com.tsystems.trainsProject.models;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "detailed_inf_branch", schema = "trains", catalog = "")
+@Table(name = "detailed_inf_branch", schema = "trains")
 public class DetailedInfBranchEntity {
     private int idDetailedInfBranch;
     private Integer stationSerialNumber;
@@ -34,7 +27,7 @@ public class DetailedInfBranchEntity {
     }
 
     @ManyToOne()
-    @JoinColumn(name = "id_branch", referencedColumnName = "id_branch_line")//name=fk ref=first key
+    @JoinColumn(name = "id_branch", referencedColumnName = "id_branch_line")
     public BranchLineEntity getBranch() {
         return branch;
     }

@@ -9,9 +9,11 @@ import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.BranchService;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -130,6 +132,19 @@ public class BranchServiceImpl implements BranchService {
             errors.add(errorTime);
         }
         return errors;
+    }
+
+    public BindingResult checkUniqueStationName(StationEntity station, BindingResult bindingResult){
+        List<StationEntity> stations = stationDAO.findAllStations();
+        stations.remove(stationDAO.findById(station.getIdStation()));
+        for (StationEntity stationEntity:stations){
+            if(station.getStationName().equals(stationEntity.getStationName())){
+                ObjectError objectError = new ObjectError("stationName",
+                        "Station name is not unique");
+                bindingResult.addError(objectError);
+            }
+        }
+        return bindingResult;
     }
 
     @Override

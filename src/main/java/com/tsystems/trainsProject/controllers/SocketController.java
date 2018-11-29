@@ -1,6 +1,6 @@
 package com.tsystems.trainsProject.controllers;
 
-import com.tsystems.trainsProject.Events.EditingEvent;
+import com.tsystems.trainsProject.events.EditingEvent;
 import com.tsystems.trainsProject.dto.Converter;
 import com.tsystems.trainsProject.dto.HelloMessage;
 import com.tsystems.trainsProject.dto.ScheduleDTO;
@@ -44,7 +44,7 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
         }
         simpMessagingTemplate.convertAndSend("/topic/today", result);
     }
-//нет смысла посылать id, т.к. удаляется не 1 билет, а много
+
     @Scheduled(fixedDelay = 10000)
     private void deleteTickets() {
         ticketService.deleteOldTickets();
@@ -57,7 +57,6 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
         simpMessagingTemplate.convertAndSend("/topic/ticketDelete", ticketDtos);
     }
 
-    //по ивенту сделать удаление
     @Override
     public void onApplicationEvent(EditingEvent customSpringEvent) {
         try {
@@ -76,6 +75,5 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
         catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }

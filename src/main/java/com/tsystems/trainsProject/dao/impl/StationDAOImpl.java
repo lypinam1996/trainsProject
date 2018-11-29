@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("StationDAO")
-public class StationDAOImpl extends AbstractDAO<Integer,StationEntity> implements StationDAO {
+public class StationDAOImpl extends AbstractDAO<Integer, StationEntity> implements StationDAO {
 
     @Override
     public List<StationEntity> findAllStations() {
         Criteria criteria = getSession().createCriteria(StationEntity.class);
-        List<StationEntity> res=(List<StationEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+        List<StationEntity> res = (List<StationEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return res;
     }
 

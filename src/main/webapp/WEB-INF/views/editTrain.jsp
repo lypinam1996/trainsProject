@@ -31,15 +31,12 @@
         <div class="col-md-12">
             <form:form action="${actionUrl}" modelAttribute="train"
                        method="POST" name="branch">
+                <form:errors path="*" element="div" class="errors"/>
                 <form:input type="hidden" path="idTrain"/>
-                <c:choose>
-                    <c:when test="${!error.isEmpty()}">
-                        <div class="errors">${error}</div>
-                    </c:when>
-                </c:choose>
                 <div class="form-group">
                     <label for="number">Train number</label>
                     <form:input class="form-control inp" path="number" id="number"/>
+                    <form:errors path="number"/>
                 </div>
                 <div class="form-group">
                     <label for="numberOfSeats">Number of seats</label>

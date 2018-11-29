@@ -33,8 +33,6 @@ public class BranchController {
     @Autowired
     StationService stationService;
 
-
-
     @RequestMapping(value = "/detailedInf/{pk}", method = RequestMethod.GET)
     public String getDetailedInf(@PathVariable Integer pk, Model model) {
         List<DetailedInfBranchEntity> detailedInformation = detailedInf.findDetailedInformation(branchService.findById(pk));
@@ -43,7 +41,7 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/createBranch", method = RequestMethod.GET)
-    public String create(@ModelAttribute BranchLineEntity branch, Model model) throws ParseException {
+    public String create(@ModelAttribute BranchLineEntity branch, Model model){
         List<String> errors = new ArrayList<>();
         return create(branch, model, true,errors);
     }
@@ -93,7 +91,7 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/updateBranch", method = RequestMethod.POST)
-    public String update( @ModelAttribute BranchLineEntity branch, BindingResult bindingResult, Model model) throws ParseException {
+    public String update( @ModelAttribute BranchLineEntity branch, Model model) {
         branchService.checkTheNecessityOfSaving(branch);
         detailedInf.delete(branch,branch.getIdBranchLine());
         List<String> errors=branchService.validation(branch);

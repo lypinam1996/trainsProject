@@ -25,12 +25,6 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public List<UserEntity> findAllUsers() {
-        List<UserEntity> res =userDao.findAllUsers();
-        return res;
-    }
-
-    @Override
     public UserEntity findByLogin(String login) {
         return userDao.findByLogin(login);
     }
@@ -39,7 +33,7 @@ public class UserServiceImpl implements UserService {
     public void saveOrUpdate(UserEntity user) {
         RoleEntity roleEntity = roleDAO.findByTitle("USER");
         user.setRole(roleEntity);
-       // user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.saveOrUpdate(user);
     }
 

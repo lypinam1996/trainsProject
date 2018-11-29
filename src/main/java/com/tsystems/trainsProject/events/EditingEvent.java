@@ -1,4 +1,4 @@
-package com.tsystems.trainsProject.Events;
+package com.tsystems.trainsProject.events;
 
 import org.springframework.context.ApplicationEvent;
 

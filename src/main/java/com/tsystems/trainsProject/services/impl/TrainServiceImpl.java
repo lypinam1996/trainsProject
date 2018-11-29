@@ -1,10 +1,13 @@
 package com.tsystems.trainsProject.services.impl;
+
 import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
 import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.services.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import java.util.List;
 
@@ -27,16 +30,19 @@ public class TrainServiceImpl implements TrainService {
     }
 
     @Override
-    public  String checkUniqueTRainNumber(TrainEntity train){
+    public BindingResult checkUniqueTrainNumber(TrainEntity train, BindingResult bindingResult) {
         List<TrainEntity> trains = trainDAO.findAllTrains();
         trains.remove(trainDAO.findById(train.getIdTrain()));
-        for (TrainEntity trainEntity:trains){
-            if(train.getNumber().equals(trainEntity.getNumber())){
-                return "*Train number is not unique";
+        for (TrainEntity trainEntity : trains) {
+            if (train.getNumber().equals(trainEntity.getNumber())) {
+                ObjectError objectError = new ObjectError("number",
+                        "Train number is not unique");
+                bindingResult.addError(objectError);
             }
         }
-        return "";
+        return bindingResult;
     }
+
 
     @Override
     public TrainEntity findById(int id) {

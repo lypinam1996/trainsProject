@@ -63,6 +63,12 @@
             <version>8.0.12</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.3.4.Final</version>
+        </dependency>
+
         <!--jsp-->
         <dependency>
             <groupId>javax.servlet</groupId>

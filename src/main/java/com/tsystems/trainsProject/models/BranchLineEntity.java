@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "branch_line", schema = "trains", catalog = "")
+@Table(name = "branch_line", schema = "trains")
 public class BranchLineEntity {
     private int idBranchLine;
     private String title;
@@ -27,7 +27,7 @@ public class BranchLineEntity {
     }
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany( mappedBy = "branch")
+    @OneToMany(mappedBy = "branch")
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     public List<DetailedInfBranchEntity> getDetailedInf() {
         return detailedInf;

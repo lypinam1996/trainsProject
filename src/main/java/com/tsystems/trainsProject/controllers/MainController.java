@@ -7,8 +7,6 @@ import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,10 +20,6 @@ import java.util.List;
 
 @Controller
 public class MainController {
-
-    @Autowired
-    private ApplicationContext appContext;
-
 
     private static final Logger logger = Logger.getLogger(MainController.class);
     @Autowired
