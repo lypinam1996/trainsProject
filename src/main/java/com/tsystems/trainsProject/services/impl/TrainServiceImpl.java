@@ -36,7 +36,7 @@ public class TrainServiceImpl implements TrainService {
         for (TrainEntity trainEntity : trains) {
             if (train.getNumber().equals(trainEntity.getNumber())) {
                 ObjectError objectError = new ObjectError("number",
-                        "Train number is not unique");
+                        "*Train number is not unique");
                 bindingResult.addError(objectError);
             }
         }

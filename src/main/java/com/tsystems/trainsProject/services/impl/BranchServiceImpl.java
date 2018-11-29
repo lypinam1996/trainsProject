@@ -115,6 +115,9 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public List<String> validation(BranchLineEntity branch) {
         List<String> errors = new ArrayList<>();
+        if(branch.getTitle()==""){
+            errors.add("*Enter branch title");
+        }
         String errorEqualSerialNumber = checkEqualitySerialNumbers(branch);
         String errorNotSerialNumber = checkSerialNumbers(branch);
         String errorEqualStations = checkEqualityStations(branch);
@@ -140,7 +143,7 @@ public class BranchServiceImpl implements BranchService {
         for (StationEntity stationEntity:stations){
             if(station.getStationName().equals(stationEntity.getStationName())){
                 ObjectError objectError = new ObjectError("stationName",
-                        "Station name is not unique");
+                        "*Station name is not unique");
                 bindingResult.addError(objectError);
             }
         }

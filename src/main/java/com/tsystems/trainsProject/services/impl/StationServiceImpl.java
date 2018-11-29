@@ -52,7 +52,7 @@ public class StationServiceImpl implements StationService {
         for (StationEntity stationEntity:stations){
             if(station.getStationName().equals(stationEntity.getStationName())){
                 ObjectError objectError = new ObjectError("stationName",
-                        "Station name is not unique");
+                        "*Station name is not unique");
                 bindingResult.addError(objectError);
             }
         }
