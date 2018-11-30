@@ -2,6 +2,7 @@ package com.tsystems.trainsProject.controllers;
 
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.*;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +23,8 @@ import java.util.List;
 @Controller
 public class ScheduleController {
 
+    private static final Logger logger = Logger.getLogger(ScheduleController.class);
+
     @Autowired
     ScheduleService scheduleService;
 
@@ -41,6 +44,7 @@ public class ScheduleController {
     public String getTrackIndicator(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("auth", auth.getName());
+        logger.info("ScheduleController: return track indicator page");
         return "trackIndicator";
     }
 
@@ -49,6 +53,7 @@ public class ScheduleController {
         List<String> errors = new ArrayList<>();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView=getScheduleHelp(errors);
+        logger.info("ScheduleController: return schedule page");
         return modelAndView;
     }
 
@@ -76,6 +81,7 @@ public class ScheduleController {
     public String chooseBranch(Model model) {
         List<BranchLineEntity> branches = branchService.findAllBranches();
         model.addAttribute("branches", branches);
+        logger.info("ScheduleController: return choose branch page");
         return "chooseBranch";
     }
 
@@ -83,6 +89,7 @@ public class ScheduleController {
     public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule, Model model) {
         BranchLineEntity branchLineEntity = branchService.findById(pk);
         schedule.setBranch(branchLineEntity);
+        logger.info("ScheduleController: return create schedule page");
         return create(schedule, model, "createSchedule", branchLineEntity);
     }
 
@@ -102,12 +109,15 @@ public class ScheduleController {
     @RequestMapping(value = "/createSchedule", method = RequestMethod.POST)
     public String createSchedule(@ModelAttribute("schedule") @Validated ScheduleEntity schedule,
                                  Model model, BindingResult bindingResult) {
+        logger.info("ScheduleController: start to save schedule");
         schedule=scheduleService.checkNull(schedule);
         bindingResult = scheduleService.validation(schedule,bindingResult);
         if (bindingResult.hasErrors()) {
+            logger.info("ScheduleController: there are some validation problems in schedule");
             return create(schedule, model, "createTrain", schedule.getBranch());
         }
         scheduleService.saveOrUpdate(schedule);
+        logger.info("ScheduleController: schedule has been saved");
         return "redirect:/schedule";
     }
 
@@ -117,6 +127,7 @@ public class ScheduleController {
         ScheduleEntity schedule=scheduleService.findById(pk);
         schedule.setProhibitPurchase(new Date());
         scheduleService.saveOrUpdate(schedule);
+        logger.info("ScheduleController: prohibit purchase buying tickets");
         return "redirect:/schedule";
     }
 
@@ -125,6 +136,7 @@ public class ScheduleController {
         ScheduleEntity schedule=scheduleService.findById(pk);
         schedule.setProhibitPurchase(null);
         scheduleService.saveOrUpdate(schedule);
+        logger.info("ScheduleController: start buying tickets");
         return "redirect:/schedule";
     }
 
@@ -135,6 +147,7 @@ public class ScheduleController {
         if(!schedule.getTicket().isEmpty()) {
             List<String> errors = new ArrayList<>();
             errors.add("*You can't update schedule!");
+            logger.info("ScheduleController: can't update schedule");
             return getScheduleHelp(errors);
         }
         List<TrainEntity> trains = trainService.findAllTrains();
@@ -147,6 +160,7 @@ public class ScheduleController {
         modelAndView.addObject("trains", trains);
         modelAndView.addObject("schedule", schedule);
         modelAndView.setViewName("editSchedule");
+        logger.info("ScheduleController: return update page schedule");
         return modelAndView;
     }
 
@@ -154,20 +168,24 @@ public class ScheduleController {
     @RequestMapping(value = "/updateSchedule", method = RequestMethod.POST)
     public String update(@ModelAttribute("schedule") @Validated ScheduleEntity schedule,
                          Model model, BindingResult bindingResult)  {
+        logger.info("ScheduleController: start to update schedule");
         if (schedule.getBranch().getIdBranchLine() != 0) {
             schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
         }
         schedule=scheduleService.checkNull(schedule);
         bindingResult = scheduleService.validation(schedule,bindingResult);
         if (bindingResult.hasErrors()) {
+            logger.info("ScheduleController: there are some validation problems in schedule");
             return create(schedule, model, "updateSchedule", schedule.getBranch());
         }
         scheduleService.saveOrUpdate(schedule);
+        logger.info("ScheduleController: schedule has been updated ");
         return "redirect:/schedule";
     }
 
     @RequestMapping(value = "/deleteSchedule/{pk}", method = RequestMethod.GET)
     public ModelAndView deleteSchedule(@PathVariable Integer pk) {
+        logger.info("ScheduleController: start to delete schedule");
         ModelAndView m = new ModelAndView();
         ScheduleEntity schedule = scheduleService.findById(pk);
         if(!schedule.getTicket().isEmpty()) {
@@ -177,6 +195,7 @@ public class ScheduleController {
         }
         scheduleService.delete(schedule);
         m.setViewName("redirect:/schedule");
+        logger.info("ScheduleController: schedule has been deleted ");
         return m;
     }
 }

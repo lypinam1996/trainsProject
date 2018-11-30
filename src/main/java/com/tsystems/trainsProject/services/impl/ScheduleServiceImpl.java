@@ -10,6 +10,7 @@ import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ import java.util.*;
 @Service("ScheduleService")
 @Transactional
 public class ScheduleServiceImpl implements ScheduleService {
+
+    private static final Logger logger = Logger.getLogger(BranchServiceImpl.class);
 
     @Autowired
     ScheduleDAOImpl scheduleDAO;
@@ -79,6 +82,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             List<DetailedInfBranchEntity>> detailedInfBranchList,
                                                       StationEntity firstStation,
                                                       StationEntity lastStation) {
+        logger.info("ScheduleServiceImpl: find scheduals by branch");
         List<ScheduleEntity> result = new ArrayList<>();
         for (Map.Entry<BranchLineEntity, List<DetailedInfBranchEntity>> detailedInf : detailedInfBranchList.entrySet()) {
             List<ScheduleEntity> schedules = findScheduleByBranch(detailedInf.getKey());
@@ -109,6 +113,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             }
 
         }
+        logger.info("ScheduleServiceImpl: scheduals has been found");
         return result;
     }
 
@@ -125,12 +130,15 @@ public class ScheduleServiceImpl implements ScheduleService {
         LocalTime today = LocalDateTime.ofInstant(now.toInstant(), ZoneId.systemDefault()).toLocalTime();
         LocalTime scheduleTime = LocalDateTime.ofInstant(schedule.getDepartureTime().toInstant(), ZoneId.systemDefault()).toLocalTime();
         if (today.isBefore(scheduleTime)) {
+            logger.info("ScheduleServiceImpl: start to send event");
             EditingEvent customSpringEvent = new EditingEvent(this, String.valueOf(id), 0);
             applicationEventPublisher.publishEvent(customSpringEvent);
+            logger.info("ScheduleServiceImpl: event has been sent");
         }
     }
 
     private String checkStationsSerialNumbers(ScheduleEntity schedule) {
+        logger.info("ScheduleServiceImpl: check stations serial numbers");
         String error = "";
         BranchLineEntity branch = schedule.getBranch();
         StationEntity firstStation = schedule.getFirstStation();
@@ -148,10 +156,12 @@ public class ScheduleServiceImpl implements ScheduleService {
         if (numberFistStation >= numberLastStation) {
             error = "*Error in entering stations";
         }
+        logger.info("ScheduleServiceImpl: schedule has been checked");
         return error;
     }
 
     private String checkBranchEmployment(ScheduleEntity schedule) {
+        logger.info("ScheduleServiceImpl: check branch employment");
         String error = "";
         BranchLineEntity branch = schedule.getBranch();
         List<ScheduleEntity> schedulesOnBranch = branch.getSchedule();
@@ -159,10 +169,12 @@ public class ScheduleServiceImpl implements ScheduleService {
         schedulesOnBranch.remove(deleteSchecule);
         List<Date> employmentTime = evaluateTime(schedulesOnBranch);
         error = compareTime(employmentTime, schedule);
+        logger.info("ScheduleServiceImpl: schedule has been checked");
         return error;
     }
 
     public String checkTrainEmployment(ScheduleEntity schedule) {
+        logger.info("ScheduleServiceImpl: check train employment");
         String error = "";
         TrainEntity train = schedule.getTrain();
         List<ScheduleEntity> schedulesWithTrain = train.getSchedule();
@@ -170,10 +182,12 @@ public class ScheduleServiceImpl implements ScheduleService {
         schedulesWithTrain.remove(deleteSchecule);
         List<Date> employmentTime = evaluateTime(schedulesWithTrain);
         error = compareTime(employmentTime, schedule);
+        logger.info("ScheduleServiceImpl: schedule has been checked");
         return error;
     }
 
     private String compareTime(List<Date> employmentTime, ScheduleEntity schedule) {
+        logger.info("ScheduleServiceImpl: start to compare time");
         String error = "";
         List<ScheduleEntity> schedules = new ArrayList<>();
         schedules.add(schedule);
@@ -196,6 +210,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     private List<Date> evaluateTime(List<ScheduleEntity> schedule) {
+        logger.info("ScheduleServiceImpl: start to evaluate time");
         List<Date> result = new ArrayList<>();
         for (int i = 0; i < schedule.size(); i++) {
             List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
@@ -230,9 +245,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public void delete(ScheduleEntity schedule) {
         int id = scheduleDAO.deleteId(schedule);
+        logger.info("ScheduleServiceImpl: start to send event");
         EditingEvent customSpringEvent = new EditingEvent(this, String.valueOf(id), 1);
         applicationEventPublisher.publishEvent(customSpringEvent);
-
+        logger.info("ScheduleServiceImpl: event has been sent");
     }
 
     @Override

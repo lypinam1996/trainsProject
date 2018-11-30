@@ -9,9 +9,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "ticket", schema = "trains", catalog = "")
-public class TicketEntity implements Comparable<TicketEntity>{
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "ticket", schema = "trains")
+public class TicketEntity implements Comparable<TicketEntity> {
     private int idTicket;
     @DateTimeFormat(pattern = "HH:mm")
     private Date departureTime;
@@ -70,6 +69,7 @@ public class TicketEntity implements Comparable<TicketEntity>{
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ticket", nullable = false)
     public int getIdTicket() {
         return idTicket;

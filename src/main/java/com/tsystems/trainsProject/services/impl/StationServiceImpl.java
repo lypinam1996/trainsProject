@@ -4,6 +4,7 @@ import com.tsystems.trainsProject.dto.StationDTO;
 import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.StationService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,8 @@ import java.util.List;
 @Service("StationService")
 @Transactional
 public class StationServiceImpl implements StationService {
+
+    private static final Logger logger = Logger.getLogger(StationServiceImpl.class);
 
     @Autowired
     StationDAOImpl stationDAO;
@@ -47,6 +50,7 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public  BindingResult checkUniqueStationName(StationEntity station, BindingResult bindingResult){
+        logger.info("StationServiceImpl: check unique station name");
         List<StationEntity> stations = stationDAO.findAllStations();
         stations.remove(stationDAO.findById(station.getIdStation()));
         for (StationEntity stationEntity:stations){
@@ -56,10 +60,12 @@ public class StationServiceImpl implements StationService {
                 bindingResult.addError(objectError);
             }
         }
+        logger.info("StationServiceImpl: station has been checked");
         return bindingResult;
     }
 
     public  List<StationDTO> getStationsByLetters(String letters) {
+        logger.info("StationServiceImpl: start getting stations by letters");
         List<StationDTO> stationsDTO = new ArrayList<StationDTO>();
         List<StationEntity> stations = findAllStations();
         letters=letters.substring(0,1).toUpperCase()+letters.substring(1,letters.length());
@@ -79,6 +85,7 @@ public class StationServiceImpl implements StationService {
                 stationsDTO.add(converter.convertStation(stations.get(i)));
             }
         }
+        logger.info("StationServiceImpl: station has been found");
         return stationsDTO;
     }
 }

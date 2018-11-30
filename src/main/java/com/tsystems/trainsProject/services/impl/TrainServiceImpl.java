@@ -3,6 +3,7 @@ package com.tsystems.trainsProject.services.impl;
 import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
 import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.services.TrainService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,8 @@ import java.util.List;
 @Service("TrainService")
 @Transactional
 public class TrainServiceImpl implements TrainService {
+
+    private static final Logger logger = Logger.getLogger(TrainServiceImpl.class);
 
     @Autowired
     TrainDAOImpl trainDAO;
@@ -31,6 +34,7 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     public BindingResult checkUniqueTrainNumber(TrainEntity train, BindingResult bindingResult) {
+        logger.info("TrainServiceImpl: check unique train number");
         List<TrainEntity> trains = trainDAO.findAllTrains();
         trains.remove(trainDAO.findById(train.getIdTrain()));
         for (TrainEntity trainEntity : trains) {
@@ -40,6 +44,7 @@ public class TrainServiceImpl implements TrainService {
                 bindingResult.addError(objectError);
             }
         }
+        logger.info("TrainServiceImpl: train has been checked");
         return bindingResult;
     }
 

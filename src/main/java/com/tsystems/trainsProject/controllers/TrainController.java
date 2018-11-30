@@ -5,6 +5,7 @@ import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.TicketService;
 import com.tsystems.trainsProject.services.TrainService;
 import com.tsystems.trainsProject.services.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.util.*;
 
 @Controller
 public class TrainController {
+    private static final Logger logger = Logger.getLogger(TrainController.class);
 
     @Autowired
     TrainService trainService;
@@ -35,6 +37,7 @@ public class TrainController {
 
     @RequestMapping(value = "/createTrain", method = RequestMethod.GET)
     public String getTrain(@ModelAttribute TrainEntity train, Model model) {
+        logger.info("TrainController: return create train page");
         return create(train, model, "createTrain");
     }
 
@@ -47,11 +50,13 @@ public class TrainController {
     @RequestMapping(value = "/createTrain", method = RequestMethod.POST)
     public String postTrain(@ModelAttribute("train") @Validated TrainEntity train,
                 Model model,  BindingResult bindingResult) {
+        logger.info("TrainController: start to save train");
         bindingResult= trainService.checkUniqueTrainNumber(train,bindingResult);
         if (bindingResult.hasErrors()) {
             return create(train, model, "createTrain");
         }
         trainService.saveOrUpdate(train);
+        logger.info("TrainController:train has been saved");
         return "redirect:/trains";
     }
 
@@ -61,6 +66,7 @@ public class TrainController {
         ModelAndView model = new ModelAndView();
         List<String> errors = new ArrayList<>();
         if (!train.getSchedule().isEmpty()) {
+            logger.info("TrainController:there are some validation problems in train");
             errors.add("*You can't update this train. It is in the schedule");
             return getAllTrainsHelp(errors);
         } else {
@@ -69,6 +75,7 @@ public class TrainController {
             model.addObject("train", train);
             model.addObject("type", "updateTrain");
             model.setViewName("editTrain");
+            logger.info("TrainController:return update train page");
             return model;
         }
     }
@@ -76,25 +83,31 @@ public class TrainController {
     @RequestMapping(value = "/updateTrain", method = RequestMethod.POST)
     public String update(@ModelAttribute("train") @Validated TrainEntity train,
                          Model model,  BindingResult bindingResult) {
+        logger.info("TrainController:start to update train");
         bindingResult= trainService.checkUniqueTrainNumber(train,bindingResult);
         if (bindingResult.hasErrors()) {
+            logger.info("TrainController:there are some validation problems in train");
             return create(train, model, "updateTrain");
         }
         trainService.saveOrUpdate(train);
+        logger.info("TrainController:train has been updated");
         return "redirect:/trains";
     }
 
     @RequestMapping(value = "/deleteTrain/{pk}", method = RequestMethod.GET)
     public ModelAndView deleteTrain(@PathVariable Integer pk) {
+        logger.info("TrainController:start to delete train");
         TrainEntity train = trainService.findById(pk);
         ModelAndView model = new ModelAndView();
         List<String> errors = new ArrayList<>();
         if (train.getSchedule().isEmpty()) {
             trainService.delete(train);
             model = getAllTrainsHelp(errors);
+            logger.info("TrainController:train has been deleted");
         } else {
             errors.add("*You can't delete this train. It is in the schedule");
             model = getAllTrainsHelp(errors);
+            logger.info("TrainController:there are some validation problems in train");
         }
         return model;
     }
@@ -102,6 +115,7 @@ public class TrainController {
     @RequestMapping(value = "/trains", method = RequestMethod.GET)
     public ModelAndView getAllTrains() {
         List<String> errors = new ArrayList<>();
+        logger.info("TrainController:return trains page");
         return getAllTrainsHelp(errors);
     }
 

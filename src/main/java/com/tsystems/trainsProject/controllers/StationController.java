@@ -28,6 +28,7 @@ public class StationController {
     @RequestMapping(value = "/createStation", method = RequestMethod.GET)
     public String getStation(@ModelAttribute StationEntity station, Model model)
     {
+        logger.info("StationController: create page");
         return create(station, model,"createStation");
     }
 
@@ -39,12 +40,14 @@ public class StationController {
 
     @RequestMapping(value = "/createStation", method = RequestMethod.POST)
     public String postStation(@ModelAttribute("station") @Validated StationEntity station,
-                              BindingResult bindingResult,Model model) { ;
+                              BindingResult bindingResult,Model model) {
+        logger.info("StationController: start to save station");
         bindingResult=stationService.checkUniqueStationName(station, bindingResult);
         if (bindingResult.hasErrors()){
             return create(station, model,"createStation");
         }
         stationService.saveOrUpdate(station);
+        logger.info("StationController: station has been saved");
         return "redirect:/stations";
     }
 
@@ -54,6 +57,7 @@ public class StationController {
         List<String> errors = new ArrayList<>();
         StationEntity station = stationService.findById(pk);
         if(!station.getDetailedInf().isEmpty()) {
+            logger.info("StationController: there are some validation problems in station");
             errors.add("*You can't update station! Several branches go through it!");
             return getAllStationsHelp(errors);
         }
@@ -63,6 +67,7 @@ public class StationController {
             model.addObject("error", error);
             model.addObject("type", "updateStation");
             model.setViewName("editStation");
+            logger.info("StationController: update page");
             return model;
         }
     }
@@ -71,26 +76,32 @@ public class StationController {
     @RequestMapping(value = "/updateStation", method = RequestMethod.POST)
     public String update( @ModelAttribute("station") @Validated StationEntity station,
                           BindingResult bindingResult,Model model) {
+        logger.info("StationController: start to update page");
         bindingResult=stationService.checkUniqueStationName(station, bindingResult);
         if (bindingResult.hasErrors()){
+            logger.info("StationController: there are some validation problems in station");
             return create(station, model,"updateStation");
         }
         stationService.saveOrUpdate(station);
+        logger.info("StationController: station has been updated");
         return "redirect:/stations";
     }
 
     @RequestMapping(value = "/deleteStation/{pk}", method = RequestMethod.GET)
     public ModelAndView deleteStation(@PathVariable Integer pk) {
+        logger.info("StationController: start to delete station");
         StationEntity station = stationService.findById(pk);
         ModelAndView model = new ModelAndView();
         List<String> errors = new ArrayList<>();
         if(!station.getDetailedInf().isEmpty()) {
+            logger.info("StationController: there are some validation problems in station");
             errors.add("*You can't delete station! Several branches go through it!");
             model=getAllStationsHelp(errors);
         }
         else {
             stationService.delete(station);
             model=getAllStationsHelp(errors);
+            logger.info("StationController: station has been deleted");
         }
         return model;
     }
@@ -99,6 +110,7 @@ public class StationController {
     public ModelAndView getAllStations() {
         List<String> errors=new ArrayList<>();
         ModelAndView model=getAllStationsHelp(errors);
+        logger.info("StationController: return stations page");
         return model;
     }
 

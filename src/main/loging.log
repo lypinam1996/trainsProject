@@ -1,0 +1,17 @@
+2018-11-30 21:49:27 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2018-11-30 21:49:27 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-11-30 21:49:27 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-11-30 21:49:27 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-11-30 21:49:28 INFO  Version:30 - HV000001: Hibernate Validator 5.3.4.Final
+2018-11-30 21:49:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:31 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:36 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:39 INFO  BranchDAOImpl:20 - BranchDao: start to find all branches
+2018-11-30 21:49:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:39 INFO  BranchDAOImpl:23 - BranchDao: all branches has been found
+2018-11-30 21:49:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-11-30 21:49:46 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "user", schema = "trains", catalog = "")
+@Table(name = "user", schema = "trains")
 public class UserEntity {
     private int idUser;
     @NotNull(message = "Please enter your password.")

@@ -7,14 +7,11 @@ import java.util.List;
 
 public interface TicketService {
     List<TicketEntity> findAllTickets();
-    TicketEntity findByName(String name);
     void saveOrUpdate(TicketEntity station);
     TicketEntity findById(int id);
-    String checkNumberOfTicket(TicketEntity ticket);
+//    String checkNumberOfTicket(TicketEntity ticket);
     int findSeatWithMaxNumber(TicketEntity ticket);
     boolean checkTime(TicketEntity ticket);
-    //void delete1(TicketEntity ticketEntity);
     List<TicketEntity> findByDate(Date today);
-    List<TicketEntity> findByDate(Date today, List<TicketEntity> tickets);
     void deleteOldTickets();
 }

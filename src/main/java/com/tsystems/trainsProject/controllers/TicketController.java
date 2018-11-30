@@ -7,6 +7,7 @@ import com.tsystems.trainsProject.dto.VariantDto;
 import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.*;
 import com.tsystems.trainsProject.services.impl.SearchTrain;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +23,8 @@ import java.util.*;
 
 @Controller
 public class TicketController {
+
+    private static final Logger logger = Logger.getLogger(TicketController.class);
 
     SingletonDto singletonDto;
 
@@ -47,6 +50,7 @@ public class TicketController {
     public String findTrainsInSchedule(@ModelAttribute Search search,
                                        BindingResult bindingResult,
                                        Model model) {
+        logger.info("TicketController: start to find variants");
         Map<ScheduleEntity, List<Date>> variants = searchService.search(search, bindingResult);
         List<VariantDto> variant = new ArrayList<>();
         singletonDto = SingletonDto.getInstance();
@@ -76,6 +80,7 @@ public class TicketController {
         singletonDto.setVariants(variant);
         model.addAttribute("role", role);
         model.addAttribute("tickets", variant);
+        logger.info("TicketController: return variants");
         return "variants";
     }
 
@@ -95,6 +100,7 @@ public class TicketController {
         ScheduleEntity schedule = scheduleService.findById(pk);
         List<TicketEntity> tickets = schedule.getTicket();
         model.addAttribute("tickets", tickets);
+        logger.info("TicketController: return tickets page");
         return "tickets";
     }
 
@@ -102,6 +108,7 @@ public class TicketController {
     public String getTicketById(@PathVariable Integer pk, Model model) {
         TicketEntity ticket = ticketService.findById(pk);
         model.addAttribute("ticket", ticket);
+        logger.info("TicketController: return ticket page");
         return "ticket";
     }
 
@@ -129,11 +136,13 @@ public class TicketController {
         Converter converter = new Converter();
         TicketEntity ticket = converter.convertVariantToTicket(variant,tickets);
         model.addAttribute("ticket", ticket);
+        logger.info("TicketController: return create ticket page");
         return "inputDate";
     }
 
     @RequestMapping(value = "/chooseTicket", method = RequestMethod.POST)
     public String postTicket(@ModelAttribute TicketEntity ticket, Model model)  {
+        logger.info("TicketController: start to save");
         PassangerEntity passanger = ticket.getPassanger();
         boolean timeCheck = ticketService.checkTime(ticket);
         Date date = new Date();
@@ -160,20 +169,24 @@ public class TicketController {
                 if (ticketService.findSeatWithMaxNumber(ticket) != 0) {
                     ticket.setSeat(ticketService.findSeatWithMaxNumber(ticket));
                     ticketService.saveOrUpdate(ticket);
+                    logger.info("TicketController:  ticket has been saved");
                     return "redirect:/";
                 } else {
+                    logger.info("TicketController: there are some validation problems in ticket");
                     String error = "*All seats are busy";
                     model.addAttribute("error", error);
                     model.addAttribute("ticket", ticket);
                     return "inputDate";
                 }
             } else {
+                logger.info("TicketController: there are some validation problems in ticket");
                 String error = "*Passanger has already had a ticket at this train.";
                 model.addAttribute("error", error);
                 model.addAttribute("ticket", ticket);
                 return "inputDate";
             }
         } else {
+            logger.info("TicketController: there are some validation problems in ticket");
             String error = "*You can't buy ticket after the train departure";
             model.addAttribute("error", error);
             model.addAttribute("ticket", ticket);

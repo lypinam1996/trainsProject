@@ -10,6 +10,7 @@ import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.ScheduleService;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainRestController {
+
+    private static final Logger logger = Logger.getLogger(MainRestController.class);
 
     @Autowired
     ScheduleService scheduleService;
@@ -31,6 +34,7 @@ public class MainRestController {
     @RequestMapping(value = "/getTrackIndicator", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ScheduleDTO> greeting() {
         List<ScheduleDTO> scheduleDTO= helper();
+        logger.info("MainRestController: return schedule dto");
         return scheduleDTO;
     }
 
@@ -38,6 +42,7 @@ public class MainRestController {
     @ResponseBody
     public List<StationDTO> restGettingStations(@RequestParam String term) {
         List<StationDTO> stationsDTO = stationService.getStationsByLetters(term);
+        logger.info("MainRestController: return all stations dto");
         return stationsDTO;
     }
 
@@ -50,6 +55,7 @@ public class MainRestController {
         if (user != null) {
             userDTO = converter.convertUser(user);
         }
+        logger.info("MainRestController: return user");
         return userDTO;
     }
 

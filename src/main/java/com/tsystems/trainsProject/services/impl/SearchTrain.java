@@ -7,6 +7,7 @@ import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
 import com.tsystems.trainsProject.services.StationService;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,9 @@ import java.util.*;
 @Service
 @Transactional
 public class SearchTrain {
+
+    private static final Logger logger = Logger.getLogger(SearchTrain.class);
+
     @Autowired
     StationService stationService;
 
@@ -29,6 +33,7 @@ public class SearchTrain {
     ScheduleService scheduleService;
 
     public Map<ScheduleEntity,List<Date>> search(Search search, BindingResult bindingResult)  {
+        logger.info("SearchTrain: start to search train in schedule");
         Map<ScheduleEntity,List<Date>> result = new HashMap<>();
         try {
             StationEntity departureStation = stationService.findByName(search.getFirstStation());
@@ -42,8 +47,10 @@ public class SearchTrain {
             Date time1 = ft.parse(search.getDepartureTimeFrom());
             Date time2 = ft.parse(search.getDepartureTimeTo());
             result = evaluateTime(schedule, time1, time2, departureStation,arrivalStation);
+            logger.info("SearchTrain:  train has been found");
         }
         catch (ParseException e){
+            logger.info(e.getMessage());
             bindingResult.rejectValue("departureTimeFrom","The time was entered incorrectly");
         }
         return result;
@@ -66,6 +73,7 @@ public class SearchTrain {
                                               Date time1, Date time2,
                                               StationEntity firstStation,
                                               StationEntity lastStation) throws ParseException {
+        logger.info("SearchTrain: start to evaluate time");
         DateUtils.addMinutes(time2,1);
         if(time1.getMinutes()==0){
             time1.setHours(time1.getHours()-1);
@@ -102,6 +110,7 @@ public class SearchTrain {
             }
 
         }
+        logger.info("SearchTrain: time  has ben evaluated");
         return result;
     }
 

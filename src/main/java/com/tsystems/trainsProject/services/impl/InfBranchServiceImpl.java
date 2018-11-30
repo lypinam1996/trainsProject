@@ -7,6 +7,7 @@ import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.InfBranchService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

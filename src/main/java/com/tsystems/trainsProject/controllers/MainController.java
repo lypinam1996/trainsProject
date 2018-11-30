@@ -24,11 +24,8 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @Autowired
-    private ApplicationContext appContext;
-
-
     private static final Logger logger = Logger.getLogger(MainController.class);
+
     @Autowired
     StationService stationService;
 
@@ -48,6 +45,7 @@ public class MainController {
                 result = "workerMainPage";
             }
         }
+        logger.info("MainController: return first page");
         return result;
     }
 

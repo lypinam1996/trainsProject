@@ -3,11 +3,10 @@ package com.tsystems.trainsProject.services.impl;
 import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.impl.TicketDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
-import com.tsystems.trainsProject.models.ScheduleEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
-import com.tsystems.trainsProject.services.PassangerService;
 import com.tsystems.trainsProject.services.TicketService;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +21,8 @@ import java.util.List;
 @Transactional
 public class TicketServiceImpl implements TicketService {
 
+    private static final Logger logger = Logger.getLogger(TicketServiceImpl.class);
+
     @Autowired
     TicketDAOImpl ticketDAO;
 
@@ -34,11 +35,6 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public TicketEntity findByName(String name) {
-        return null;
-    }
-
-    @Override
     public void saveOrUpdate(TicketEntity ticket) {
         ticketDAO.saveOrUpdate(ticket);
     }
@@ -48,38 +44,39 @@ public class TicketServiceImpl implements TicketService {
         return ticketDAO.findById(id);
     }
 
-    @Override
-    public String checkNumberOfTicket(TicketEntity ticket) {
-        String error = "";
-        List<TicketEntity> ticketEntities = new ArrayList<>();
-        ScheduleEntity schedule = ticket.getSchedule();
-        List<TicketEntity> tickets = schedule.getTicket();
-        tickets.remove(ticket);
-        if (!tickets.isEmpty()) {
-            for (int i = 0; i < tickets.size(); i++) {
-                if (tickets.get(i).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
-                    ticketEntities.add(tickets.get(i));
-                }
-            }
-            if (!ticketEntities.isEmpty()) {
-                TicketEntity maxTicket = ticketEntities.get(0);
-                if (ticketEntities.size() > 1) {
-                    for (int i = 1; i < ticketEntities.size(); i++) {
-                        if (maxTicket.getSeat() < ticketEntities.get(i).getSeat()) {
-                            maxTicket = ticketEntities.get(i);
-                        }
-                    }
-                }
-                if (maxTicket.getSeat() >= schedule.getTrain().getNumberOfSeats()) {
-                    error = "*All seats are busy";
-                }
-            }
-        }
-        return error;
-    }
+//    @Override
+//    public String checkNumberOfTicket(TicketEntity ticket) {
+//        String error = "";
+//        List<TicketEntity> ticketEntities = new ArrayList<>();
+//        ScheduleEntity schedule = ticket.getSchedule();
+//        List<TicketEntity> tickets = schedule.getTicket();
+//        tickets.remove(ticket);
+//        if (!tickets.isEmpty()) {
+//            for (int i = 0; i < tickets.size(); i++) {
+//                if (tickets.get(i).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
+//                    ticketEntities.add(tickets.get(i));
+//                }
+//            }
+//            if (!ticketEntities.isEmpty()) {
+//                TicketEntity maxTicket = ticketEntities.get(0);
+//                if (ticketEntities.size() > 1) {
+//                    for (int i = 1; i < ticketEntities.size(); i++) {
+//                        if (maxTicket.getSeat() < ticketEntities.get(i).getSeat()) {
+//                            maxTicket = ticketEntities.get(i);
+//                        }
+//                    }
+//                }
+//                if (maxTicket.getSeat() >= schedule.getTrain().getNumberOfSeats()) {
+//                    error = "*All seats are busy";
+//                }
+//            }
+//        }
+//        return error;
+//    }
 
     @Override
     public int findSeatWithMaxNumber(TicketEntity ticket) {
+        logger.info("BranchServiceImpl: start find seat with max number");
         int numberOfSeat = 0;
         int maxNumber = ticket.getSchedule().getTrain().getNumberOfSeats();
         List<TicketEntity> tickets = new ArrayList<>();
@@ -111,10 +108,12 @@ public class TicketServiceImpl implements TicketService {
         if (ok && tickets.size() + 1 <= maxNumber) {
             numberOfSeat = tickets.size() + 1;
         }
+        logger.info("BranchServiceImpl:seat has been found");
         return numberOfSeat;
     }
 
     private List<Integer> getFirstLastStationNumber(TicketEntity ticket) {
+        logger.info("BranchServiceImpl: start to find stations numbers");
         List<Integer> numbers = new ArrayList<>();
         BranchLineEntity branch = ticket.getSchedule().getBranch();
         int numberFirstStation = 0;
@@ -129,38 +128,37 @@ public class TicketServiceImpl implements TicketService {
         }
         numbers.add(numberFirstStation);
         numbers.add(numberLastStation);
+        logger.info("BranchServiceImpl:numbers have been found");
         return numbers;
     }
 
     @Override
-    public boolean checkTime(TicketEntity ticket){
+    public boolean checkTime(TicketEntity ticket) {
+        logger.info("BranchServiceImpl: start to check time");
         Date date = new Date();
-        int minutesNow = date.getHours()*60+date.getMinutes()+10;
-        int minutesDep=ticket.getDepartureTime().getHours()*60+ticket.getDepartureTime().getMinutes();
+        int minutesNow = date.getHours() * 60 + date.getMinutes() + 10;
+        int minutesDep = ticket.getDepartureTime().getHours() * 60 + ticket.getDepartureTime().getMinutes();
         boolean ok2 = true;
-        if ((DateUtils.isSameDay(ticket.getDepartureDate(), date) && minutesNow<minutesDep)
+        if ((DateUtils.isSameDay(ticket.getDepartureDate(), date) && minutesNow < minutesDep)
                 || ticket.getDepartureDate().after(date)) {
             ok2 = true;
         } else {
             ok2 = false;
         }
+        logger.info("BranchServiceImpl: time has been checked");
         return ok2;
     }
 
     @Override
     public List<TicketEntity> findByDate(Date today) {
-        try {
-            return ticketDAO.findByDate(today);
-        }
-        catch (ParseException pe){
-            return null;
-        }
+        return ticketDAO.findByDate(today);
     }
 
     @Override
     public void deleteOldTickets() {
+        logger.info("BranchServiceImpl: start to delete tickets");
         List<TicketEntity> tickets = findAllTickets();
-        if(tickets.size()!=0) {
+        if (tickets.size() != 0) {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.DATE, -1);
             Date yesterday = cal.getTime();
@@ -170,18 +168,6 @@ public class TicketServiceImpl implements TicketService {
                 }
             }
         }
+        logger.info("BranchServiceImpl: tickets have been deleted");
     }
-
-    @Override
-    public List<TicketEntity> findByDate(Date today, List<TicketEntity> tickets) {
-        Date now = new Date();
-        List<TicketEntity> result = new ArrayList<>();
-        for (int i = 0; i < tickets.size(); i++) {
-            if (tickets.get(i).getDepartureDate().compareTo(now) == 0) {
-                result.add(tickets.get(i));
-            }
-        }
-        return result;
-    }
-
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "schedule", schema = "trains", catalog = "")
+@Table(name = "schedule", schema = "trains")
 public class ScheduleEntity {
     @JsonProperty("idSchedule")
 

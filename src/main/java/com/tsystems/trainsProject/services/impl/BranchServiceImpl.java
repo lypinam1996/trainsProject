@@ -3,11 +3,13 @@ package com.tsystems.trainsProject.services.impl;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
 import com.tsystems.trainsProject.dao.impl.BranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
+import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.DetailedInfBranchEntity;
 import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.services.BranchService;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,8 @@ import java.util.*;
 @Service("BranchService")
 @Transactional
 public class BranchServiceImpl implements BranchService {
+
+    private static final Logger logger = Logger.getLogger(BranchServiceImpl.class);
 
     @Autowired
     BranchDAOImpl branchDAO;
@@ -56,6 +60,7 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public void update(BranchLineEntity branch) {
+        logger.info("BranchServiceImpl: check branch before updating");
         BranchLineEntity branchLineEntity = branchDAO.findById(branch.getIdBranchLine());
         List<DetailedInfBranchEntity> detailedInfList = branch.getDetailedInf();
         for (int i = 0; i < detailedInfList.size(); i++) {
@@ -89,12 +94,13 @@ public class BranchServiceImpl implements BranchService {
                 infBranchDAO.saveOrUpdate(detailedInfList.get(i));
             }
         }
-
+        logger.info("BranchServiceImpl: branch has been checked");
         branchDAO.saveOrUpdate(branchLineEntity);
     }
 
     @Override
     public List<DetailedInfBranchEntity> checkTheNecessityOfSaving(BranchLineEntity branch) {
+        logger.info("BranchServiceImpl: start to check the necessity of saving");
         List<DetailedInfBranchEntity> infBranchToRemove = new ArrayList<>();
         if (branch.getDetailedInf() != null) {
             for (Iterator<DetailedInfBranchEntity> i = branch.getDetailedInf().iterator(); i.hasNext(); ) {
@@ -109,6 +115,7 @@ public class BranchServiceImpl implements BranchService {
         for (int i = 0; i < infBranchToRemove.size(); i++) {
             branch.getDetailedInf().remove(infBranchToRemove.get(i));
         }
+        logger.info("BranchServiceImpl: checking has been done");
         return infBranchToRemove;
     }
 
@@ -138,6 +145,7 @@ public class BranchServiceImpl implements BranchService {
     }
 
     public BindingResult checkUniqueStationName(StationEntity station, BindingResult bindingResult){
+        logger.info("BranchServiceImpl: start to check the unique station name");
         List<StationEntity> stations = stationDAO.findAllStations();
         stations.remove(stationDAO.findById(station.getIdStation()));
         for (StationEntity stationEntity:stations){
@@ -147,6 +155,7 @@ public class BranchServiceImpl implements BranchService {
                 bindingResult.addError(objectError);
             }
         }
+        logger.info("BranchServiceImpl: checking has been done");
         return bindingResult;
     }
 
@@ -156,6 +165,7 @@ public class BranchServiceImpl implements BranchService {
     }
 
     private String checkEqualitySerialNumbers(BranchLineEntity branch) {
+        logger.info("BranchServiceImpl: start to check the equality serial numbers");
         String error = "";
         List<Integer> listSN = new ArrayList<>();
         List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
@@ -173,10 +183,12 @@ public class BranchServiceImpl implements BranchService {
                 j++;
             }
         }
+        logger.info("BranchServiceImpl: checking has been done");
         return error;
     }
 
     private String checkEqualityStations(BranchLineEntity branch) {
+        logger.info("BranchServiceImpl: start to check the equality stations");
         String error = "";
         List<StationEntity> listStation = new ArrayList<>();
         List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
@@ -194,10 +206,12 @@ public class BranchServiceImpl implements BranchService {
                 j++;
             }
         }
+        logger.info("BranchServiceImpl: checking has been done");
         return error;
     }
 
     private String checkSerialNumbers(BranchLineEntity branch) {
+        logger.info("BranchServiceImpl: start to check the  serial numbers");
         String error = "";
         List<DetailedInfBranchEntity> detailedInfList = new ArrayList<>();
         detailedInfList.addAll(branch.getDetailedInf());
@@ -230,10 +244,12 @@ public class BranchServiceImpl implements BranchService {
         } else {
             error = "*Some serial numbers was missed";
         }
+        logger.info("BranchServiceImpl: checking has been done");
         return error;
     }
 
     private String checkTime(BranchLineEntity branch) {
+        logger.info("BranchServiceImpl: start to check time");
         String error = "";
         try {
             if (branch.getDetailedInf().get(0).getTimeFromPrevious() != null) {
@@ -254,8 +270,10 @@ public class BranchServiceImpl implements BranchService {
             } else {
                 error = "*PLease input time";
             }
+            logger.info("BranchServiceImpl: checking has been done");
         }
         catch (ParseException exc){
+            logger.info(exc.getMessage());
             error = "*Please verify your input data";
         }
         finally {
