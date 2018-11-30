@@ -6,7 +6,12 @@ import java.util.List;
 
 public interface PassangerDAO {
     List<PassangerEntity> findAllPassangers();
-    void saveOrUpdate(PassangerEntity passanger);
+
+    int save(PassangerEntity passanger);
+
+    void update(PassangerEntity passanger);
+
     PassangerEntity findById(int id);
+
     void delete(PassangerEntity passanger);
 }

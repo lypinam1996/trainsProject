@@ -26,12 +26,13 @@ public class PassangerServiceImpl implements PassangerService {
     @Override
     public int saveOrUpdate(PassangerEntity passanger) {
         int id = 0;
-        if (passangerDAO.findAllPassangers().size() != 0) {
-            id = passangerDAO.findAllPassangers().get(passangerDAO.findAllPassangers().size() - 1).getIdPassanger();
+        if (passanger.getIdPassanger() == 0) {
+            id = passangerDAO.save(passanger);
+        } else {
+            id = passanger.getIdPassanger();
+            passangerDAO.update(passanger);
         }
-        passanger.setIdPassanger(id + 1);
-        passangerDAO.saveOrUpdate(passanger);
-        return id + 1;
+        return id;
     }
 
     @Override
@@ -55,8 +56,7 @@ public class PassangerServiceImpl implements PassangerService {
                                 allPassangers.get(i).getSurname().equals(passanger.getSurname()) &&
                                 allPassangers.get(i).getPatronymic().equals(passanger.getPatronymic())) {
                             ok = false;
-                        }
-                        else {
+                        } else {
                             i++;
                         }
                     } else {

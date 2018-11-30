@@ -5,12 +5,14 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "trains", catalog = "")
 public class UserEntity {
     private int idUser;
+    @NotNull(message = "Please enter your password.")
     private String login;
     private String password;
     private RoleEntity role;
@@ -47,6 +49,7 @@ public class UserEntity {
     }
 
     @Basic
+    @NotNull(message = "Please enter your password.")
     @Column(name = "login", nullable = true, length = 45)
     public String getLogin() {
         return login;

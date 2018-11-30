@@ -1,7 +1,6 @@
 package com.tsystems.trainsProject.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,24 +10,19 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "schedule", schema = "trains")
+@Table(name = "schedule", schema = "trains", catalog = "")
 public class ScheduleEntity {
     @JsonProperty("idSchedule")
 
     private int idSchedule;
-    @JsonProperty("departureTime")
     @DateTimeFormat(pattern = "HH:mm")
     private Date departureTime;
-    @JsonProperty("train")
     private TrainEntity train;
-    @JsonProperty("branch")
     private BranchLineEntity branch;
-    @JsonProperty("firstStation")
     private StationEntity firstStation;
-    @JsonProperty("lastStation")
     private StationEntity lastStation;
-    @JsonProperty("ticket")
     private List<TicketEntity> ticket;
+    private Date prohibitPurchase;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "schedule")
@@ -122,5 +116,15 @@ public class ScheduleEntity {
         int result = idSchedule;
         result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "prohibitPurchase", nullable = true)
+    public Date getProhibitPurchase() {
+        return prohibitPurchase;
+    }
+
+    public void setProhibitPurchase(Date prohibitPurchase) {
+        this.prohibitPurchase = prohibitPurchase;
     }
 }

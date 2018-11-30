@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("ScheduleDAO")
-public class ScheduleDAOImpl extends AbstractDAO<Integer,ScheduleEntity> implements ScheduleDAO {
+public class ScheduleDAOImpl extends AbstractDAO<Integer, ScheduleEntity> implements ScheduleDAO {
 
     @Override
     public List<ScheduleEntity> findAllSchedules() {
         Criteria criteria = getSession().createCriteria(ScheduleEntity.class);
-        List<ScheduleEntity> res=(List<ScheduleEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+        List<ScheduleEntity> res = (List<ScheduleEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return res;
     }
 
@@ -33,7 +33,7 @@ public class ScheduleDAOImpl extends AbstractDAO<Integer,ScheduleEntity> impleme
 
     @Override
     public void update(ScheduleEntity schedule) {
-         getSession().update(schedule);
+        getSession().update(schedule);
     }
 
     @Override

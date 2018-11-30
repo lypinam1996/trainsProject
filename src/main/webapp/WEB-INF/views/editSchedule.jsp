@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <title>Edit schedule</title>
     <style>
         <%@include file="/css/form2.css"%>
@@ -32,49 +33,44 @@
         <div class="col-md-12">
             <form:form action="${actionUrl}" modelAttribute="schedule"
                        method="POST" name="branch">
-            <form:input type="hidden" path="idSchedule"/>
-            <form:input type="hidden" path="branch.idBranchLine"/>
-            <c:choose>
-                <c:when test="${!errors.isEmpty()}">
-                    <div class="errors">
-                        <c:forEach items="${errors}" var="error">
-                            <div>${error}</div>
+                <form:errors path="*" element="div" class="errors"/>
+                <form:input type="hidden" path="idSchedule"/>
+                <form:input type="hidden" path="branch.idBranchLine"/>
+                <form:errors path = "branch"/>
+                <div class="form-group">
+                    <label for="train">Train</label>
+                    <form:select path="train.idTrain" class="form-control inp">
+                        <c:forEach var="item" items="${trains}">
+                            <c:choose>
+                                <c:when test="${schedule.train.idTrain == item.idTrain}">
+                                    <option class="inp" selected="selected"
+                                            value="${schedule.train.idTrain}">${schedule.train.number}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option class="inp" value="${item.idTrain}" }>${item.number}</option>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
-                    </div>
-                </c:when>
-            </c:choose>
-            <div class="form-group">
-                <label for="train">Train</label>
-                <form:select path="train.idTrain" class="form-control inp">
-                    <c:forEach var="item" items="${trains}">
-                        <c:choose>
-                            <c:when test="${schedule.train.idTrain == item.idTrain}">
-                                <option class="inp" selected="selected"
-                                        value="${schedule.train.idTrain}">${schedule.train.number}</option>
-                            </c:when>
-                            <c:otherwise>
-                                <option class="inp" value="${item.idTrain}" }>${item.number}</option>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                </form:select>
-            </div>
-            <div class="form-group">
-                <label for="firstStation">Departure station</label>
-                <form:select path="firstStation.idStation" class="form-control inp">
-                    <c:forEach var="item" items="${stations}">
-                        <c:choose>
-                            <c:when test="${schedule.firstStation.idStation == item.idStation}">
-                                <option class="inp" selected="selected"
-                                        value="${schedule.firstStation.idStation}">${schedule.firstStation.stationName}</option>
-                            </c:when>
-                            <c:otherwise>
-                                <option class="inp" value="${item.idStation}">${item.stationName}</option>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                </form:select>
-            </div>
+                    </form:select>
+                    <form:errors path = "train"/>
+                </div>
+                <div class="form-group">
+                    <label for="firstStation">Departure station</label>
+                    <form:select path="firstStation.idStation" class="form-control inp">
+                        <c:forEach var="item" items="${stations}">
+                            <c:choose>
+                                <c:when test="${schedule.firstStation.idStation == item.idStation}">
+                                    <option class="inp" selected="selected"
+                                            value="${schedule.firstStation.idStation}">${schedule.firstStation.stationName}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option class="inp" value="${item.idStation}">${item.stationName}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </form:select>
+                    <form:errors path = "firstStation"/>
+                </div>
                 <div class="form-group">
                     <label for="lastStation">Arrival station</label>
                     <form:select path="lastStation.idStation" class="form-control inp">
@@ -94,13 +90,14 @@
                 <div class="form-group">
                     <label for="departureTime">Departure time</label>
                     <form:input type="time" class="form-control inp" path="departureTime"/>
+                    <form:errors path = "departureTime"/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="b">OK</button>
                 </div>
-                </form:form>
-            </div>
+            </form:form>
         </div>
     </div>
+</div>
 </body>
 </html>

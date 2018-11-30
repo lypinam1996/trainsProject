@@ -7,9 +7,14 @@ import java.util.List;
 
 public interface ScheduleDAO {
     List<ScheduleEntity> findAllSchedules();
+
     List<ScheduleEntity> findSchedulesByBranch(BranchLineEntity branchLine);
+
     int save(ScheduleEntity schedule);
+
     ScheduleEntity findById(int id);
+
     void update(ScheduleEntity schedule);
+
     int deleteId(ScheduleEntity schedule);
 }

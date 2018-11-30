@@ -8,6 +8,7 @@
         <%@include file="/css/login.css"%>
     </style>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
 </head>

@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <title>Edit station</title>
     <style>
         <%@include file="/css/form2.css"%>

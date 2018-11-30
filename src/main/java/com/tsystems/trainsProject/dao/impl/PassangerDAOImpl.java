@@ -9,17 +9,22 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("PassangerDAO")
-public class PassangerDAOImpl extends AbstractDAO<Integer,PassangerEntity> implements PassangerDAO {
+public class PassangerDAOImpl extends AbstractDAO<Integer, PassangerEntity> implements PassangerDAO {
     @Override
     public List<PassangerEntity> findAllPassangers() {
         Criteria criteria = getSession().createCriteria(PassangerEntity.class);
-        List<PassangerEntity> res=(List<PassangerEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+        List<PassangerEntity> res = (List<PassangerEntity>) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
         return res;
     }
 
     @Override
-    public void saveOrUpdate(PassangerEntity passanger) {
-        getSession().saveOrUpdate(passanger);
+    public int save(PassangerEntity passanger) {
+        return (Integer)getSession().save(passanger);
+    }
+
+    @Override
+    public void update(PassangerEntity passanger) {
+         getSession().update(passanger);
     }
 
     @Override
@@ -30,7 +35,7 @@ public class PassangerDAOImpl extends AbstractDAO<Integer,PassangerEntity> imple
     }
 
     @Override
-    public void delete(PassangerEntity passanger){
+    public void delete(PassangerEntity passanger) {
         getSession().delete(passanger);
     }
 }

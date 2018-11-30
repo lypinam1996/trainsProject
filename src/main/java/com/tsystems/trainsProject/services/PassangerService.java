@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface PassangerService {
     List<PassangerEntity> findAllPassangers();
+
     int saveOrUpdate(PassangerEntity passanger);
+
     PassangerEntity findById(int id);
-    boolean checkTheEqualtyPassanger(PassangerEntity passanger,List<PassangerEntity> allPassangers);
+
+    boolean checkTheEqualtyPassanger(PassangerEntity passanger, List<PassangerEntity> allPassangers);
 }

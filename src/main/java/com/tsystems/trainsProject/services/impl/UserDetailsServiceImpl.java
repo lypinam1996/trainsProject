@@ -20,6 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserService userService;
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
         UserEntity user = userService.findByLogin(email);
         Set<GrantedAuthority> roles = new HashSet();
         roles.add(new SimpleGrantedAuthority(user.getRole().getTitle()));

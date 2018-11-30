@@ -146,3 +146,12 @@ label{
     font-size: 14pt;
 }
 
+.link{
+    padding: 12px 45px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    font-size: 12pt;
+    border: 1.5px solid white;
+    margin-left: 3%;
+}

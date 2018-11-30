@@ -29,7 +29,7 @@ public class MainRestController {
     StationService stationService;
 
     @RequestMapping(value = "/getTrackIndicator", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ScheduleDTO> greeting() throws ParseException {
+    public List<ScheduleDTO> greeting() {
         List<ScheduleDTO> scheduleDTO= helper();
         return scheduleDTO;
     }
@@ -53,7 +53,7 @@ public class MainRestController {
         return userDTO;
     }
 
-    private List<ScheduleDTO> helper() throws ParseException {
+    private List<ScheduleDTO> helper(){
         List<ScheduleDTO> scheduleDTO = new ArrayList<ScheduleDTO>();
         List<ScheduleEntity> scheduleEntities = scheduleService.findAllSchedulesAfterTime();
         Converter converter = new Converter();

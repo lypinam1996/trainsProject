@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
 
 import javax.sql.DataSource;
 import java.util.HashSet;
@@ -67,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated().and().csrf().disable()
         .formLogin()
                 .loginPage("/login")
-                .failureUrl("/login?error")
+                .failureUrl("/login")
                 .usernameParameter("login")
                 .passwordParameter("password")
                 .permitAll()

@@ -44,6 +44,7 @@ public class PassangerEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_passanger", nullable = false)
     public int getIdPassanger() {
         return idPassanger;

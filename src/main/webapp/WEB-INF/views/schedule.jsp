@@ -12,9 +12,10 @@
     </style>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
-
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
+
 </head>
 <body>
 <div class="nav-item dropdown">
@@ -57,15 +58,22 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
             </div>
-            <form action="/login" method="get">
-                <input type="submit" value="Login" class="login"/>
-            </form>
+            <a class="link nav-link dropdown-toggle" href="<c:url value="/login"/>">Login</a>
         </c:otherwise>
     </c:choose>
 </div>
 <div class="main">
     <div class="container">
         <div class="row">
+            <c:choose>
+                <c:when test="${errors.size()!=0}">
+                    <div class="errors">
+                        <c:forEach items="${errors}" var="error">
+                            <div>${error}</div>
+                        </c:forEach>
+                    </div>
+                </c:when>
+            </c:choose>
             <c:choose>
             <c:when test="${schedules.size()=='0'}">
                 <p>No trains registered</p>
@@ -80,6 +88,7 @@
                     <td>Departure time</td>
                     <c:choose>
                         <c:when test="${role.title.equals('WORKER')}">
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -103,6 +112,18 @@
                                 <td><a href="/seeTickets/${schedule.idSchedule}">
                                     See passangers
                                 </a></td>
+                                <c:choose>
+                                    <c:when test="${schedule.prohibitPurchase==null}">
+                                        <td><a href="/prohibitPurchase/${schedule.idSchedule}">
+                                            Prohibit purchase
+                                        </a></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td><a href="/openPurchase/${schedule.idSchedule}">
+                                            Open purchase
+                                        </a></td>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:when>
                         </c:choose>
                     </tr>
@@ -129,6 +150,7 @@
                     <td></td>
                     <c:choose>
                         <c:when test="${role.title.equals('WORKER')}">
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

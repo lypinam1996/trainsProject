@@ -28,10 +28,10 @@
                 <h2 class="text-center h2A">
                     <a style="color: #bf4031" href="<c:url value="/registration"/>">Register</a>
                 </h2>
-                <form:errors path="/login?error"/>
-                <form:form action="/login" method="post">
+                <form:form action="login" method="post">
                     <label class="text-uppercase">Username</label>
                     <input type="e-mail" class="form-control" name="login">
+                    <form:errors path = "login"/>
                     <div class="form-group">
                         <label class="text-uppercase">Password</label>
                         <input type="password" class="form-control" name="password">
