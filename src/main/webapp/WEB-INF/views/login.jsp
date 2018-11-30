@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Login</title>
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <style>
         <%@include file="/css/login.css"%>
     </style>
@@ -27,9 +28,8 @@
                 <h2 class="text-center h2A">
                     <a style="color: #bf4031" href="<c:url value="/registration"/>">Register</a>
                 </h2>
-                <c:url value="/j_spring_security_check" var="loginUrl"/>
                 <form:errors path="/login?error"/>
-                <form:form action="${loginUrl}" method="post">
+                <form:form action="/login" method="post">
                     <label class="text-uppercase">Username</label>
                     <input type="e-mail" class="form-control" name="login">
                     <div class="form-group">
@@ -40,7 +40,6 @@
                         <button class="btn btn-login text-center" type="submit">OK</button>
                     </div>
                 </form:form>
-
             </div>
             <div class="col-md-9 banner-sec">
                 <img class="imgBanner" src="<c:url value="/img/background.jpg"/>" alt="train"/>

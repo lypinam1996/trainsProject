@@ -20,7 +20,7 @@ import java.util.Set;
 @Configuration
 @EnableWebSecurity
 @ComponentScan("com.tsystems.trainsProject")
-@EnableGlobalMethodSecurity(securedEnabled = true)
+//@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -36,14 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/topic").permitAll()
-//                .antMatchers("/ticket/delete").permitAll()
-//                .antMatchers("/topic/schedule").permitAll()
-//                .antMatchers("/topic/greetings").permitAll()
-
                 .antMatchers("/").permitAll()
                 .antMatchers("/restStations").permitAll()
-                .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/trackIndicator").permitAll()
                 .antMatchers("/getTrackIndicator").permitAll()
                 .antMatchers("/findStation").permitAll()
@@ -73,7 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated().and().csrf().disable()
         .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/j_spring_security_check")
                 .failureUrl("/login?error")
                 .usernameParameter("login")
                 .passwordParameter("password")

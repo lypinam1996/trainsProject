@@ -57,8 +57,6 @@ public class AuthenticationController {
             modelAndView.setViewName("registration");
         } else {
             userService.saveOrUpdate(user);
-            modelAndView.addObject("login", user.getLogin());
-            modelAndView.addObject("password", user.getPassword());
             modelAndView.setViewName("redirect:/");
         }
         return modelAndView;

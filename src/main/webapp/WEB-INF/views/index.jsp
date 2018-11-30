@@ -10,7 +10,6 @@
     <title>Main page</title>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
-
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
@@ -28,9 +27,10 @@
     </button>
     <c:choose>
         <c:when test="${auth.equals('anonymousUser')}">
-            <form action="/login" method="get">
-                <input type="submit" value="Login" class="login"/>
-            </form>
+            <%--<form action="/login" method="get">--%>
+                <%--<input type="submit" value="Login" class="login"/>--%>
+            <%--</form>--%>
+            <a class="dropdown-item" href="<c:url value="/login"/>">Login</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
                 <div class="dropdown-divider"></div>
