@@ -86,14 +86,16 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/createSchedule/{pk}", method = RequestMethod.GET)
-    public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule, Model model) {
+    public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule,
+                              Model model) {
         BranchLineEntity branchLineEntity = branchService.findById(pk);
         schedule.setBranch(branchLineEntity);
         logger.info("ScheduleController: return create schedule page");
         return create(schedule, model, "createSchedule", branchLineEntity);
     }
 
-    private String create(ScheduleEntity schedule, Model model, String type, BranchLineEntity branchLineEntity) {
+    private String create(ScheduleEntity schedule, Model model, String type,
+                          BranchLineEntity branchLineEntity) {
         List<TrainEntity> trains = trainService.findAllTrains();
         List<StationEntity> stations = new ArrayList<>();
         for (int i = 0; i < branchLineEntity.getDetailedInf().size(); i++) {

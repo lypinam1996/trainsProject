@@ -52,7 +52,7 @@ public class Converter {
     public TicketDto convertTicket(TicketEntity ticket) {
         String pattern = "HH:mm";
         DateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String pattern2 = "dd.mm.yyyy";
+        String pattern2 = "dd.MM.yyyy";
         DateFormat dateFormat = new SimpleDateFormat(pattern2);
         String login = ticket.getPassanger().getUser().getLogin();
         String depTime="";

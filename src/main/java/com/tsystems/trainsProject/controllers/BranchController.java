@@ -64,7 +64,7 @@ public class BranchController {
     }
 
     @RequestMapping(value = "/createBranch", method = RequestMethod.POST)
-    public String create(@ModelAttribute BranchLineEntity branch, Model model,BindingResult bindingResult) throws ParseException {
+    public String createBranch(@ModelAttribute BranchLineEntity branch, Model model) {
         logger.info("BranchController:  start to save branch");
         branchService.checkTheNecessityOfSaving(branch);
         List<String> errors=branchService.validation(branch);
