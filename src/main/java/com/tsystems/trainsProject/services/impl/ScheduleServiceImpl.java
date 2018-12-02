@@ -253,7 +253,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public BindingResult validation(ScheduleEntity schedule, BindingResult bindingResult) {
-        List<String> errors = new ArrayList<>();
         if (schedule.getDepartureTime() == null) {
             ObjectError objectError = new ObjectError("departureTime",
                     "*Please input time.");

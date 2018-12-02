@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,9 +61,9 @@ public class TicketController {
             calendar.setTime(entry.getValue().get(1));
             calendar.add(Calendar.HOUR, -entry.getValue().get(0).getHours());
             calendar.add(Calendar.MINUTE, -entry.getValue().get(0).getMinutes());
-            VariantDto variantDto = new VariantDto(0,entry.getValue().get(0),
-                    entry.getValue().get(1),entry.getKey(),stationService.findByName(search.getFirstStation()),
-                    stationService.findByName(search.getLastStation()),calendar.getTime());
+            VariantDto variantDto = new VariantDto(0, entry.getValue().get(0),
+                    entry.getValue().get(1), entry.getKey(), stationService.findByName(search.getFirstStation()),
+                    stationService.findByName(search.getLastStation()), calendar.getTime());
             if (savedVariants.size() != 0) {
                 int id = findMaxId(savedVariants);
                 variantDto.setIdVariant(id);
@@ -132,65 +133,40 @@ public class TicketController {
         List<TicketEntity> tickets = ticketService.findAllTickets();
         singletonDto = SingletonDto.getInstance();
         List<VariantDto> variants = singletonDto.getVariants();
-        VariantDto variant = searchService.getVariant(pk,variants);
+        VariantDto variant = searchService.getVariant(pk, variants);
         Converter converter = new Converter();
-        TicketEntity ticket = converter.convertVariantToTicket(variant,tickets);
+        TicketEntity ticket = converter.convertVariantToTicket(variant, tickets);
         model.addAttribute("ticket", ticket);
         logger.info("TicketController: return create ticket page");
         return "inputDate";
     }
 
     @RequestMapping(value = "/chooseTicket", method = RequestMethod.POST)
-    public String postTicket(@ModelAttribute TicketEntity ticket, Model model)  {
+    public String postTicket(@ModelAttribute("ticket") @Validated TicketEntity ticket,
+                             Model model, BindingResult bindingResult) {
         logger.info("TicketController: start to save");
-        PassangerEntity passanger = ticket.getPassanger();
-        boolean timeCheck = ticketService.checkTime(ticket);
-        Date date = new Date();
-        if (ticket.getDepartureDate().after(date) || timeCheck) {
-            ticket.setSchedule(scheduleService.findById(ticket.getSchedule().getIdSchedule()));
-            ticket.setLastStation(stationService.findById(ticket.getLastStation().getIdStation()));
-            ticket.setFirstStation(stationService.findById(ticket.getFirstStation().getIdStation()));
-            List<PassangerEntity> allPassangersOnTRain = new ArrayList<>();
-            List<TicketEntity> tickets = ticket.getSchedule().getTicket();
-            tickets.remove(ticket);
-            if (!tickets.isEmpty()) {
-                for (int i = 0; i < tickets.size(); i++) {
-                    if (tickets.get(i).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
-                        allPassangersOnTRain.add(tickets.get(i).getPassanger());
-                    }
-                }
-            }
-            if (passangerService.checkTheEqualtyPassanger(passanger, allPassangersOnTRain)) {
-                UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-                int id = passangerService.saveOrUpdate(passanger);
-                PassangerEntity passangerEntity = passangerService.findById(id);
-                passangerEntity.setUser(user);
-                ticket.setPassanger(passangerEntity);
-                if (ticketService.findSeatWithMaxNumber(ticket) != 0) {
-                    ticket.setSeat(ticketService.findSeatWithMaxNumber(ticket));
-                    ticketService.saveOrUpdate(ticket);
-                    logger.info("TicketController:  ticket has been saved");
-                    return "redirect:/";
-                } else {
-                    logger.info("TicketController: there are some validation problems in ticket");
-                    String error = "*All seats are busy";
-                    model.addAttribute("error", error);
-                    model.addAttribute("ticket", ticket);
-                    return "inputDate";
-                }
+        ticket.setSchedule(scheduleService.findById(ticket.getSchedule().getIdSchedule()));
+        ticket.setLastStation(stationService.findById(ticket.getLastStation().getIdStation()));
+        ticket.setFirstStation(stationService.findById(ticket.getFirstStation().getIdStation()));
+        bindingResult = ticketService.validation(bindingResult, ticket);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("ticket", ticket);
+            return "inputDate";
+        } else {
+            UserEntity user = userService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+            ticket.getPassanger().setUser(user);
+            if (ticketService.findSeatWithMaxNumber(ticket) != 0) {
+                ticket.setSeat(ticketService.findSeatWithMaxNumber(ticket));
+                ticketService.saveOrUpdate(ticket);
+                logger.info("TicketController:  ticket has been saved");
+                return "redirect:/";
             } else {
                 logger.info("TicketController: there are some validation problems in ticket");
-                String error = "*Passanger has already had a ticket at this train.";
+                String error = "*All seats are busy";
                 model.addAttribute("error", error);
                 model.addAttribute("ticket", ticket);
                 return "inputDate";
             }
-        } else {
-            logger.info("TicketController: there are some validation problems in ticket");
-            String error = "*You can't buy ticket after the train departure";
-            model.addAttribute("error", error);
-            model.addAttribute("ticket", ticket);
-            return "inputDate";
         }
     }
 }

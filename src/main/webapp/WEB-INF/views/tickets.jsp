@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
-    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <script src="/js/socketTicket.js"></script>
     <script src="/js/sockjs.js"></script>
     <script src="/js/stomp.js"></script>

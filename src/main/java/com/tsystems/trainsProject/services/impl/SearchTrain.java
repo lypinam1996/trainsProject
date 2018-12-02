@@ -6,7 +6,6 @@ import com.tsystems.trainsProject.models.*;
 import com.tsystems.trainsProject.services.InfBranchService;
 import com.tsystems.trainsProject.services.ScheduleService;
 import com.tsystems.trainsProject.services.StationService;
-import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,7 @@ import org.springframework.validation.BindingResult;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.*;
 import java.util.*;
 
 @Service
@@ -32,9 +32,9 @@ public class SearchTrain {
     @Autowired
     ScheduleService scheduleService;
 
-    public Map<ScheduleEntity,List<Date>> search(Search search, BindingResult bindingResult)  {
+    public Map<ScheduleEntity, List<Date>> search(Search search, BindingResult bindingResult) {
         logger.info("SearchTrain: start to search train in schedule");
-        Map<ScheduleEntity,List<Date>> result = new HashMap<>();
+        Map<ScheduleEntity, List<Date>> result = new HashMap<>();
         try {
             StationEntity departureStation = stationService.findByName(search.getFirstStation());
             StationEntity arrivalStation = stationService.findByName(search.getLastStation());
@@ -46,21 +46,20 @@ public class SearchTrain {
             SimpleDateFormat ft = new SimpleDateFormat("HH:mm");
             Date time1 = ft.parse(search.getDepartureTimeFrom());
             Date time2 = ft.parse(search.getDepartureTimeTo());
-            result = evaluateTime(schedule, time1, time2, departureStation,arrivalStation);
+            result = evaluateTime(schedule, time1, time2, departureStation, arrivalStation);
             logger.info("SearchTrain:  train has been found");
-        }
-        catch (ParseException e){
+        } catch (ParseException e) {
             logger.info(e.getMessage());
-            bindingResult.rejectValue("departureTimeFrom","The time was entered incorrectly");
+            bindingResult.rejectValue("departureTimeFrom", "The time was entered incorrectly");
         }
         return result;
     }
 
-    private List<BranchLineEntity> findCoincidingBranches(List<DetailedInfBranchEntity>  listDepStations,
-                                                          List<DetailedInfBranchEntity>  listArrStations){
+    private List<BranchLineEntity> findCoincidingBranches(List<DetailedInfBranchEntity> listDepStations,
+                                                          List<DetailedInfBranchEntity> listArrStations) {
         List<BranchLineEntity> result = new ArrayList<>();
-        for(int i=0;i<listDepStations.size();i++){
-            for(int j=0;j<listArrStations.size();j++) {
+        for (int i = 0; i < listDepStations.size(); i++) {
+            for (int j = 0; j < listArrStations.size(); j++) {
                 if (listDepStations.get(i).getBranch().equals(listArrStations.get(j).getBranch())) {
                     result.add(listDepStations.get(i).getBranch());
                 }
@@ -69,27 +68,22 @@ public class SearchTrain {
         return result;
     }
 
-    private Map<ScheduleEntity,List<Date>> evaluateTime(List<ScheduleEntity> schedule,
-                                              Date time1, Date time2,
-                                              StationEntity firstStation,
-                                              StationEntity lastStation) throws ParseException {
+    private Map<ScheduleEntity, List<Date>> evaluateTime(List<ScheduleEntity> schedule,
+                                                         Date datetime1, Date datetime2,
+                                                         StationEntity firstStation,
+                                                         StationEntity lastStation) {
         logger.info("SearchTrain: start to evaluate time");
-        DateUtils.addMinutes(time2,1);
-        if(time1.getMinutes()==0){
-            time1.setHours(time1.getHours()-1);
-            time1.setMinutes(59);
-        }
-        else {
-            time1.setMinutes(time1.getMinutes()-1);
-        }
-        Map<ScheduleEntity,List<Date>> result = new HashMap<>();
-        for(int i=0;i<schedule.size();i++) {
+        LocalTime time2 = LocalDateTime.ofInstant(datetime2.toInstant(), ZoneId.systemDefault()).toLocalTime();
+        time2 = time2.plusMinutes(1);
+        LocalTime time1 = LocalDateTime.ofInstant(datetime1.toInstant(), ZoneId.systemDefault()).toLocalTime();
+        time1 = time1.minusMinutes(1);
+        Map<ScheduleEntity, List<Date>> result = new HashMap<>();
+        for (int i = 0; i < schedule.size(); i++) {
             List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
             int numberFirstStation = 0;
             int numberLastStation = 0;
-            Date departureTime =schedule.get(i).getDepartureTime();
-            Date arrivalTime=departureTime;
-            if(departureTime.after(time1) && departureTime.before(time2)){
+            LocalTime departureTime = LocalDateTime.ofInstant(schedule.get(i).getDepartureTime().toInstant(), ZoneId.systemDefault()).toLocalTime();
+            if (departureTime.isAfter(time1) && departureTime.isBefore(time2)) {
                 for (int j = 0; j < detailedInf.size(); j++) {
                     if (detailedInf.get(j).getStation().equals(firstStation)) {
                         numberFirstStation = detailedInf.get(j).getStationSerialNumber();
@@ -98,15 +92,23 @@ public class SearchTrain {
                         numberLastStation = detailedInf.get(j).getStationSerialNumber();
                     }
                 }
-                for(int y=numberFirstStation+1;y<=numberLastStation;y++){
-                    DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y,detailedInf.get(0).getBranch());
-                    arrivalTime=DateUtils.addHours(arrivalTime,inf.getTimeFromPrevious().getHours());
-                    arrivalTime=DateUtils.addMinutes(arrivalTime,inf.getTimeFromPrevious().getMinutes());
+                LocalTime arrivalTime = departureTime;
+                for (int y = numberFirstStation + 1; y <= numberLastStation; y++) {
+                    DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y, detailedInf.get(0).getBranch());
+                    LocalTime timeFromPrevious = LocalDateTime.ofInstant(inf.getTimeFromPrevious().toInstant(), ZoneId.systemDefault()).toLocalTime();
+                    arrivalTime = arrivalTime.plusHours(timeFromPrevious.getHour());
+                    arrivalTime = arrivalTime.plusMinutes(timeFromPrevious.getMinute());
                 }
+                Instant instant = departureTime.atDate(LocalDate.now()).
+                        atZone(ZoneId.systemDefault()).toInstant();
+                Date depTime = Date.from(instant);
                 List<Date> dateList = new ArrayList<>();
-                dateList.add(departureTime);
-                dateList.add(arrivalTime);
-                result.put(schedule.get(i),dateList);
+                dateList.add(depTime);
+                Instant instant2 = arrivalTime.atDate(LocalDate.now()).
+                        atZone(ZoneId.systemDefault()).toInstant();
+                Date arrTime = Date.from(instant2);
+                dateList.add(arrTime);
+                result.put(schedule.get(i), dateList);
             }
 
         }
@@ -114,11 +116,11 @@ public class SearchTrain {
         return result;
     }
 
-    public VariantDto getVariant(int id, List<VariantDto> variants){
+    public VariantDto getVariant(int id, List<VariantDto> variants) {
         VariantDto variant = new VariantDto();
-        for(int i =0;i<variants.size();i++){
-            if(variants.get(i).getIdVariant()==id){
-                variant= variants.get(i);
+        for (int i = 0; i < variants.size(); i++) {
+            if (variants.get(i).getIdVariant() == id) {
+                variant = variants.get(i);
             }
         }
         return variant;

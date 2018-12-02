@@ -29,6 +29,7 @@
         <div class="col-md-12">
             <form:form action="/chooseTicket" modelAttribute="ticket"
                        method="POST">
+                <form:errors path="*" element="div" class="errors"/>
                 <c:choose>
                     <c:when test="${!error.isEmpty()}">
                         <div class="errors">${error}</div>
@@ -36,15 +37,16 @@
                 </c:choose>
                 <div class="form-group">
                     <label for="departureDate">Departure date</label>
-                    <form:input class="form-control inp" type="date" path="departureDate"/>
+                    <form:input class="form-control inp" type="date" path="departureDate" required="required"/>
+                    <form:errors path = "departureDate"/>
                 </div>
                 <div class="form-group">
                     <label for="passanger.name">Name</label>
-                    <form:input class="form-control inp" path="passanger.name"/>
+                    <form:input class="form-control inp" path="passanger.name" required="required"/>
                 </div>
                 <div class="form-group">
                     <label for="passanger.surname">Surname</label>
-                    <form:input class="form-control inp" path="passanger.surname"/>
+                    <form:input class="form-control inp" path="passanger.surname" required="required"/>
                 </div>
                 <div class="form-group">
                     <label for="passanger.patronymic">Patronymic</label>
@@ -52,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <label for="passanger.dateOfBirth">Date of birth</label>
-                    <form:input class="form-control inp" type="date" path="passanger.dateOfBirth"/>
+                    <form:input class="form-control inp" type="date" path="passanger.dateOfBirth" required="required"/>
                 </div>
                 <form:input type="hidden" path="idTicket"/>
                 <form:input type="hidden" path="schedule.idSchedule"/>

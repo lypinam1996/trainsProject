@@ -3,6 +3,7 @@ package com.tsystems.trainsProject.services.impl;
 import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.impl.TicketDAOImpl;
 import com.tsystems.trainsProject.models.BranchLineEntity;
+import com.tsystems.trainsProject.models.PassangerEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
 import com.tsystems.trainsProject.services.TicketService;
 import org.apache.commons.lang.time.DateUtils;
@@ -10,8 +11,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,39 +50,33 @@ public class TicketServiceImpl implements TicketService {
         return ticketDAO.findById(id);
     }
 
-//    @Override
-//    public String checkNumberOfTicket(TicketEntity ticket) {
-//        String error = "";
-//        List<TicketEntity> ticketEntities = new ArrayList<>();
-//        ScheduleEntity schedule = ticket.getSchedule();
-//        List<TicketEntity> tickets = schedule.getTicket();
-//        tickets.remove(ticket);
-//        if (!tickets.isEmpty()) {
-//            for (int i = 0; i < tickets.size(); i++) {
-//                if (tickets.get(i).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
-//                    ticketEntities.add(tickets.get(i));
-//                }
-//            }
-//            if (!ticketEntities.isEmpty()) {
-//                TicketEntity maxTicket = ticketEntities.get(0);
-//                if (ticketEntities.size() > 1) {
-//                    for (int i = 1; i < ticketEntities.size(); i++) {
-//                        if (maxTicket.getSeat() < ticketEntities.get(i).getSeat()) {
-//                            maxTicket = ticketEntities.get(i);
-//                        }
-//                    }
-//                }
-//                if (maxTicket.getSeat() >= schedule.getTrain().getNumberOfSeats()) {
-//                    error = "*All seats are busy";
-//                }
-//            }
-//        }
-//        return error;
-//    }
+    @Override
+    public List<TicketEntity> findByDate(Date today) {
+        return ticketDAO.findByDate(today);
+    }
+
+    @Override
+    public void deleteOldTickets() {
+        logger.info("TicketServiceImpl: start to delete tickets");
+        List<TicketEntity> tickets = findAllTickets();
+        if (tickets.size() != 0) {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -1);
+            Date yesterday = cal.getTime();
+            for (int i = 0; i < tickets.size(); i++) {
+                if (tickets.get(i).getDepartureDate().before(yesterday)) {
+                    PassangerEntity passangerEntity = tickets.get(i).getPassanger();
+                    ticketDAO.delete(tickets.get(i));
+                    passangerDAO.delete(passangerEntity);
+                }
+            }
+        }
+        logger.info("TicketServiceImpl: tickets have been deleted");
+    }
 
     @Override
     public int findSeatWithMaxNumber(TicketEntity ticket) {
-        logger.info("BranchServiceImpl: start find seat with max number");
+        logger.info("TicketServiceImpl: start find seat with max number");
         int numberOfSeat = 0;
         int maxNumber = ticket.getSchedule().getTrain().getNumberOfSeats();
         List<TicketEntity> tickets = new ArrayList<>();
@@ -84,7 +84,9 @@ public class TicketServiceImpl implements TicketService {
         for (int j = 0; j < ticket.getSchedule().getTicket().size(); j++) {
             if (ticket.getSchedule().getTicket().get(j).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
                 List<Integer> flstation = getFirstLastStationNumber(ticket.getSchedule().getTicket().get(j));
-                if (!(flstation.get(1) <= firstLastStation.get(0) || flstation.get(0) >= firstLastStation.get(1))) {
+                if ((flstation.get(0) <= firstLastStation.get(0) && flstation.get(1) >= firstLastStation.get(1)) ||
+                (flstation.get(0) >= firstLastStation.get(0) && flstation.get(1) <= firstLastStation.get(1)))
+                {
                     tickets.add(ticket.getSchedule().getTicket().get(j));
                 }
             }
@@ -98,7 +100,7 @@ public class TicketServiceImpl implements TicketService {
         int i = 0;
         boolean ok = true;
         while (i < tickets.size() && ok) {
-            if (tickets.get(i).getSeat() != i + 1 && i + 1 <= maxNumber) {
+            if (tickets.get(i).getSeat() != i + 1 && i + 1 < maxNumber) {
                 numberOfSeat = i + 1;
                 ok = false;
             } else {
@@ -108,12 +110,12 @@ public class TicketServiceImpl implements TicketService {
         if (ok && tickets.size() + 1 <= maxNumber) {
             numberOfSeat = tickets.size() + 1;
         }
-        logger.info("BranchServiceImpl:seat has been found");
+        logger.info("TicketServiceImpl:seat has been found");
         return numberOfSeat;
     }
 
     private List<Integer> getFirstLastStationNumber(TicketEntity ticket) {
-        logger.info("BranchServiceImpl: start to find stations numbers");
+        logger.info("TicketServiceImpl: start to find stations numbers");
         List<Integer> numbers = new ArrayList<>();
         BranchLineEntity branch = ticket.getSchedule().getBranch();
         int numberFirstStation = 0;
@@ -128,46 +130,116 @@ public class TicketServiceImpl implements TicketService {
         }
         numbers.add(numberFirstStation);
         numbers.add(numberLastStation);
-        logger.info("BranchServiceImpl:numbers have been found");
+        logger.info("TicketServiceImpl:numbers have been found");
         return numbers;
     }
 
-    @Override
-    public boolean checkTime(TicketEntity ticket) {
-        logger.info("BranchServiceImpl: start to check time");
+
+    private String checkTime(TicketEntity ticket) {
+        logger.info("TicketServiceImpl: start to check time");
         Date date = new Date();
-        int minutesNow = date.getHours() * 60 + date.getMinutes() + 10;
-        int minutesDep = ticket.getDepartureTime().getHours() * 60 + ticket.getDepartureTime().getMinutes();
-        boolean ok2 = true;
-        if ((DateUtils.isSameDay(ticket.getDepartureDate(), date) && minutesNow < minutesDep)
+        LocalTime minutesNow = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()).toLocalTime();
+        minutesNow = minutesNow.plusMinutes(10);
+        LocalTime minutesDep = LocalDateTime.ofInstant(ticket.getDepartureTime().toInstant(), ZoneId.systemDefault()).toLocalTime();
+        if ((DateUtils.isSameDay(ticket.getDepartureDate(), date) && minutesNow.isBefore(minutesDep))
                 || ticket.getDepartureDate().after(date)) {
-            ok2 = true;
+            logger.info("TicketServiceImpl: time has been checked");
+            return "";
         } else {
-            ok2 = false;
+            logger.info("TicketServiceImpl: time has been checked");
+            return "*You can't buy ticket after the train departure";
         }
-        logger.info("BranchServiceImpl: time has been checked");
-        return ok2;
+
     }
 
-    @Override
-    public List<TicketEntity> findByDate(Date today) {
-        return ticketDAO.findByDate(today);
+    private String checkPassanger(TicketEntity ticket){
+        if(ticket.getPassanger().getName()=="" ||
+                ticket.getPassanger().getSurname()=="" ||
+                ticket.getPassanger().getDateOfBirth()==null ||
+                ticket.getDepartureDate()==null){
+            return "*Some fields was missed.";
+        }
+        else {
+            return "";
+        }
     }
 
-    @Override
-    public void deleteOldTickets() {
-        logger.info("BranchServiceImpl: start to delete tickets");
-        List<TicketEntity> tickets = findAllTickets();
-        if (tickets.size() != 0) {
-            Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE, -1);
-            Date yesterday = cal.getTime();
+    private String checkTheEqualtyPassanger(TicketEntity ticket) {
+        PassangerEntity passanger = ticket.getPassanger();
+        logger.info("TicketServiceImpl: check the equalty of passanger");
+        List<PassangerEntity> allPassangers = new ArrayList<>();
+        List<TicketEntity> tickets = ticket.getSchedule().getTicket();
+        tickets.remove(ticket);
+        if (!tickets.isEmpty()) {
             for (int i = 0; i < tickets.size(); i++) {
-                if (tickets.get(i).getDepartureDate().before(yesterday)) {
-                    ticketDAO.delete(tickets.get(i));
+                if (tickets.get(i).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
+                    allPassangers.add(tickets.get(i).getPassanger());
                 }
             }
         }
-        logger.info("BranchServiceImpl: tickets have been deleted");
+        boolean ok = true;
+        if (!allPassangers.isEmpty()) {
+            int i = 0;
+            while (i < allPassangers.size() && ok) {
+                if (allPassangers.get(i).getDateOfBirth() == null && passanger.getDateOfBirth() == null) {
+                    if (allPassangers.get(i).getName().equals(passanger.getName()) &&
+                            allPassangers.get(i).getSurname().equals(passanger.getSurname()) &&
+                            allPassangers.get(i).getPatronymic().equals(passanger.getPatronymic())) {
+                        ok = false;
+                    } else {
+                        i++;
+                    }
+                } else {
+                    if (allPassangers.get(i).getDateOfBirth() != null && passanger.getDateOfBirth() != null) {
+                        if (DateUtils.isSameInstant(allPassangers.get(i).getDateOfBirth(), passanger.getDateOfBirth()) &&
+                                allPassangers.get(i).getName().equals(passanger.getName()) &&
+                                allPassangers.get(i).getSurname().equals(passanger.getSurname()) &&
+                                allPassangers.get(i).getPatronymic().equals(passanger.getPatronymic())) {
+                            ok = false;
+                        } else {
+                            i++;
+                        }
+                    } else {
+                        i++;
+                    }
+                }
+            }
+        }
+        if (ok){
+            logger.info("TicketServiceImpl: branch has been checked");
+            return "";
+        }
+        else {
+            logger.info("TicketServiceImpl: branch has been checked");
+            return "*Passanger has already had a ticket at this train.";
+        }
+    }
+
+    @Override
+    public BindingResult validation(BindingResult bindingResult,TicketEntity ticket){
+        if(ticket.getSchedule().getProhibitPurchase()==null || ticket.getSchedule().getProhibitPurchase().before(new Date())){
+            ObjectError objectError = new ObjectError("departureDate",
+                    "You temporary can't buy a ticket on this train.");
+            bindingResult.addError(objectError);
+        }
+        String errorCheckTime=checkTime(ticket);
+        if (errorCheckTime !="") {
+            ObjectError objectError = new ObjectError("departureDate",
+                    errorCheckTime);
+            bindingResult.addError(objectError);
+        }
+        String errorCheckPassanger=checkPassanger(ticket);
+        if (errorCheckPassanger !="") {
+            ObjectError objectError = new ObjectError("departureDate",
+                    errorCheckPassanger);
+            bindingResult.addError(objectError);
+        }
+        String errorTheEqualtyPassanger=checkTheEqualtyPassanger(ticket);
+        if (errorTheEqualtyPassanger !="") {
+            ObjectError objectError = new ObjectError("departureDate",
+                    errorTheEqualtyPassanger);
+            bindingResult.addError(objectError);
+        }
+        return bindingResult;
     }
 }

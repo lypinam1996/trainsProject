@@ -30,7 +30,7 @@ public class TicketDAOImpl extends AbstractDAO<Integer, TicketEntity> implements
     @Override
     public void saveOrUpdate(TicketEntity ticketEntity) {
         logger.info("TicketDAOImpl: start to save ticket");
-        getSession().saveOrUpdate(ticketEntity);
+        getSession().save(ticketEntity);
         logger.info("TicketDAOImpl: ticket has been found");
     }
 

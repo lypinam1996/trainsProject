@@ -10,6 +10,4 @@ public interface PassangerService {
     int saveOrUpdate(PassangerEntity passanger);
 
     PassangerEntity findById(int id);
-
-    boolean checkTheEqualtyPassanger(PassangerEntity passanger, List<PassangerEntity> allPassangers);
 }
