@@ -28,6 +28,11 @@
                 <h2 class="text-center h2A">
                     <a style="color: #bf4031" href="<c:url value="/registration"/>">Register</a>
                 </h2>
+                <c:choose>
+                    <c:when test="${SPRING_SECURITY_LAST_EXCEPTION!=null}">
+                        <p class="errors">Invalid login or password! Please verify.</p>
+                    </c:when>
+                </c:choose>
                 <form:form action="login" method="post">
                     <label class="text-uppercase">Username</label>
                     <input type="e-mail" class="form-control" name="login">

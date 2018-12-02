@@ -15,3 +15,1524 @@
 2018-11-30 21:49:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
 2018-11-30 21:49:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
 2018-11-30 21:49:46 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:39 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-02 14:11:39 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-12-02 14:11:39 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-02 14:11:39 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-12-02 14:11:40 INFO  Version:30 - HV000001: Hibernate Validator 5.3.4.Final
+2018-12-02 14:11:42 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:11:42 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:11:42 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:11:42 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:11:42 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:11:42 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:42 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:43 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:11:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:11:43 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:11:43 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:11:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:11:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:11:43 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:11:48 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:11:48 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:11:48 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:48 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:11:48 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:11:53 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:11:53 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:11:53 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:11:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:53 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:11:53 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:11:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:53 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:11:53 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:11:53 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:11:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:53 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:11:53 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:11:53 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:11:53 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:11:56 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:11:58 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:11:58 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:11:58 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:11:58 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:11:58 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:03 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:12:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:03 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:12:03 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:12:03 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:03 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:12:03 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:03 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:03 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:03 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:03 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:12:03 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:03 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:03 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:03 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:03 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:12:08 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:08 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:08 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:08 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:08 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:09 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:12:09 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:09 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:12:09 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:12:13 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:13 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:13 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:13 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:12:13 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:13 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:13 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:13 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:13 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:12:13 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:14 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:14 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:12:18 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:18 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:19 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:19 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:19 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:23 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:12:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:23 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:12:23 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:12:24 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:24 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:12:24 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:24 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:24 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:24 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:24 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:12:24 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:24 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:24 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:24 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:24 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:12:29 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:29 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:29 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:29 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:29 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:34 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:34 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:12:34 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:34 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:34 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:34 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:34 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:12:34 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:34 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:34 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:34 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:34 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:12:39 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:39 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:39 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:39 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:44 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:44 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:12:44 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:44 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:44 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:44 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:44 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:12:44 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:44 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:44 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:44 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:44 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:12:49 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:49 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:49 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:49 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:54 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:54 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:12:54 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:54 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:54 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:54 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:54 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:12:54 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:12:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:54 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:54 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:12:54 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:12:54 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:12:59 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:12:59 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:12:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:12:59 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:12:59 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:04 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:04 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:13:04 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:04 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:04 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:13:04 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:04 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:04 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:04 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:04 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:13:04 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:04 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:09 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:09 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:09 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:09 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:09 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:14 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:14 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:13:14 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:14 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:14 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:14 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:13:14 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:14 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:14 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:14 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:13:14 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:14 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:14 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:14 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:14 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:19 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:19 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:19 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:19 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:19 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:24 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:24 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:13:24 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:24 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:24 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:13:24 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:24 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:24 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:13:24 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:24 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:24 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:24 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:29 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:29 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:29 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:29 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:29 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:34 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:34 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:13:34 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:34 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:34 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:13:34 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:13:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:34 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:13:34 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:13:34 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:34 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:34 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:34 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:13:39 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:13:39 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:13:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:13:39 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:13:39 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:16 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-02 14:15:16 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-12-02 14:15:16 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-02 14:15:16 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-12-02 14:15:17 INFO  Version:30 - HV000001: Hibernate Validator 5.3.4.Final
+2018-12-02 14:15:19 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:19 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:19 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:19 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:15:19 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:19 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:19 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:19 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:19 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:19 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:15:20 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:20 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:20 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:20 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:15:25 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:25 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:25 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:25 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:25 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:30 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:30 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:15:30 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:30 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:30 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:30 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:30 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:15:30 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:30 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:30 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:30 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:30 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:15:35 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:35 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:35 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:35 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:35 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:40 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:40 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:15:40 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:40 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:40 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:40 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:40 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:15:40 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:40 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:40 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:40 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:40 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:40 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:40 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:40 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:15:45 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:45 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:45 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:45 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:45 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:50 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:50 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:15:50 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:50 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:50 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:50 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:15:50 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:15:50 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:50 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:50 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:50 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:50 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:15:50 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:15:50 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:50 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:15:54 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:15:55 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:15:55 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:15:55 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:15:55 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:15:55 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:00 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:16:00 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:00 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:16:00 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:16:00 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:00 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:16:00 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:00 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:00 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:00 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:16:00 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:00 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:00 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:00 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:00 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:00 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:00 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:16:00 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:00 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:05 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:05 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:05 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:05 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:05 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:10 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:10 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:16:10 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:10 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:10 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:10 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:10 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:10 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:16:10 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:10 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:10 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:10 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:10 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:10 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:10 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:16:15 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:15 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:15 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:15 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:15 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:20 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:20 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:16:20 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:20 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:20 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:20 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:16:20 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:20 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:20 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:20 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:20 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:20 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:16:25 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:25 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:25 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:26 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:26 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:30 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:30 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:16:30 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:31 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:31 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:16:31 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:31 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:31 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:31 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:31 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:31 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:31 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:16:31 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:31 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:36 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:36 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:36 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:36 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:36 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:41 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:41 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:16:41 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:41 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:41 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:41 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:41 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:16:41 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:41 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:41 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:16:41 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:41 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:43 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:16:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:43 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:16:43 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:16:46 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:46 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:46 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:46 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:46 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:49 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:16:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:49 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:16:49 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:16:51 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:51 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:16:51 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:51 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:51 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:51 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:16:51 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:51 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:51 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:51 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:16:51 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:51 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:16:51 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:16:51 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:51 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:16:56 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:16:56 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:16:56 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:16:56 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:16:56 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:00 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:17:00 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:00 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:17:00 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:17:01 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:01 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:17:01 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:01 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:01 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:01 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:17:01 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:01 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:01 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:01 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:01 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:01 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:01 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:01 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:17:01 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:06 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:17:06 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:06 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:17:06 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:17:06 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:06 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:06 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:06 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:06 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:09 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:17:09 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:09 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:17:09 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:17:11 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:11 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:17:11 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:11 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:11 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:11 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:17:11 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:11 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:11 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:11 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:17:11 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:11 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:11 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:11 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:11 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:16 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:16 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:16 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:16 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:16 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:21 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:21 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:17:21 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:21 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:21 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:21 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:17:21 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:21 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:21 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:21 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:17:21 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:21 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:21 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:21 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:21 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:26 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:26 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:26 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:26 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:26 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:31 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:31 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:17:31 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:31 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:31 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:31 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:17:31 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:31 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:31 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:31 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:17:31 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:31 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:31 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:31 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:31 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:36 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:36 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:36 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:37 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:37 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:41 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:41 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:17:41 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:41 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:41 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:17:41 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:41 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:41 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:41 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:17:42 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:42 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:42 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:42 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:42 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:47 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:47 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:47 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:47 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:47 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:51 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:51 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:17:51 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:51 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:51 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:51 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:17:51 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:17:51 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:51 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:17:51 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:51 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:17:51 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:17:52 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:17:52 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:17:52 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:52 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:52 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:52 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:52 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:17:57 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:17:57 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:17:57 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:17:57 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:17:57 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:02 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:02 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:18:02 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:02 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:02 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:02 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:18:02 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:02 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:02 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:02 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:18:02 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:02 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:02 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:02 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:02 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:07 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:07 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:07 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:07 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:07 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:12 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:12 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:18:12 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:12 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:12 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:12 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:18:12 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:12 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:12 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:12 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:18:12 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:12 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:12 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:12 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:12 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:17 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:17 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:17 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:17 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:17 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:22 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:22 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:18:22 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:22 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:22 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:22 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:18:22 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:22 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:22 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:22 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:18:22 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:22 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:22 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:22 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:22 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:27 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:27 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:27 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:27 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:27 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:32 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:32 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:18:32 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:32 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:32 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:32 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:18:32 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:32 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:32 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:32 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:18:32 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:32 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:32 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:32 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:32 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:37 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:37 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:37 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:37 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:37 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:42 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:42 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:18:42 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:42 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:42 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:42 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:18:42 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:42 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:42 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:42 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:18:42 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:42 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:42 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:42 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:42 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:47 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:47 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:47 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:47 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:47 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:52 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:52 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:18:52 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:52 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:52 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:52 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:18:52 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:18:52 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:52 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:18:52 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:18:52 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:53 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:53 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:53 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:18:58 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:18:58 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:18:58 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:18:58 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:18:58 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:02 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:02 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:19:02 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:02 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:02 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:02 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:19:02 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:02 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:02 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:02 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:19:03 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:03 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:03 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:03 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:08 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:08 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:08 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:08 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:08 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:12 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:12 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:19:12 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:12 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:12 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:12 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:19:12 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:12 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:12 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:12 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:19:13 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:13 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:13 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:13 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:18 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:18 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:18 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:18 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:18 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:22 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:22 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:19:22 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:22 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:22 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:22 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:19:23 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:23 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:23 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:19:23 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:23 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:23 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:23 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:28 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:28 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:28 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:28 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:28 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:33 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:33 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:19:33 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:33 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:33 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:19:33 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:33 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:33 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:19:33 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:33 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:33 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:33 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:38 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:38 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:38 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:38 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:38 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:43 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:43 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:19:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:43 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:19:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:43 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:19:43 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:43 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:43 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:43 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:48 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:48 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:48 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:48 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:48 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:53 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:53 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:19:53 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:53 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:53 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:19:53 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:19:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:53 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:19:53 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:19:53 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:53 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:53 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:53 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:19:58 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:19:58 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:19:58 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:19:58 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:19:58 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:03 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:03 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:20:03 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:03 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:03 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:20:03 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:03 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:03 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:20:03 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:03 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:03 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:03 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:08 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:08 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:08 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:08 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:08 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:13 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:13 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:20:13 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:13 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:13 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:20:13 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:13 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:13 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:20:13 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:13 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:13 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:13 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:18 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:18 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:18 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:18 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:18 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:23 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:23 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:20:23 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:23 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:23 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:20:23 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:23 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:23 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:20:23 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:23 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:23 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:23 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:28 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:29 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:29 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:29 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:29 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:33 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:33 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:20:33 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:33 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:33 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:20:33 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:33 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:33 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:20:34 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:34 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:34 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:34 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:39 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:39 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:39 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:39 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:43 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:43 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:20:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:43 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:20:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:43 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:20:44 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:44 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:44 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:44 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:49 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:49 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:49 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:49 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:49 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:20:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:49 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:20:49 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:20:53 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:53 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:20:53 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:53 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:53 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:20:53 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:20:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:53 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:20:53 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:20:54 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:54 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:54 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:54 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:20:59 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:20:59 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:20:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:20:59 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:20:59 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:03 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:03 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:21:03 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:03 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:03 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:21:03 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:03 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:03 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:21:04 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:04 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:04 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:04 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:09 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:09 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:09 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:09 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:09 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:13 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:13 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:21:13 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:13 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:13 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:21:13 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:13 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:13 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:21:14 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:14 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:14 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:14 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:14 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:19 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:19 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:19 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:19 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:19 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:23 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:23 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:21:23 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:23 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:23 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:21:23 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:23 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:23 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:21:24 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:24 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:24 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:24 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:24 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:29 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:29 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:29 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:29 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:29 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:33 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:33 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:21:33 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:33 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:33 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:21:33 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:33 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:33 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:21:34 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:34 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:34 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:34 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:39 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:39 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:39 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:39 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:43 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:43 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:21:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:43 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:21:43 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:43 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:43 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:44 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:21:44 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:44 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:44 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:44 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:49 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:49 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:49 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:49 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:54 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:54 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:21:54 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:54 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:54 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:21:54 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:21:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:54 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:21:54 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:21:54 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:54 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:54 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:54 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:21:59 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:21:59 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:21:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:21:59 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:21:59 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:22:04 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:22:04 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:22:04 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:22:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:22:04 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:22:04 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:22:04 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:22:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:22:04 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:22:04 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:22:04 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:22:04 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:22:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:22:04 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:22:04 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:22:54 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-02 14:22:54 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-12-02 14:22:54 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-02 14:22:54 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-12-02 14:22:54 INFO  Version:30 - HV000001: Hibernate Validator 5.3.4.Final
+2018-12-02 14:22:57 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:22:57 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:22:57 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:22:57 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:22:57 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:22:57 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:22:57 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:22:57 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:22:57 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:22:57 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:22:57 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:22:57 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:22:57 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:22:57 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:22:57 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:23:02 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:02 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:02 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:02 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:02 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:07 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:07 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:23:07 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:07 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:07 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:07 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:07 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:07 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:07 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:23:07 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:07 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:07 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:07 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:07 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:07 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:23:08 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:23:12 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:12 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:12 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:12 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:12 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:14 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:23:14 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:14 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:23:14 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:23:17 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:17 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:23:17 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:17 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:17 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:17 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:23:17 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:17 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:17 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:17 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:23:17 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:17 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:17 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:17 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:18 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:23 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:23 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:23 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:23 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:27 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:27 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:23:27 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:27 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:27 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:27 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:23:27 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:27 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:27 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:27 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:23:28 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:28 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:28 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:28 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:28 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:33 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:33 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:33 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:33 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:33 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:23:37 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:37 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:23:37 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:37 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:38 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:38 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:23:38 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:23:38 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:38 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:23:38 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:23:38 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:23:38 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:23:38 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:23:38 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:23:38 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:25:45 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-02 14:25:45 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-12-02 14:25:45 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-02 14:25:45 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-12-02 14:25:45 INFO  Version:30 - HV000001: Hibernate Validator 5.3.4.Final
+2018-12-02 14:25:47 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:25:47 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:25:48 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:25:48 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:25:48 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:25:48 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:48 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:48 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:25:48 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:25:48 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:25:48 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:48 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:25:48 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:25:48 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:25:48 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:25:53 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:25:53 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:25:53 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:53 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:25:53 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:25:54 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:25:58 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:25:58 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:25:58 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:25:58 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:58 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:25:58 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:25:58 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:25:58 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:58 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:25:58 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:25:58 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:25:58 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:25:58 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:25:58 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:25:58 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:03 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:03 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:03 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:03 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:03 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:08 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:08 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:26:08 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:08 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:08 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:08 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:26:08 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:08 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:08 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:08 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:08 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:08 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:08 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:26:08 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:08 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:13 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:13 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:13 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:13 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:13 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:18 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:18 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:26:18 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:18 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:18 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:18 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:26:18 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:18 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:18 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:18 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:18 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:18 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:18 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:18 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:18 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:26:23 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:23 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:23 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:24 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:24 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:28 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:28 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:26:28 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:28 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:29 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:29 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:26:29 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:29 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:29 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:29 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:29 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:29 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:29 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:26:29 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:29 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:34 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:34 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:34 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:34 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:34 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:39 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:39 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:26:39 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:39 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:39 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:26:39 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:39 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:39 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:39 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:26:39 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:39 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:39 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:44 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:44 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:44 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:44 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:48 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:26:48 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:48 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:26:48 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:26:49 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:49 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:26:49 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:49 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:49 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:26:49 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:49 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:49 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:26:49 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:49 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:49 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:49 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:54 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:54 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:54 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:54 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:26:56 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:26:56 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:56 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:26:56 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:26:59 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:59 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:26:59 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:59 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:59 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:26:59 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:26:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:59 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:26:59 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:26:59 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:26:59 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:26:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:26:59 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:26:59 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:27:04 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:27:04 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:27:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:27:04 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:27:04 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:33:36 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-02 14:33:36 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-12-02 14:33:36 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-02 14:33:36 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2018-12-02 14:33:37 INFO  Version:30 - HV000001: Hibernate Validator 5.3.4.Final
+2018-12-02 14:33:39 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:39 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:39 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:33:39 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:33:39 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:33:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:39 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:33:39 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:33:39 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:33:39 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:33:39 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:39 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:33:39 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:33:39 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:33:44 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:44 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:33:44 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:44 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:33:44 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:33:49 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:49 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:33:49 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:33:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:49 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:33:49 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:33:49 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:49 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:33:49 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:33:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:49 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:49 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:33:49 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:33:49 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:33:49 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:33:54 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:54 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:33:54 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:54 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:33:54 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:33:55 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:33:59 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:59 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:33:59 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:33:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:59 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:33:59 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:33:59 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:33:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:59 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:33:59 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:33:59 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:33:59 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:33:59 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:33:59 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:33:59 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:00 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:34:04 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:04 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:04 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:05 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:05 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:06 INFO  UserDAO:26 - UserDAO: start to find user by login
+2018-12-02 14:34:06 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:06 INFO  UserDAO:29 - UserDAO:user has been found
+2018-12-02 14:34:06 INFO  AuthenticationController:31 - AuthenticationController: return login page
+2018-12-02 14:34:09 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:09 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:34:09 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:34:09 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:10 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:34:10 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:34:10 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:34:10 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:10 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:34:10 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:10 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:34:10 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:10 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:10 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:10 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:15 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:15 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:15 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:15 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:15 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:20 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:20 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:34:20 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:34:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:20 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:34:20 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:34:20 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:34:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:20 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:20 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:34:20 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:20 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:34:20 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:20 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:20 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:25 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:25 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:25 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:25 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:25 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:30 INFO  SocketController:55 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:30 INFO  TicketServiceImpl:159 - BranchServiceImpl: start to delete tickets
+2018-12-02 14:34:30 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:34:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:30 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:34:30 INFO  TicketServiceImpl:171 - BranchServiceImpl: tickets have been deleted
+2018-12-02 14:34:30 INFO  TicketDAOImpl:23 - TicketDAOImpl: start to find all tickets
+2018-12-02 14:34:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:30 INFO  TicketDAOImpl:26 - TicketDAOImpl:all tickets have been found
+2018-12-02 14:34:30 INFO  SocketController:64 - SocketController: message has been sent
+2018-12-02 14:34:30 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:30 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:30 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:30 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:30 INFO  SocketController:50 - SocketController: message has been sent
+2018-12-02 14:34:35 INFO  SocketController:38 - SocketController: start to send message with today's ticket
+2018-12-02 14:34:35 INFO  TicketDAOImpl:48 - TicketDAOImpl: start to find ticket by date
+2018-12-02 14:34:35 WARN  deprecation:1874 - HHH90000022: Hibernate's legacy org.hibernate.Criteria API is deprecated; use the JPA javax.persistence.criteria.CriteriaQuery instead
+2018-12-02 14:34:35 INFO  TicketDAOImpl:57 - TicketDAOImpl:ticket has been found
+2018-12-02 14:34:35 INFO  SocketController:50 - SocketController: message has been sent

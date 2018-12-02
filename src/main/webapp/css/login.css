@@ -126,6 +126,10 @@ a:hover{
     background-color: #008ca5;
 }
 
+.errors{
+    font-size: 14pt;
+    color: red;
+}
 
 
 
