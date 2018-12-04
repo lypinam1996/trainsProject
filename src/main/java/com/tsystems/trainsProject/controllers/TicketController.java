@@ -47,6 +47,9 @@ public class TicketController {
     @Autowired
     SearchTrain searchService;
 
+    @Autowired
+    Converter converter;
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String findTrainsInSchedule(@ModelAttribute Search search,
                                        BindingResult bindingResult,
@@ -134,7 +137,6 @@ public class TicketController {
         singletonDto = SingletonDto.getInstance();
         List<VariantDto> variants = singletonDto.getVariants();
         VariantDto variant = searchService.getVariant(pk, variants);
-        Converter converter = new Converter();
         TicketEntity ticket = converter.convertVariantToTicket(variant, tickets);
         model.addAttribute("ticket", ticket);
         logger.info("TicketController: return create ticket page");

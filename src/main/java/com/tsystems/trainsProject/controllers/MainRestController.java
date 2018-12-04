@@ -31,6 +31,9 @@ public class MainRestController {
     @Autowired
     StationService stationService;
 
+    @Autowired
+    Converter converter;
+
     @RequestMapping(value = "/getTrackIndicator", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ScheduleDTO> greeting() {
         List<ScheduleDTO> scheduleDTO= helper();
@@ -48,7 +51,6 @@ public class MainRestController {
 
     @RequestMapping(value = "/session/current", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO restGettingUser() {
-        Converter converter = new Converter();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity user = userService.findByLogin(auth.getName());
         UserDTO userDTO = new UserDTO();
@@ -62,7 +64,6 @@ public class MainRestController {
     private List<ScheduleDTO> helper(){
         List<ScheduleDTO> scheduleDTO = new ArrayList<ScheduleDTO>();
         List<ScheduleEntity> scheduleEntities = scheduleService.findAllSchedulesAfterTime();
-        Converter converter = new Converter();
         for (int i = 0; i < scheduleEntities.size(); i++) {
             scheduleDTO.add(converter.convertSchedule(scheduleEntities.get(i)));
         }

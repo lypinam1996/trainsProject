@@ -12,4 +12,6 @@ public interface BranchDAO {
     BranchLineEntity findById(int id);
 
     void update(BranchLineEntity branch);
+
+    void delete(BranchLineEntity branch);
 }

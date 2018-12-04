@@ -33,6 +33,9 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
     @Autowired
     ScheduleService scheduleService;
 
+    @Autowired
+    Converter converter;
+
     @Scheduled(fixedDelay = 5000)
     private void todayTickets() {
         logger.info("SocketController: start to send message with today's ticket");
@@ -56,7 +59,6 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
         ticketService.deleteOldTickets();
         List<TicketEntity> tickets = ticketService.findAllTickets();
         List<TicketDto> ticketDtos = new ArrayList<>();
-        Converter converter = new Converter();
         for (int i = 0; i < tickets.size(); i++) {
             ticketDtos.add(converter.convertTicket(tickets.get(i)));
         }
@@ -72,7 +74,6 @@ public class SocketController implements ApplicationListener<EditingEvent>  {
             int type = customSpringEvent.getType();
             if(type==0) {
                 ScheduleEntity schedule = scheduleService.findById(id);
-                Converter converter = new Converter();
                 ScheduleDTO scheduleDto = converter.convertSchedule(schedule);
                 logger.info("SocketController: start to send message with schedule");
                 simpMessagingTemplate.convertAndSend("/topic/schedule", scheduleDto);

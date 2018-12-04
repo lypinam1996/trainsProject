@@ -1,6 +1,8 @@
 package com.tsystems.trainsProject.services.impl;
 
+import com.tsystems.trainsProject.dao.BranchDAO;
 import com.tsystems.trainsProject.dao.InfBranchDAO;
+import com.tsystems.trainsProject.dao.StationDAO;
 import com.tsystems.trainsProject.dao.impl.BranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.StationDAOImpl;
 import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
@@ -27,13 +29,13 @@ public class BranchServiceImpl implements BranchService {
     private static final Logger logger = Logger.getLogger(BranchServiceImpl.class);
 
     @Autowired
-    BranchDAOImpl branchDAO;
+    BranchDAO branchDAO;
 
     @Autowired
     InfBranchDAO infBranchDAO;
 
     @Autowired
-    StationDAOImpl stationDAO;
+    StationDAO stationDAO;
 
     @Override
     public List<BranchLineEntity> findAllBranches() {
@@ -120,6 +122,11 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
+    public void delete(BranchLineEntity branch) {
+        branchDAO.delete(branch);
+    }
+
+    @Override
     public List<String> validation(BranchLineEntity branch) {
         List<String> errors = new ArrayList<>();
         if(branch.getTitle()==""){
@@ -144,25 +151,22 @@ public class BranchServiceImpl implements BranchService {
         return errors;
     }
 
-    public BindingResult checkUniqueStationName(StationEntity station, BindingResult bindingResult){
-        logger.info("BranchServiceImpl: start to check the unique station name");
-        List<StationEntity> stations = stationDAO.findAllStations();
-        stations.remove(stationDAO.findById(station.getIdStation()));
-        for (StationEntity stationEntity:stations){
-            if(station.getStationName().equals(stationEntity.getStationName())){
-                ObjectError objectError = new ObjectError("stationName",
-                        "*Station name is not unique");
-                bindingResult.addError(objectError);
-            }
-        }
-        logger.info("BranchServiceImpl: checking has been done");
-        return bindingResult;
-    }
+//    public BindingResult checkUniqueStationName(StationEntity station, BindingResult bindingResult){
+//        logger.info("BranchServiceImpl: start to check the unique station name");
+//        List<StationEntity> stations = stationDAO.findAllStations();
+//        stations.remove(stationDAO.findById(station.getIdStation()));
+//        for (StationEntity stationEntity:stations){
+//            if(station.getStationName().equals(stationEntity.getStationName())){
+//                ObjectError objectError = new ObjectError("stationName",
+//                        "*Station name is not unique");
+//                bindingResult.addError(objectError);
+//            }
+//        }
+//        logger.info("BranchServiceImpl: checking has been done");
+//        return bindingResult;
+//    }
 
-    @Override
-    public void delete(BranchLineEntity branch) {
-        branchDAO.delete(branch);
-    }
+
 
     private String checkEqualitySerialNumbers(BranchLineEntity branch) {
         logger.info("BranchServiceImpl: start to check the equality serial numbers");

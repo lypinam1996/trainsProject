@@ -1,6 +1,5 @@
 package com.tsystems.trainsProject.dao.impl;
 
-import com.tsystems.trainsProject.controllers.MainController;
 import com.tsystems.trainsProject.dao.BranchDAO;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import org.apache.log4j.Logger;

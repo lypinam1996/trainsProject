@@ -1,4 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
+import com.tsystems.trainsProject.dao.RoleDAO;
+import com.tsystems.trainsProject.dao.UserDAO;
 import com.tsystems.trainsProject.dao.impl.RoleDAOImpl;
 import com.tsystems.trainsProject.dao.impl.UserDAOImpl;
 import com.tsystems.trainsProject.models.RoleEntity;
@@ -16,10 +18,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDAOImpl userDao;
+    UserDAO userDao;
 
     @Autowired
-    RoleDAOImpl roleDAO;
+    RoleDAO roleDAO;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;

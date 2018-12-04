@@ -1,7 +1,9 @@
 package com.tsystems.trainsProject.services.impl;
 
 import com.tsystems.trainsProject.dao.PassangerDAO;
+import com.tsystems.trainsProject.dao.TicketDAO;
 import com.tsystems.trainsProject.dao.impl.TicketDAOImpl;
+import com.tsystems.trainsProject.dto.Converter;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.PassangerEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
@@ -30,7 +32,7 @@ public class TicketServiceImpl implements TicketService {
     private static final Logger logger = Logger.getLogger(TicketServiceImpl.class);
 
     @Autowired
-    TicketDAOImpl ticketDAO;
+    TicketDAO ticketDAO;
 
     @Autowired
     PassangerDAO passangerDAO;
@@ -84,8 +86,13 @@ public class TicketServiceImpl implements TicketService {
         for (int j = 0; j < ticket.getSchedule().getTicket().size(); j++) {
             if (ticket.getSchedule().getTicket().get(j).getDepartureDate().compareTo(ticket.getDepartureDate()) == 0) {
                 List<Integer> flstation = getFirstLastStationNumber(ticket.getSchedule().getTicket().get(j));
-                if ((flstation.get(0) <= firstLastStation.get(0) && flstation.get(1) >= firstLastStation.get(1)) ||
-                (flstation.get(0) >= firstLastStation.get(0) && flstation.get(1) <= firstLastStation.get(1)))
+
+                if (
+                        (flstation.get(0) > firstLastStation.get(0) && flstation.get(0) < firstLastStation.get(1)) ||
+                                (flstation.get(1) > firstLastStation.get(0) && flstation.get(1) < firstLastStation.get(1)) ||
+                                (flstation.get(0) < firstLastStation.get(0) && flstation.get(1) > firstLastStation.get(0)) ||
+                                (flstation.get(0) < firstLastStation.get(1) && flstation.get(1) > firstLastStation.get(1))
+                        )
                 {
                     tickets.add(ticket.getSchedule().getTicket().get(j));
                 }
@@ -217,7 +224,7 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public BindingResult validation(BindingResult bindingResult,TicketEntity ticket){
-        if(ticket.getSchedule().getProhibitPurchase()==null || ticket.getSchedule().getProhibitPurchase().before(new Date())){
+        if(ticket.getSchedule().getProhibitPurchase()!=null && ticket.getSchedule().getProhibitPurchase().before(new Date())){
             ObjectError objectError = new ObjectError("departureDate",
                     "You temporary can't buy a ticket on this train.");
             bindingResult.addError(objectError);

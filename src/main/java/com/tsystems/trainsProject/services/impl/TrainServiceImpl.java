@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
+import com.tsystems.trainsProject.dao.TrainDAO;
 import com.tsystems.trainsProject.dao.impl.TrainDAOImpl;
 import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.services.TrainService;
@@ -19,7 +20,7 @@ public class TrainServiceImpl implements TrainService {
     private static final Logger logger = Logger.getLogger(TrainServiceImpl.class);
 
     @Autowired
-    TrainDAOImpl trainDAO;
+    TrainDAO trainDAO;
 
     @Override
     public List<TrainEntity> findAllTrains() {

@@ -1,5 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
+import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.impl.PassangerDAOImpl;
 import com.tsystems.trainsProject.models.PassangerEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
@@ -20,7 +21,7 @@ public class PassangerServiceImpl implements PassangerService {
     private static final Logger logger = Logger.getLogger(PassangerServiceImpl.class);
 
     @Autowired
-    PassangerDAOImpl passangerDAO;
+    PassangerDAO passangerDAO;
 
 
     @Override

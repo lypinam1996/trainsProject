@@ -4,6 +4,7 @@ import com.tsystems.trainsProject.dao.StationDAO;
 import com.tsystems.trainsProject.models.StationEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -46,6 +47,14 @@ public class StationDAOImpl extends AbstractDAO<Integer, StationEntity> implemen
         criteria.add(Restrictions.eq("idStation", id));
         logger.info("StationDAO: station has been found");
         return (StationEntity) criteria.uniqueResult();
+    }
+
+    @Override
+    public  List<StationEntity> getStationsByLetters(String letters) {
+        Query query = getSession().createQuery("from StationEntity where stationName like :code ");
+        query.setParameter("code", "%"+letters+"%");
+        List list = query.list();
+        return list;
     }
 
 }

@@ -5,12 +5,14 @@ import com.tsystems.trainsProject.models.StationEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
 import com.tsystems.trainsProject.models.UserEntity;
 import com.tsystems.trainsProject.services.TicketService;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+@Component
 public class Converter {
 
     public ScheduleDTO convertSchedule(ScheduleEntity scheduleEntity) {

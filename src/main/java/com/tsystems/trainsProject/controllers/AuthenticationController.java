@@ -59,6 +59,21 @@ public class AuthenticationController {
                     "This login has already been used");
             bindingResult.addError(objectError);
         }
+        if(user.getLogin()==""){
+            ObjectError objectError = new ObjectError("login",
+                    "Input login");
+            bindingResult.addError(objectError);
+        }
+        if(user.getPassword()==""){
+            ObjectError objectError = new ObjectError("login",
+                    "Input password");
+            bindingResult.addError(objectError);
+        }
+        if(user.getPassword().length()<6){
+            ObjectError objectError = new ObjectError("login",
+                    "Password must be at least six characters");
+            bindingResult.addError(objectError);
+        }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {

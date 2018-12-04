@@ -10,4 +10,7 @@ public interface TrainDAO {
     void saveOrUpdate(TrainEntity train);
 
     TrainEntity findById(int id);
+
+
+    void delete(TrainEntity e);
 }

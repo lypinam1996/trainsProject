@@ -1,8 +1,6 @@
 package com.tsystems.trainsProject.services.impl;
 
-import com.tsystems.trainsProject.dao.BranchDAO;
-import com.tsystems.trainsProject.dao.StationDAO;
-import com.tsystems.trainsProject.dao.TrainDAO;
+import com.tsystems.trainsProject.dao.*;
 import com.tsystems.trainsProject.events.EditingEvent;
 import com.tsystems.trainsProject.dao.impl.InfBranchDAOImpl;
 import com.tsystems.trainsProject.dao.impl.ScheduleDAOImpl;
@@ -31,10 +29,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     private static final Logger logger = Logger.getLogger(BranchServiceImpl.class);
 
     @Autowired
-    ScheduleDAOImpl scheduleDAO;
+    ScheduleDAO scheduleDAO;
 
     @Autowired
-    InfBranchDAOImpl infBranchDAO;
+    InfBranchDAO infBranchDAO;
 
     @Autowired
     BranchDAO branchDAO;
@@ -137,6 +135,37 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
     }
 
+    @Override
+    public ScheduleEntity findById(int id) {
+        return scheduleDAO.findById(id);
+    }
+
+    @Override
+    public void delete(ScheduleEntity schedule) {
+        int id = scheduleDAO.deleteId(schedule);
+        logger.info("ScheduleServiceImpl: start to send event");
+        EditingEvent customSpringEvent = new EditingEvent(this, String.valueOf(id), 1);
+        applicationEventPublisher.publishEvent(customSpringEvent);
+        logger.info("ScheduleServiceImpl: event has been sent");
+    }
+
+    @Override
+    public ScheduleEntity checkNull(ScheduleEntity schedule){
+        if (schedule.getBranch().getIdBranchLine() != 0) {
+            schedule.setBranch(branchDAO.findById(schedule.getBranch().getIdBranchLine()));
+        }
+        if (stationDAO.findById(schedule.getFirstStation().getIdStation()) != null) {
+            schedule.setFirstStation(stationDAO.findById(schedule.getFirstStation().getIdStation()));
+        }
+        if (schedule.getLastStation().getIdStation() != 0) {
+            schedule.setLastStation(stationDAO.findById(schedule.getLastStation().getIdStation()));
+        }
+        if (schedule.getTrain().getIdTrain() != 0) {
+            schedule.setTrain(trainDAO.findById(schedule.getTrain().getIdTrain()));
+        }
+        return schedule;
+    }
+
     private String checkStationsSerialNumbers(ScheduleEntity schedule) {
         logger.info("ScheduleServiceImpl: check stations serial numbers");
         String error = "";
@@ -213,7 +242,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         logger.info("ScheduleServiceImpl: start to evaluate time");
         List<Date> result = new ArrayList<>();
         for (int i = 0; i < schedule.size(); i++) {
-            List<DetailedInfBranchEntity> detailedInf = infBranchService.findDetailedInformation(schedule.get(i).getBranch());
+            List<DetailedInfBranchEntity> detailedInf = schedule.get(i).getBranch().getDetailedInf();
             int numberFirstStation = 0;
             int numberLastStation = 0;
             for (int j = 0; j < detailedInf.size(); j++) {
@@ -235,20 +264,6 @@ public class ScheduleServiceImpl implements ScheduleService {
             result.add(arrivalTime);
         }
         return result;
-    }
-
-    @Override
-    public ScheduleEntity findById(int id) {
-        return scheduleDAO.findById(id);
-    }
-
-    @Override
-    public void delete(ScheduleEntity schedule) {
-        int id = scheduleDAO.deleteId(schedule);
-        logger.info("ScheduleServiceImpl: start to send event");
-        EditingEvent customSpringEvent = new EditingEvent(this, String.valueOf(id), 1);
-        applicationEventPublisher.publishEvent(customSpringEvent);
-        logger.info("ScheduleServiceImpl: event has been sent");
     }
 
     @Override
@@ -276,22 +291,5 @@ public class ScheduleServiceImpl implements ScheduleService {
             }
         }
         return bindingResult;
-    }
-
-    @Override
-    public ScheduleEntity checkNull(ScheduleEntity schedule){
-        if (schedule.getBranch().getIdBranchLine() != 0) {
-            schedule.setBranch(branchDAO.findById(schedule.getBranch().getIdBranchLine()));
-        }
-        if (stationDAO.findById(schedule.getFirstStation().getIdStation()) != null) {
-            schedule.setFirstStation(stationDAO.findById(schedule.getFirstStation().getIdStation()));
-        }
-        if (schedule.getLastStation().getIdStation() != 0) {
-            schedule.setLastStation(stationDAO.findById(schedule.getLastStation().getIdStation()));
-        }
-        if (schedule.getTrain().getIdTrain() != 0) {
-            schedule.setTrain(trainDAO.findById(schedule.getTrain().getIdTrain()));
-        }
-        return schedule;
     }
 }

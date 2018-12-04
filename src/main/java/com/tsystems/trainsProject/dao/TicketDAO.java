@@ -10,5 +10,6 @@ public interface TicketDAO {
     List<TicketEntity> findAllTickets();
     void saveOrUpdate(TicketEntity station);
     TicketEntity findById(int id);
-    List<TicketEntity> findByDate(Date today) throws ParseException;
+    List<TicketEntity> findByDate(Date today);
+    void delete(TicketEntity entity);
 }
