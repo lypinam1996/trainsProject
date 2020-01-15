@@ -17,12 +17,10 @@
 </head>
 <body style="background-color: #008ca5">
 <div class="nav-item dropdown">
-    <form action="/" method="get">
+    <form action="/home" method="get">
         <input type="submit" value="Main page" class="backBtn"/>
     </form>
-    <form action="/logout" method="get" style="margin-top: -35px">
-        <input type="submit" value="Logout" class="login"/>
-    </form>
+    <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Logout</a>
 </div>
 <div class="container" style="  width: 50%">
     <div class="row">

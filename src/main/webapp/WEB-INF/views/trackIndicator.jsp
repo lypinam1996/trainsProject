@@ -31,28 +31,14 @@
             aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
-<c:choose>
-    <c:when test="${auth.equals('anonymousUser')}">
-        <a  class="link nav-link dropdown-toggle" href="<c:url value="/login"/>">Login</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="<c:url value="/tickets"/>">Tickets</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
-        </div>
-        <form action="/logout" method="get">
-            <input type="submit" value="Logout" class="login"/>
-        </form>
-    </c:otherwise>
-</c:choose>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/tickets"/>">Tickets</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<c:url value="/home"/>">Main page</a>
+    </div>
+    <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Logout</a>
 </div>
 <div class="main">
     <div class="container">

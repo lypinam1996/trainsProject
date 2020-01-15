@@ -8,15 +8,13 @@
         <%@include file="/css/login.css"%>
     </style>
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
 </head>
 <body>
 <div class="header">
-    <form action="/logout" method="get">
-        <input type="submit" value="Logout" class="login" style="margin-top: 10px"/>
-    </form>
+    <a class="login" href="<c:url value="/logout"/>">Logout</a>
 </div>
 <div class="main" style="margin-top: -4%">
     <div class="container">

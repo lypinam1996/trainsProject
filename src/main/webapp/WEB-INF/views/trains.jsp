@@ -20,7 +20,7 @@
         Menu
     </button>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+        <a class="dropdown-item" href="<c:url value="/home"/>">Main page</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="<c:url value="/branches"/>">Branches</a>
         <div class="dropdown-divider"></div>
@@ -29,9 +29,7 @@
         <a class="dropdown-item" href="<c:url value="/stations"/>">Stations</a>
         <div class="dropdown-divider"></div>
     </div>
-    <form action="/logout" method="get">
-        <input type="submit" value="Logout" class="login" role="button"/>
-    </form>
+    <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Logout</a>
 </div>
 <div class="main">
     <div class="container">

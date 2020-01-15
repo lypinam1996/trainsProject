@@ -92,6 +92,12 @@ public class SearchTrain {
                         numberLastStation = detailedInf.get(j).getStationSerialNumber();
                     }
                 }
+                for (int y = 0 + 1; y <= numberFirstStation; y++) {
+                    DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y, detailedInf.get(0).getBranch());
+                    LocalTime timeFromPrevious = LocalDateTime.ofInstant(inf.getTimeFromPrevious().toInstant(), ZoneId.systemDefault()).toLocalTime();
+                    departureTime = departureTime.plusHours(timeFromPrevious.getHour());
+                    departureTime = departureTime.plusMinutes(timeFromPrevious.getMinute());
+                }
                 LocalTime arrivalTime = departureTime;
                 for (int y = numberFirstStation + 1; y <= numberLastStation; y++) {
                     DetailedInfBranchEntity inf = infBranchService.findBySerialNumberStationAndSchedule(y, detailedInf.get(0).getBranch());

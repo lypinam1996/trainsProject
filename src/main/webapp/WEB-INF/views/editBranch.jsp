@@ -53,9 +53,7 @@
     <form action="/branches" method="get">
         <input type="submit" value="Back" class="backBtn"/>
     </form>
-    <form action="/logout" method="get" style="margin-top: -35px">
-        <input type="submit" value="Logout" class="login"/>
-    </form>
+    <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Logout</a>
 </div>
 <c:choose>
     <c:when test="${type eq 'createBranch'}"><c:set var="actionUrl" value="createBranch"/></c:when>

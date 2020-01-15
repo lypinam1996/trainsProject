@@ -21,11 +21,9 @@
             aria-haspopup="true" aria-expanded="false">
         Menu
     </button>
-    <form action="/logout" method="get">
-        <input type="submit" value="Logout" class="login"/>
-    </form>
+    <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Logout</a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="<c:url value="/"/>">Main page</a>
+        <a class="dropdown-item" href="<c:url value="/home"/>">Main page</a>
     </div>
 </div>
 <div class="main">

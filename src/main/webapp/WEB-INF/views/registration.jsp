@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="header">
-    <form action="/" method="get">
+    <form action="/home" method="get">
         <input type="submit" value="Main page" class="login" style="margin-top: 10px"/>
     </form>
 </div>

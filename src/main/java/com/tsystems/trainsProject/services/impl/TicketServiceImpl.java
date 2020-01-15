@@ -2,8 +2,6 @@ package com.tsystems.trainsProject.services.impl;
 
 import com.tsystems.trainsProject.dao.PassangerDAO;
 import com.tsystems.trainsProject.dao.TicketDAO;
-import com.tsystems.trainsProject.dao.impl.TicketDAOImpl;
-import com.tsystems.trainsProject.dto.Converter;
 import com.tsystems.trainsProject.models.BranchLineEntity;
 import com.tsystems.trainsProject.models.PassangerEntity;
 import com.tsystems.trainsProject.models.TicketEntity;
@@ -16,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -91,7 +88,8 @@ public class TicketServiceImpl implements TicketService {
                         (flstation.get(0) > firstLastStation.get(0) && flstation.get(0) < firstLastStation.get(1)) ||
                                 (flstation.get(1) > firstLastStation.get(0) && flstation.get(1) < firstLastStation.get(1)) ||
                                 (flstation.get(0) < firstLastStation.get(0) && flstation.get(1) > firstLastStation.get(0)) ||
-                                (flstation.get(0) < firstLastStation.get(1) && flstation.get(1) > firstLastStation.get(1))
+                                (flstation.get(0) < firstLastStation.get(1) && flstation.get(1) > firstLastStation.get(1)) ||
+                                (flstation.get(0) == firstLastStation.get(0) && flstation.get(1) == firstLastStation.get(1))
                         )
                 {
                     tickets.add(ticket.getSchedule().getTicket().get(j));

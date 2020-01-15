@@ -4,7 +4,7 @@
 <%@page pageEncoding="UTF-8" %>
 <html>
 <head>
-    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="../../img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <style>
         <%@include file="/css/mainPage.css"%>
     </style>
@@ -33,15 +33,7 @@
         Menu
     </button>
     <c:choose>
-        <c:when test="${auth.equals('anonymousUser')}">
-            <a  class="link nav-link dropdown-toggle" href="<c:url value="/login"/>">Login</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
-            </div>
-        </c:when>
-        <c:otherwise>
+        <c:when test="${role.title.equals('USER')}">
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="<c:url value="/schedule"/>">Schedule</a>
                 <div class="dropdown-divider"></div>
@@ -49,9 +41,12 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<c:url value="/trackIndicator"/>">Track indicator</a>
             </div>
-            <form action="/logout" method="get">
-                <input type="submit" value="Logout" class="login"/>
-            </form>
+            <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Logout</a>
+        </c:when>
+        <c:otherwise>
+            </button>
+            <a class="link nav-link dropdown-toggle" href="<c:url value="/logout"/>">Login</a>
+            <a class="link nav-link dropdown-toggle" href="<c:url value="/google"/>">Login with google</a>
         </c:otherwise>
     </c:choose>
 </div>

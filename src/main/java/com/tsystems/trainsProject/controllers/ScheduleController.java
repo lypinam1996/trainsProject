@@ -21,27 +21,29 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class ScheduleController {
+public class ScheduleController
+{
 
     private static final Logger logger = Logger.getLogger(ScheduleController.class);
 
     @Autowired
-    ScheduleService scheduleService;
+    ScheduleService             scheduleService;
 
     @Autowired
-    BranchService branchService;
+    BranchService               branchService;
 
     @Autowired
-    TrainService trainService;
+    TrainService                trainService;
 
     @Autowired
-    StationService stationService;
+    StationService              stationService;
 
     @Autowired
-    UserService userService;
+    UserService                 userService;
 
     @RequestMapping(value = "/trackIndicator", method = RequestMethod.GET)
-    public String getTrackIndicator(Model model) {
+    public String getTrackIndicator(Model model)
+    {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("auth", auth.getName());
         logger.info("ScheduleController: return track indicator page");
@@ -49,18 +51,21 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
-    public ModelAndView getSchedule() {
+    public ModelAndView getSchedule()
+    {
         List<String> errors = new ArrayList<>();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView=getScheduleHelp(errors);
+        modelAndView = getScheduleHelp(errors);
         logger.info("ScheduleController: return schedule page");
         return modelAndView;
     }
 
-    public ModelAndView getScheduleHelp(List<String> errors) {
+    public ModelAndView getScheduleHelp(List<String> errors)
+    {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         RoleEntity role = new RoleEntity();
-        if (!auth.getName().equals("anonymousUser")) {
+        if (!auth.getName().equals("anonymousUser"))
+        {
             UserEntity user = userService.findByLogin(auth.getName());
             role = user.getRole();
         }
@@ -78,7 +83,8 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/createSchedule", method = RequestMethod.GET)
-    public String chooseBranch(Model model) {
+    public String chooseBranch(Model model)
+    {
         List<BranchLineEntity> branches = branchService.findAllBranches();
         model.addAttribute("branches", branches);
         logger.info("ScheduleController: return choose branch page");
@@ -86,19 +92,20 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/createSchedule/{pk}", method = RequestMethod.GET)
-    public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule,
-                              Model model) {
+    public String getSchedule(@PathVariable Integer pk, @ModelAttribute ScheduleEntity schedule, Model model)
+    {
         BranchLineEntity branchLineEntity = branchService.findById(pk);
         schedule.setBranch(branchLineEntity);
         logger.info("ScheduleController: return create schedule page");
         return create(schedule, model, "createSchedule", branchLineEntity);
     }
 
-    private String create(ScheduleEntity schedule, Model model, String type,
-                          BranchLineEntity branchLineEntity) {
+    private String create(ScheduleEntity schedule, Model model, String type, BranchLineEntity branchLineEntity)
+    {
         List<TrainEntity> trains = trainService.findAllTrains();
         List<StationEntity> stations = new ArrayList<>();
-        for (int i = 0; i < branchLineEntity.getDetailedInf().size(); i++) {
+        for (int i = 0; i < branchLineEntity.getDetailedInf().size(); i++)
+        {
             stations.add(branchLineEntity.getDetailedInf().get(i).getStation());
         }
         model.addAttribute("stations", stations);
@@ -109,12 +116,13 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/createSchedule", method = RequestMethod.POST)
-    public String createSchedule(@ModelAttribute("schedule") @Validated ScheduleEntity schedule,
-                                 Model model, BindingResult bindingResult) {
+    public String createSchedule(@ModelAttribute("schedule") @Validated ScheduleEntity schedule, Model model, BindingResult bindingResult)
+    {
         logger.info("ScheduleController: start to save schedule");
-        schedule=scheduleService.checkNull(schedule);
-        bindingResult = scheduleService.validation(schedule,bindingResult);
-        if (bindingResult.hasErrors()) {
+        schedule = scheduleService.checkNull(schedule);
+        bindingResult = scheduleService.validation(schedule, bindingResult);
+        if (bindingResult.hasErrors())
+        {
             logger.info("ScheduleController: there are some validation problems in schedule");
             return create(schedule, model, "createTrain", schedule.getBranch());
         }
@@ -123,10 +131,10 @@ public class ScheduleController {
         return "redirect:/schedule";
     }
 
-
     @RequestMapping(value = "/prohibitPurchase/{pk}", method = RequestMethod.GET)
-    public String prohibitPurchase(@PathVariable Integer pk) {
-        ScheduleEntity schedule=scheduleService.findById(pk);
+    public String prohibitPurchase(@PathVariable Integer pk)
+    {
+        ScheduleEntity schedule = scheduleService.findById(pk);
         schedule.setProhibitPurchase(new Date());
         scheduleService.saveOrUpdate(schedule);
         logger.info("ScheduleController: prohibit purchase buying tickets");
@@ -134,8 +142,9 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/openPurchase/{pk}", method = RequestMethod.GET)
-    public String openPurchase(@PathVariable Integer pk) {
-        ScheduleEntity schedule=scheduleService.findById(pk);
+    public String openPurchase(@PathVariable Integer pk)
+    {
+        ScheduleEntity schedule = scheduleService.findById(pk);
         schedule.setProhibitPurchase(null);
         scheduleService.saveOrUpdate(schedule);
         logger.info("ScheduleController: start buying tickets");
@@ -143,10 +152,12 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/updateSchedule/{pk}", method = RequestMethod.GET)
-    public ModelAndView updateTrain(@PathVariable Integer pk) {
+    public ModelAndView updateTrain(@PathVariable Integer pk)
+    {
         ModelAndView modelAndView = new ModelAndView();
         ScheduleEntity schedule = scheduleService.findById(pk);
-        if(!schedule.getTicket().isEmpty()) {
+        if (!schedule.getTicket().isEmpty())
+        {
             List<String> errors = new ArrayList<>();
             errors.add("*You can't update schedule!");
             logger.info("ScheduleController: can't update schedule");
@@ -154,7 +165,8 @@ public class ScheduleController {
         }
         List<TrainEntity> trains = trainService.findAllTrains();
         List<StationEntity> stations = new ArrayList<>();
-        for (int i = 0; i < schedule.getBranch().getDetailedInf().size(); i++) {
+        for (int i = 0; i < schedule.getBranch().getDetailedInf().size(); i++)
+        {
             stations.add(schedule.getBranch().getDetailedInf().get(i).getStation());
         }
         modelAndView.addObject("stations", stations);
@@ -166,17 +178,18 @@ public class ScheduleController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/updateSchedule", method = RequestMethod.POST)
-    public String update(@ModelAttribute("schedule") @Validated ScheduleEntity schedule,
-                         Model model, BindingResult bindingResult)  {
+    public String update(@ModelAttribute("schedule") @Validated ScheduleEntity schedule, Model model, BindingResult bindingResult)
+    {
         logger.info("ScheduleController: start to update schedule");
-        if (schedule.getBranch().getIdBranchLine() != 0) {
+        if (schedule.getBranch().getIdBranchLine() != 0)
+        {
             schedule.setBranch(branchService.findById(schedule.getBranch().getIdBranchLine()));
         }
-        schedule=scheduleService.checkNull(schedule);
-        bindingResult = scheduleService.validation(schedule,bindingResult);
-        if (bindingResult.hasErrors()) {
+        schedule = scheduleService.checkNull(schedule);
+        bindingResult = scheduleService.validation(schedule, bindingResult);
+        if (bindingResult.hasErrors())
+        {
             logger.info("ScheduleController: there are some validation problems in schedule");
             return create(schedule, model, "updateSchedule", schedule.getBranch());
         }
@@ -186,11 +199,13 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/deleteSchedule/{pk}", method = RequestMethod.GET)
-    public ModelAndView deleteSchedule(@PathVariable Integer pk) {
+    public ModelAndView deleteSchedule(@PathVariable Integer pk)
+    {
         logger.info("ScheduleController: start to delete schedule");
         ModelAndView m = new ModelAndView();
         ScheduleEntity schedule = scheduleService.findById(pk);
-        if(!schedule.getTicket().isEmpty()) {
+        if (!schedule.getTicket().isEmpty())
+        {
             List<String> errors = new ArrayList<>();
             errors.add("*You can't delete schedule!");
             return getScheduleHelp(errors);

@@ -1,9 +1,7 @@
 package com.tsystems.trainsProject.controllers;
 
 import com.tsystems.trainsProject.models.UserEntity;
-import com.tsystems.trainsProject.services.UserService;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -21,8 +19,8 @@ public class AuthenticationController {
 
     private static final Logger logger = Logger.getLogger(AuthenticationController.class);
 
-    @Autowired
-    UserService userService;
+//    @Autowired
+//    UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
@@ -31,6 +29,7 @@ public class AuthenticationController {
         logger.info("AuthenticationController: return login page");
         return modelAndView;
     }
+
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
@@ -53,12 +52,12 @@ public class AuthenticationController {
                                       BindingResult bindingResult) {
         logger.info("AuthenticationController: start registration");
         ModelAndView modelAndView = new ModelAndView();
-        UserEntity userExists = userService.findByLogin(user.getLogin());
-        if (userExists != null) {
-            ObjectError objectError = new ObjectError("login",
-                    "This login has already been used");
-            bindingResult.addError(objectError);
-        }
+      //  UserEntity userExists = userService.findByLogin(user.getLogin());
+//        if (userExists != null) {
+//            ObjectError objectError = new ObjectError("login",
+//                    "This login has already been used");
+//            bindingResult.addError(objectError);
+//        }
         if(user.getLogin()==""){
             ObjectError objectError = new ObjectError("login",
                     "Input login");
@@ -77,7 +76,7 @@ public class AuthenticationController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            userService.saveOrUpdate(user);
+            //userService.saveOrUpdate(user);
             modelAndView.setViewName("redirect:/");
         }
         logger.info("AuthenticationController: registration has been done");

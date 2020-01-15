@@ -22,26 +22,6 @@ public class TicketServiceTest {
     @InjectMocks
     private TicketServiceImpl ticketService;
 
-    @Test
-    public void testMaxSeat() {
-        ScheduleEntity schedule = getSchedule();
-        TicketEntity ticket = new TicketEntity();
-        ticket.setSeat(1);
-        ticket.setFirstStation(schedule.getBranch().getDetailedInf().get(0).getStation());
-        ticket.setLastStation(schedule.getBranch().getDetailedInf().get(1).getStation());
-        ticket.setSchedule(schedule);
-        ticket.setDepartureDate(new Date());
-        TicketEntity ticket2 = new TicketEntity();
-        ticket2.setFirstStation(schedule.getBranch().getDetailedInf().get(1).getStation());
-        ticket2.setLastStation(schedule.getBranch().getDetailedInf().get(2).getStation());
-        ticket2.setSchedule(schedule);
-        ticket2.setDepartureDate(new Date());
-
-        schedule.setTicket(Arrays.asList(ticket, ticket2));
-        assertEquals(1, ticketService.findSeatWithMaxNumber(ticket2));
-
-    }
-
     private ScheduleEntity getSchedule() {
         TrainEntity train = new TrainEntity();
         train.setNumber("1");

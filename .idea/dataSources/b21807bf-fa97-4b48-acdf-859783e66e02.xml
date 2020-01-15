@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="trains@localhost [2]">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="trains">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="a"/>
+    <schema id="4" parent="1" name="dataprotection"/>
+    <schema id="5" parent="1" name="demo"/>
+    <schema id="6" parent="1" name="g1"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="law"/>
+    <schema id="9" parent="1" name="mail"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="singer"/>
+    <schema id="13" parent="1" name="test"/>
+    <table id="14" parent="2" name="branch_line"/>
+    <table id="15" parent="2" name="detailed_inf_branch"/>
+    <table id="16" parent="2" name="passanger"/>
+    <table id="17" parent="2" name="role"/>
+    <table id="18" parent="2" name="schedule"/>
+    <table id="19" parent="2" name="station"/>
+    <table id="20" parent="2" name="ticket"/>
+    <table id="21" parent="2" name="train"/>
+    <table id="22" parent="2" name="user"/>
+    <column id="23" parent="14" name="id_branch_line">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="14" name="title">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="25" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_branch_line</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="15" name="id_detailed_inf_branch">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="15" name="station_serial_number">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="28" parent="15" name="time_from_previous">
+      <Position>3</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="29" parent="15" name="id_station">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="30" parent="15" name="id_branch">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="31" parent="15" name="id_branch2_idx">
+      <ColNames>id_branch</ColNames>
+    </index>
+    <index id="32" parent="15" name="id_station2_idx">
+      <ColNames>id_station</ColNames>
+    </index>
+    <key id="33" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_detailed_inf_branch</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="15" name="id_station2">
+      <ColNames>id_station</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>station</RefTableName>
+      <RefColNames>id_station</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="35" parent="15" name="id_branch2">
+      <ColNames>id_branch</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>branch_line</RefTableName>
+      <RefColNames>id_branch_line</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="36" parent="16" name="id_passanger">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="37" parent="16" name="id_user">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="38" parent="16" name="name">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="39" parent="16" name="surname">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="40" parent="16" name="patronymic">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="41" parent="16" name="date_of_birth">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="42" parent="16" name="fk_user_idx">
+      <ColNames>id_user</ColNames>
+    </index>
+    <key id="43" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_passanger</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="16" name="fk_user">
+      <ColNames>id_user</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id_user</RefColNames>
+    </foreign-key>
+    <column id="45" parent="17" name="id_role">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="17" name="title">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="47" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_role</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="48" parent="18" name="id_schedule">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="49" parent="18" name="id_train">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="18" name="id_branch">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="51" parent="18" name="departure_time">
+      <Position>4</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="52" parent="18" name="id_first_station">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="18" name="id_last_station">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="54" parent="18" name="prohibitPurchase">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <index id="55" parent="18" name="fk_branch_idx">
+      <ColNames>id_branch</ColNames>
+    </index>
+    <index id="56" parent="18" name="fk_station_f_idx">
+      <ColNames>id_first_station</ColNames>
+    </index>
+    <index id="57" parent="18" name="fk_station_l_idx">
+      <ColNames>id_last_station</ColNames>
+    </index>
+    <index id="58" parent="18" name="fk_train_idx">
+      <ColNames>id_train</ColNames>
+    </index>
+    <key id="59" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_schedule</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="60" parent="18" name="fk_schedule_1">
+      <ColNames>id_train</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>train</RefTableName>
+      <RefColNames>id_train</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="61" parent="18" name="fk_branch">
+      <ColNames>id_branch</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>branch_line</RefTableName>
+      <RefColNames>id_branch_line</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="62" parent="18" name="fk_station_f">
+      <ColNames>id_first_station</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>station</RefTableName>
+      <RefColNames>id_station</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="63" parent="18" name="fk_station_l">
+      <ColNames>id_last_station</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>station</RefTableName>
+      <RefColNames>id_station</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="64" parent="19" name="id_station">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="65" parent="19" name="station_name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="66" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_station</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="20" name="id_ticket">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="20" name="id_passanger">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="69" parent="20" name="id_schedule">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="70" parent="20" name="id_first_station">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="71" parent="20" name="id_last_station">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="72" parent="20" name="departure_time">
+      <Position>6</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="73" parent="20" name="arrival_time">
+      <Position>7</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="74" parent="20" name="seat">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="75" parent="20" name="journey_time">
+      <Position>9</Position>
+      <DataType>time|0</DataType>
+    </column>
+    <column id="76" parent="20" name="departure_date">
+      <Position>10</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <index id="77" parent="20" name="fk_first_station_idx">
+      <ColNames>id_first_station</ColNames>
+    </index>
+    <index id="78" parent="20" name="fk_last_station_idx">
+      <ColNames>id_last_station</ColNames>
+    </index>
+    <index id="79" parent="20" name="fk_passanger2_idx">
+      <ColNames>id_passanger</ColNames>
+    </index>
+    <index id="80" parent="20" name="fk_schedule_idx">
+      <ColNames>id_schedule</ColNames>
+    </index>
+    <key id="81" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_ticket</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="20" name="fk_passanger2">
+      <ColNames>id_passanger</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>passanger</RefTableName>
+      <RefColNames>id_passanger</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="83" parent="20" name="fk_schedule">
+      <ColNames>id_schedule</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>schedule</RefTableName>
+      <RefColNames>id_schedule</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="84" parent="20" name="fk_first_station">
+      <ColNames>id_first_station</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>station</RefTableName>
+      <RefColNames>id_station</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="85" parent="20" name="fk_last_station">
+      <ColNames>id_last_station</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>station</RefTableName>
+      <RefColNames>id_station</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="86" parent="21" name="id_train">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="87" parent="21" name="number">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="88" parent="21" name="number_of_seats">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="89" parent="21" name="number_UNIQUE">
+      <ColNames>number</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="90" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_train</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="91" parent="21" name="number_UNIQUE">
+      <ColNames>number</ColNames>
+      <UnderlyingIndexName>number_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="92" parent="22" name="id_user">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="93" parent="22" name="login">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="94" parent="22" name="password">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="95" parent="22" name="id_role">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="96" parent="22" name="fk_role_idx">
+      <ColNames>id_role</ColNames>
+    </index>
+    <key id="97" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_user</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="98" parent="22" name="fk_role">
+      <ColNames>id_role</ColNames>
+      <RefSchemaName>trains</RefSchemaName>
+      <RefTableName>role</RefTableName>
+      <RefColNames>id_role</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>

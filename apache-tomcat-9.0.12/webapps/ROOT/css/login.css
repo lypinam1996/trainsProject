@@ -1,0 +1,140 @@
+body{
+    font-family: Arial;
+}
+.main{
+    background:  #008ca5;
+    float:left;
+    width:100%;
+    padding : 50px 0;
+}
+
+.container{
+    background:#fff;
+    border-radius: 10px;
+    box-shadow:15px 20px 0px
+    rgba(0,0,0,0.1);
+    width: 110%;
+}
+
+.login-sec{
+    padding: 50px 30px;
+    position:relative;
+    color: #bf4031;
+}
+
+.login-sec .copy-text{
+    position:absolute;
+    width:80%;
+    bottom:20px;
+    font-size:13px;
+    text-align:center;
+}
+
+
+.login-sec h2{
+    font-weight:800;
+    font-size:30px;
+}
+
+.h2A{
+    margin-bottom: 30px;
+}
+
+a{
+    color: #bf4031;
+}
+a:hover{
+    color: #bf4031;
+}
+
+.login-sec input{
+    color: #bf4031;
+}
+
+.btn-login{
+    background:  #bf4031;
+    color:#fff;
+    font-weight:600;
+    width: 100px;
+}
+
+.btn-login :active{
+    color: #008ca5;
+}
+
+.banner-text{
+    width:70%;
+    position:absolute;
+    bottom:40px;
+    padding-left:20px;
+}
+
+.banner-text h2{
+    color:#fff;
+    font-weight:600;}
+
+.banner-text h2:after{
+    content:" ";
+    width:100px;
+    height:5px;
+    background:#FFF;
+    display:block;
+    margin-top:20px;
+    border-radius:3px;
+}
+
+.banner-text p{
+    color:#fff;
+}
+
+.imgBanner{
+    height: 100%;
+    width: 100%;
+}
+
+.btnRegister{
+   margin-top: -10%;
+    margin-left: 10%;
+}
+.aStyle{
+    color: #bf4031;
+    font-size: 20pt;
+
+}
+
+.aStyle:hover{
+    color: #bf4031;
+
+}
+
+.login{
+    margin-left: 85%;
+    margin-top: -45px;
+    height: 45px;
+    width:130px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    border-color: white;
+    border-width: 1.5px;
+    font-size: 12pt;
+}
+
+
+
+.header{
+    background-color: #008ca5;
+}
+
+.errors{
+    font-size: 14pt;
+    color: red;
+}
+
+
+
+
+
+
+
+

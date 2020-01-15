@@ -1,10 +1,9 @@
 package com.tsystems.trainsProject.controllers;
 
-import com.tsystems.trainsProject.models.*;
+import com.tsystems.trainsProject.models.TrainEntity;
 import com.tsystems.trainsProject.services.StationService;
 import com.tsystems.trainsProject.services.TicketService;
 import com.tsystems.trainsProject.services.TrainService;
-import com.tsystems.trainsProject.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class TrainController {
@@ -32,8 +32,8 @@ public class TrainController {
     @Autowired
     TicketService ticketService;
 
-    @Autowired
-    UserService userService;
+//    @Autowired
+//    UserService userService;
 
     @RequestMapping(value = "/createTrain", method = RequestMethod.GET)
     public String getTrain(@ModelAttribute TrainEntity train, Model model) {

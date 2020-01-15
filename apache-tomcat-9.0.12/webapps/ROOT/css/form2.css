@@ -1,0 +1,138 @@
+main{
+    background:  #008ca5;
+    float:left;
+    width:100%;
+    padding : 50px 0;
+    min-height: 100%;
+}
+
+form{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 14pt;
+}
+
+body{
+    background-color: #008ca5;
+    font-family: Arial;
+}
+.container{
+    margin-top: 1%;
+    background:#CBEEF4;
+    border-radius: 10px;
+    box-shadow:15px 20px 0px
+    rgba(0,0,0,0.1);
+    min-height: 100%;
+    padding: 2%;
+}
+
+.firstTR{
+    background-color: #bf4031;
+}
+
+p{
+    font-size: 30pt;
+    padding-left: 2%;
+}
+
+.nav-item{
+    height: 8%;
+    background-color: #008ca5;
+}
+
+.login{
+    margin-left: 85%;
+    margin-top: -45px;
+    height: 45px;
+    width:130px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    border-color: white;
+    border-width: 1.5px;
+    font-size: 12pt;
+}
+
+.nav-item button{
+    margin-left: 70%;
+    margin-top: 10px;
+    height: 45px;
+    width:130px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    border-color: white;
+    border-width: 1.5px;
+    font-size: 12pt;
+}
+
+.backBtn{
+    margin-left: 70%;
+    margin-top: 5px;
+    height: 45px;
+    width:130px;
+    border-radius: 20px;
+    color: white;
+    background-color: #bf4031;
+    border-color: white;
+    border-width: 1.5px;
+    font-size: 12pt;
+}
+
+.b{
+    margin-top: 5%;
+    background-color: #bf4031;
+    color: white;
+    height: 47px;
+    width: 130px;
+    border-radius: 20px;
+    border-color: white;
+    border-width: 1.5px;
+}
+
+.form-control.inp{
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
+    font-size: 13pt;
+}
+
+lbl{
+    font-size: 20pt;
+    color: #bf4031;
+}
+
+.row{
+    margin-left: 35px;
+}
+
+.errors{
+    font-size: 14pt;
+    color: red;
+}
+
+.inp{
+    width: 23%;
+    height: 47px;
+    color: #bf4031;
+    padding:1%;
+    background-color: white;
+}
+
+.ui-widget-content{
+    background: white !important;
+    color: #bf4031;
+}
+
+
+.ui-corner-all a{
+    background: white !important;
+    font-size: 14pt;
+}
+
+.ui-corner-all a:hover{
+    background:#CBEEF4 !important;
+    color: #bf4031;
+    font-size: 14pt;
+}
